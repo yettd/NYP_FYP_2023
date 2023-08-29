@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
+  m_Name: nTI_9
+  m_EditorClassIdentifier: 
+  Name: 'Gracey
+
+    9/10'
+  Icon: {fileID: 21300000, guid: 5b0b35a6852d42b469ec6990507fb634, type: 3}
+  Usage: '<b>Usage</b>
+
+    Posterior teeth: Buccal and lingual surface of the molar
+    only<br>'
+  InstrumentGrasp: '<b>Instrument Grasp</b>
+
+    1. Position the thumb and index
+    finger opposite one another on the handle, No touching or overlap
+
+    2. Rest
+    pad of the middle finger lightly on the side of the instrument shank, touches
+    the ring finger
+
+    3. Position the thumb, index and middle finger properly
+    without hyperextension of joints
+
+    4. Maintain a neutral wrist position<br>'
+  Instrumentation: "<b>Instrumentation</b>\n1.  Position working end to begin instrumentation
+    at the midline (G1-2) and correct line angle (G7-8)\r\n2.  Establish and maintain
+    correct face to tooth surface angulation for insertion at 0-40\xB0 and scaling
+    between 45-80\xB0 \r\n3. Maintain terminal shank parallel to long axis of tooth\r\n4.
+    Maintain correct adaptation as instrument strokes progress around tooth surafce,
+    pivot and roll instrument as needed\r\n5. Constantly maintain toe third of the
+    cutting edge to tooth surface\r\n6. Use short controlled calculus removal strokes
+    in a coronal direction to remove deposits from tooth surface \r\n7. Demonstrate
+    proper root planning strokes, which are lighter, longer and shaving strokes,
+    when debriding root surface\r\n8. Apply appropriate lateral pressure in a coronal
+    direction\r\n9. Maintain a neutral wrist position while utilizing wrist activation\r\n10.
+    Use appropriate sequence in the quadrant \r\n"
+  dentalItem: {fileID: 5706071983084551377, guid: 2b8463e6b38cd03488a853e7bd69959d, type: 3}
+  videoClip: {fileID: 0}

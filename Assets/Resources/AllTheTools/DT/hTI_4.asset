@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
+  m_Name: hTI_4
+  m_EditorClassIdentifier: 
+  Name: 'Amalgam
+
+    Carver, Tharp'
+  Icon: {fileID: 21300000, guid: c59de320aad83204593afc7a00553b90, type: 3}
+  Usage: '<b>Usage</b>
+
+    For carving anatomical features, smoothing surfaces and
+    trimming excess amalgam'
+  InstrumentGrasp: 
+  Instrumentation: 
+  dentalItem: {fileID: 227513516223377440, guid: d931f3bb8881bae4b98f629fc6999aca, type: 3}
+  videoClip: {fileID: 0}

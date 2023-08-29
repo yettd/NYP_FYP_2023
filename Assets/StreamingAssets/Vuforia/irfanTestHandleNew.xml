@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="irfanTestHandleNew" motionHint="adaptive" trackingMode="car" optimizeTrackingFor="default"/>
+
+</Tracking>
+
+<Assembly name="irfanTestHandleNews_assembly" assemblyId="1117476a14634cf5869b81f0f8e2a8b1">
+<Part name="irfanTestHandleNew" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="GuideView_0001" translation="-2.26288e-06 -4.0903e-06 0.180358" rotation="AD: 0.999786 -0.0479728 0.480312 190.279" trained="no">
+
+</EntryPoint>
+<EntryPoint name="GuideView_0000" translation="-0.00737641 -0.0122369 0.162881" rotation="AD: 0.970951 -0.313374 1.24076 197.36" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>

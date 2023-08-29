@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
+  m_Name: cEI_3
+  m_EditorClassIdentifier: 
+  Name: 'Periodontal
+
+    Probe'
+  Icon: {fileID: 21300000, guid: 8eed08a082a06c54497e3b31c5940876, type: 3}
+  Usage: '<b>Usage</b>
+
+    - To Evaluate the health of the periodontal tissues<br>'
+  InstrumentGrasp: "<b>Instrument Grasp</b>\n1. Position the thumb and index finger
+    opposite one another on the handle, No touching or overlap \r\n2. Rest pad of
+    middle finger lightly on side of instrument shank, touches ring finger \r\n3.
+    Position the thumb, index and middle finger properly without hyperextension of
+    joints \r\n4. Maintain a neutral wrist position<br>"
+  Instrumentation: "<b>Instrumentation</b>\n1. Insert at line angle, keep the tip
+    in contact with the tooth, pressing down to touch the soft tissue base. \r\n2.
+    Inititiate a series of short, bobbing strokes(walking stroke) toward the distal
+    surface \r\n3. Walk the probe onto the distal surface until it touches the contact
+    area \r\n4. Tilt the probe so that the tip reaches beneath  the contact area
+    and gently press downward to touch the junctional epithelium \r\n5. Lightly insert
+    down against the base of the sulcus and obtain a reading. \r\n6. Reinsert at
+    the disto-buccal line angle in preparation for assessing the facial surface \r\n7.
+    Make a series of walking strokes, moving in a forward direction toward the mesio-buccal
+    line angle \r\n8. Tilt the probe beneath the mesial contact and assess."
+  dentalItem: {fileID: 6513512177097346399, guid: fe1c8b66653f77445a3e1624a746d1ae, type: 3}
+  videoClip: {fileID: 32900000, guid: cd203d5d980a6044fac90307f8d75a4d, type: 3}
