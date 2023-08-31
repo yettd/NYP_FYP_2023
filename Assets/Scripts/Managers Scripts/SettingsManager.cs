@@ -54,23 +54,23 @@ public class SettingsManager : MonoBehaviour
     }
 
     // on reset leaderboard button pressed
-    public void OnResetLeaderboardPressed()
-    {
-        // load volume first
-        LoadVolume();
-        // do not reset donotshowagain playerpref
-        if (PlayerPrefs.GetInt("doNotShowAgainChecked") != 0)
-        {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetInt("doNotShowAgainChecked", 1);
-        }
-        else
-        {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetInt("doNotShowAgainChecked", 0);
-        }
-        // then save so that volume is not reset
-        SaveVolume();
-        Debug.Log("Reset Leaderboard");
-    }
+    //public void OnResetLeaderboardPressed()
+    //{
+    //    // load volume first
+    //    LoadVolume();
+    //    // do not reset donotshowagain playerpref
+    //    if (PlayerPrefs.GetInt("doNotShowAgainChecked") != 0)
+    //    {
+    //        PlayerPrefs.DeleteAll();
+    //        PlayerPrefs.SetInt("doNotShowAgainChecked", 1);
+    //    }
+    //    else
+    //    {
+    //        PlayerPrefs.DeleteAll();
+    //        PlayerPrefs.SetInt("doNotShowAgainChecked", 0);
+    //    }
+    //    // then save so that volume is not reset
+    //    SaveVolume();
+    //    Debug.Log("Reset Leaderboard");
+    //}
 }
