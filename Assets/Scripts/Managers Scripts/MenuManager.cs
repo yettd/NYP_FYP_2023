@@ -201,7 +201,10 @@ public class MenuManager : MonoBehaviour
         BackButton.SetActive(true);
         HomeButton.SetActive(true);
     }
-
+    public void LoadCollectionScene(string collection)
+    {
+        SceneManager.LoadScene(collection);
+    }
     // go back to settings from credits
     public void FromCreditsToSettings()
     {
