@@ -14,14 +14,48 @@ public class collectionSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        ChangeItems();
+    }
+
+    void ChangeItems()
+    {
         int i = 0;
-        foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.dtTools)
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
         {
-          
-            //Assign the index and the Scriptable Object into the prefab
-            spawnObject(i, dentistTools);
-            i++;
-          
+
+            foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.S)
+            {
+
+                //Assign the index and the Scriptable Object into the prefab
+                spawnObject(i, dentistTools);
+                i++;
+
+            }
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+        {
+
+            foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.E)
+            {
+
+                //Assign the index and the Scriptable Object into the prefab
+                spawnObject(i, dentistTools);
+                i++;
+
+            }
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        {
+
+            foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.F)
+            {
+
+                //Assign the index and the Scriptable Object into the prefab
+                spawnObject(i, dentistTools);
+                i++;
+
+            }
         }
     }
 

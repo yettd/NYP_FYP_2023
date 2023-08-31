@@ -26,14 +26,27 @@ public enum DTHEnum
     NONE
 }
 
+public enum CollectionEnum
+{
+    S,
+    E,
+    F,
+    NONE
+}
+
+
 public class ButtonReferenceManager : MonoBehaviour
 {
     public static ButtonReferenceManager Instance { get; private set; }
     public ButtonENUM storedButtonID;
     public DTHEnum storedDTHButtonID;
+    public CollectionEnum storeCollectionID;
     public int storedIndex;
     public DentistTool[] dtTools;
     public DentistTool[] dhTools;
+    public DentistTool[] S;
+    public DentistTool[] E;
+    public DentistTool[] F;
 
     private void Awake()
     {
@@ -54,6 +67,9 @@ public class ButtonReferenceManager : MonoBehaviour
     {
         dhTools = Resources.LoadAll<DentistTool>("AllTheTools/DH");
         dtTools = Resources.LoadAll<DentistTool>("AllTheTools/DT");
+        S = Resources.LoadAll<DentistTool>("AllTheTools/Scaling");
+        F = Resources.LoadAll<DentistTool>("AllTheTools/Filling");
+        E = Resources.LoadAll<DentistTool>("AllTheTools/Extraction");
 
     }
 
