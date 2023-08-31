@@ -27,8 +27,8 @@ public class DisplayItem : MonoBehaviour
             return;
 
         //If DTH is DH, show DH stuff..
-        LoadContent(ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()]);
-        
+
+        DisplayNew();
 
     }
 
@@ -43,7 +43,38 @@ public class DisplayItem : MonoBehaviour
     public void DisplayNew()
     {
 
-        LoadContent(ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()]);
+        if (collectionManager.CM.toolOrProcedure)
+        {
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+            {
+
+                LoadContent(ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()]);
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            {
+
+                LoadContent(ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()]);
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            {
+
+                LoadContent(ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()]);
+            }
+        }
+        else
+        {
+            if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
+            {
+
+                LoadContent(ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()]);
+            }
+            else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
+            {
+
+                LoadContent(ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()]);
+            }
+        }
+
     }
 
 }

@@ -14,14 +14,87 @@ public class collectionSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int i = 0;
-        foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.dtTools)
+        collectionManager.CM.toolOrProcedure = true;
+        ButtonReferenceManager.Instance.storeCollectionID = CollectionEnum.S;
+        ChangeItems();
+    }
+    
+    void Clear()
+    {
+        foreach (Transform child in GetComponent<ScrollRect>().content)
         {
-          
-            //Assign the index and the Scriptable Object into the prefab
-            spawnObject(i, dentistTools);
-            i++;
-          
+            GameObject.Destroy(child.gameObject);
+        }
+        currentShelf = null;
+    }
+
+    public void ChangeItems()
+    {
+        Clear();
+        int i = 0;
+        if (collectionManager.CM.toolOrProcedure)
+        {
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+            {
+                foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.S)
+                {
+                    //Assign the index and the Scriptable Object into the prefab
+                    spawnObject(i, dentistTools);
+                    i++;
+
+                }
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            {
+
+                foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.E)
+                {
+
+                    //Assign the index and the Scriptable Object into the prefab
+                    spawnObject(i, dentistTools);
+                    i++;
+
+                }
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            {
+
+                foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.F)
+                {
+
+                    //Assign the index and the Scriptable Object into the prefab
+                    spawnObject(i, dentistTools);
+                    i++;
+
+                }
+            }
+        }
+        else
+        {
+            if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
+            {
+
+                foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.dhTools)
+                {
+
+                    //Assign the index and the Scriptable Object into the prefab
+                    spawnObject(i, dentistTools);
+                    i++;
+
+                }
+            }
+            else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
+            {
+
+                foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.dtTools)
+                {
+
+                    //Assign the index and the Scriptable Object into the prefab
+                    spawnObject(i, dentistTools);
+                    i++;
+
+                }
+            }
         }
     }
 

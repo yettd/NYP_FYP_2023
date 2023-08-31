@@ -26,17 +26,58 @@ public class VideoController : MonoBehaviour
     private void Start()
     {
         placeHolder.SetActive(false);
-        // get tool name and video from dt/dh and tool clicked
-        if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
+
+        // get appropriate 3d model and name based on DT/DH
+        if (collectionManager.CM.toolOrProcedure)
         {
-            toolNameText.text = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].Name;
-            videoPlayer.clip = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].videoClip;
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+            {
+
+                videoPlayer.clip = ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()].Name;
+                Debug.Log(toolNameText.text);
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            {
+
+                videoPlayer.clip = ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()].Name;
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            {
+
+
+                videoPlayer.clip = ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()].Name;
+            }
         }
-        else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
+        else
         {
-            toolNameText.text = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].Name;
-            videoPlayer.clip = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].videoClip;
+            if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
+            {
+
+                videoPlayer.clip = ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()].Name;
+            }
+            else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
+            {
+                videoPlayer.clip = ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()].Name;
+            }
         }
+
+
+        //// get tool name and video from dt/dh and tool clicked
+        //if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
+        //{
+        //    toolNameText.text = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].Name;
+        //    videoPlayer.clip = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].videoClip;
+        //}
+        //else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
+        //{
+        //    toolNameText.text = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].Name;
+        //    videoPlayer.clip = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].videoClip;
+        //}
 
         // placeholder for video section for tools with no video yet
         // if no video, put placeholder

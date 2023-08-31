@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
     public SettingsManager settingsManager;
     void Start()
     {
+        return ;
         // only dt/dh, scoreboard and settings buttons active on start
         if (startFromMenu)
         {
@@ -147,7 +148,7 @@ public class MenuManager : MonoBehaviour
     // change to spawn scene
     public void OnSpawnClicked()
     {
-        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         sceneChanger.ChangeToSpawnScene();
     }
     #endregion
@@ -200,7 +201,10 @@ public class MenuManager : MonoBehaviour
         BackButton.SetActive(true);
         HomeButton.SetActive(true);
     }
-
+    public void LoadCollectionScene(string collection)
+    {
+        SceneManager.LoadScene(collection);
+    }
     // go back to settings from credits
     public void FromCreditsToSettings()
     {
