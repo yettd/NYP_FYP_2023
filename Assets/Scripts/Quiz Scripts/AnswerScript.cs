@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class AnswerScript : MonoBehaviour
 {
-    public bool isCorrect = false;
-    public QuizManager quizManager;
-  
-    // assigned to quiz options buttons, assigning which option is correct/wrong 
+    public bool isCorrect;
+    public QuizManagerS2 quizManager;
+   
     public void Answer()
     {
         if (isCorrect)
         {
+            Debug.Log("Correct Answer");
             quizManager.Correct();
         }
         else
         {
-            quizManager.Wrong();
+            Debug.Log("Wrong Answer");
         }
     }
 
-    public bool GetIsCorrect()
-    {
-        return isCorrect;
-    }
+    //public bool GetIsCorrect()
+    //{
+    //    return isCorrect;
+    //}
 }
