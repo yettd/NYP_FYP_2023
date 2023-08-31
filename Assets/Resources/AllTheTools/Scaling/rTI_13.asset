@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
+  m_Name: rTI_13
+  m_EditorClassIdentifier: 
+  Name: 'Gracey
+
+    17/18'
+  Icon: {fileID: 21300000, guid: 04192534e2f995c4b80eb1fa4604537b, type: 3}
+  Usage: '<b>Usage</b>
+
+    Posterior teeth: Distal surfaces of the molar only (good
+    to use on hard to reach surfaces, eg: wisdom tooth<br>'
+  InstrumentGrasp: "<b>Instrument Grasp</b>\r\n1. Position the thumb and index finger
+    \r\nopposite one another on the handle, No \r\ntouching or overlap\r\n2. Rest
+    pad of middle finger lightly on side of \r\ninstrument shank, touches ring finger\r\n3.
+    Position the thumb, index and middle \r\nfinger properly without hyperextension
+    of joints\r\n4. Maintain a neutral wrist position\r<br>"
+  Instrumentation: "<b>Instrumentation</b>\n1. Maintain terminal shank parallel to
+    long axis of tooth\r\n2. Constantly maintain toe third of the cutting edge to
+    the tooth surface\r\n3. Begin at the distal line angle\r\n4. Establish and maintain
+    correct face-to-tooth surface angulation for insertion at 0\xB0 and start scaling
+    between 70-80\xB0 "
+  dentalItem: {fileID: 5775655181856688166, guid: 9ed9d115453ab7f40b1df894953d61a4, type: 3}
+  videoClip: {fileID: 0}

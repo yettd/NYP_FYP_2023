@@ -7,7 +7,9 @@ public class collectionManager : MonoBehaviour
 {
     public static collectionManager CM;
     public GameObject ShowItem;
+    public GameObject ShelfObject;
 
+    public bool toolOrProcedure = false;
      int storeWhichItem;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,8 @@ public class collectionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void Display(int d)
@@ -41,6 +45,19 @@ public class collectionManager : MonoBehaviour
         }
 
     }
+
+    public void ChangeFilter(bool a)
+    {
+        toolOrProcedure = a;
+    }
+
+    public void displayShelfItem()
+    {
+        ShelfObject.GetComponent<collectionSpawn>().ChangeItems();
+
+    }
+
+
 
     public int GetStore()
     {
