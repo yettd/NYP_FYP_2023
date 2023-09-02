@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnswerScript : MonoBehaviour
+public class FillingAnswerScript : MonoBehaviour
 {
-    public bool isCorrect;
-    public QuizManagerS2 quizManager;
+    public bool isFillingCorrect;
+    public FillingQuizManager quizManager;
 
     public void Answer()
     {
-        if (isCorrect)
+        if (isFillingCorrect)
         {
             Debug.Log("Correct Answer");
             quizManager.Correct();

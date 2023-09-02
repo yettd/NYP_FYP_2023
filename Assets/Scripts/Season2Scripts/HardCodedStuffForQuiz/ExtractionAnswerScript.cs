@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnswerScript : MonoBehaviour
+public class ExtractionAnswerScript : MonoBehaviour
 {
     public bool isCorrect;
-    public QuizManagerS2 quizManager;
+    public ExtractionQuizManager quizManager;
 
     public void Answer()
     {

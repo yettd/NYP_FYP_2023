@@ -4,9 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class ExtractionQuizManager : MonoBehaviour
+public class FillingQuizManager : MonoBehaviour
 {
-    public List<ExtractionQnA> QnA;
+    public List<FillingQnA> QnA;
     public GameObject[] options;
     public int CurrentQuestion;
     public TMP_Text highScoreTextOnMain;
@@ -21,7 +21,7 @@ public class ExtractionQuizManager : MonoBehaviour
     public GameObject QuizPanel;
     private int highScore;
 
-    public bool polishExtractionTools; //for later
+    public bool polishFillingTools; //for later
 
     public void openMainMenu()
     {
@@ -30,14 +30,14 @@ public class ExtractionQuizManager : MonoBehaviour
 
     private void Start()
     {
-        int savedHighScore = PlayerPrefs.GetInt("ExtractionHighScore", 0);
+        int savedHighScore = PlayerPrefs.GetInt("FillingHighScore", 0);
         highScoreTextOnMain.text = "High Score: " + savedHighScore + "/10";
 
         MainPanel.SetActive(true);
         QuizPanel.SetActive(false);
         ResultsPanel.SetActive(false);
         GenerateQuestion();
-        highScore = PlayerPrefs.GetInt("ExtractionHighScore", 0);
+        highScore = PlayerPrefs.GetInt("FillingHighScore", 0);
     }
     public void StartQuiz()
     {
@@ -59,7 +59,7 @@ public class ExtractionQuizManager : MonoBehaviour
     {
         ResultsPanel.SetActive(false);
         MainPanel.SetActive(true);
-        int savedHighScore = PlayerPrefs.GetInt("ExtractionHighScore", 0);
+        int savedHighScore = PlayerPrefs.GetInt("FillingHighScore", 0);
         highScoreTextOnMain.text = "High Score: " + savedHighScore + "/10";
     }
 
@@ -96,12 +96,12 @@ public class ExtractionQuizManager : MonoBehaviour
 
         for (int i = 0; i < options.Length; i++)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false;
+            options[i].GetComponent<FillingAnswerScript>().isFillingCorrect = false;
             options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = QnA[CurrentQuestion].answers[i];
 
             if (QnA[CurrentQuestion].correctAnswer == i + 1)
             {
-                options[i].GetComponent<AnswerScript>().isCorrect = true;
+                options[i].GetComponent<FillingAnswerScript>().isFillingCorrect = true;
                 Debug.Log("Correct answer: " + QnA[CurrentQuestion].correctAnswer);
             }
         }
@@ -130,7 +130,7 @@ public class ExtractionQuizManager : MonoBehaviour
         if (score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt("ExtractionHighScore", highScore);
+            PlayerPrefs.SetInt("FillingHighScore", highScore);
             PlayerPrefs.Save();
             FinalScoreText.text += "\nNew High Score!";
         }

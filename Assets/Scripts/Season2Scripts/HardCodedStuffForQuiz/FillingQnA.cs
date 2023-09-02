@@ -6,7 +6,7 @@
 // nah who ever does this in the future and does not understand a thing,
 // the video is https://www.youtube.com/watch?v=G9QDFB2RQGA 
 // No problem i gotchu -Artus
-public class QnA
+public class FillingQnA
 {
     public string question;
     public string[] answers;
