@@ -10,8 +10,11 @@ public class QuizManagerS2 : MonoBehaviour
     public GameObject[] options;
     public int CurrentQuestion;
     public TMP_Text highScoreTextOnMain;
-
     public TMP_Text QuestionTxt;
+
+    public TMP_Text timerText; 
+    private float quizDuration = 10f; 
+    private float timeRemaining;
 
     public int score = 0;
     private int totalQuestionsAsked = 0;
@@ -39,6 +42,7 @@ public class QuizManagerS2 : MonoBehaviour
         GenerateQuestion();
         highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
+
     public void StartQuiz()
     {
         MainPanel.SetActive(false);
@@ -46,7 +50,12 @@ public class QuizManagerS2 : MonoBehaviour
         score = 0;
         totalQuestionsAsked = 0;
         GenerateQuestion();
+
+        // Timer initialization
+        timeRemaining = quizDuration;
+        UpdateTimerDisplay();
     }
+
     public void RestartQuiz()
     {
         score = 0;
@@ -55,6 +64,7 @@ public class QuizManagerS2 : MonoBehaviour
         QuizPanel.SetActive(true);
         GenerateQuestion();
     }
+
     public void ReturnToMainPanel()
     {
         ResultsPanel.SetActive(false);
@@ -65,7 +75,7 @@ public class QuizManagerS2 : MonoBehaviour
 
     public void Correct()
     {
-        score++;  
+        score++;
 
         totalQuestionsAsked++;
         if (totalQuestionsAsked < 10)
@@ -74,7 +84,7 @@ public class QuizManagerS2 : MonoBehaviour
         }
         else
         {
-            DisplayFinalScore(); 
+            DisplayFinalScore();
         }
     }
 
@@ -87,16 +97,15 @@ public class QuizManagerS2 : MonoBehaviour
         }
         else
         {
-            DisplayFinalScore(); 
+            DisplayFinalScore();
         }
     }
 
     public void setAnswers()
     {
-
         for (int i = 0; i < options.Length; i++)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false; 
+            options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = QnA[CurrentQuestion].answers[i];
 
             if (QnA[CurrentQuestion].correctAnswer == i + 1)
@@ -109,7 +118,7 @@ public class QuizManagerS2 : MonoBehaviour
 
     public void GenerateQuestion()
     {
-        if (QnA.Count == 0 || totalQuestionsAsked >= 10) 
+        if (QnA.Count == 0 || totalQuestionsAsked >= 10)
         {
             FinalScoreText.text = "Final Score: " + score + "/10";
             return;
@@ -124,7 +133,7 @@ public class QuizManagerS2 : MonoBehaviour
     private void DisplayFinalScore()
     {
         FinalScoreText.text = "Final Score: " + score + "/10";
-        QuizPanel.SetActive(false); 
+        QuizPanel.SetActive(false);
         ResultsPanel.SetActive(true);
 
         if (score > highScore)
@@ -138,5 +147,27 @@ public class QuizManagerS2 : MonoBehaviour
         {
             FinalScoreText.text += "\nHigh Score: " + highScore + "/10";
         }
+    }
+
+    private void Update()
+    {
+        if (QuizPanel.activeSelf && timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            UpdateTimerDisplay();
+
+            if (timeRemaining <= 0)
+            {
+                timeRemaining = 0;
+                DisplayFinalScore();
+            }
+        }
+    }
+
+    private void UpdateTimerDisplay()
+    {
+        int minutes = Mathf.FloorToInt(timeRemaining / 60);
+        int seconds = Mathf.FloorToInt(timeRemaining % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
