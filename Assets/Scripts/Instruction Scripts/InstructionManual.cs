@@ -17,4 +17,7 @@ public class InstructionManual : ScriptableObject
 
     [Header("Tutorial Step info include mini game scene")]
     public InstructionTemplate[] step;
+
+    [Header("SaveLog")]
+    public int saveId;
 }
