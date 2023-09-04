@@ -13,7 +13,7 @@ public class QuizManagerS2 : MonoBehaviour
     public TMP_Text QuestionTxt;
 
     public TMP_Text timerText; 
-    private float quizDuration = 10f; 
+    public float quizDuration = 100f; 
     private float timeRemaining;
 
     public int score = 0;
@@ -85,24 +85,24 @@ public class QuizManagerS2 : MonoBehaviour
         totalQuestionsAsked = 0;
         GenerateQuestion();
 
-        // Timer initialization
         timeRemaining = quizDuration;
         UpdateTimerDisplay();
     }
 
-    public void RestartQuiz()
-    {
-        score = 0;
-        totalQuestionsAsked = 0;
-        ResultsPanel.SetActive(false);
-        QuizPanel.SetActive(true);
-        GenerateQuestion();
-    }
+    //public void RestartQuiz()
+    //{
+    //    score = 0;
+    //    totalQuestionsAsked = 0;
+    //    ResultsPanel.SetActive(false);
+    //    QuizPanel.SetActive(true);
+    //    GenerateQuestion();
+    //}
 
     public void ReturnToMainPanel()
     {
         ResultsPanel.SetActive(false);
         MainPanel.SetActive(true);
+        SceneManager.LoadScene("ExtractioQuiz");
         int savedHighScore = PlayerPrefs.GetInt("HighScore", 0);
         if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
         {
@@ -110,7 +110,6 @@ public class QuizManagerS2 : MonoBehaviour
         }
         else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
         {
-
             savedHighScore = PlayerPrefs.GetInt("EHighScore", 0);
         }
         else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
