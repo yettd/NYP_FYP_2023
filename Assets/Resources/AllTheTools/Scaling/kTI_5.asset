@@ -51,3 +51,6 @@ MonoBehaviour:
     utilizing wrist activation"
   dentalItem: {fileID: 2769261376357853920, guid: 7cd43abbabf8c06449e66db8f61d459f, type: 3}
   videoClip: {fileID: 0}
+  RustyIcon: {fileID: 0}
+  rusty: 0
+  DTDH: 0

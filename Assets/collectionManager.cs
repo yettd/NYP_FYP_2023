@@ -9,12 +9,27 @@ public class collectionManager : MonoBehaviour
     public GameObject ShowItem;
     public GameObject ShelfObject;
 
+    filterButtonID[] FilterButton;
+    [SerializeField]
+    Color defaultC;
+    [SerializeField]
+    Color SelectedColor;
+    public GameObject aa;
     public bool toolOrProcedure = false;
-     int storeWhichItem;
+    int storeWhichItem;
+    [SerializeField]GoToQuiz GTQ;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        FilterButton = FindObjectsOfType<filterButtonID>();
+
+        aa.SetActive(false);
+    }
+
+    public Color GetSelected()
+    {
+        return SelectedColor;
     }
 
     private void Awake()
@@ -46,15 +61,52 @@ public class collectionManager : MonoBehaviour
 
     }
 
+    void ResetButtonColor()
+    {
+        foreach (filterButtonID BtnIT in FilterButton)
+        {
+            BtnIT.GetComponent<Image>().color = defaultC;
+        }
+    }
+
     public void ChangeFilter(bool a)
     {
+        ResetButtonColor();
         toolOrProcedure = a;
+    }
+
+    public void SetQuizButton()
+    {
+        if(toolOrProcedure)
+        {
+            GTQ.Show(true);
+            if(ButtonReferenceManager.Instance.storeCollectionID==CollectionEnum.S)
+            {
+                GTQ.changeText("Scaling");
+
+            }
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            {
+                GTQ.changeText("Ex");
+
+            }
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            {
+                GTQ.changeText("Filling");
+
+            }
+        }
+        else
+        {
+            GTQ.Show(false);
+        }
     }
 
     public void displayShelfItem()
     {
         ShelfObject.GetComponent<collectionSpawn>().ChangeItems();
 
+        SetQuizButton();
     }
 
 

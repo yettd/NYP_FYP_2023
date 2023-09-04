@@ -28,3 +28,6 @@ MonoBehaviour:
     \r\nstrokes."
   dentalItem: {fileID: 6454270763258874754, guid: 8169b5c2f14772048824f5718dc67c92, type: 3}
   videoClip: {fileID: 32900000, guid: 482265d8f28d4454b91cd4a7e85dde07, type: 3}
+  RustyIcon: {fileID: 0}
+  rusty: 1
+  DTDH: 1

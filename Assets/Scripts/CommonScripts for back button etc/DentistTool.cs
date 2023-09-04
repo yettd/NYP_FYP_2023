@@ -21,4 +21,9 @@ public class DentistTool : ScriptableObject
     public GameObject dentalItem;
     [Header("Tool Video")]
     public VideoClip videoClip;
+
+    [Header("RustyVersion")]
+    public Sprite RustyIcon;
+    public bool rusty = true;
+    public bool DTDH = true; // true DT / false DH
 }

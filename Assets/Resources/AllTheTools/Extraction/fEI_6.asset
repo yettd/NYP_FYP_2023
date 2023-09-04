@@ -22,3 +22,6 @@ MonoBehaviour:
   Instrumentation: 
   dentalItem: {fileID: 4115753369820790392, guid: 2b93ea97733e1c241ba7c51d5c18cfa8, type: 3}
   videoClip: {fileID: 0}
+  RustyIcon: {fileID: 0}
+  rusty: 0
+  DTDH: 1

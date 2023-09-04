@@ -47,3 +47,6 @@ MonoBehaviour:
     Use appropriate sequence in the quadrant \r\n"
   dentalItem: {fileID: 5706071983084551377, guid: 2b8463e6b38cd03488a853e7bd69959d, type: 3}
   videoClip: {fileID: 0}
+  RustyIcon: {fileID: 0}
+  rusty: 1
+  DTDH: 1

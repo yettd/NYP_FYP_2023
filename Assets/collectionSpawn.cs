@@ -106,17 +106,23 @@ public class collectionSpawn : MonoBehaviour
 
     void SpawnSelf()
     {
-
+        if (currentShelf == null || currentShelf.transform.GetChild(0).childCount >= 4)
+        {
+            currentShelf = Instantiate(shelf, GetComponent<ScrollRect>().content);
+        }
     }
 
     void spawnObject(int i , DentistTool dentist)
     {
-        if(currentShelf==null || currentShelf.transform.GetChild(0).childCount>=4)
-        {
-            currentShelf = Instantiate(shelf, GetComponent<ScrollRect>().content);
-        }
+        SpawnSelf();
 
         GameObject container = Instantiate(Item, currentShelf.transform.GetChild(0));
+        if(dentist.rusty)
+        {
+            container.GetComponent<collectionButton>().Initialize(i, dentist.RustyIcon, dentist.Name);
+
+            return;
+        }
         container.GetComponent<collectionButton>().Initialize(i, dentist.Icon, dentist.Name);
         //container.transform.GetChild(1).GetComponent<TMP_Text>().color = textColor;
     }

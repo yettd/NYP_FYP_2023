@@ -66,3 +66,6 @@ MonoBehaviour:
     aspect.'
   dentalItem: {fileID: 7271824009231171946, guid: bbc18f888760b524c84dc1c3d51e5eae, type: 3}
   videoClip: {fileID: 32900000, guid: 31dbb706e670a454dbc0bc6e65f26400, type: 3}
+  RustyIcon: {fileID: 0}
+  rusty: 0
+  DTDH: 1

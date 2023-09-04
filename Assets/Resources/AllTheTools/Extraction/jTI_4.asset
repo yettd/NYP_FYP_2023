@@ -48,3 +48,6 @@ MonoBehaviour:
     coronal\r\ndirection\r\n9. Maintain neutral wrist position while utilizing wrist\r\nactivation"
   dentalItem: {fileID: 7149809392938878830, guid: 6ae3cb14c4e748849ad7604231ab7da4, type: 3}
   videoClip: {fileID: 0}
+  RustyIcon: {fileID: 0}
+  rusty: 0
+  DTDH: 1

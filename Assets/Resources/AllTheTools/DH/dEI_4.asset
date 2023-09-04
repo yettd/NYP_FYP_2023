@@ -29,3 +29,6 @@ MonoBehaviour:
     is Grade IV "
   dentalItem: {fileID: 8041788844131020893, guid: 47325c5bc953d0047828a02d0978cd14, type: 3}
   videoClip: {fileID: 0}
+  RustyIcon: {fileID: 0}
+  rusty: 1
+  DTDH: 1

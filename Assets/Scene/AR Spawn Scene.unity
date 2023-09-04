@@ -633,6 +633,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowItem: {fileID: 0}
   ShelfObject: {fileID: 0}
+  defaultC: {r: 0, g: 0, b: 0, a: 0}
+  SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  aa: {fileID: 0}
   toolOrProcedure: 0
 --- !u!4 &166364196
 Transform:
@@ -1556,28 +1559,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 523693078}
-        m_TargetAssemblyTypeName: BackController, Assembly-CSharp
-        m_MethodName: GoBackTo
-        m_Mode: 1
+      - m_Target: {fileID: 2084450310}
+        m_TargetAssemblyTypeName: MenuManagerS2, Assembly-CSharp
+        m_MethodName: LoadCollectionScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 523693083}
-        m_TargetAssemblyTypeName: ButtonClickAudio, Assembly-CSharp
-        m_MethodName: ButtonClickSound
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: collection
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &523693081
@@ -5709,6 +5700,61 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!1 &2084450309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084450311}
+  - component: {fileID: 2084450310}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2084450310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084450309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebea1a448b2dfb2468e752b6807338d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuPanel: {fileID: 0}
+  SettingsBtn: {fileID: 0}
+  PlayGameBtn: {fileID: 0}
+  CollectionsBtn: {fileID: 0}
+  SettingsPanel: {fileID: 0}
+  AudioSettingSlider: {fileID: 0}
+  PlayGamePanel: {fileID: 0}
+  ExtractionBtn: {fileID: 0}
+  FillingBtn: {fileID: 0}
+  ScalingBtn: {fileID: 0}
+  BackBtn: {fileID: 0}
+--- !u!4 &2084450311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084450309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2137555769
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,3 +5857,4 @@ SceneRoots:
   - {fileID: 1815518593}
   - {fileID: 2027423482}
   - {fileID: 166364196}
+  - {fileID: 2084450311}

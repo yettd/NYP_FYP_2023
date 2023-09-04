@@ -42,8 +42,8 @@ public class ButtonReferenceManager : MonoBehaviour
     public DTHEnum storedDTHButtonID;
     public CollectionEnum storeCollectionID;
     public int storedIndex;
-    public DentistTool[] dtTools;
-    public DentistTool[] dhTools;
+    public List<DentistTool> dtTools = new List<DentistTool>();
+    public List<DentistTool> dhTools = new List<DentistTool>();
     public DentistTool[] S;
     public DentistTool[] E;
     public DentistTool[] F;
@@ -65,12 +65,63 @@ public class ButtonReferenceManager : MonoBehaviour
 
     void LoadToolsDatabases()
     {
-        dhTools = Resources.LoadAll<DentistTool>("AllTheTools/DH");
-        dtTools = Resources.LoadAll<DentistTool>("AllTheTools/DT");
+       
         S = Resources.LoadAll<DentistTool>("AllTheTools/Scaling");
         F = Resources.LoadAll<DentistTool>("AllTheTools/Filling");
         E = Resources.LoadAll<DentistTool>("AllTheTools/Extraction");
+        GetDh();
+        GetDt();
 
+    }
+
+    void GetDh()
+    {
+        foreach(DentistTool a in S)
+        {
+            if(!a.DTDH)
+            {
+                dhTools.Add(a);
+            }
+        }
+        foreach (DentistTool a in E)
+        {
+            if (!a.DTDH)
+            {
+                dhTools.Add(a);
+            }
+        }
+        foreach (DentistTool a in F)
+        {
+            if (!a.DTDH)
+            {
+                dhTools.Add(a);
+            }
+        }
+
+    }
+    void GetDt()
+    {
+        foreach (DentistTool a in S)
+        {
+            if (a.DTDH)
+            {
+                dtTools.Add(a);
+            }
+        }
+        foreach (DentistTool a in E)
+        {
+            if (a.DTDH)
+            {
+                dtTools.Add(a);
+            }
+        }
+        foreach (DentistTool a in F)
+        {
+            if (a.DTDH)
+            {
+                dtTools.Add(a);
+            }
+        }
     }
 
 }
