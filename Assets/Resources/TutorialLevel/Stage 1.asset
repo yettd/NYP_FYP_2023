@@ -21,3 +21,4 @@ MonoBehaviour:
     data: Tutorial 1_2
   - Icon: {fileID: 0}
     data: Tutorial 1_3
+  saveId: 1
