@@ -1148,7 +1148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionTab: {fileID: 1976137789}
-  manual: {fileID: 0}
 --- !u!114 &1948632851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1162,7 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProcessBtn: {fileID: 2040949930}
-  SceneReturn: TutorialDashBoard
+  SceneReturn: Tutorial_DashBoard
   Title: {fileID: 1058297261}
   Description: {fileID: 885608943}
 --- !u!1 &1976137789
