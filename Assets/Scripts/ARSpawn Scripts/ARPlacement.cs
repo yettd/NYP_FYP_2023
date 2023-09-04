@@ -47,20 +47,20 @@ public class ARPlacement : MonoBehaviour
         {
             if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
             {
-                placedInstrument = ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()].dentalItem;
-                toolNameText.text = ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()].Name;
+                placedInstrument = ButtonReferenceManager.Instance.S[ButtonReferenceManager.Instance.storedIndex].dentalItem;
+                toolNameText.text = ButtonReferenceManager.Instance.S[ButtonReferenceManager.Instance.storedIndex].Name;
                 Debug.Log(toolNameText.text);
             }
             else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
             {
-                placedInstrument = ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()].dentalItem;
-                toolNameText.text = ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()].Name;
+                placedInstrument = ButtonReferenceManager.Instance.E[ButtonReferenceManager.Instance.storedIndex].dentalItem;
+                toolNameText.text = ButtonReferenceManager.Instance.E[ButtonReferenceManager.Instance.storedIndex].Name;
             }
             else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
             {
 
-                placedInstrument = ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()].dentalItem;
-                toolNameText.text = ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()].Name;
+                placedInstrument = ButtonReferenceManager.Instance.F[ButtonReferenceManager.Instance.storedIndex].dentalItem;
+                toolNameText.text = ButtonReferenceManager.Instance.F[ButtonReferenceManager.Instance.storedIndex].Name;
             }
         }
         else
@@ -68,14 +68,14 @@ public class ARPlacement : MonoBehaviour
             if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
             {
 
-                placedInstrument = ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()].dentalItem;
-                toolNameText.text = ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()].Name;
+                placedInstrument = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].dentalItem;
+                toolNameText.text = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].Name;
             }
             else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
             {
 
-                placedInstrument = ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()].dentalItem;
-                toolNameText.text = ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()].Name;
+                placedInstrument = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].dentalItem;
+                toolNameText.text = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].Name;
             }
         }
 

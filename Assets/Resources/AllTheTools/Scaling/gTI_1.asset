@@ -39,5 +39,5 @@ MonoBehaviour:
   dentalItem: {fileID: 6798865694113663390, guid: 30e9907145a72cd4e8b9939618809cb7, type: 3}
   videoClip: {fileID: 32900000, guid: f55a26b6eeae09648b2e0bab492fa1ad, type: 3}
   RustyIcon: {fileID: 0}
-  rusty: 0
+  rusty: 1
   DTDH: 0

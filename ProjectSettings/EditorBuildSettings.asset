@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scene/Season2/MainMenuS2.unity
     guid: e62b34f669755104183167e52de64088
   - enabled: 1
+    path: Assets/Scene/Season2/ExtractioQuiz.unity
+    guid: 828e18f1aa977d94caf9cf8ed9c05d11
+  - enabled: 1
     path: Assets/Scene/AR Scan Scene.unity
     guid: 0c217fc635c399344a47a3f1804e3be1
   - enabled: 1
@@ -35,9 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Season2/QuizChoose.unity
     guid: 3517c90fc1aa7c14296b64ccc62efb5e
-  - enabled: 1
-    path: Assets/Scene/Season2/ExtractioQuiz.unity
-    guid: 828e18f1aa977d94caf9cf8ed9c05d11
   - enabled: 1
     path: Assets/Scene/Season2/FillingQuiz.unity
     guid: a82f6f0d29176e34485c831ae40be33d

@@ -33,22 +33,22 @@ public class VideoController : MonoBehaviour
             if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
             {
 
-                videoPlayer.clip = ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()].videoClip;
-                toolNameText.text = ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()].Name;
+                videoPlayer.clip = ButtonReferenceManager.Instance.S[ButtonReferenceManager.Instance.storedIndex].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.S[ButtonReferenceManager.Instance.storedIndex].Name;
                 Debug.Log(toolNameText.text);
             }
             else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
             {
 
-                videoPlayer.clip = ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()].videoClip;
-                toolNameText.text = ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()].Name;
+                videoPlayer.clip = ButtonReferenceManager.Instance.E[ButtonReferenceManager.Instance.storedIndex].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.E[ButtonReferenceManager.Instance.storedIndex].Name;
             }
             else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
             {
 
 
-                videoPlayer.clip = ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()].videoClip;
-                toolNameText.text = ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()].Name;
+                videoPlayer.clip = ButtonReferenceManager.Instance.F[ButtonReferenceManager.Instance.storedIndex].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.F[ButtonReferenceManager.Instance.storedIndex].Name;
             }
         }
         else
@@ -56,13 +56,13 @@ public class VideoController : MonoBehaviour
             if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
             {
 
-                videoPlayer.clip = ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()].videoClip;
-                toolNameText.text = ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()].Name;
+                videoPlayer.clip = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex].Name;
             }
             else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
             {
-                videoPlayer.clip = ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()].videoClip;
-                toolNameText.text = ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()].Name;
+                videoPlayer.clip = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].videoClip;
+                toolNameText.text = ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex].Name;
             }
         }
 

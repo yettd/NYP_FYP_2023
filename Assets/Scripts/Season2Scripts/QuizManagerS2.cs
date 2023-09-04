@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class QuizManagerS2 : MonoBehaviour
 {
-    public List<QnA> QnA;
+    List<QnA> QnA;
     public GameObject[] options;
     public int CurrentQuestion;
     public TMP_Text highScoreTextOnMain;
@@ -33,14 +33,48 @@ public class QuizManagerS2 : MonoBehaviour
 
     private void Start()
     {
-        int savedHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        int savedHighScore = 0;
+        if (ButtonReferenceManager.Instance.storeCollectionID==CollectionEnum.S)
+        {
+            QnA = Resources.Load<quiz>("Quiz/Scaling").QnA;
+
+            savedHighScore = PlayerPrefs.GetInt("SHighScore", 0);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+        {
+
+            QnA = Resources.Load<quiz>("Quiz/Extration").QnA;
+
+            savedHighScore = PlayerPrefs.GetInt("EHighScore", 0);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        {
+
+            QnA = Resources.Load<quiz>("Quiz/Filling").QnA;
+
+            savedHighScore = PlayerPrefs.GetInt("FHighScore", 0);
+        }
+
         highScoreTextOnMain.text = "High Score: " + savedHighScore + "/10";
 
         MainPanel.SetActive(true);
         QuizPanel.SetActive(false);
         ResultsPanel.SetActive(false);
         GenerateQuestion();
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+        {
+            highScore = PlayerPrefs.GetInt("SHighScore", 0);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+        {
+
+            highScore = PlayerPrefs.GetInt("EHighScore", 0);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        {
+
+            highScore = PlayerPrefs.GetInt("FHighScore", 0);
+        }
     }
 
     public void StartQuiz()
@@ -70,6 +104,21 @@ public class QuizManagerS2 : MonoBehaviour
         ResultsPanel.SetActive(false);
         MainPanel.SetActive(true);
         int savedHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+        {
+            savedHighScore = PlayerPrefs.GetInt("SHighScore", 0);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+        {
+
+            savedHighScore = PlayerPrefs.GetInt("EHighScore", 0);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        {
+
+            savedHighScore = PlayerPrefs.GetInt("FHighScore", 0);
+        }
+     
         highScoreTextOnMain.text = "High Score: " + savedHighScore + "/10";
     }
 
@@ -135,11 +184,30 @@ public class QuizManagerS2 : MonoBehaviour
         FinalScoreText.text = "Final Score: " + score + "/10";
         QuizPanel.SetActive(false);
         ResultsPanel.SetActive(true);
-
+        if(score >= 70/100 * totalQuestionsAsked )
+        {
+            polishExtractionTools = true;
+            cleanPolish();
+        }
         if (score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt("HighScore", highScore);
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+            {
+                PlayerPrefs.SetInt("SHighScore", highScore);
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            {
+
+                PlayerPrefs.SetInt("EHighScore", highScore);
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            {
+
+                PlayerPrefs.SetInt("FHighScore", highScore);
+            }
+
+     
             PlayerPrefs.Save();
             FinalScoreText.text += "\nNew High Score!";
         }
@@ -160,6 +228,31 @@ public class QuizManagerS2 : MonoBehaviour
             {
                 timeRemaining = 0;
                 DisplayFinalScore();
+            }
+        }
+    }
+
+    private  void cleanPolish()
+    {
+        if(ButtonReferenceManager.Instance.storeCollectionID== CollectionEnum.S)
+        {
+            foreach(DentistTool a in ButtonReferenceManager.Instance.S)
+            {
+                a.rusty = false;
+            }
+        }
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+        {
+            foreach (DentistTool a in ButtonReferenceManager.Instance.E)
+            {
+                a.rusty = false;
+            }
+        }
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        {
+            foreach (DentistTool a in ButtonReferenceManager.Instance.F)
+            {
+                a.rusty = false;
             }
         }
     }

@@ -14,7 +14,8 @@ public class collectionManager : MonoBehaviour
     Color defaultC;
     [SerializeField]
     Color SelectedColor;
-    public GameObject aa;
+    public GameObject hygineAndTherapy;
+    public GameObject procedure;
     public bool toolOrProcedure = false;
     int storeWhichItem;
     [SerializeField]GoToQuiz GTQ;
@@ -24,7 +25,8 @@ public class collectionManager : MonoBehaviour
     {
         FilterButton = FindObjectsOfType<filterButtonID>();
 
-        aa.SetActive(false);
+        procedure.SetActive(true);
+        hygineAndTherapy.SetActive(false);
     }
 
     public Color GetSelected()
@@ -43,12 +45,12 @@ public class collectionManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     public void Display(int d)
     {
-        storeWhichItem = d;
+        ButtonReferenceManager.Instance.storedIndex = d;
         if(!ShowItem.activeSelf)
         {
         ShowItem.SetActive(true);

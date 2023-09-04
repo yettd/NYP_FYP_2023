@@ -48,17 +48,17 @@ public class DisplayItem : MonoBehaviour
             if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
             {
 
-                LoadContent(ButtonReferenceManager.Instance.S[collectionManager.CM.GetStore()]);
+                LoadContent(ButtonReferenceManager.Instance.S[ButtonReferenceManager.Instance.storedIndex]);
             }
             else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
             {
 
-                LoadContent(ButtonReferenceManager.Instance.E[collectionManager.CM.GetStore()]);
+                LoadContent(ButtonReferenceManager.Instance.E[ButtonReferenceManager.Instance.storedIndex]);
             }
             else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
             {
 
-                LoadContent(ButtonReferenceManager.Instance.F[collectionManager.CM.GetStore()]);
+                LoadContent(ButtonReferenceManager.Instance.F[ButtonReferenceManager.Instance.storedIndex]);
             }
         }
         else
@@ -66,12 +66,12 @@ public class DisplayItem : MonoBehaviour
             if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DT)
             {
 
-                LoadContent(ButtonReferenceManager.Instance.dtTools[collectionManager.CM.GetStore()]);
+                LoadContent(ButtonReferenceManager.Instance.dtTools[ButtonReferenceManager.Instance.storedIndex]);
             }
             else if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
             {
 
-                LoadContent(ButtonReferenceManager.Instance.dhTools[collectionManager.CM.GetStore()]);
+                LoadContent(ButtonReferenceManager.Instance.dhTools[ButtonReferenceManager.Instance.storedIndex]);
             }
         }
 
