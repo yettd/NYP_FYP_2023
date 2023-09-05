@@ -289,6 +289,7 @@ MonoBehaviour:
   storedButtonID: 0
   storedDTHButtonID: 2
   storeCollectionID: 0
+  ARTorP: 1
   storedIndex: 0
   dtTools: []
   dhTools: []
@@ -861,13 +862,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600696066}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.716875, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 971365184}
-  m_Father: {fileID: 1301125528}
+  m_Father: {fileID: 1233483431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2189,9 +2190,10 @@ RectTransform:
   m_Children:
   - {fileID: 1855839499}
   - {fileID: 1563976889}
-  - {fileID: 7070300745968884841}
   - {fileID: 195123946}
   - {fileID: 1960730715}
+  - {fileID: 600696067}
+  - {fileID: 7070300745968884841}
   m_Father: {fileID: 1301125528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2654,7 +2656,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1233483431}
-  - {fileID: 600696067}
   - {fileID: 2104134355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
