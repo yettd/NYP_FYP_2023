@@ -33,7 +33,7 @@ public class SelectionStepMenu : MonoBehaviour
     private void OnGoingStep(string stepTitle, Texture icon)
     {
         RawImage img = GetStepImage("entry");
-        img.texture = icon;
+        img.GetComponent<StepInstructionComponent>().SetIcon(icon);
         img.GetComponent<StepInstructionComponent>().SetScenePath(stepTitle);
         img.transform.SetParent(selectionTab.transform);
     }
