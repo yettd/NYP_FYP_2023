@@ -35,13 +35,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene/SplashScreen.unity
     guid: c75d35565b89f384697ba886eb6ba280
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Season2/QuizChoose.unity
     guid: 3517c90fc1aa7c14296b64ccc62efb5e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Season2/FillingQuiz.unity
     guid: a82f6f0d29176e34485c831ae40be33d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Season2/ScalingQuiz.unity
     guid: 94ddff6b37ebef64ab05ce6b84146210
   m_configObjects: {}
