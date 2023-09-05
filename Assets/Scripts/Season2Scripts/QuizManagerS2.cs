@@ -12,7 +12,8 @@ public class QuizManagerS2 : MonoBehaviour
     public TMP_Text highScoreTextOnMain;
     public TMP_Text QuestionTxt;
 
-    public TMP_Text timerText; 
+    public TMP_Text timerText;
+    public TMP_Text title;
     public float quizDuration = 100f; 
     private float timeRemaining;
 
@@ -39,6 +40,7 @@ public class QuizManagerS2 : MonoBehaviour
             QnA = Resources.Load<quiz>("Quiz/Scaling").QnA;
 
             savedHighScore = PlayerPrefs.GetInt("SHighScore", 0);
+            title.text = "Scaling Quiz";
         }
         else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
         {
@@ -46,6 +48,7 @@ public class QuizManagerS2 : MonoBehaviour
             QnA = Resources.Load<quiz>("Quiz/Extration").QnA;
 
             savedHighScore = PlayerPrefs.GetInt("EHighScore", 0);
+            title.text = "Extration Quiz";
         }
         else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
         {
@@ -53,6 +56,7 @@ public class QuizManagerS2 : MonoBehaviour
             QnA = Resources.Load<quiz>("Quiz/Filling").QnA;
 
             savedHighScore = PlayerPrefs.GetInt("FHighScore", 0);
+            title.text = "Filling Quiz";
         }
 
         highScoreTextOnMain.text = "High Score: " + savedHighScore + "/10";

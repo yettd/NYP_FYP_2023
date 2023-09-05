@@ -1400,6 +1400,7 @@ MonoBehaviour:
   highScoreTextOnMain: {fileID: 1397783708}
   QuestionTxt: {fileID: 1346160998}
   timerText: {fileID: 743832591}
+  title: {fileID: 676089719}
   quizDuration: 100
   score: 0
   FinalScoreText: {fileID: 1762234267}

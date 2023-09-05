@@ -24,7 +24,6 @@ public class collectionManager : MonoBehaviour
     void Start()
     {
         FilterButton = FindObjectsOfType<filterButtonID>();
-
         procedure.SetActive(true);
         hygineAndTherapy.SetActive(false);
     }
@@ -51,6 +50,7 @@ public class collectionManager : MonoBehaviour
     public void Display(int d)
     {
         ButtonReferenceManager.Instance.storedIndex = d;
+        Debug.Log(ButtonReferenceManager.Instance.storedIndex);
         if(!ShowItem.activeSelf)
         {
         ShowItem.SetActive(true);
@@ -82,6 +82,7 @@ public class collectionManager : MonoBehaviour
         if(toolOrProcedure)
         {
             GTQ.Show(true);
+            ButtonReferenceManager.Instance.ARTorP = true;
             if(ButtonReferenceManager.Instance.storeCollectionID==CollectionEnum.S)
             {
                 GTQ.changeText("Scaling");
@@ -100,6 +101,7 @@ public class collectionManager : MonoBehaviour
         }
         else
         {
+            ButtonReferenceManager.Instance.ARTorP = false;
             GTQ.Show(false);
         }
     }

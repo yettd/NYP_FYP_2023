@@ -17,6 +17,7 @@ public class collectionSpawn : MonoBehaviour
         collectionManager.CM.toolOrProcedure = true;
         ButtonReferenceManager.Instance.storeCollectionID = CollectionEnum.S;
         ChangeItems();
+        collectionManager.CM.SetQuizButton();
     }
     
     void Clear()
@@ -32,7 +33,7 @@ public class collectionSpawn : MonoBehaviour
     {
         Clear();
         int i = 0;
-        if (collectionManager.CM.toolOrProcedure)
+        if (ButtonReferenceManager.Instance.ARTorP)
         {
             if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
             {
@@ -96,6 +97,7 @@ public class collectionSpawn : MonoBehaviour
                 }
             }
         }
+
     }
 
     // Update is called once per frame
@@ -120,7 +122,6 @@ public class collectionSpawn : MonoBehaviour
         if(dentist.rusty)
         {
             container.GetComponent<collectionButton>().Initialize(i, dentist.RustyIcon, dentist.Name);
-
             return;
         }
         container.GetComponent<collectionButton>().Initialize(i, dentist.Icon, dentist.Name);

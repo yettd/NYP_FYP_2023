@@ -42,9 +42,11 @@ public class ARPlacement : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(collectionManager.CM.toolOrProcedure);
         // get appropriate 3d model and name based on DT/DH
-        if (collectionManager.CM.toolOrProcedure)
+        if (ButtonReferenceManager.Instance.ARTorP)
         {
+
             if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
             {
                 placedInstrument = ButtonReferenceManager.Instance.S[ButtonReferenceManager.Instance.storedIndex].dentalItem;

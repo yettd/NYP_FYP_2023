@@ -40,7 +40,8 @@ public class ButtonReferenceManager : MonoBehaviour
     public static ButtonReferenceManager Instance { get; private set; }
     public ButtonENUM storedButtonID;
     public DTHEnum storedDTHButtonID;
-    public CollectionEnum storeCollectionID;
+    public CollectionEnum storeCollectionID=CollectionEnum.S;
+    public bool ARTorP = true;
     public int storedIndex;
     public List<DentistTool> dtTools = new List<DentistTool>();
     public List<DentistTool> dhTools = new List<DentistTool>();
@@ -58,6 +59,7 @@ public class ButtonReferenceManager : MonoBehaviour
         {
             Instance = this;
         }
+        ARTorP = true;
         DontDestroyOnLoad(this.gameObject);
         LoadToolsDatabases();
 
