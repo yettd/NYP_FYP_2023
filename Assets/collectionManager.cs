@@ -52,16 +52,9 @@ public class collectionManager : MonoBehaviour
     {
         ButtonReferenceManager.Instance.storedIndex = d;
         Debug.Log(ButtonReferenceManager.Instance.storedIndex);
-        if(!ShowItem.activeSelf)
-        {
-            //ShowItem.SetActive(true);
-        }
-        else
-        {
-            openToolInfo?.Invoke();
-            ShowItem.GetComponent<DisplayItem>().DisplayNew();
-        }
 
+        openToolInfo?.Invoke();
+        ShowItem.GetComponent<DisplayItem>().DisplayNew();
     }
 
     void ResetButtonColor()
