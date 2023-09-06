@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 public class DisplayItem : MonoBehaviour
 {
 
     [SerializeField] public TMP_Text toolNameText;
     [SerializeField] public TMP_Text toolDescText;
     [SerializeField]  public Image toolImage;
+    Vector3 currentScale;
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentScale = transform.localScale;
+        transform.localScale = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class DisplayItem : MonoBehaviour
         //If DTH is DH, show DH stuff..
 
         DisplayNew();
-
+        Expand();
     }
 
     public void LoadContent(DentistTool dentistTool)
@@ -75,6 +78,14 @@ public class DisplayItem : MonoBehaviour
             }
         }
 
+    }
+    public void Expand()
+    {
+        transform.DOScale(currentScale, 1);
+    }
+    public void CloseWindow()
+    {
+        transform.DOScale(Vector3.zero, 1);
     }
 
 }
