@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Events;
+using UnityEngine.Events;
 public class collectionManager : MonoBehaviour
 {
     public static collectionManager CM;
@@ -19,7 +19,7 @@ public class collectionManager : MonoBehaviour
     public bool toolOrProcedure = false;
     int storeWhichItem;
     [SerializeField]GoToQuiz GTQ;
-    public Event openToolInfo;
+    public UnityEvent openToolInfo;
     
     // Start is called before the first frame update
     void Start()
@@ -54,11 +54,11 @@ public class collectionManager : MonoBehaviour
         Debug.Log(ButtonReferenceManager.Instance.storedIndex);
         if(!ShowItem.activeSelf)
         {
-            ShowItem.SetActive(true);
-            
+            //ShowItem.SetActive(true);
         }
         else
         {
+            openToolInfo?.Invoke();
             ShowItem.GetComponent<DisplayItem>().DisplayNew();
         }
 

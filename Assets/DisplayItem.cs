@@ -31,8 +31,8 @@ public class DisplayItem : MonoBehaviour
 
         //If DTH is DH, show DH stuff..
 
-        DisplayNew();
-        Expand();
+        //DisplayNew();
+        //Expand();
     }
 
     public void LoadContent(DentistTool dentistTool)
