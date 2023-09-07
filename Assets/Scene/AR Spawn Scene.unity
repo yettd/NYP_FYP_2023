@@ -587,6 +587,7 @@ MonoBehaviour:
   defaultColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   toolNameText: {fileID: 972096568}
+  camera: {fileID: 144517928}
 --- !u!4 &165956547
 Transform:
   m_ObjectHideFlags: 0
@@ -595,7 +596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165956545}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -635,8 +636,13 @@ MonoBehaviour:
   ShelfObject: {fileID: 0}
   defaultC: {r: 0, g: 0, b: 0, a: 0}
   SelectedColor: {r: 0, g: 0, b: 0, a: 0}
-  aa: {fileID: 0}
+  hygineAndTherapy: {fileID: 0}
+  procedure: {fileID: 0}
   toolOrProcedure: 0
+  GTQ: {fileID: 0}
+  openToolInfo:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &166364196
 Transform:
   m_ObjectHideFlags: 0
@@ -5851,8 +5857,8 @@ SceneRoots:
   - {fileID: 755617140}
   - {fileID: 2020163589}
   - {fileID: 1324385379}
-  - {fileID: 165956547}
   - {fileID: 1451735401}
+  - {fileID: 165956547}
   - {fileID: 895736998}
   - {fileID: 1815518593}
   - {fileID: 2027423482}

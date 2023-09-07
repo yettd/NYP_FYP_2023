@@ -40,6 +40,8 @@ public class ARPlacement : MonoBehaviour
     private LeanTwistRotateAxis leanTwistRotateAxis;
     private LeanPinchScale leanPinchScale;
 
+    public Transform camera;
+
     void Start()
     {
         Debug.Log(collectionManager.CM.toolOrProcedure);
@@ -109,15 +111,28 @@ public class ARPlacement : MonoBehaviour
     void Update()
     {
         // if no object is spawned + placement indicator is at valid pos + user tapped screen, spawn 3d object in AR
-        if (spawnedObject == null && placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        //if (spawnedObject == null && placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        //{
+        //    ARPlaceObject();
+        //}
+        if (spawnedObject == null && Input.touchCount > 0 && Input.GetTouch(0).phase==TouchPhase.Began)
         {
             ARPlaceObject();
         }
 
         // update placement indicator pos every frame
-        UpdatePlacementPose();
-        UpdatePlacementIndicator();
-        if(leanPinchScale)
+        //UpdatePlacementPose();
+        //UpdatePlacementIndicator();
+      
+       
+    }
+
+    // swap between rotating and scaling when pressing button
+    public void OnRSButtonPressed()
+    {
+        leanPinchScale.enabled = !leanPinchScale.enabled;
+        leanTwistRotateAxis.enabled = !leanTwistRotateAxis.enabled;
+        if (leanPinchScale)
         {
             // if scaling enabled, rotate scale button sprite change to scale icon
             if (leanPinchScale.enabled == true)
@@ -133,15 +148,6 @@ public class ARPlacement : MonoBehaviour
 
             }
         }
-       
-    }
-
-    // swap between rotating and scaling when pressing button
-    public void OnRSButtonPressed()
-    {
-        leanPinchScale.enabled = !leanPinchScale.enabled;
-        leanTwistRotateAxis.enabled = !leanTwistRotateAxis.enabled;
-
         Debug.Log("leanPinchScale: " + leanPinchScale.enabled);
         Debug.Log("leanTwistRotateAxis: " + leanTwistRotateAxis.enabled);
 
@@ -208,8 +214,9 @@ public class ARPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         Debug.Log("ARPlaceObject");
-        spawnedObject = Instantiate(placedInstrument, PlacementPose.position, PlacementPose.rotation);
-
+        
+        spawnedObject = Instantiate(placedInstrument,Camera.current.transform.forward*10 ,Quaternion.identity);
+    
         leanTwistRotateAxis = spawnedObject.GetComponent<LeanTwistRotateAxis>();
         leanPinchScale = spawnedObject.GetComponent<LeanPinchScale>();
 
