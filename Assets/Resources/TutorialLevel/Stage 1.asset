@@ -13,12 +13,21 @@ MonoBehaviour:
   m_Name: Stage 1
   m_EditorClassIdentifier: 
   Title: Scaling
-  description: ???
+  Icon: {fileID: 2800000, guid: c8c5852e4211a254f8df40398a88137e, type: 3}
+  description: There is no description.
   step:
-  - Icon: {fileID: 0}
-    data: Tutorial 1_1
-  - Icon: {fileID: 0}
-    data: Tutorial 1_2
-  - Icon: {fileID: 0}
-    data: Tutorial 1_3
-  saveId: 1
+  - Icon: {fileID: 2800000, guid: 9eae84ce5f341324fa8b232f6a2d526d, type: 3}
+    title: 'Step 1: ???'
+    instruction: This is step 1. Go and click the next one.
+    completed: 0
+  - Icon: {fileID: 2800000, guid: ac6f4df9f7ff4e444bb82a6635cb95dc, type: 3}
+    title: 'Step 2: ???'
+    instruction: This is step 2. Go and click the next one.
+    completed: 0
+  - Icon: {fileID: 2800000, guid: a26e6a870bf8d5044ae8170eeb72052f, type: 3}
+    title: 'Step 3: ???'
+    instruction: This is step 3. Go and click on complete.
+    completed: 0
+  tools: []
+  cleared:
+    completed: 0
