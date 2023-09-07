@@ -30,10 +30,7 @@ public class TutorialDashBoard_Selection_Script : MonoBehaviour
     private RawImage GetTitleImage(string title)
     {
         RawImage reference = Resources.Load<RawImage>("TutorialAssets/meta/Slot");
-        Texture icon = Resources.Load<Texture>("TutorialAssets/TutorialStageIcon/" + title);
         RawImage clone = Instantiate(reference, transform.position, Quaternion.identity);
-
-        clone.GetComponent<TutorialDashBoard_Slot_Script>().SetIcon(icon);
         return clone;
     }
 
@@ -67,8 +64,7 @@ public class TutorialDashBoard_Selection_Script : MonoBehaviour
         for (int slot = 0; slot < content_selectionVisible; slot++)
         {
             if (CheckEntryGenerateParameter(formula + slot)) // Check for slot which is not able to generate due to array boundary
-                 GerenateSelectionSlot(dashBoard.get_tutorial[formula + slot].Title, 
-                     dashBoard.get_tutorial[formula + slot].saveId); // Generate slot into selection tab with data
+                 GerenateSelectionSlot(dashBoard.get_tutorial[formula + slot].Title, formula + slot); // Generate slot into selection tab with data
         }
     }
 
@@ -76,10 +72,11 @@ public class TutorialDashBoard_Selection_Script : MonoBehaviour
     {
         // Slot is been generated and set to selection tab
         RawImage slot = GetTitleImage(title);
+        slot.GetComponent<TutorialDashBoard_Slot_Script>().SetIcon(dashBoard.get_tutorial[index].Icon);
         slot.transform.SetParent(selectionTab.transform);
 
         // Set destination index for quick access for stage progression
-        slot.GetComponent<TutorialDashBoard_Slot_Script>().SetDestinationIndex(index);
+        slot.GetComponent<TutorialDashBoard_Slot_Script>().SetDestinationIndex(index + 1);
 
         if (GetTutorialProgress(index)) slot.GetComponent<TutorialDashBoard_Slot_Script>().SetCompleteSlot(); // Completed Task
         else if (!GetTutorialAvailability(index)) slot.GetComponent<TutorialDashBoard_Slot_Script>().SetLockedSlot(); // Locked Task
@@ -100,7 +97,7 @@ public class TutorialDashBoard_Selection_Script : MonoBehaviour
 
     private bool GetTutorialProgress(int index)
     {
-        if (PlayerPrefs.HasKey("Tutorial_" + index + "_Completed"))
+        if (dashBoard.get_tutorial[index].cleared.completed)
             return true;
         else
             return false;
@@ -108,7 +105,7 @@ public class TutorialDashBoard_Selection_Script : MonoBehaviour
 
     private bool GetTutorialAvailability(int index)
     {
-        if (index - 1 > 0) return GetTutorialProgress(index - 1);
+        if (index > 0) return GetTutorialProgress(index - 1);
         else return true;
     }
 
