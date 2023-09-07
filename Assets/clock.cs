@@ -7,7 +7,7 @@ public class clock : MonoBehaviour
 {
 
     float totatlTime;
-    float maximum = 300;
+    public float maximum = 180;
     public Image img;
     // Start is called before the first frame update
     void Start()
@@ -21,5 +21,8 @@ public class clock : MonoBehaviour
         totatlTime -= Time.deltaTime;
 
         img.fillAmount = (totatlTime / maximum);
+        Color a = Color.red;
+        a.a -= Time.deltaTime;
     }
+
 }
