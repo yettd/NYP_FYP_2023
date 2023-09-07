@@ -24,17 +24,18 @@ public class SelectionStepMenu : MonoBehaviour
     private RawImage GetStepImage(string pathName)
     {
         RawImage obj = Resources.Load<RawImage>("InstructionManual/" + pathName);
-        RawImage img = Instantiate(obj, transform.position, Quaternion.identity);
+        RawImage img = Instantiate(obj);
         return img;
     }
     #endregion
 
     #region COMPONENT
-    private void OnGoingStep(string stepTitle, Texture icon)
+    private void OnGoingStep(int stepIndex, Texture icon)
     {
         RawImage img = GetStepImage("entry");
         img.GetComponent<StepInstructionComponent>().SetIcon(icon);
-        img.GetComponent<StepInstructionComponent>().SetScenePath(stepTitle);
+        img.GetComponent<StepInstructionComponent>().SetIndex(stepIndex + 1);
+        img.GetComponent<StepInstructionComponent>().SetManualPath(manual.step[stepIndex]);
         img.transform.SetParent(selectionTab.transform);
     }
 
@@ -56,9 +57,9 @@ public class SelectionStepMenu : MonoBehaviour
     {
         if (manual.step.Length > 1) // Get multiple instruction step
         {
-            foreach (InstructionTemplate i in manual.step)
+            for (int step = 0; step < manual.step.Length; step++)
             {
-                OnGoingStep(i.data, i.Icon);
+                OnGoingStep(step, manual.step[step].Icon);
                 NextStep();
             }
 
@@ -66,7 +67,7 @@ public class SelectionStepMenu : MonoBehaviour
         }
         else if (manual.step.Length != 0) // Get single instruction step
         {
-            OnGoingStep(manual.step[0].data, manual.step[0].Icon);
+            OnGoingStep(0, manual.step[0].Icon);
             FinishStep();
         }
     }

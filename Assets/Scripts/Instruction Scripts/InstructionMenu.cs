@@ -47,14 +47,19 @@ public class InstructionMenu : MonoBehaviour
     #region MAIN
     public void ProcessToCompletion()
     {
-        manual.step[0].completed = true;
-        SaveProgressThroughLocal();
+        manual.cleared.completed = true;
         ReturnToMain();
     }
 
     public void ReturnToMain()
     {
+        SaveProgressThroughLocal();
         SceneManager.LoadScene(SceneReturn);
+    }
+
+    public void RefreshProgressManual()
+    {
+        CheckingForCompleteStep();
     }
     #endregion
 
@@ -99,16 +104,16 @@ public class InstructionMenu : MonoBehaviour
     {
         InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
 
-        if (data.FindFilePath(fileDirectory))
-        {
-            foreach (InstructionManual manual in manuals)
-            {
-                manual.cleared = data.LoadInfoThroughJson<InstructionManual>(data.LoadInfoString()).cleared;
+        //if (data.FindFilePath(fileDirectory))
+        //{
+        //    foreach (InstructionManual manual in manuals)
+        //    {
+        //        manual.cleared = data.LoadInfoThroughJson<InstructionManual>().cleared;
 
-                for (int step = 0; step < manual.step.Length; step++)
-                    manual.step[step].completed = data.LoadInfoThroughJson<InstructionManual>(data.LoadInfoString()).step[step].completed;
-            }
-        }
+        //        for (int step = 0; step < manual.step.Length; step++)
+        //            manual.step[step].completed = data.LoadInfoThroughJson<InstructionManual>().step[step].completed;
+        //    }
+        //}
     }
     #endregion
 }
