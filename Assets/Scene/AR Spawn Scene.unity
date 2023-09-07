@@ -392,14 +392,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144517922}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.97393495, z: -0, w: 0.22682779}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 714314375}
+  m_Children: []
   m_Father: {fileID: 755617140}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -153.779, z: 0}
 --- !u!1 &165746944
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +586,7 @@ MonoBehaviour:
   defaultColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   toolNameText: {fileID: 972096568}
-  camera: {fileID: 144517928}
+  Arcamera: {fileID: 144517928}
 --- !u!4 &165956547
 Transform:
   m_ObjectHideFlags: 0
@@ -2352,7 +2351,7 @@ RectTransform:
   - {fileID: 1418345538}
   - {fileID: 590367888}
   - {fileID: 1069397585}
-  m_Father: {fileID: 144517928}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3823,6 +3822,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8297056788253150762, guid: 98c57c60d5f37d34cb0d009317bd15af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297056788253150763, guid: 98c57c60d5f37d34cb0d009317bd15af, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8297056788253150765, guid: 98c57c60d5f37d34cb0d009317bd15af, type: 3}
@@ -5864,3 +5867,4 @@ SceneRoots:
   - {fileID: 2027423482}
   - {fileID: 166364196}
   - {fileID: 2084450311}
+  - {fileID: 714314375}

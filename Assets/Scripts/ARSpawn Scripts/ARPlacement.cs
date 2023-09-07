@@ -40,7 +40,7 @@ public class ARPlacement : MonoBehaviour
     private LeanTwistRotateAxis leanTwistRotateAxis;
     private LeanPinchScale leanPinchScale;
 
-    public Transform camera;
+    public Transform Arcamera;
 
     void Start()
     {
@@ -115,7 +115,7 @@ public class ARPlacement : MonoBehaviour
         //{
         //    ARPlaceObject();
         //}
-        if (spawnedObject == null && Input.touchCount > 0 && Input.GetTouch(0).phase==TouchPhase.Began)
+        if (spawnedObject == null && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)|| Input.GetMouseButton(0)))
         {
             ARPlaceObject();
         }
@@ -215,7 +215,7 @@ public class ARPlacement : MonoBehaviour
     {
         Debug.Log("ARPlaceObject");
         
-        spawnedObject = Instantiate(placedInstrument,Camera.current.transform.forward*10 ,Quaternion.identity);
+        spawnedObject = Instantiate(placedInstrument,Arcamera.transform.position+Arcamera.transform.forward ,Quaternion.identity);
     
         leanTwistRotateAxis = spawnedObject.GetComponent<LeanTwistRotateAxis>();
         leanPinchScale = spawnedObject.GetComponent<LeanPinchScale>();
