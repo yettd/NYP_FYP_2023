@@ -5,6 +5,10 @@ using TMPro;
 
 public class InstructionMenu : MonoBehaviour
 {
+    private DataManageScript data;
+    private const string filePath = "TutorialLevel/";
+    private const string fileDirectory = "savefile_tutorial.txt";
+
     [SerializeField] private Button ProcessBtn;
     [SerializeField] private string SceneReturn;
     [SerializeField] private TMP_Text Title;
@@ -21,6 +25,7 @@ public class InstructionMenu : MonoBehaviour
     #region SETUP
     private void LoadContentInfo()
     {
+        LoadLocalFileData();
         LoadStageData();
         UpdateContentTitle();
         UpdateContentDescription();
@@ -31,12 +36,19 @@ public class InstructionMenu : MonoBehaviour
     {
         manual = Resources.Load<InstructionManual>("TutorialLevel/Stage " + PlayerPrefs.GetInt("TutorialStageLevel", 1));
     }
+
+    private void LoadLocalFileData()
+    {
+        data = new DataManageScript("Assets/Resources/" + filePath, fileDirectory);
+        LoadProgressThroughLocal();
+    }
     #endregion
 
     #region MAIN
     public void ProcessToCompletion()
     {
-        PlayerPrefs.SetInt("Tutorial_" + PlayerPrefs.GetInt("TutorialStageLevel", 1) + "_Completed", 1);
+        manual.step[0].completed = true;
+        SaveProgressThroughLocal();
         ReturnToMain();
     }
 
@@ -64,12 +76,39 @@ public class InstructionMenu : MonoBehaviour
 
         for (int check = 0; check < totalStep; check++)
         {
-            if (PlayerPrefs.HasKey(manual.Title + "_Step_" + check))
+            if (manual.step[check].completed)
                 currentStep++;
         }
 
         // Process Button
         ProcessBtn.interactable = (currentStep >= totalStep);
+    }
+    #endregion
+
+    #region EXTRA
+    private void SaveProgressThroughLocal()
+    {
+        InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
+        if (data.FindFilePath(fileDirectory)) data.SaveInfoAsNewJson(string.Empty);
+
+        foreach (InstructionManual manual in manuals)
+            data.SaveInfoAsJson(manual);
+    }
+
+    private void LoadProgressThroughLocal()
+    {
+        InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
+
+        if (data.FindFilePath(fileDirectory))
+        {
+            foreach (InstructionManual manual in manuals)
+            {
+                manual.cleared = data.LoadInfoThroughJson<InstructionManual>(data.LoadInfoString()).cleared;
+
+                for (int step = 0; step < manual.step.Length; step++)
+                    manual.step[step].completed = data.LoadInfoThroughJson<InstructionManual>(data.LoadInfoString()).step[step].completed;
+            }
+        }
     }
     #endregion
 }

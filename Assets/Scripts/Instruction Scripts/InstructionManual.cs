@@ -6,6 +6,14 @@ public class InstructionTemplate
 {
     public Texture Icon;
     public string data;
+    public ItemTag[] tools;
+    public bool completed;
+}
+
+[System.Serializable]
+public class InstructionLog
+{
+    public bool completed;
 }
 
 [CreateAssetMenu(fileName = "InstructionManual", menuName = "Manual")]
@@ -20,4 +28,7 @@ public class InstructionManual : ScriptableObject
 
     [Header("SaveLog")]
     public int saveId;
+
+    [Header("Extra")]
+    public InstructionLog cleared;
 }
