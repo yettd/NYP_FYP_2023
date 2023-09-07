@@ -145,8 +145,8 @@ GameObject:
   - component: {fileID: 9115933803513783737}
   - component: {fileID: 3527271934268934390}
   - component: {fileID: 2327030308566199265}
-  - component: {fileID: 2334663150786561670}
   - component: {fileID: 8272517030011528220}
+  - component: {fileID: 1254132069506691040}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -210,20 +210,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &2334663150786561670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4720170829653085302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6668d08cea11704ea385c13f2008b93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 1712358555911080237}
-  textSlot: {fileID: 4941149040779629217}
 --- !u!114 &8272517030011528220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +254,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2334663150786561670}
+      - m_Target: {fileID: 1254132069506691040}
         m_TargetAssemblyTypeName: TutorialDashBoard_Slot_Script, Assembly-CSharp
         m_MethodName: SelectTutorial
         m_Mode: 1
@@ -280,6 +266,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1254132069506691040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720170829653085302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963bf3720a5eaba45a4b9e1b2aa686ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1712358555911080237}
+  textSlot: {fileID: 4941149040779629217}
 --- !u!1 &7408146534124163550
 GameObject:
   m_ObjectHideFlags: 0
