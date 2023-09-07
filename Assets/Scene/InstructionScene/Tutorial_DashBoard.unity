@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 585983885}
   - component: {fileID: 585983884}
   - component: {fileID: 585983889}
-  - component: {fileID: 585983888}
+  - component: {fileID: 585983890}
   m_Layer: 5
   m_Name: Interface
   m_TagString: Untagged
@@ -323,19 +323,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &585983888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585983883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a63480d43a5890f46b551c53ddc913cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectionTab: {fileID: 2004448211}
 --- !u!114 &585983889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,11 +332,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 585983883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9506ed17b24ab7343995aa9498583c31, type: 3}
+  m_Script: {fileID: 11500000, guid: 54b742899ac2f8f41a31ac4064e0dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PreviousBtn: {fileID: 708599039}
   NextBtn: {fileID: 1921792841}
+--- !u!114 &585983890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585983883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e895bd7eda4f53149b80f0a9c24c2c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionTab: {fileID: 2004448211}
 --- !u!1 &625860856
 GameObject:
   m_ObjectHideFlags: 0
