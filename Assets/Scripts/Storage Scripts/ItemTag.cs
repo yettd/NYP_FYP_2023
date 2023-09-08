@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemTag : ScriptableObject
+[System.Serializable]
+public class ItemTag
 {
     public string itemName;
-    public int quaility;
+    public Texture icon;
 
-    public ItemTag(string _itemName, int _qualitiy)
+    public ItemTag(string _itemName, Texture _icon)
     {
         itemName = _itemName;
-        quaility = _qualitiy;
+        icon = _icon;
     }
 }
