@@ -44,4 +44,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene/Season2/ScalingQuiz.unity
     guid: 94ddff6b37ebef64ab05ce6b84146210
+  - enabled: 1
+    path: Assets/Scene/InstructionScene/Tutorial_DashBoard.unity
+    guid: 40559639197f81f4b90a4a2fc0b4a050
+  - enabled: 1
+    path: Assets/Scene/InstructionScene/Tutorial_LandingScene.unity
+    guid: 0628f4d327b65d44f9fdd61b53e1cd70
   m_configObjects: {}
