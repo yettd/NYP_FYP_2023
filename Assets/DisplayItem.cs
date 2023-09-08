@@ -11,11 +11,19 @@ public class DisplayItem : MonoBehaviour
     [SerializeField] public TMP_Text toolDescText;
     [SerializeField]  public Image toolImage;
     Vector3 currentScale;
+    string[] Text;
+    int currentValue = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         currentScale = transform.localScale;
         transform.localScale = Vector3.zero;
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("asdasfsdg"); 
     }
 
     // Update is called once per frame
@@ -38,9 +46,44 @@ public class DisplayItem : MonoBehaviour
     public void LoadContent(DentistTool dentistTool)
     {
         //Load the data from scriptableObject and assign them
-        toolNameText.text = dentistTool.Name;
-        toolDescText.text = dentistTool.Usage + "\n" + dentistTool.InstrumentGrasp + "\n" + dentistTool.Instrumentation;
+
+        string everything = dentistTool.Name + "\n" + dentistTool.Usage + "\n" + dentistTool.InstrumentGrasp + "\n" + dentistTool.Instrumentation;
+        Spread(everything);
+        //toolNameText.text = dentistTool.Name;
+        toolDescText.text = Text[0];
+        currentValue = 0;
         toolImage.sprite = dentistTool.Icon;
+    }
+
+    public void Spread(string a)
+    {
+        Text = a.Split("\n");
+        Debug.Log(Text);
+        for (int i = 0; i < Text.Length; i++)
+        {
+            Debug.Log(Text[i]);
+        }
+    }
+
+    public void NextText(bool e)
+    {
+        int oldValue = currentValue;
+        if(e)
+        {
+            currentValue++;
+
+        }
+        else
+        {
+            currentValue--;
+
+        }
+
+        if(currentValue <=0 || currentValue >Text.Length)
+        {
+            currentValue = oldValue;
+        }
+        toolDescText.text = Text[currentValue];
     }
 
     public void DisplayNew()
