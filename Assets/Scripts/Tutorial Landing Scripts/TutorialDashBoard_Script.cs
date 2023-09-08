@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialDashBoard_Script : MonoBehaviour
 {
@@ -39,6 +40,11 @@ public class TutorialDashBoard_Script : MonoBehaviour
     {
         selectionScript.GetNextPage();
         CheckForContentParameter();
+    }
+
+    public void ReturnToMain()
+    {
+        SceneManager.LoadScene(0);
     }
     #endregion
 
