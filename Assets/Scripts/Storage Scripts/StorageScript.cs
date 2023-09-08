@@ -27,7 +27,7 @@ public class StorageScript : MonoBehaviour
             storage.AddItem(tool);
 
         // Default item
-        storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/None")));
+        storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select")));
     }
     #endregion
 }

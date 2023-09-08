@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StorageComponent : MonoBehaviour
 {
     [SerializeField] private GameObject unit;
+    [SerializeField] private GameObject displayTab;
+
     private StorageManager storage = null;
 
     private const string storagePath = "StorageAssets/";
@@ -53,7 +56,25 @@ public class StorageComponent : MonoBehaviour
         {
             RawImage slot = GetItemSlot(items[index].itemName);
             slot.texture = items[index].icon;
+            slot.GetComponent<StorageItemScript>().SetItemComponent(this, items[index]);
         }
+    }
+    #endregion
+
+    #region SUB_MAIN
+    public void GetItemSelection(ItemTag item)
+    {
+        displayTab.transform.GetChild(0).GetComponent<TMP_Text>().text = item.itemName;
+        displayTab.transform.GetChild(1).GetComponent<RawImage>().texture = item.icon;
+    }
+    #endregion
+
+    #region COMPONENT
+    private IEnumerator DisplayText()
+    {
+        displayTab.transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        displayTab.transform.GetChild(0).gameObject.SetActive(false);
     }
     #endregion
 }
