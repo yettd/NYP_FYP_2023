@@ -38,7 +38,7 @@ public class Saving : MonoBehaviour
         }
 
         string filePath = Application.persistentDataPath + "/save";
-        if (!System.IO.Directory.Exists(filePath))
+        if (!System.IO.Directory.Exists(filePath)) // if /save folder dont exist creast one
         {
             System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/save");
             System.IO.File.Create(Application.persistentDataPath + "/current.txt");
@@ -49,7 +49,7 @@ public class Saving : MonoBehaviour
 
     
   
-    public string LoadFromJson(string a)
+    public string LoadFromJson(string a) //load json folder to get stuff like if minigame was completed
     {
 
         string filePath = Application.persistentDataPath + $"/save/{a}.json";

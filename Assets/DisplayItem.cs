@@ -59,10 +59,7 @@ public class DisplayItem : MonoBehaviour
     {
         Text = a.Split("\n");
         Debug.Log(Text);
-        for (int i = 0; i < Text.Length; i++)
-        {
-            Debug.Log(Text[i]);
-        }
+      
     }
 
     public void NextText(bool e)
