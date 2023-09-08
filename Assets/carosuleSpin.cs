@@ -21,20 +21,7 @@ public class carosuleSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.A))
-        {
-            mainShelf.transform.position+=new Vector3(1,0,0);
-            Debug.Log(mainShelf.transform.position.x);
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-
-        SnapToCenter();
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log(closeseGameObject.transform.position.x);
-        }
+        
     }
 
     public void FetchCloesestMiniGame()
@@ -73,7 +60,7 @@ public class carosuleSpin : MonoBehaviour
         Debug.Log(mainShelf.transform.position.x + diff);
         mainShelf.transform.DOMoveX(mainShelf.transform.position.x+diff*-1, 1  );
     }
-
+        
     public void NotChosen()
     {
         //close 

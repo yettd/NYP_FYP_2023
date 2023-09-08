@@ -15,6 +15,7 @@ public class GameSelected : MonoBehaviour
     {
         currentPosGI = GameInfo.anchoredPosition.x;
         currentPosGS = GameScore.anchoredPosition.x;
+        DOTween.SetTweensCapacity(8000,100);
     }
 
     // Update is called once per frame
