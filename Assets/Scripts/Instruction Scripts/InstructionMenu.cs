@@ -9,6 +9,8 @@ public class InstructionMenu : MonoBehaviour
     private const string filePath = "TutorialLevel/";
     private const string fileDirectory = "savefile_tutorial.txt";
 
+    private Saving data2;
+
     [SerializeField] private Button ProcessBtn;
     [SerializeField] private string SceneReturn;
     [SerializeField] private TMP_Text Title;
@@ -40,20 +42,19 @@ public class InstructionMenu : MonoBehaviour
     private void LoadLocalFileData()
     {
         data = new DataManageScript("Assets/Resources/" + filePath, fileDirectory);
-        LoadProgressThroughLocal();
+        //LoadProgressThroughLocal();
     }
     #endregion
 
     #region MAIN
     public void ProcessToCompletion()
     {
-        manual.cleared.completed = true;
-        ReturnToMain();
+        SceneManager.LoadScene("Tutorial_GameScene");
     }
 
     public void ReturnToMain()
     {
-        SaveProgressThroughLocal();
+        // SaveProgressThroughLocal();
         SceneManager.LoadScene(SceneReturn);
     }
 
@@ -91,29 +92,42 @@ public class InstructionMenu : MonoBehaviour
     #endregion
 
     #region EXTRA
+    //private void SaveProgressThroughLocal()
+    //{
+    //    InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
+    //    if (data.FindFilePath(fileDirectory)) data.SaveInfoAsNewJson(string.Empty);
+
+    //    foreach (InstructionManual manual in manuals)
+    //        data.SaveInfoAsJson(manual);
+    //}
+
+    //private void LoadProgressThroughLocal()
+    //{
+    //    InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
+
+    //    if (data.FindFilePath(fileDirectory))
+    //    {
+    //        foreach (InstructionManual manual in manuals)
+    //        {
+    //            manual.cleared = data.LoadInfoThroughJson<InstructionManual>().cleared;
+
+    //            for (int step = 0; step < manual.step.Length; step++)
+    //                manual.step[step].completed = data.LoadInfoThroughJson<InstructionManual>().step[step].completed;
+    //        }
+    //    }
+    //}
+
     private void SaveProgressThroughLocal()
     {
         InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
-        if (data.FindFilePath(fileDirectory)) data.SaveInfoAsNewJson(string.Empty);
 
         foreach (InstructionManual manual in manuals)
-            data.SaveInfoAsJson(manual);
+            data2.saveToJson(manual, "Tutorial_" + PlayerPrefs.GetInt("TutorialStageLevel", 1) + "_SaveFile");
     }
 
     private void LoadProgressThroughLocal()
     {
         InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
-
-        //if (data.FindFilePath(fileDirectory))
-        //{
-        //    foreach (InstructionManual manual in manuals)
-        //    {
-        //        manual.cleared = data.LoadInfoThroughJson<InstructionManual>().cleared;
-
-        //        for (int step = 0; step < manual.step.Length; step++)
-        //            manual.step[step].completed = data.LoadInfoThroughJson<InstructionManual>().step[step].completed;
-        //    }
-        //}
     }
     #endregion
 }
