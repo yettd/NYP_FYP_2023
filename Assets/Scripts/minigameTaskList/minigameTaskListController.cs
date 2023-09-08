@@ -43,9 +43,6 @@ public class minigameTaskListController : MonoBehaviour
     }
 
 
-
-
-
     public bool gonext()
     {
         if (DoneWithMiniGame())
@@ -78,7 +75,21 @@ public class minigameTaskListController : MonoBehaviour
                 NextSteps = currentStep + 1;
               //  Debug.Log($"{currentStep} : {NextSteps}");
                     break;
+            case Procedure.Extration:
+                currentStep = Steps.LOCATINGE;
+                NextSteps = currentStep + 1;
+                //  Debug.Log($"{currentStep} : {NextSteps}");
+                break;
+            case Procedure.Filling:
+                currentStep = Steps.LOCATINGF;
+                NextSteps = currentStep + 1;
+                //  Debug.Log($"{currentStep} : {NextSteps}");
+                break;
         }
+
+        //open minimini gameWindow
+
+        //load correct mininigame
     }
 
     private void Update()
