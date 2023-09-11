@@ -4,44 +4,25 @@ using UnityEngine;
 
 public class minigameTaskListController : MonoBehaviour
 {
-    private enum Steps
-    {
-        //scaling
-        LOCATINGS,
-        CHOOSINGS,
-        SCRAPINGS,
-        END_TASKS,
-        //extraion
 
-        LOCATINGE,
-        CHOOSINGE,
-        SCRAPINGE,
-        END_TASKE,
-        //filling
-
-        LOCATINGF,
-        CHOOSINGF,
-        SCRAPINGF,
-        END_TASKF
-
-
-    }
+  
     public static minigameTaskListController Instance;
 
     private Steps currentStep;
     private Steps NextSteps;
-
+    private bool TBgums=false;
+    public GameObject canvase;
     public Procedure procedure;
     private void Awake()
     {
-
-        if(Instance)
+        if (Instance==null)
         {
             Instance = this;
+        Debug.Log(Instance);
         }
-        startminigame();
-    }
 
+    }
+ 
 
     public bool gonext()
     {
@@ -86,6 +67,7 @@ public class minigameTaskListController : MonoBehaviour
                 //  Debug.Log($"{currentStep} : {NextSteps}");
                 break;
         }
+        canvase.SetActive(true);
 
         //open minimini gameWindow
 
@@ -94,14 +76,18 @@ public class minigameTaskListController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            gonext();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            gonext();
-        }
+   
+    }
+
+    public void setGame(bool a)
+    {
+        TBgums = a;
+        Debug.Log("asdasdasd");
+        startminigame();
+    }
+    public bool GetGumd()
+    {
+        return true;
     }
 
 
@@ -116,4 +102,27 @@ public enum Procedure
     Scaling,
     Filling,
     Extration
+}
+
+public enum Steps
+{
+    //scaling
+    LOCATINGS,
+    CHOOSINGS,
+    SCRAPINGS,
+    END_TASKS,
+    //extraion
+
+    LOCATINGE,
+    CHOOSINGE,
+    SCRAPINGE,
+    END_TASKE,
+    //filling
+
+    LOCATINGF,
+    CHOOSINGF,
+    SCRAPINGF,
+    END_TASKF
+
+
 }
