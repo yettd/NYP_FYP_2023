@@ -17,7 +17,7 @@ public class StorageScript : MonoBehaviour
     private void LoadAssetsForUse()
     {
         storage = GetComponent<StorageManager>();
-        manual = Resources.Load<InstructionManual>("TutorialLevel/Stage " + PlayerPrefs.GetInt("TutorialStageLevel", 1));
+        manual = TutorialNagivatorScript.thisScript.get_manual;
         LoadToolForSelection();
     }
 

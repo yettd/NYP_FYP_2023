@@ -7,6 +7,8 @@ using System.Collections;
 
 public class InstructionMenu : MonoBehaviour
 {
+    [SerializeField] private Saving data;
+
     private enum ProcessButtonStatus { START, COMPLETE };
     private ProcessButtonStatus status = ProcessButtonStatus.START;
 
@@ -45,6 +47,7 @@ public class InstructionMenu : MonoBehaviour
 
     public void ReturnToMain()
     {
+        SaveProgressThroughLocal();
         SceneManager.LoadScene(SceneReturn);
     }
 
@@ -88,11 +91,15 @@ public class InstructionMenu : MonoBehaviour
     private void SaveProgressThroughLocal()
     {
         // Saving progress
+        data.saveToJson(manual, "Complete");
     }
 
     private void LoadProgressThroughLocal()
     {
-        // Load progress
+        //// Load progress
+        //string text = data.LoadFromJson("Complete");
+        //TutorialNagivatorScript.thisScript.LoadManalData(text);
+        //data.clearSave();
     }
     #endregion
 }

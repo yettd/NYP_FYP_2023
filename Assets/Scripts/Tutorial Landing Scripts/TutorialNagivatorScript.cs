@@ -18,9 +18,9 @@ public class TutorialNagivatorScript : MonoBehaviour
     }
 
     #region MAIN
-    public string GetManualLoaded(int index)
+    public string GetManualLoaded(string index)
     {
-        manual = Resources.Load<InstructionManual>("TutorialLevel/Stage " + index);
+        manual = Resources.Load<InstructionManual>("TutorialLevel/"+ index);
         manual.Reset();
         return InstructionStepScene;
     }
@@ -28,6 +28,11 @@ public class TutorialNagivatorScript : MonoBehaviour
     public string GetGameScene()
     {
         return TutorialGameScene;
+    }
+
+    public void LoadManalData(string data)
+    {
+        manual.cleared = JsonUtility.FromJson<InstructionManual>(data).cleared;
     }
     #endregion
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac01bdf36c997eb48832f2e4a2a65483, type: 3}
-  m_Name: Stage 1
+  m_Name: Scaling
   m_EditorClassIdentifier: 
   Title: Scaling
   Icon: {fileID: 2800000, guid: c8c5852e4211a254f8df40398a88137e, type: 3}

@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac01bdf36c997eb48832f2e4a2a65483, type: 3}
-  m_Name: Stage 3
+  m_Name: Extracting
   m_EditorClassIdentifier: 
-  Title: Filling
-  Icon: {fileID: 2800000, guid: 98e88f6fd8b64804f9532228f7412555, type: 3}
+  Title: Extracting
+  Icon: {fileID: 2800000, guid: d63ce0c4ee4e61e4c810242ba826c49d, type: 3}
   description: ???
-  step: []
+  step:
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: ???
+    completed: 1
   tools: []
   cleared:
     completed: 0
