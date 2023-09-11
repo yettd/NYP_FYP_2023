@@ -11,13 +11,13 @@ public class SelectionStepMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("ReadManual", 0.5f);
+        ReadManual();
     }
 
     #region SETUP
     private void ReadManual()
     {
-        manual = GetComponent<InstructionMenu>().get_manual;
+        manual = TutorialNagivatorScript.thisScript.get_manual;
         GenerateInstructionStep();
     }
 

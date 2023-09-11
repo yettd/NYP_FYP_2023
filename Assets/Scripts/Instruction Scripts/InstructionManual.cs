@@ -30,4 +30,12 @@ public class InstructionManual : ScriptableObject
     [Header("Extra")]
     public ItemTag[] tools;
     public InstructionLog cleared;
+
+    public void Reset()
+    {
+        foreach (InstructionTemplate s in step)
+            s.completed = false;
+
+        cleared.completed = false;
+    }
 }
