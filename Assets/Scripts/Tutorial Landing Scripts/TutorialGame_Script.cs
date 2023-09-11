@@ -7,6 +7,6 @@ public class TutorialGame_Script : MonoBehaviour
 {
     public void Back()
     {
-        SceneManager.LoadScene("Tutorial_DashBoard");
+        SceneManager.LoadScene("Tutorial_LandingScene");
     }
 }
