@@ -29,5 +29,10 @@ public class TutorialNagivatorScript : MonoBehaviour
     {
         return TutorialGameScene;
     }
+
+    public void LoadManalData(string data)
+    {
+        manual.cleared = JsonUtility.FromJson<InstructionManual>(data).cleared;
+    }
     #endregion
 }

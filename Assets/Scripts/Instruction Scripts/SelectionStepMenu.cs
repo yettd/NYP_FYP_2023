@@ -68,6 +68,7 @@ public class SelectionStepMenu : MonoBehaviour
         else if (manual.step.Length != 0) // Get single instruction step
         {
             OnGoingStep(0, manual.step[0].Icon);
+            NextStep();
             FinishStep();
         }
     }

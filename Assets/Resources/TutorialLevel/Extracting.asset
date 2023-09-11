@@ -15,7 +15,11 @@ MonoBehaviour:
   Title: Extracting
   Icon: {fileID: 2800000, guid: d63ce0c4ee4e61e4c810242ba826c49d, type: 3}
   description: ???
-  step: []
+  step:
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: ???
+    completed: 1
   tools: []
   cleared:
     completed: 0
