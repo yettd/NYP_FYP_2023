@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac01bdf36c997eb48832f2e4a2a65483, type: 3}
-  m_Name: Stage 2
+  m_Name: Extracting
   m_EditorClassIdentifier: 
   Title: Extracting
   Icon: {fileID: 2800000, guid: d63ce0c4ee4e61e4c810242ba826c49d, type: 3}
