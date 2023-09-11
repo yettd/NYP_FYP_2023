@@ -2,14 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
+
 
 public class InstructionMenu : MonoBehaviour
 {
-    private DataManageScript data;
-    private const string filePath = "TutorialLevel/";
-    private const string fileDirectory = "savefile_tutorial.txt";
-
-    private Saving data2;
+    private enum ProcessButtonStatus { START, COMPLETE };
+    private ProcessButtonStatus status = ProcessButtonStatus.START;
 
     [SerializeField] private Button ProcessBtn;
     [SerializeField] private string SceneReturn;
@@ -17,7 +16,6 @@ public class InstructionMenu : MonoBehaviour
     [SerializeField] private Text Description;
 
     private InstructionManual manual;
-    public InstructionManual get_manual { get { return manual; } }
 
     void Start()
     {
@@ -27,51 +25,40 @@ public class InstructionMenu : MonoBehaviour
     #region SETUP
     private void LoadContentInfo()
     {
-        LoadLocalFileData();
         LoadStageData();
-        UpdateContentTitle();
-        UpdateContentDescription();
-        CheckingForCompleteStep();
+        UpdateContent();
+        RefreshProgressManual();
     }
 
     private void LoadStageData()
     {
-        manual = Resources.Load<InstructionManual>("TutorialLevel/Stage " + PlayerPrefs.GetInt("TutorialStageLevel", 1));
-    }
-
-    private void LoadLocalFileData()
-    {
-        data = new DataManageScript("Assets/Resources/" + filePath, fileDirectory);
-        //LoadProgressThroughLocal();
+        manual = TutorialNagivatorScript.thisScript.get_manual;
+        LoadProgressThroughLocal();
     }
     #endregion
 
     #region MAIN
     public void ProcessToCompletion()
     {
-        SceneManager.LoadScene("Tutorial_GameScene");
+        SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetGameScene());
     }
 
     public void ReturnToMain()
     {
-        // SaveProgressThroughLocal();
         SceneManager.LoadScene(SceneReturn);
     }
 
     public void RefreshProgressManual()
     {
+        CheckingForCompleteTutorial();
         CheckingForCompleteStep();
     }
     #endregion
 
     #region COMPONENT
-    private void UpdateContentTitle()
+    private void UpdateContent()
     {
         Title.text = manual.Title;
-    }
-
-    private void UpdateContentDescription()
-    {
         Description.text = manual.description;
     }
 
@@ -89,45 +76,23 @@ public class InstructionMenu : MonoBehaviour
         // Process Button
         ProcessBtn.interactable = (currentStep >= totalStep);
     }
+
+    private void CheckingForCompleteTutorial()
+    {
+        status = (manual.cleared.completed ? ProcessButtonStatus.COMPLETE : ProcessButtonStatus.START);
+        ProcessBtn.gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = status.ToString();
+    }
     #endregion
 
     #region EXTRA
-    //private void SaveProgressThroughLocal()
-    //{
-    //    InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
-    //    if (data.FindFilePath(fileDirectory)) data.SaveInfoAsNewJson(string.Empty);
-
-    //    foreach (InstructionManual manual in manuals)
-    //        data.SaveInfoAsJson(manual);
-    //}
-
-    //private void LoadProgressThroughLocal()
-    //{
-    //    InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
-
-    //    if (data.FindFilePath(fileDirectory))
-    //    {
-    //        foreach (InstructionManual manual in manuals)
-    //        {
-    //            manual.cleared = data.LoadInfoThroughJson<InstructionManual>().cleared;
-
-    //            for (int step = 0; step < manual.step.Length; step++)
-    //                manual.step[step].completed = data.LoadInfoThroughJson<InstructionManual>().step[step].completed;
-    //        }
-    //    }
-    //}
-
     private void SaveProgressThroughLocal()
     {
-        InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
-
-        foreach (InstructionManual manual in manuals)
-            data2.saveToJson(manual, "Tutorial_" + PlayerPrefs.GetInt("TutorialStageLevel", 1) + "_SaveFile");
+        // Saving progress
     }
 
     private void LoadProgressThroughLocal()
     {
-        InstructionManual[] manuals = Resources.LoadAll<InstructionManual>(filePath);
+        // Load progress
     }
     #endregion
 }
