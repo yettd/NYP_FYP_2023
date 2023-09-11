@@ -10,7 +10,8 @@ public class openTooth : MonoBehaviour
     private void OnMouseDown()
     {
 
-        minigameTaskListController.Instance.setGame(topBottom);
+        minigameTaskListController.Instance.setGame(false);
+        Debug.Log($"{minigameTaskListController.Instance.GetGumd()} : {topBottom}");
         minigameTaskListController.Instance.startminigame();
 
 

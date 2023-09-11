@@ -82,12 +82,12 @@ public class minigameTaskListController : MonoBehaviour
     public void setGame(bool a)
     {
         TBgums = a;
-        Debug.Log("asdasdasd");
         startminigame();
+        Debug.Log(TBgums);
     }
     public bool GetGumd()
     {
-        return true;
+        return TBgums;
     }
 
 

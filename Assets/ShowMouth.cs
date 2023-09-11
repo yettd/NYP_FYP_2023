@@ -16,7 +16,7 @@ public class ShowMouth : MonoBehaviour
         }
         else
         {
-            gums[1].SetActive(false);
+            gums[1].SetActive(true);
         }
     }
 }
