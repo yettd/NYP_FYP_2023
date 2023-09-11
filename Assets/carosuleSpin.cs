@@ -10,6 +10,7 @@ public class carosuleSpin : MonoBehaviour
     public Canvas c;
     RectTransform closeseGameObject;
     [SerializeField]RectTransform mainShelf;
+    Tween moving;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,22 +27,26 @@ public class carosuleSpin : MonoBehaviour
 
     public void FetchCloesestMiniGame()
     {
-        StopCoroutine("doEffect");
-        foreach(RectTransform a in miniGames)
+        if (Input.touchCount > 0 || Input.GetMouseButton(0))
         {
-            float cdiffx=0;
-            float diffx = (a.position - c.transform.position).magnitude;
-
-            cdiffx = (closeseGameObject.position - c.transform.position).magnitude;
-            
-            if ( a!=closeseGameObject && (closeseGameObject == null || diffx < cdiffx)  )
+            StopCoroutine("doEffect");
+            foreach (RectTransform a in miniGames)
             {
-                closeseGameObject = a;
+                float cdiffx = 0;
+                float diffx = (a.position - c.transform.position).magnitude;
+
+                cdiffx = (closeseGameObject.position - c.transform.position).magnitude;
+
+                if (a != closeseGameObject && (closeseGameObject == null || diffx < cdiffx))
+                {
+                    closeseGameObject = a;
+                }
+
             }
-           
+            moving.Complete();
+            StartCoroutine("doEffect");
+            NotChosen();
         }
-        StartCoroutine("doEffect");
-        NotChosen();
        
 
     }
@@ -58,7 +63,7 @@ public class carosuleSpin : MonoBehaviour
     {
         float diff = closeseGameObject.transform.position.x- c.transform.position.x ;
         Debug.Log(mainShelf.transform.position.x + diff);
-        mainShelf.transform.DOMoveX(mainShelf.transform.position.x+diff*-1, 1  );
+       moving=  mainShelf.transform.DOMoveX(mainShelf.transform.position.x+diff*-1, 1  );
     }
         
     public void NotChosen()
