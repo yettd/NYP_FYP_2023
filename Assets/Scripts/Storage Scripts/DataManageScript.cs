@@ -19,7 +19,7 @@ public class DataManageScript
     #region MAIN
     public void SaveInfoAsJson(object text)
     {
-        string data = JsonUtility.ToJson(text);
+        string data = JsonUtility.ToJson(text, true);
         WriteFile(data);
     }
 
