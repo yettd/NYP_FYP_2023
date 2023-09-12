@@ -19,4 +19,9 @@ public class ShowMouth : MonoBehaviour
             gums[1].SetActive(true);
         }
     }
+    private void OnDisable()
+    {
+        gums[1].SetActive(false);
+        gums[0].SetActive(false);
+    }
 }
