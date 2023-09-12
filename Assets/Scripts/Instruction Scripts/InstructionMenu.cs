@@ -7,7 +7,7 @@ using System.Collections;
 
 public class InstructionMenu : MonoBehaviour
 {
-    [SerializeField] private Saving data;
+    private DataManageScript data;
 
     private enum ProcessButtonStatus { START, COMPLETE };
     private ProcessButtonStatus status = ProcessButtonStatus.START;
@@ -18,6 +18,7 @@ public class InstructionMenu : MonoBehaviour
     [SerializeField] private Text Description;
 
     private InstructionManual manual;
+    public InstructionManual get_manual { get { return manual; } }
 
     void Start()
     {
@@ -34,8 +35,10 @@ public class InstructionMenu : MonoBehaviour
 
     private void LoadStageData()
     {
-        manual = TutorialNagivatorScript.thisScript.get_manual;
-        LoadProgressThroughLocal();
+        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", "savefile_tutorial_" + TutorialNagivatorScript.thisScript.get_manual.name + ".txt");
+
+        if (data.FindFilePath()) LoadProgressThroughLocal();
+        else StartNewProgressThroughLocal();
     }
     #endregion
 
@@ -91,15 +94,18 @@ public class InstructionMenu : MonoBehaviour
     private void SaveProgressThroughLocal()
     {
         // Saving progress
-        data.saveToJson(manual, "Complete");
+        data.SaveInfoAsNewJson(manual);
     }
 
     private void LoadProgressThroughLocal()
     {
-        //// Load progress
-        //string text = data.LoadFromJson("Complete");
-        //TutorialNagivatorScript.thisScript.LoadManalData(text);
-        //data.clearSave();
+        // Load progress
+        manual = data.LoadInfoThroughJson<InstructionManual>();
+    }
+
+    private void StartNewProgressThroughLocal()
+    {
+        manual = TutorialNagivatorScript.thisScript.get_manual;
     }
     #endregion
 }
