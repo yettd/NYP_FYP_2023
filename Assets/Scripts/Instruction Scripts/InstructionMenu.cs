@@ -8,6 +8,7 @@ using System.Collections;
 public class InstructionMenu : MonoBehaviour
 {
     private DataManageScript data;
+    private const string fileDirectory = "savefile_tutorial_";
 
     private enum ProcessButtonStatus { START, COMPLETE };
     private ProcessButtonStatus status = ProcessButtonStatus.START;
@@ -35,7 +36,7 @@ public class InstructionMenu : MonoBehaviour
 
     private void LoadStageData()
     {
-        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", "savefile_tutorial_" + TutorialNagivatorScript.thisScript.get_manual.name + ".txt");
+        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + TutorialNagivatorScript.thisScript.get_manual.name + ".txt");
         manual = TutorialNagivatorScript.thisScript.get_manual;
         if (data.FindFilePath()) LoadProgressThroughLocal();
     }
@@ -44,7 +45,9 @@ public class InstructionMenu : MonoBehaviour
     #region MAIN
     public void ProcessToCompletion()
     {
-        SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetGameScene());
+        SaveProgressThroughLocal();
+        string destinationScene = (status == ProcessButtonStatus.COMPLETE ? SceneReturn : TutorialNagivatorScript.thisScript.GetGameScene());
+        SceneManager.LoadScene(destinationScene);
     }
 
     public void ReturnToMain()
