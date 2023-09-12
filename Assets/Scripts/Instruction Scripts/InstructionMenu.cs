@@ -36,9 +36,8 @@ public class InstructionMenu : MonoBehaviour
     private void LoadStageData()
     {
         data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", "savefile_tutorial_" + TutorialNagivatorScript.thisScript.get_manual.name + ".txt");
-
+        manual = TutorialNagivatorScript.thisScript.get_manual;
         if (data.FindFilePath()) LoadProgressThroughLocal();
-        else StartNewProgressThroughLocal();
     }
     #endregion
 
@@ -100,12 +99,12 @@ public class InstructionMenu : MonoBehaviour
     private void LoadProgressThroughLocal()
     {
         // Load progress
-        manual = data.LoadInfoThroughJson<InstructionManual>();
-    }
+        InstructionManual loadedData = data.LoadInfoThroughJson<InstructionManual>();
 
-    private void StartNewProgressThroughLocal()
-    {
-        manual = TutorialNagivatorScript.thisScript.get_manual;
+        for (int step = 0; step < manual.step.Length; step++)
+            manual.step[step].completed = loadedData.step[step].completed;
+
+        manual.cleared.completed = loadedData.cleared.completed;
     }
     #endregion
 }
