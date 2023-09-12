@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.IO;
-using System.Collections;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
 public class DataManageScript
 {
@@ -30,21 +29,16 @@ public class DataManageScript
         if (text.ToString() != string.Empty) SaveInfoAsJson(text);
     }
 
-    public void SaveInfo(object text)
-    {
-        WriteFile(text.ToString());
-    }
-
-    public string LoadInfoString()
+    public string LoadRawScript()
     {
         ReadFile();
         return readString;
     }
 
-    public T LoadInfoThroughJson<T>(string data)
+    public T LoadInfoThroughJson<T>()
     {
-        Debug.Log(data);
-        return JsonUtility.FromJson<T>(data);
+        ReadFile();
+        return JsonConvert.DeserializeObject<T>(readString);
     }
     #endregion
 
@@ -60,18 +54,17 @@ public class DataManageScript
     {
         StreamReader reader = new StreamReader(path + directoryName, true);
         readString = reader.ReadToEnd();
-        Debug.Log(readString);
         reader.Close();
     }
 
     private void ClearFile()
     {
-        if (FindFilePath(directoryName)) File.Delete(path + directoryName);
+        if (FindFilePath()) File.Delete(path + directoryName);
     }
     #endregion
 
     #region FILE
-    public bool FindFilePath(string directoryName)
+    public bool FindFilePath()
     {
         if (File.Exists(path + directoryName))
             return true;
