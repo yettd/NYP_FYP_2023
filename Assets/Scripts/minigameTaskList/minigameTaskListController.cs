@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class minigameTaskListController : MonoBehaviour
 {
 
@@ -13,12 +13,16 @@ public class minigameTaskListController : MonoBehaviour
     private bool TBgums=false;
     public GameObject canvase;
     public Procedure procedure;
+    [SerializeField] UnityEvent close;
+    [SerializeField] UnityEvent StopRotation;
+    [SerializeField] UnityEvent ResumeRotation;
+    public bool minigameOpen;
+    bool toolSelected;
     private void Awake()
     {
         if (Instance==null)
         {
             Instance = this;
-        Debug.Log(Instance);
         }
 
     }
@@ -76,13 +80,21 @@ public class minigameTaskListController : MonoBehaviour
 
     private void Update()
     {
-   
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            stopRotation();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            RR();
+        }
     }
 
     public void setGame(bool a)
     {
         TBgums = a;
         startminigame();
+        minigameOpen = true;
         Debug.Log(TBgums);
     }
     public bool GetGumd()
@@ -90,7 +102,34 @@ public class minigameTaskListController : MonoBehaviour
         return TBgums;
     }
 
+    public void CloseGameOrBack()
+    {
+        if(toolSelected)
+        {
+            RR();
+        }
+        else if(minigameOpen)
+        {
 
+            canvase.SetActive(false);
+            minigameOpen = false;
+        }
+        else
+        {
+            close.Invoke();
+        }
+    }
+
+    public void stopRotation()
+    {
+        StopRotation.Invoke();
+        toolSelected = true;
+    }    
+    public void RR()
+    {
+        toolSelected = false;   
+        ResumeRotation.Invoke();
+    }
 
 }
 //put task here
