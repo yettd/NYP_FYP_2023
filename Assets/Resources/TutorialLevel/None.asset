@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac01bdf36c997eb48832f2e4a2a65483, type: 3}
+  m_Name: None
+  m_EditorClassIdentifier: 
+  Title: ???
+  Icon: {fileID: 0}
+  description: There is no task assign here.
+  step:
+  - Icon: {fileID: 2800000, guid: fab371364b953b04e937d9fcbcdf8f33, type: 3}
+    title: ???
+    instruction: This is a test task.
+    completed: 0
+  tools:
+  - itemName: ??
+    icon: {fileID: 2800000, guid: 9ce1db4eb917b83468054463bba6bb0e, type: 3}
+  - itemName: ??
+    icon: {fileID: 2800000, guid: 6af5d6edb8659304bbdbb49028117483, type: 3}
+  cleared:
+    completed: 0

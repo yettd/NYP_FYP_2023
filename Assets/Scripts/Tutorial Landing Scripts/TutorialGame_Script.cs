@@ -29,13 +29,17 @@ public class TutorialGame_Script : MonoBehaviour
     public void Back()
     {
         SetClearedCondition(true);
-        SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetTitleScene());
+        if (TutorialNagivatorScript.thisScript) SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetTitleScene());
+        else { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
     }
 
     public void SetClearedCondition(bool condition)
     {
-        UpdateInstructionStatus(condition);
-        Debug.Log("Game Condition have been set to " + (condition ? "COMPLETE" : "NOT COMPLETE"));
+        if (TutorialNagivatorScript.thisScript)
+        {
+            UpdateInstructionStatus(condition);
+            Debug.Log("Game Condition have been set to " + (condition ? "COMPLETE" : "NOT COMPLETE"));
+        }
     }
     #endregion
 }

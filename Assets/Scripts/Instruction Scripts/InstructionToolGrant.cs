@@ -19,7 +19,9 @@ public class InstructionToolGrant : MonoBehaviour
     #region SETUP
     private void LoadAssetManual()
     {
-        manual = TutorialNagivatorScript.thisScript.get_manual;
+        if (TutorialNagivatorScript.thisScript) manual = TutorialNagivatorScript.thisScript.get_manual;
+        else manual = Resources.Load<InstructionManual>("TutorialLevel/None");
+
         DisplayEmptyText.SetActive(manual.tools.Length == 0);
     }
 

@@ -17,14 +17,16 @@ public class StorageScript : MonoBehaviour
     private void LoadAssetsForUse()
     {
         storage = GetComponent<StorageManager>();
-        manual = TutorialNagivatorScript.thisScript.get_manual;
+
+        if (TutorialNagivatorScript.thisScript) { manual = TutorialNagivatorScript.thisScript.get_manual; }
+        else { manual = new InstructionManual(); }
+
         LoadToolForSelection();
     }
 
     private void LoadToolForSelection()
     {
-        foreach (ItemTag tool in manual.tools)
-            storage.AddItem(tool);
+        if (TutorialNagivatorScript.thisScript) { foreach (ItemTag tool in manual.tools) storage.AddItem(tool); }
 
         // Default item
         storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select")));

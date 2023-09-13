@@ -40,6 +40,12 @@ public class DataManageScript
         ReadFile();
         return JsonConvert.DeserializeObject<T>(readString);
     }
+
+    public T LoadInfoThroughJsonToJson<T>()
+    {
+        ReadFile();
+        return JsonUtility.FromJson<T>(readString);
+    }
     #endregion
 
     #region COMPONENT
