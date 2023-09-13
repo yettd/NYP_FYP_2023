@@ -36,9 +36,17 @@ public class InstructionMenu : MonoBehaviour
 
     private void LoadStageData()
     {
-        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + TutorialNagivatorScript.thisScript.get_manual.name + ".txt");
-        manual = TutorialNagivatorScript.thisScript.get_manual;
+        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + GetInstructionSelect() + ".txt");
+        if (TutorialNagivatorScript.thisScript) manual = TutorialNagivatorScript.thisScript.get_manual;
+        else manual = Resources.Load<InstructionManual>("TutorialLevel/None");
+
         if (data.FindFilePath()) LoadProgressThroughLocal();
+    }
+
+    private string GetInstructionSelect()
+    {
+        if (TutorialNagivatorScript.thisScript) return TutorialNagivatorScript.thisScript.get_manual.name;
+        else return "None";
     }
     #endregion
 
