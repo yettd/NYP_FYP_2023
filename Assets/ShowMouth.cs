@@ -8,7 +8,6 @@ public class ShowMouth : MonoBehaviour
 
     public GameObject[] gums;
 
-    public GameObject[] OGgums;
 
     Vector3 ogPos;
     Quaternion ogrotation;
@@ -27,6 +26,7 @@ public class ShowMouth : MonoBehaviour
 
             model = gums[1];
         }
+        Debug.Log("asdasd");
         ogPos = model.transform.position;
         ogrotation = model.transform.rotation;
         ogParent = model.transform.parent.gameObject;

@@ -21,7 +21,6 @@ public class rotateJaws : MonoBehaviour
     {
         down = true;
 
-        Debug.Log("down");
         x = Input.mousePosition.x;
     }
 
