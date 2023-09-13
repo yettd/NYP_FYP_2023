@@ -1,61 +1,46 @@
+// Write black pixels onto the GameObject that is located
+// by the script. The script is attached to the camera.
+// Determine where the collider hits and modify the texture at that point.
+//
+// Note that the MeshCollider on the GameObject must have Convex turned off. This allows
+// concave GameObjects to be included in collision in this example.
+//
+// Also to allow the texture to be updated by mouse button clicks it must have the Read/Write
+// Enabled option set to true in its Advanced import settings.
+
 using UnityEngine;
+using System.Collections;
 
 public class TeethDirtClean : MonoBehaviour
 {
-    public Camera mainCamera;
-    public Renderer teethRenderer;
-    public Texture2D maskTexture;
-    public Texture2D brushTexture;
+    public Camera cam;
 
-    private void Start()
+    void Start()
     {
-        Color[] pixels = maskTexture.GetPixels();
-        for (int i = 0; i < pixels.Length; i++)
-        {
-            pixels[i] = Color.white;
-        }
-        maskTexture.SetPixels(pixels);
-        maskTexture.Apply();
+        cam = GetComponent<Camera>();
     }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        if (!Input.GetMouseButton(0))
+            return;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                Vector2 uv = hit.textureCoord;
-                PaintAtUV(uv);
-            }
-        }
-    }
+        RaycastHit hit;
+        if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit))
+            return;
 
-    private void PaintAtUV(Vector2 uv)
-    {
-        int x = (int)(uv.x * maskTexture.width);
-        int y = (int)(uv.y * maskTexture.height);
+        Renderer rend = hit.transform.GetComponent<Renderer>();
+        MeshCollider meshCollider = hit.collider as MeshCollider;
 
-        int brushSize = 10; // Adjust brush size as needed
+        if (rend == null || rend.sharedMaterial == null || rend.sharedMaterial.mainTexture == null || meshCollider == null)
+            return;
 
-        for (int i = -brushSize; i <= brushSize; i++)
-        {
-            for (int j = -brushSize; j <= brushSize; j++)
-            {
-                int pixelX = Mathf.Clamp(x + i, 0, maskTexture.width - 1);
-                int pixelY = Mathf.Clamp(y + j, 0, maskTexture.height - 1);
+        Texture2D tex = rend.material.mainTexture as Texture2D;
+        Vector2 pixelUV = hit.textureCoord;
+        pixelUV.x *= tex.width;
+        pixelUV.y *= tex.height;
 
-                Color brushColor = brushTexture.GetPixelBilinear((i + brushSize) / (float)(2 * brushSize), (j + brushSize) / (float)(2 * brushSize));
-                Color maskColor = maskTexture.GetPixel(pixelX, pixelY);
-
-                maskColor.r = Mathf.Max(maskColor.r - brushColor.r * 0.1f, 0);
-                maskTexture.SetPixel(pixelX, pixelY, maskColor);
-            }
-        }
-
-        maskTexture.Apply();
-        teethRenderer.material.SetTexture("_MaskTex", maskTexture);
+        tex.SetPixel((int)pixelUV.x, (int)pixelUV.y, Color.black);
+        tex.Apply();
     }
 }
