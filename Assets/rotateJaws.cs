@@ -8,7 +8,7 @@ public class rotateJaws : MonoBehaviour
     float x;
     float newx;
     bool down;
-    float smooth=1;
+    float smooth=0.4f;
     float diffx;
     float totalDegree=0;
     // Update is called once per frame

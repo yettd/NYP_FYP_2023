@@ -13,10 +13,13 @@ public class minigameTaskListController : MonoBehaviour
     private bool TBgums=false;
     public GameObject canvase;
     public Procedure procedure;
+    [SerializeField] UnityEvent openGame;
+    [SerializeField] UnityEvent closeGame;
     [SerializeField] UnityEvent close;
     [SerializeField] UnityEvent StopRotation;
     [SerializeField] UnityEvent ResumeRotation;
     public bool minigameOpen;
+
     bool toolSelected;
     private void Awake()
     {
@@ -71,7 +74,7 @@ public class minigameTaskListController : MonoBehaviour
                 //  Debug.Log($"{currentStep} : {NextSteps}");
                 break;
         }
-        canvase.SetActive(true);
+        openGame.Invoke();
 
         //open minimini gameWindow
 
@@ -111,7 +114,7 @@ public class minigameTaskListController : MonoBehaviour
         else if(minigameOpen)
         {
 
-            canvase.SetActive(false);
+            closeGame.Invoke();
             minigameOpen = false;
         }
         else
