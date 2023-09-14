@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
-
 public class InstructionMenu : MonoBehaviour
 {
     private DataManageScript data;
@@ -37,7 +36,7 @@ public class InstructionMenu : MonoBehaviour
     private void LoadStageData()
     {
         data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + GetInstructionSelect() + ".txt");
-        if (TutorialNagivatorScript.thisScript) manual = TutorialNagivatorScript.thisScript.get_manual;
+        if (TutorialNagivatorScript.getScript != null) manual = TutorialNagivatorScript.Instance().get_manual;
         else manual = Resources.Load<InstructionManual>("TutorialLevel/None");
 
         if (data.FindFilePath()) LoadProgressThroughLocal();
@@ -45,7 +44,7 @@ public class InstructionMenu : MonoBehaviour
 
     private string GetInstructionSelect()
     {
-        if (TutorialNagivatorScript.thisScript) return TutorialNagivatorScript.thisScript.get_manual.name;
+        if (TutorialNagivatorScript.getScript != null) return TutorialNagivatorScript.Instance().get_manual.name;
         else return "None";
     }
     #endregion
@@ -54,7 +53,7 @@ public class InstructionMenu : MonoBehaviour
     public void ProcessToCompletion()
     {
         SaveProgressThroughLocal();
-        string destinationScene = (status == ProcessButtonStatus.COMPLETE ? SceneReturn : TutorialNagivatorScript.thisScript.GetGameScene());
+        string destinationScene = (status == ProcessButtonStatus.COMPLETE ? SceneReturn : TutorialNagivatorScript.Instance().GetGameScene());
         SceneManager.LoadScene(destinationScene);
     }
 
