@@ -12,13 +12,13 @@ public class TutorialGame_Script : MonoBehaviour
     private void UpdateInstructionStatus(bool cleared)
     {
         InstructionManual temp;
-        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + TutorialNagivatorScript.thisScript.get_manual.name + ".txt");
+        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
 
         if (data.FindFilePath()) // file existing will be overwritten to a new one
             temp = data.LoadInfoThroughJson<InstructionManual>();
 
         else // file doesn't exist will be created and written to a new one
-            temp = TutorialNagivatorScript.thisScript.get_manual;
+            temp = TutorialNagivatorScript.Instance().get_manual;
 
         temp.cleared.completed = cleared;
         data.SaveInfoAsNewJson(temp);
@@ -29,13 +29,13 @@ public class TutorialGame_Script : MonoBehaviour
     public void Back()
     {
         SetClearedCondition(true);
-        if (TutorialNagivatorScript.thisScript) SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetTitleScene());
+        if (TutorialNagivatorScript.getScript != null) SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetTitleScene());
         else { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
     }
 
     public void SetClearedCondition(bool condition)
     {
-        if (TutorialNagivatorScript.thisScript)
+        if (TutorialNagivatorScript.getScript != null)
         {
             UpdateInstructionStatus(condition);
             Debug.Log("Game Condition have been set to " + (condition ? "COMPLETE" : "NOT COMPLETE"));
