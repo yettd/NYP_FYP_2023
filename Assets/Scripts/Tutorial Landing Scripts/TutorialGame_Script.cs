@@ -15,13 +15,14 @@ public class TutorialGame_Script : MonoBehaviour
         data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
 
         if (data.FindFilePath()) // file existing will be overwritten to a new one
-            temp = data.LoadInfoThroughJson<InstructionManual>();
+            temp = data.LoadInfoThroughJson2<InstructionManual>();
 
         else // file doesn't exist will be created and written to a new one
-            temp = TutorialNagivatorScript.Instance().get_manual;
+            if (PlayerPrefs.HasKey(data.GetPath() + data.GetDirectoryName())) temp = data.LoadInfoThroughJson2_1<InstructionManual>();
+            else temp = TutorialNagivatorScript.Instance().get_manual;
 
         temp.cleared.completed = cleared;
-        data.SaveInfoAsNewJson(temp);
+        try { data.SaveInfoAsNewJson(temp); } catch { data.SaveInfoAsNewJson2(temp); } // ???
     }
     #endregion
 
