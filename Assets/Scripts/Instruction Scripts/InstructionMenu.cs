@@ -103,13 +103,16 @@ public class InstructionMenu : MonoBehaviour
     private void SaveProgressThroughLocal()
     {
         // Saving progress
-        data.SaveInfoAsNewJson(manual);
+        try { data.SaveInfoAsNewJson(manual); } catch { data.SaveInfoAsNewJson2(manual); } // ???
     }
 
     private void LoadProgressThroughLocal()
     {
         // Load progress
-        InstructionManual loadedData = data.LoadInfoThroughJson<InstructionManual>();
+        InstructionManual loadedData = null;
+
+        if (PlayerPrefs.HasKey(data.GetPath() + data.GetDirectoryName())) loadedData = data.LoadInfoThroughJson2_1<InstructionManual>();
+        else loadedData = data.LoadInfoThroughJson2<InstructionManual>();
 
         for (int step = 0; step < manual.step.Length; step++)
             manual.step[step].completed = loadedData.step[step].completed;
