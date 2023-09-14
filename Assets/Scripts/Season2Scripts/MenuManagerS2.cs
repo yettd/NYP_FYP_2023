@@ -122,4 +122,9 @@ public class MenuManagerS2 : MonoBehaviour
             Settingsactive =  false;
         }
     }
+
+    public void GotoTutortialScene()
+    {
+        SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetManualLoaded("Scaling"));
+    }
 }

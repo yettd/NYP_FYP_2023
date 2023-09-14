@@ -5,39 +5,24 @@ using UnityEngine;
 public class rotateJaws : MonoBehaviour
 {
 
-    float x;
-    float newx;
-    bool down;
-    float smooth=0.4f;
-    float diffx;
-    float totalDegree=0;
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnMouseDown()
-    {
-        down = true;
-
-        x = Input.mousePosition.x;
-    }
+    float smooth=1f;
+    public Camera cam;
 
     private void OnMouseDrag()
     {
-        newx = Input.mousePosition.x;
+        if(!GetComponent<SphereCollider>().enabled)
+        {
+            return;
+        }
+        float rotX = Input.GetAxis("Mouse X") * smooth;
+        float rotY = Input.GetAxis("Mouse Y") * smooth;
 
-        diffx = newx - x;
-        x = newx;
-        totalDegree += diffx * smooth;
-        totalDegree = Mathf.Clamp(totalDegree, -90f, 90f);
-        gameObject.transform.rotation = Quaternion.Euler(transform.eulerAngles.x,  totalDegree, transform.eulerAngles.z) ;
+        Vector3 right = Vector3.Cross(cam.transform.up, transform.position - cam.transform.position);
+        Vector3 up = Vector3.Cross(transform.position - cam.transform.position, right);
+        transform.rotation = Quaternion.AngleAxis(-rotX, up) * transform.rotation;
+        transform.rotation = Quaternion.AngleAxis(rotY, right) * transform.rotation;
+
 
     }
 
-    private void OnMouseUp()
-    {
-        down = false;
-    }
 }

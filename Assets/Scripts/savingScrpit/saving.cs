@@ -13,8 +13,6 @@ public class Saving : MonoBehaviour
     //create class then use the savemethod save(to which file);
 
     //loadsave(which json file) 
-    [SerializeField]
-    string filename = "debug";
 
     public static Saving save;
     public void saveToJson(object p, string a)

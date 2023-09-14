@@ -15,6 +15,9 @@ public class ShowMouth : MonoBehaviour
 
     GameObject model;
 
+    [SerializeField] GameObject cursor;
+    [SerializeField] Camera cam;
+    [SerializeField] RectTransform canvas;
     private void OnEnable()
     {
         if(minigameTaskListController.Instance.GetGumd())
@@ -52,9 +55,24 @@ public class ShowMouth : MonoBehaviour
         model.transform.localRotation = Quaternion.Euler(0, 0, 0);
         model.transform.localScale = new Vector3(1, 1, 1);
     }
+
+    private void OnMouseDown()
+    {
+
+    }
     public void GoBack()
     {
 
         Debug.Log("adasd");
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
+        {
+            Vector3 pos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+            cursor.transform.position=new Vector3(pos.x, pos.y, cursor.transform.position.z);
+            
+        }
     }
 }
