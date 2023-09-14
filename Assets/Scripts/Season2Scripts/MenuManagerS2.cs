@@ -125,6 +125,6 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void GotoTutortialScene()
     {
-        SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetManualLoaded("Scaling"));
+       // SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetManualLoaded("Scaling"));
     }
 }

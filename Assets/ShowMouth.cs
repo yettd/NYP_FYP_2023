@@ -38,6 +38,7 @@ public class ShowMouth : MonoBehaviour
         {
             child.gameObject.layer = LayerMask.NameToLayer("UI");
         }
+
         model.transform.localPosition = new Vector3(0, 0, 0);
         model.transform.localScale = new Vector3(1,1,1);
         model.transform.localRotation = Quaternion.Euler(0, 90, 0);
@@ -70,7 +71,9 @@ public class ShowMouth : MonoBehaviour
     {
         if(Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
         {
-            Vector3 pos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+
+            //Vector3 pos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+            Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
             cursor.transform.position=new Vector3(pos.x, pos.y, cursor.transform.position.z);
             
         }
