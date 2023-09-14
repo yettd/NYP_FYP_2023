@@ -12,17 +12,17 @@ public class TutorialGame_Script : MonoBehaviour
     private void UpdateInstructionStatus(bool cleared)
     {
         InstructionManual temp;
-        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
+        string path = (Application.isEditor ? "Assets/Resources/TutorialLevel/meta/" : Application.persistentDataPath);
+        data = new DataManageScript(path, fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
 
         if (data.FindFilePath()) // file existing will be overwritten to a new one
             temp = data.LoadInfoThroughJson2<InstructionManual>();
 
         else // file doesn't exist will be created and written to a new one
-            if (PlayerPrefs.HasKey(data.GetPath() + data.GetDirectoryName())) temp = data.LoadInfoThroughJson2_1<InstructionManual>();
-            else temp = TutorialNagivatorScript.Instance().get_manual;
+            temp = TutorialNagivatorScript.Instance().get_manual;
 
         temp.cleared.completed = cleared;
-        try { data.SaveInfoAsNewJson(temp); } catch { data.SaveInfoAsNewJson2(temp); } // ???
+        data.SaveInfoAsNewJson(temp);
     }
     #endregion
 
