@@ -35,7 +35,8 @@ public class InstructionMenu : MonoBehaviour
 
     private void LoadStageData()
     {
-        data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + GetInstructionSelect() + ".txt");
+        string path = (Application.isEditor ? "Assets/Resources/TutorialLevel/meta/" : Application.persistentDataPath);
+        data = new DataManageScript(path, fileDirectory + GetInstructionSelect() + ".txt");
 
         if (TutorialNagivatorScript.getScript != null) manual = TutorialNagivatorScript.Instance().get_manual;
         else manual = Resources.Load<InstructionManual>("TutorialLevel/None");
@@ -104,17 +105,15 @@ public class InstructionMenu : MonoBehaviour
     private void SaveProgressThroughLocal()
     {
         // Saving progress
-        try { data.SaveInfoAsNewJson(manual); } catch { data.SaveInfoAsNewJson2(manual); } // ???
+        data.SaveInfoAsNewJson(manual);
     }
 
     private void LoadProgressThroughLocal()
     {
         // Load progress
 
-        InstructionManual loadedData = null;
+        InstructionManual loadedData = data.LoadInfoThroughJson2<InstructionManual>();
 
-        if (PlayerPrefs.HasKey(data.GetPath() + data.GetDirectoryName())) loadedData = data.LoadInfoThroughJson2_1<InstructionManual>();
-        else loadedData = data.LoadInfoThroughJson2<InstructionManual>();
         for (int step = 0; step < manual.step.Length; step++)
             manual.step[step].completed = loadedData.step[step].completed;
 
