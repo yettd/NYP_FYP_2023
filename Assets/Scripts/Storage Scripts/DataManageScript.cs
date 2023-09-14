@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.IO;
-using Newtonsoft.Json;
 
 public class DataManageScript
 {
@@ -38,12 +37,6 @@ public class DataManageScript
     public T LoadInfoThroughJson<T>()
     {
         ReadFile();
-        return JsonConvert.DeserializeObject<T>(readString);
-    }
-
-    public T LoadInfoThroughJsonToJson<T>()
-    {
-        ReadFile();
         return JsonUtility.FromJson<T>(readString);
     }
     #endregion
@@ -76,6 +69,23 @@ public class DataManageScript
             return true;
         else
             return false;
+    }
+    #endregion
+
+    #region MISC
+    public string GetPath()
+    {
+        return path;
+    }
+
+    public string GetDirectoryName()
+    {
+        return directoryName;
+    }
+
+    public string GetReadString()
+    {
+        return readString;
     }
     #endregion
 }

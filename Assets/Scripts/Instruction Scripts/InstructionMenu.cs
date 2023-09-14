@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
-
 public class InstructionMenu : MonoBehaviour
 {
     private DataManageScript data;
@@ -37,11 +36,8 @@ public class InstructionMenu : MonoBehaviour
     private void LoadStageData()
     {
         data = new DataManageScript("Assets/Resources/TutorialLevel/meta/", fileDirectory + GetInstructionSelect() + ".txt");
-        if (TutorialNagivatorScript.thisScript)
-        {
-            manual = TutorialNagivatorScript.thisScript.get_manual;
-            Debug.Log(manual.description);
-        }
+
+        if (TutorialNagivatorScript.getScript != null) manual = TutorialNagivatorScript.Instance().get_manual;
         else manual = Resources.Load<InstructionManual>("TutorialLevel/None");
 
         if (data.FindFilePath()) LoadProgressThroughLocal();
@@ -49,7 +45,7 @@ public class InstructionMenu : MonoBehaviour
 
     private string GetInstructionSelect()
     {
-        if (TutorialNagivatorScript.thisScript) return TutorialNagivatorScript.thisScript.get_manual.name;
+        if (TutorialNagivatorScript.getScript != null) return TutorialNagivatorScript.Instance().get_manual.name;
         else return "None";
     }
     #endregion
@@ -58,7 +54,7 @@ public class InstructionMenu : MonoBehaviour
     public void ProcessToCompletion()
     {
         SaveProgressThroughLocal();
-        string destinationScene = (status == ProcessButtonStatus.COMPLETE ? SceneReturn : TutorialNagivatorScript.thisScript.GetGameScene());
+        string destinationScene = (status == ProcessButtonStatus.COMPLETE ? SceneReturn : TutorialNagivatorScript.Instance().GetGameScene());
         SceneManager.LoadScene(destinationScene);
     }
 
@@ -108,14 +104,17 @@ public class InstructionMenu : MonoBehaviour
     private void SaveProgressThroughLocal()
     {
         // Saving progress
-        data.SaveInfoAsNewJson(manual);
+        try { data.SaveInfoAsNewJson(manual); } catch { data.SaveInfoAsNewJson2(manual); } // ???
     }
 
     private void LoadProgressThroughLocal()
     {
         // Load progress
-        InstructionManual loadedData = data.LoadInfoThroughJson<InstructionManual>();
-        
+
+        InstructionManual loadedData = null;
+
+        if (PlayerPrefs.HasKey(data.GetPath() + data.GetDirectoryName())) loadedData = data.LoadInfoThroughJson2_1<InstructionManual>();
+        else loadedData = data.LoadInfoThroughJson2<InstructionManual>();
         for (int step = 0; step < manual.step.Length; step++)
             manual.step[step].completed = loadedData.step[step].completed;
 

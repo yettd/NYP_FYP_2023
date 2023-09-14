@@ -18,7 +18,7 @@ public class StorageScript : MonoBehaviour
     {
         storage = GetComponent<StorageManager>();
 
-        if (TutorialNagivatorScript.thisScript) { manual = TutorialNagivatorScript.thisScript.get_manual; }
+        if (TutorialNagivatorScript.getScript != null) { manual = TutorialNagivatorScript.Instance().get_manual; }
         else { manual = new InstructionManual(); }
 
         LoadToolForSelection();
@@ -26,7 +26,7 @@ public class StorageScript : MonoBehaviour
 
     private void LoadToolForSelection()
     {
-        if (TutorialNagivatorScript.thisScript) { foreach (ItemTag tool in manual.tools) storage.AddItem(tool); }
+        if (TutorialNagivatorScript.getScript != null) { foreach (ItemTag tool in manual.tools) storage.AddItem(tool); }
 
         // Default item
         storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select")));
