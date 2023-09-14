@@ -22,7 +22,7 @@ MonoBehaviour:
     trimming excess amalgam'
   InstrumentGrasp: 
   Instrumentation: 
-  dentalItem: {fileID: 227513516223377440, guid: d931f3bb8881bae4b98f629fc6999aca, type: 3}
+  dentalItem: {fileID: 919132149155446097, guid: 6847766a418fc1a4eb114b96368921fa, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 0}
   rusty: 0
