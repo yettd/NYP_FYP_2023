@@ -15,6 +15,7 @@ public class TutorialNagivatorScript : MonoBehaviour
     void Start()
     {
         thisScript = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     #region MAIN
