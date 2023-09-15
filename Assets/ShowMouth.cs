@@ -69,13 +69,6 @@ public class ShowMouth : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
-        {
-
-            //Vector3 pos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
-            Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
-            cursor.transform.position=new Vector3(pos.x, pos.y, cursor.transform.position.z);
-            
-        }
+        
     }
 }
