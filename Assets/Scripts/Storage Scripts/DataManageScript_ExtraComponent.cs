@@ -9,21 +9,16 @@ public static class DataManageScript_ExtraComponent
     {
         StreamReader reader = new StreamReader(script.GetPath() + script.GetDirectoryName());
         string readString = reader.ReadToEnd();
+        reader.Close();
+
         return JsonConvert.DeserializeObject<T>(readString);
     }
     #endregion
 
     #region MISC
-    public static void SaveInfoAsNewJson2(this DataManageScript script, object text)
+    public static string GetPath(this DataManageScript script, string path)
     {
-        if (PlayerPrefs.HasKey(script.GetPath() + script.GetDirectoryName())) PlayerPrefs.DeleteKey(script.GetPath() + script.GetDirectoryName());
-        PlayerPrefs.SetString(script.GetPath() + script.GetDirectoryName(), JsonUtility.ToJson(text));
-    }
-
-    public static T LoadInfoThroughJson2_1<T>(this DataManageScript script)
-    {
-        string readString = PlayerPrefs.GetString(script.GetPath() + script.GetDirectoryName(), string.Empty);
-        return JsonConvert.DeserializeObject<T>(readString);
+        return (Application.isEditor ? path : Application.persistentDataPath);
     }
     #endregion
 }
