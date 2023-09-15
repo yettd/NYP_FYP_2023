@@ -12,8 +12,7 @@ public class TutorialGame_Script : MonoBehaviour
     private void UpdateInstructionStatus(bool cleared)
     {
         InstructionManual temp;
-        string path = (Application.isEditor ? "Assets/Resources/TutorialLevel/meta/" : Application.persistentDataPath);
-        data = new DataManageScript(path, fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
+        data = new DataManageScript(data.GetPath("Assets/Resources/TutorialLevel/meta/"), fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
 
         if (data.FindFilePath()) // file existing will be overwritten to a new one
             temp = data.LoadInfoThroughJson2<InstructionManual>();

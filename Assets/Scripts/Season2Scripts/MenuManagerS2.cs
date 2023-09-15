@@ -123,8 +123,8 @@ public class MenuManagerS2 : MonoBehaviour
         }
     }
 
-    public void GotoTutortialScene()
+    public void GotoTutortialScene(string index)
     {
-       // SceneManager.LoadScene(TutorialNagivatorScript.thisScript.GetManualLoaded("Scaling"));
+       SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
     }
 }

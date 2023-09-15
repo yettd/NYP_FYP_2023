@@ -58,7 +58,7 @@ public class DataManageScript
 
     private void ClearFile()
     {
-        if (FindFilePath()) File.Delete(path + directoryName);
+        if (FindFilePath()) File.WriteAllText(path + directoryName, string.Empty);
     }
     #endregion
 
