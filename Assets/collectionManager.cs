@@ -102,9 +102,9 @@ public class collectionManager : MonoBehaviour
 
     public void displayShelfItem()
     {
+        SetQuizButton();
         ShelfObject.GetComponent<collectionSpawn>().ChangeItems();
 
-        SetQuizButton();
     }
 
 

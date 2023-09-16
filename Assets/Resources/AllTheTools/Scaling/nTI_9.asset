@@ -45,7 +45,7 @@ MonoBehaviour:
     when debriding root surface\r\n8. Apply appropriate lateral pressure in a coronal
     direction\r\n9. Maintain a neutral wrist position while utilizing wrist activation\r\n10.
     Use appropriate sequence in the quadrant \r\n"
-  dentalItem: {fileID: 919132149155446097, guid: bf1cb484177e4ee46ad42b85cfca38c3, type: 3}
+  dentalItem: {fileID: 5706071983084551377, guid: 2b8463e6b38cd03488a853e7bd69959d, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 0}
   rusty: 0

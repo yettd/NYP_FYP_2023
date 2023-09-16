@@ -26,7 +26,7 @@ MonoBehaviour:
   Instrumentation: "<b>Instrumentation</b>\n1. Begin at distal line angle, cover
     facial/lingual \r\nand mesial surfaces.\r\n2. Apply small, oblique/vertical overlapping
     \r\nstrokes."
-  dentalItem: {fileID: 919132149155446097, guid: d1ff358089b6a644d9ccb6d9db685e95, type: 3}
+  dentalItem: {fileID: 7271824009231171946, guid: bbc18f888760b524c84dc1c3d51e5eae, type: 3}
   videoClip: {fileID: 32900000, guid: 482265d8f28d4454b91cd4a7e85dde07, type: 3}
   RustyIcon: {fileID: 0}
   rusty: 0

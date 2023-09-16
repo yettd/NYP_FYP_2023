@@ -33,6 +33,8 @@ public class collectionSpawn : MonoBehaviour
     {
         Clear();
         int i = 0;
+
+        Debug.Log(ButtonReferenceManager.Instance.ARTorP);
         if (ButtonReferenceManager.Instance.ARTorP)
         {
             if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
@@ -77,7 +79,6 @@ public class collectionSpawn : MonoBehaviour
 
                 foreach (DentistTool dentistTools in ButtonReferenceManager.Instance.dhTools)
                 {
-
                     //Assign the index and the Scriptable Object into the prefab
                     spawnObject(i, dentistTools);
                     i++;

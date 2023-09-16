@@ -34,7 +34,7 @@ MonoBehaviour:
     Use short controlled calculus removal strokes in a\r\ncoronal direction\r\n6.
     Apply appropriate lateral pressure in a coronal\r\ndirection\r\n7. Demonstrate
     overlapping strokes at line angles and\r\nunder contact area\r"
-  dentalItem: {fileID: 919132149155446097, guid: 3198547b8e5428f4e9edfa39f551813a, type: 3}
+  dentalItem: {fileID: 5633761613996137271, guid: 318a77ff74688e248b81d5b8e5691f19, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 0}
   rusty: 0
