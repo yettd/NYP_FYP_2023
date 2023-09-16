@@ -54,7 +54,8 @@ public class InstructionMenu : MonoBehaviour
     public void ProcessToCompletion()
     {
         SaveProgressThroughLocal();
-        string destinationScene = (status == ProcessButtonStatus.COMPLETE ? SceneReturn : TutorialNagivatorScript.Instance().GetGameScene());
+        //status == ProcessButtonStatus.COMPLETE ? SceneReturn : will use in future
+        string destinationScene = ( TutorialNagivatorScript.Instance().GetGameScene());
         SceneManager.LoadScene(destinationScene);
     }
 

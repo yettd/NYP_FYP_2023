@@ -10,11 +10,11 @@ public class openTooth : MonoBehaviour
 // Start is called before the first frame update
     private void OnMouseDown()
     {
-
-        minigameTaskListController.Instance.setGame(topBottom);
-        Debug.Log($"{minigameTaskListController.Instance.GetGumd()} : {topBottom}");
-        minigameTaskListController.Instance.startminigame();
-        asd.text = $"clicked on {gameObject.name}";
+        if(minigameTaskListController.Instance.currentStep==Steps.LOCATINGS || minigameTaskListController.Instance.currentStep == Steps.LOCATINGF|| minigameTaskListController.Instance.currentStep == Steps.LOCATINGE)
+        { 
+            minigameTaskListController.Instance.setGame(topBottom);
+            asd.text = $"clicked on {gameObject.name}";
+        }
 
     }
     private void Start()

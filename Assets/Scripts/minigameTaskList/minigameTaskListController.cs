@@ -8,8 +8,9 @@ public class minigameTaskListController : MonoBehaviour
   
     public static minigameTaskListController Instance;
 
-    private Steps currentStep;
+    public  Steps currentStep;
     private Steps NextSteps;
+    private Steps prevStep;
     private bool TBgums=false;
     public GameObject canvase;
     public Procedure procedure;
@@ -21,6 +22,9 @@ public class minigameTaskListController : MonoBehaviour
     public bool minigameOpen;
 
     bool toolSelected;
+
+    [SerializeField]GameObject testTool;
+    private string toolSelectedName="";
     private void Awake()
     {
         if (Instance==null)
@@ -38,10 +42,25 @@ public class minigameTaskListController : MonoBehaviour
             Debug.Log("Done ");
             return true;
         }
+        prevStep = currentStep;
         currentStep=NextSteps;
         NextSteps++;
        // Debug.Log($"{currentStep} : {NextSteps}");
         return false;
+    }
+
+    public bool goprev()
+    {
+        NextSteps = currentStep;
+        currentStep = prevStep;
+        prevStep--;
+
+        return false;
+    }
+
+    public Steps getCurrentStep()
+    {
+        return currentStep;
     }
 
     public bool DoneWithMiniGame()
@@ -74,7 +93,6 @@ public class minigameTaskListController : MonoBehaviour
                 //  Debug.Log($"{currentStep} : {NextSteps}");
                 break;
         }
-        openGame.Invoke();
 
         //open minimini gameWindow
 
@@ -98,7 +116,8 @@ public class minigameTaskListController : MonoBehaviour
         TBgums = a;
         startminigame();
         minigameOpen = true;
-        Debug.Log(TBgums);
+        gonext();
+        openGame.Invoke();
     }
     public bool GetGumd()
     {
@@ -107,11 +126,11 @@ public class minigameTaskListController : MonoBehaviour
 
     public void CloseGameOrBack()
     {
-        if(toolSelected)
+        if(currentStep==Steps.SCRAPINGS )
         {
             RR();
         }
-        else if(minigameOpen)
+        else if(currentStep == Steps.CHOOSINGS)
         {
 
             closeGame.Invoke();
@@ -121,6 +140,7 @@ public class minigameTaskListController : MonoBehaviour
         {
             close.Invoke();
         }
+        goprev();
     }
 
     public void stopRotation()
@@ -130,8 +150,22 @@ public class minigameTaskListController : MonoBehaviour
     }    
     public void RR()
     {
+        testTool.gameObject.SetActive(false);
         toolSelected = false;   
         ResumeRotation.Invoke();
+    }
+
+    public void ToolsSelected(string toolsname)
+    {
+        if(currentStep==Steps.CHOOSINGS)
+        {
+
+            testTool.gameObject.SetActive(true);
+            toolSelectedName = toolsname;
+            Debug.LogError(toolsname);
+            gonext();
+            stopRotation();
+        }
     }
 
 }

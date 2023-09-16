@@ -20,5 +20,9 @@ public class StorageItemScript : MonoBehaviour
     {
         component.GetItemSelection(item);
     }
+    public void SelectTool()
+    {
+        minigameTaskListController.Instance.ToolsSelected(item.itemName);
+    }
     #endregion
 }
