@@ -1,13 +1,13 @@
 {
     "Title": "Scaling",
     "Icon": {
-        "instanceID": 38062
+        "instanceID": 36802
     },
     "description": "There is no description.",
     "step": [
         {
             "Icon": {
-                "instanceID": 38064
+                "instanceID": 36804
             },
             "title": "Step 1: ???",
             "instruction": "This is step 1. Go and click the next one.",
@@ -15,7 +15,7 @@
         },
         {
             "Icon": {
-                "instanceID": 38066
+                "instanceID": 35342
             },
             "title": "Step 2: ???",
             "instruction": "This is step 2. Go and click the next one.",
@@ -23,7 +23,7 @@
         },
         {
             "Icon": {
-                "instanceID": 38068
+                "instanceID": 36806
             },
             "title": "Step 3: ???",
             "instruction": "This is step 3. Go and click on complete.",
@@ -34,31 +34,31 @@
         {
             "itemName": "M",
             "icon": {
-                "instanceID": 38070
+                "instanceID": 36808
             }
         },
         {
             "itemName": "S",
             "icon": {
-                "instanceID": 38072
+                "instanceID": 36810
             }
         },
         {
             "itemName": "A",
             "icon": {
-                "instanceID": 38074
+                "instanceID": 35358
             }
         },
         {
             "itemName": "SS",
             "icon": {
-                "instanceID": 38076
+                "instanceID": 36812
             }
         },
         {
             "itemName": "P",
             "icon": {
-                "instanceID": 38078
+                "instanceID": 35312
             }
         }
     ],
