@@ -44,7 +44,6 @@ public class ARPlacement : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(collectionManager.CM.toolOrProcedure);
         // get appropriate 3d model and name based on DT/DH
         if (ButtonReferenceManager.Instance.ARTorP)
         {
@@ -214,9 +213,9 @@ public class ARPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         Debug.Log("ARPlaceObject");
-        
-        spawnedObject = Instantiate(placedInstrument,Arcamera.transform.position+Arcamera.transform.forward ,Quaternion.identity);
-    
+
+        spawnedObject = Instantiate(placedInstrument, Arcamera.transform.position + Arcamera.transform.forward, Quaternion.identity);
+
         leanTwistRotateAxis = spawnedObject.GetComponent<LeanTwistRotateAxis>();
         leanPinchScale = spawnedObject.GetComponent<LeanPinchScale>();
 

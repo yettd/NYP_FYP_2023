@@ -21,10 +21,10 @@ public class ARSpawnManager : MonoBehaviour
         // start with dragging tutorial
         if (!shownDragGuide && !shownPinchGuide && !shownTwistGuide)
         {
-            dragTutorial.SetActive(true);
-            pinchTutorial.SetActive(false);
-            twistTutorial.SetActive(false);
-            BlockerGameObject.SetActive(true);
+           // dragTutorial.SetActive(true);
+           // pinchTutorial.SetActive(false);
+           // twistTutorial.SetActive(false);
+           // BlockerGameObject.SetActive(true);
         }
     }
 
@@ -33,18 +33,18 @@ public class ARSpawnManager : MonoBehaviour
         // check if drag tutorial is done, then show pinch
         if (shownDragGuide && !shownPinchGuide && !shownTwistGuide)
         {
-            dragTutorial.SetActive(false);
-            pinchTutorial.SetActive(true);
-            twistTutorial.SetActive(false);
-            BlockerGameObject.SetActive(true);
+           // dragTutorial.SetActive(false);
+           // pinchTutorial.SetActive(true);
+           // twistTutorial.SetActive(false);
+           // BlockerGameObject.SetActive(true);
         }
         // check if pinch tutorial is done, then show twist
         if (shownDragGuide && shownPinchGuide && !shownTwistGuide)
         {
-            dragTutorial.SetActive(false);
-            pinchTutorial.SetActive(false);
-            twistTutorial.SetActive(true);
-            BlockerGameObject.SetActive(true);
+           // dragTutorial.SetActive(false);
+          //  pinchTutorial.SetActive(false);
+           // twistTutorial.SetActive(true);
+          //  BlockerGameObject.SetActive(true);
         }
     }
 
