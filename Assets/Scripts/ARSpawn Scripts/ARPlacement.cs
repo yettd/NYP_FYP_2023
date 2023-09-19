@@ -6,7 +6,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Lean.Touch;
 using TMPro;
-
+using UnityEngine.Events;
 public class ARPlacement : MonoBehaviour
 {
     public GameObject placedInstrument;
@@ -42,6 +42,8 @@ public class ARPlacement : MonoBehaviour
 
     public Transform Arcamera;
 
+    public GameObject[] openControl;
+    
     void Start()
     {
         // get appropriate 3d model and name based on DT/DH
@@ -212,15 +214,19 @@ public class ARPlacement : MonoBehaviour
     // spawn 3d model
     void ARPlaceObject()
     {
-        Debug.Log("ARPlaceObject");
-
         spawnedObject = Instantiate(placedInstrument, Arcamera.transform.position + Arcamera.transform.forward, Quaternion.identity);
 
-        leanTwistRotateAxis = spawnedObject.GetComponent<LeanTwistRotateAxis>();
-        leanPinchScale = spawnedObject.GetComponent<LeanPinchScale>();
+        //leanTwistRotateAxis = spawnedObject.GetComponent<LeanTwistRotateAxis>();
+        //leanPinchScale = spawnedObject.GetComponent<LeanPinchScale>();
 
-        // start with rotate
-        leanPinchScale.enabled = false;
-        leanTwistRotateAxis.enabled = true;
+        //// start with rotate
+        //leanPinchScale.enabled = false;
+        //leanTwistRotateAxis.enabled = true;
+        
+        foreach(GameObject OC in openControl)
+        {
+            OC.SetActive(true);
+            OC.GetComponent<ARcontrol>().assignOTC(spawnedObject);
+        }
     }
 }
