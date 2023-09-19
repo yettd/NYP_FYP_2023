@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4361616948590899874}
   - component: {fileID: 5990327142121336176}
   - component: {fileID: 1679806708521060586}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DT_Rubber dam frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,6 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531473780636094785}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
@@ -34,7 +35,6 @@ Transform:
   - {fileID: 2037012115825538965}
   - {fileID: 4336877466446786785}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4361616948590899874
 MonoBehaviour:
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 4336877466446786785}
   - component: {fileID: 2802181942758360067}
   - component: {fileID: 2236935326095291145}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: rubber_dam_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,13 +128,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2849910864301279067}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.00073909044, y: 0.057118542, z: 0.00039119585}
   m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2164881111217589243}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2802181942758360067
 MeshFilter:
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2037012115825538965}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,11 +209,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7914372224098041132}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 10.000999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2164881111217589243}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

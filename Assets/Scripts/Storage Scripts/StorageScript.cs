@@ -37,7 +37,7 @@ public class StorageScript : MonoBehaviour
         foreach (ItemTag tool in manual.tools) storage.AddItem(tool);
 
         // Default item
-        storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select")));
+        storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select"), Resources.Load<GameObject>("StorageAssets/Models")));
 
         // Display item
         component.GetUnitDisplay(storage.get_items.ToArray());

@@ -6,7 +6,8 @@ public class StorageItemScript : MonoBehaviour
 {
     private StorageComponent component;
     private ItemTag item;
-
+    private GameObject itemModel;
+    public moveTools MTS;
     #region SETUP
     public void SetItemComponent(StorageComponent component, ItemTag item)
     {
@@ -22,7 +23,7 @@ public class StorageItemScript : MonoBehaviour
     }
     public void SelectTool()
     {
-        minigameTaskListController.Instance.ToolsSelected(item.itemName);
+        minigameTaskListController.Instance.ToolsSelected(item.itemName, item.model);
     }
     #endregion
 }

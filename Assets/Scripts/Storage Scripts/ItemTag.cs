@@ -7,10 +7,11 @@ public class ItemTag
 {
     public string itemName;
     public Texture icon;
-
-    public ItemTag(string _itemName, Texture _icon)
+    public GameObject model;
+    public ItemTag(string _itemName, Texture _icon,GameObject _model)
     {
         itemName = _itemName;
         icon = _icon;
+        model = _model;
     }
 }

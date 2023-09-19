@@ -13,6 +13,7 @@ public class minigameTaskListController : MonoBehaviour
     private Steps prevStep;
     private bool TBgums=false;
     public GameObject canvase;
+    private GameObject model;
     public Procedure procedure;
     [SerializeField] UnityEvent openGame;
     [SerializeField] UnityEvent closeGame;
@@ -24,6 +25,7 @@ public class minigameTaskListController : MonoBehaviour
     bool toolSelected;
 
     [SerializeField]GameObject testTool;
+
     private string toolSelectedName="";
     private void Awake()
     {
@@ -150,17 +152,20 @@ public class minigameTaskListController : MonoBehaviour
     }    
     public void RR()
     {
+        Destroy(model);
         testTool.gameObject.SetActive(false);
-        toolSelected = false;   
+        toolSelected = false; 
         ResumeRotation.Invoke();
     }
 
-    public void ToolsSelected(string toolsname)
+    public void ToolsSelected(string toolsname, GameObject model)
     {
         if(currentStep==Steps.CHOOSINGS)
         {
-
-            testTool.gameObject.SetActive(true);
+           // testTool.gameObject.SetActive(true);
+            this.model = Instantiate(model, canvase.gameObject.transform) as GameObject;
+            this.model.transform.localScale = new Vector3(4, 4, 4);
+            this.model.transform.rotation = Quaternion.Euler(0, 90, 0);
             toolSelectedName = toolsname;
             Debug.LogError(toolsname);
             gonext();

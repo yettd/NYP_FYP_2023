@@ -23,9 +23,9 @@ public class StorageManager
     }
 
     #region SETUP
-    private void CreateNewItemEntry(string title, Texture icon)
+    private void CreateNewItemEntry(string title, Texture icon,GameObject model)
     {
-        items.Add(new ItemTag(title, icon));
+        items.Add(new ItemTag(title, icon, model));
     }
 
     private void RemoveItemEntry(string title)
@@ -38,7 +38,7 @@ public class StorageManager
     public void AddItem(ItemTag item)
     {
         if (items.Contains(GetItemStorage(item.itemName))) { ModifyItemContent(item); }
-        else { CreateNewItemEntry(item.itemName, item.icon); }
+        else { CreateNewItemEntry(item.itemName, item.icon, item.model); }
     }
 
     public void RemoveItem(string title)

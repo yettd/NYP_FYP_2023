@@ -12,7 +12,6 @@ public class moveTools : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +24,6 @@ public class moveTools : MonoBehaviour
 
         //}
     }
-
     private void OnMouseDrag()
     {
         Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);

@@ -19,25 +19,30 @@ MonoBehaviour:
   - Icon: {fileID: 2800000, guid: 9eae84ce5f341324fa8b232f6a2d526d, type: 3}
     title: 'Step 1: ???'
     instruction: This is step 1. Go and click the next one.
-    completed: 0
+    completed: 1
   - Icon: {fileID: 2800000, guid: ac6f4df9f7ff4e444bb82a6635cb95dc, type: 3}
     title: 'Step 2: ???'
     instruction: This is step 2. Go and click the next one.
-    completed: 0
+    completed: 1
   - Icon: {fileID: 2800000, guid: a26e6a870bf8d5044ae8170eeb72052f, type: 3}
     title: 'Step 3: ???'
     instruction: This is step 3. Go and click on complete.
-    completed: 0
+    completed: 1
   tools:
-  - itemName: M
+  - itemName: 1 - 2 Gracey
     icon: {fileID: 2800000, guid: 1db69f38f35089c4c8266e18d29cbfbc, type: 3}
-  - itemName: S
+    model: {fileID: 2769261376357853920, guid: 7cd43abbabf8c06449e66db8f61d459f, type: 3}
+  - itemName: 3 - 4 Gracey
     icon: {fileID: 2800000, guid: 1e5aafddcf4413f4a925f5a499313542, type: 3}
-  - itemName: A
+    model: {fileID: 5125285496078943784, guid: 28ced217c8c94d5498e972b93e60cf45, type: 3}
+  - itemName: 5 - 6 Gracey
     icon: {fileID: 2800000, guid: c59de320aad83204593afc7a00553b90, type: 3}
-  - itemName: SS
+    model: {fileID: 3458975624826605584, guid: b8801bc626a282d4c90da6b3cf4b705c, type: 3}
+  - itemName: 7 - 8 Gracey
     icon: {fileID: 2800000, guid: 8398d4d6042676f499714d97eb099017, type: 3}
-  - itemName: P
+    model: {fileID: 2729037960981150789, guid: 15fd8bb6aa4c8b547bbf8dbc345e2219, type: 3}
+  - itemName: 9 - 10 Gracey
     icon: {fileID: 2800000, guid: 9039ed7fb569bac489e8bb3bfe9fd78a, type: 3}
+    model: {fileID: 5706071983084551377, guid: 2b8463e6b38cd03488a853e7bd69959d, type: 3}
   cleared:
-    completed: 0
+    completed: 1
