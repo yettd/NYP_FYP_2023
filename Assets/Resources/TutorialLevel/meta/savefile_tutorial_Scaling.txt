@@ -1,0 +1,83 @@
+{
+    "Title": "Scaling",
+    "Icon": {
+        "instanceID": 33594
+    },
+    "description": "There is no description.",
+    "step": [
+        {
+            "Icon": {
+                "instanceID": 33562
+            },
+            "title": "Step 1: ???",
+            "instruction": "This is step 1. Go and click the next one.",
+            "completed": true
+        },
+        {
+            "Icon": {
+                "instanceID": 33550
+            },
+            "title": "Step 2: ???",
+            "instruction": "This is step 2. Go and click the next one.",
+            "completed": true
+        },
+        {
+            "Icon": {
+                "instanceID": 33578
+            },
+            "title": "Step 3: ???",
+            "instruction": "This is step 3. Go and click on complete.",
+            "completed": true
+        }
+    ],
+    "tools": [
+        {
+            "itemName": "M",
+            "icon": {
+                "instanceID": 34598
+            },
+            "itemModelPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "itemName": "S",
+            "icon": {
+                "instanceID": 33570
+            },
+            "itemModelPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "itemName": "A",
+            "icon": {
+                "instanceID": 34590
+            },
+            "itemModelPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "itemName": "SS",
+            "icon": {
+                "instanceID": 33574
+            },
+            "itemModelPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "itemName": "P",
+            "icon": {
+                "instanceID": 33554
+            },
+            "itemModelPrefab": {
+                "instanceID": 0
+            }
+        }
+    ],
+    "cleared": {
+        "completed": true
+    }
+}

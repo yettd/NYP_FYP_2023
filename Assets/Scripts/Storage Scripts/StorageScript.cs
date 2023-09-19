@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StorageScript : MonoBehaviour
+{
+    private StorageManager storage;
+    [SerializeField] private InstructionManual manual;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Invoke("LoadAssetsForUse", 0.5f);
+    }
+
+    #region MAIN
+    private void LoadAssetsForUse()
+    {
+        storage = GetComponent<StorageManager>();
+
+        if (TutorialNagivatorScript.getScript != null) { manual = TutorialNagivatorScript.Instance().get_manual; }
+        else { manual = new InstructionManual(); }
+
+        LoadToolForSelection();
+    }
+
+    private void LoadToolForSelection()
+    {
+        if (TutorialNagivatorScript.getScript != null)
+        {
+            foreach (ItemTag tool in manual.tools)
+            {
+                GameObject modelPrefab = Resources.Load<GameObject>($"StorageAssets/Models/{tool.itemName}");
+                tool.itemModelPrefab = modelPrefab; 
+                storage.AddItem(tool);
+            }
+        }
+        GameObject defaultModelPrefab = Resources.Load<GameObject>("StorageAssets/Models/DefaultModel");
+        storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select"), defaultModelPrefab));
+    }
+
+    #endregion
+}
