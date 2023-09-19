@@ -5,18 +5,22 @@ using UnityEngine;
 public class StorageScript : MonoBehaviour
 {
     private StorageManager storage;
+    private StorageComponent component;
+
     [SerializeField] private InstructionManual manual;
 
-    // Start is called before the first frame update
-    void Start()
+    #region SETUP
+    public void LoadAssetStorage(StorageComponent component)
     {
-        Invoke("LoadAssetsForUse", 0.5f);
+        this.component = component;
+        LoadAssetsForUse();
     }
+    #endregion
 
     #region MAIN
     private void LoadAssetsForUse()
     {
-        storage = GetComponent<StorageManager>();
+        storage = StorageManager.GetInventory();
 
         if (TutorialNagivatorScript.getScript != null) { manual = TutorialNagivatorScript.Instance().get_manual; }
         else { manual = new InstructionManual(); }
@@ -30,6 +34,9 @@ public class StorageScript : MonoBehaviour
 
         // Default item
         storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select")));
+
+        // Display item
+        component.GetUnitDisplay(storage.get_items.ToArray());
     }
     #endregion
 }

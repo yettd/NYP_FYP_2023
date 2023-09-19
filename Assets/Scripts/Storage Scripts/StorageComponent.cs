@@ -9,7 +9,7 @@ public class StorageComponent : MonoBehaviour
     [SerializeField] private GameObject unit;
     [SerializeField] private GameObject displayTab;
 
-    private StorageManager storage = null;
+    private StorageScript storage = null;
 
     private const string storagePath = "StorageAssets/";
     private const string storageAssetName = "Storage";
@@ -26,7 +26,7 @@ public class StorageComponent : MonoBehaviour
         if (storage == null)
         {
             GameObject spawnStorage = Instantiate(Resources.Load<GameObject>(storagePath + storageAssetName));
-            storage = spawnStorage.GetComponent<StorageManager>();
+            storage = spawnStorage.GetComponent<StorageScript>();
             storage.LoadAssetStorage(this);
         }
     }

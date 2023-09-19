@@ -2,20 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StorageManager : MonoBehaviour
+public class StorageManager
 {
-    [SerializeField] private StorageComponent storage;
+    private static StorageManager script;
+
     private const string storageIconPath = "StorageAssets/Icon/";
+    public string getStorageIconPath { get { return storageIconPath; } }
 
     private List<ItemTag> items;
+    public List<ItemTag> get_items { get { return items; } }
 
-    #region SETUP
-    public void LoadAssetStorage(StorageComponent component)
+    public static StorageManager GetInventory()
     {
-        storage = component;
-        items = new List<ItemTag>();
+        if (script == null)
+        {
+            script = new StorageManager();
+            script.items = new List<ItemTag>();
+        }
+        return script;
     }
 
+    #region SETUP
     private void CreateNewItemEntry(string title, Texture icon)
     {
         items.Add(new ItemTag(title, icon));
@@ -32,18 +39,12 @@ public class StorageManager : MonoBehaviour
     {
         if (items.Contains(GetItemStorage(item.itemName))) { ModifyItemContent(item); }
         else { CreateNewItemEntry(item.itemName, item.icon); }
-
-        // Update
-        storage.GetUnitDisplay(items.ToArray());
     }
 
     public void RemoveItem(string title)
     {
         if (items.Contains(GetItemStorage(title))) { ModifyItemContent(GetItemStorage(title)); }
         else { RemoveItemEntry(title); }
-
-        // Update
-        storage.GetUnitDisplay(items.ToArray());
     }
     #endregion
 
@@ -78,14 +79,6 @@ public class StorageManager : MonoBehaviour
         }
 
         return null;
-    }
-    #endregion
-
-    #region MISC
-    private Texture GetItemIcon(string title)
-    {
-        Texture texture = Resources.Load<Texture>(storageIconPath + title);
-        return texture;
     }
     #endregion
 }
