@@ -66,7 +66,6 @@ public class StorageManager
             }
         }
     }
-
     #endregion
 
     #region CONDITION
