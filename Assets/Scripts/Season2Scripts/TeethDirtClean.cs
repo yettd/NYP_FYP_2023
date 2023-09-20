@@ -11,7 +11,7 @@ public class TeethDirtClean : MonoBehaviour
     private Texture2D _templateDirtMask;
     float toatlDirtOnTeeth = 0;
     float remaindingDirt;
-
+    public toolsToClean ttc;
     Material TooThDone;
     bool clean;
     private void Start()
@@ -78,39 +78,52 @@ public class TeethDirtClean : MonoBehaviour
 
     public void Clean(RaycastHit hit, Texture2D _brush)
     {
-        Vector2 textureCoord = hit.textureCoord;
-
-        int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
-        int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
-        asd.text = $"{textureCoord.x}";
-        for (int x = 0; x < _brush.width; x++)
+        if (minigameTaskListController.Instance.GetSelectedtool() == ttc.ToString())
         {
-            for (int y = 0; y < _brush.height; y++)
+
+            Vector2 textureCoord = hit.textureCoord;
+
+            int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
+            int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
+            asd.text = $"{textureCoord.x}";
+            for (int x = 0; x < _brush.width; x++)
             {
-                Color pixelDirt = _brush.GetPixel(x, y);
-                Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + x, pixelY + y);
+                for (int y = 0; y < _brush.height; y++)
+                {
+                    Color pixelDirt = _brush.GetPixel(x, y);
+                    Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + x, pixelY + y);
 
-                _templateDirtMask.SetPixel(pixelX + x,  pixelY + y,new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
+                    _templateDirtMask.SetPixel(pixelX + x, pixelY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
+                }
             }
-        }
-        remaindingDirt = 0;
+            remaindingDirt = 0;
 
-        for (int i = 0; i < _dirtMaskBase.width; i++)
-        {
-            for (int j = 0; j < _dirtMaskBase.height; j++)
+            for (int i = 0; i < _dirtMaskBase.width; i++)
             {
-                remaindingDirt += _templateDirtMask.GetPixel(i, j).g;
+                for (int j = 0; j < _dirtMaskBase.height; j++)
+                {
+                    remaindingDirt += _templateDirtMask.GetPixel(i, j).g;
+                }
             }
-        }
-        Debug.Log($"{remaindingDirt} / {toatlDirtOnTeeth}");
-        if((remaindingDirt/toatlDirtOnTeeth)<0.20f)
-        {
-            //Destroy(gameObject);
-            GetComponent<Renderer>().material = TooThDone;
-            clean = true;
-        }
+            Debug.Log($"{remaindingDirt} / {toatlDirtOnTeeth}");
+            if ((remaindingDirt / toatlDirtOnTeeth) < 0.20f)
+            {
+                //Destroy(gameObject);
+                GetComponent<Renderer>().material = TooThDone;
+                clean = true;
+            }
 
-        _templateDirtMask.Apply();
+            _templateDirtMask.Apply();
+        }
+    }
+
+    enum toolsToClean
+    {
+        Gracey1_2,
+        Gracey5_6, 
+        Gracey7_8,
+        Gracey11_12,
+        Gracey13_14
     }
 
 }

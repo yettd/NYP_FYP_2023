@@ -29,20 +29,20 @@ MonoBehaviour:
     instruction: This is step 3. Go and click on complete.
     completed: 1
   tools:
-  - itemName: 1 - 2 Gracey
-    icon: {fileID: 2800000, guid: 1db69f38f35089c4c8266e18d29cbfbc, type: 3}
-    model: {fileID: 2769261376357853920, guid: 7cd43abbabf8c06449e66db8f61d459f, type: 3}
-  - itemName: 3 - 4 Gracey
-    icon: {fileID: 2800000, guid: 1e5aafddcf4413f4a925f5a499313542, type: 3}
-    model: {fileID: 5125285496078943784, guid: 28ced217c8c94d5498e972b93e60cf45, type: 3}
-  - itemName: 5 - 6 Gracey
-    icon: {fileID: 2800000, guid: c59de320aad83204593afc7a00553b90, type: 3}
-    model: {fileID: 3458975624826605584, guid: b8801bc626a282d4c90da6b3cf4b705c, type: 3}
-  - itemName: 7 - 8 Gracey
-    icon: {fileID: 2800000, guid: 8398d4d6042676f499714d97eb099017, type: 3}
-    model: {fileID: 2729037960981150789, guid: 15fd8bb6aa4c8b547bbf8dbc345e2219, type: 3}
-  - itemName: 9 - 10 Gracey
-    icon: {fileID: 2800000, guid: 9039ed7fb569bac489e8bb3bfe9fd78a, type: 3}
-    model: {fileID: 5706071983084551377, guid: 2b8463e6b38cd03488a853e7bd69959d, type: 3}
+  - itemName: Gracey1_2
+    icon: {fileID: 2800000, guid: 4a6d8f4b5341d3e43838d927f3387063, type: 3}
+    model: {fileID: 5644587679923233987, guid: 7bd7359950f820a48b7b7f6f7216bf22, type: 3}
+  - itemName: Gracey5_6
+    icon: {fileID: 2800000, guid: f7b23559eb4ddb343a7880a8fd9f1735, type: 3}
+    model: {fileID: 6904797153345702836, guid: 7aecbb144f03ca244b1ce13cf5d3bd65, type: 3}
+  - itemName: Gracey7_8
+    icon: {fileID: 2800000, guid: 5927787b4429e054193263e8c40c8f42, type: 3}
+    model: {fileID: 6158489504648957015, guid: d238adde995504a4693745654b1a7997, type: 3}
+  - itemName: Gracey11_12
+    icon: {fileID: 2800000, guid: 894c6b81f267e5e4493c4eea8cb7c142, type: 3}
+    model: {fileID: 86479688804159800, guid: 4974bdd0b8cdee149a978ec949b531a0, type: 3}
+  - itemName: Gracey13_14
+    icon: {fileID: 2800000, guid: 81aa162f6789a43499a7254528ad73d2, type: 3}
+    model: {fileID: 2101061212553845058, guid: 0eb9b5a7b731d5e46b897d274437dc3a, type: 3}
   cleared:
     completed: 1

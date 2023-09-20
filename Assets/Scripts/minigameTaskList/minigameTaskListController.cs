@@ -163,14 +163,19 @@ public class minigameTaskListController : MonoBehaviour
         if(currentStep==Steps.CHOOSINGS)
         {
            // testTool.gameObject.SetActive(true);
-            this.model = Instantiate(model, canvase.gameObject.transform) as GameObject;
-            this.model.transform.localScale = new Vector3(4, 4, 4);
-            this.model.transform.rotation = Quaternion.Euler(0, 90, 0);
+            this.model = Instantiate(model, canvase.gameObject.transform.GetChild(0).transform) as GameObject;
+            this.model.transform.localPosition = new Vector3(0f, 0f, -702);
+            this.model.transform.localScale = new Vector3(30, 30, 30);
             toolSelectedName = toolsname;
             Debug.LogError(toolsname);
             gonext();
             stopRotation();
         }
+    }
+
+    public string GetSelectedtool()
+    {
+        return toolSelectedName;
     }
 
 }
