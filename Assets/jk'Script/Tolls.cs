@@ -8,6 +8,9 @@ public class Tolls : MonoBehaviour
     [SerializeField] Transform usePoint;
     protected bool letgoToUse=false;
 
+    GameObject toohtSelected;
+    Vector3 hitpos;
+
     protected virtual void Start()
     {
         cam = GameObject.Find("Camera").GetComponent<Camera>();
@@ -20,7 +23,7 @@ public class Tolls : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(cam.WorldToScreenPoint(pos));
         if (letgoToUse == false)
         {
-            raycastStuff();
+            raycastToSelcetTooth();
         }
     }
 
@@ -28,22 +31,35 @@ public class Tolls : MonoBehaviour
     {
         if(letgoToUse)
         {
-            raycastStuff();
+            raycastToSelcetTooth();
         }
     }
 
-    private void raycastStuff()
+    private void raycastToSelcetTooth()
     {
         if (Physics.Raycast(usePoint.position, cam.transform.forward, out RaycastHit hit))
         {
-            Debug.Log("asd");
+            Debug.DrawRay(usePoint.position, hitpos - usePoint.transform.position);
             TeethDirtClean TDC;
             hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
             if (TDC)
             {
 
-                usetool(TDC,hit);
+                usetool(TDC, hit);
             }
+            //if (toohtSelected !=hit.collider.gameObject)
+            //{
+            //    Debug.Log("asdasdasd");
+            //    hitpos = hit.point;
+            //    toohtSelected = hit.collider.gameObject;
+            //}
+            //if(toohtSelected)
+            //{
+            //    if (Physics.Raycast(usePoint.position, hitpos - usePoint.transform.position , out RaycastHit hitTooth))
+            //    {
+              
+            //    }
+            //}
         }
     }
 

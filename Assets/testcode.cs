@@ -6,10 +6,12 @@ public class testcode : MonoBehaviour
 {
     public Camera ca;
     [SerializeField] Texture2D _brush;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        minigameTaskListController.Instance.ToolsSelected("Gracey1_2",this.gameObject);
+        Debug.Log(minigameTaskListController.Instance.GetSelectedtool());
     }
 
     // Update is called once per frame

@@ -13,6 +13,7 @@ public class TeethDirtClean : MonoBehaviour
     float remaindingDirt;
     public toolsToClean ttc;
     Material TooThDone;
+    public float percentage;
     bool clean;
     private void Start()
     {
@@ -78,8 +79,7 @@ public class TeethDirtClean : MonoBehaviour
 
     public void Clean(RaycastHit hit, Texture2D _brush)
     {
-        if (minigameTaskListController.Instance.GetSelectedtool() == ttc.ToString())
-        {
+    
 
             Vector2 textureCoord = hit.textureCoord;
 
@@ -105,19 +105,18 @@ public class TeethDirtClean : MonoBehaviour
                     remaindingDirt += _templateDirtMask.GetPixel(i, j).g;
                 }
             }
-            Debug.Log($"{remaindingDirt} / {toatlDirtOnTeeth}");
-            if ((remaindingDirt / toatlDirtOnTeeth) < 0.20f)
+        Debug.Log("Percentage that look clean = "+ (remaindingDirt / toatlDirtOnTeeth));
+            if ((remaindingDirt / toatlDirtOnTeeth) < percentage-0.01)
             {
-                //Destroy(gameObject);
+                Destroy(gameObject);
                 GetComponent<Renderer>().material = TooThDone;
                 clean = true;
             }
 
             _templateDirtMask.Apply();
-        }
     }
 
-    enum toolsToClean
+    public enum toolsToClean
     {
         Gracey1_2,
         Gracey5_6, 
