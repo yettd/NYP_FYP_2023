@@ -13,14 +13,18 @@ public class Tolls : MonoBehaviour
 
     protected virtual void Start()
     {
-        cam = GameObject.Find("Camera").GetComponent<Camera>();
+       
+    }
+    private void Update()
+    {
+
     }
     // Start is called before the first frame update
     private void OnMouseDrag()
     {
-        Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition);
         transform.parent.transform.position = new Vector3(pos.x, pos.y, transform.position.z);
-        Ray ray = cam.ScreenPointToRay(cam.WorldToScreenPoint(pos));
+        Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
         if (letgoToUse == false)
         {
             raycastToSelcetTooth();
@@ -37,9 +41,8 @@ public class Tolls : MonoBehaviour
 
     private void raycastToSelcetTooth()
     {
-        if (Physics.Raycast(usePoint.position, cam.transform.forward, out RaycastHit hit))
+        if (Physics.Raycast(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward, out RaycastHit hit))
         {
-            Debug.DrawRay(usePoint.position, hitpos - usePoint.transform.position);
             TeethDirtClean TDC;
             hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
             if (TDC)

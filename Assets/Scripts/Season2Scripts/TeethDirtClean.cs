@@ -28,7 +28,6 @@ public class TeethDirtClean : MonoBehaviour
         }
         remaindingDirt = toatlDirtOnTeeth;
         _material = GetComponent<Renderer>().material;
-        asd = GameObject.Find("asd").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -79,13 +78,14 @@ public class TeethDirtClean : MonoBehaviour
 
     public void Clean(RaycastHit hit, Texture2D _brush)
     {
-    
+
+        if (minigameTaskListController.Instance.GetSelectedtool()==ttc.ToString())
+        {
 
             Vector2 textureCoord = hit.textureCoord;
 
             int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
             int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
-            asd.text = $"{textureCoord.x}";
             for (int x = 0; x < _brush.width; x++)
             {
                 for (int y = 0; y < _brush.height; y++)
@@ -105,15 +105,33 @@ public class TeethDirtClean : MonoBehaviour
                     remaindingDirt += _templateDirtMask.GetPixel(i, j).g;
                 }
             }
-        Debug.Log("Percentage that look clean = "+ (remaindingDirt / toatlDirtOnTeeth));
-            if ((remaindingDirt / toatlDirtOnTeeth) < percentage-0.01)
+            Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
+            if ((remaindingDirt / toatlDirtOnTeeth) < (percentage + 0.005))
             {
-                Destroy(gameObject);
                 GetComponent<Renderer>().material = TooThDone;
-                clean = true;
+                if (!clean)
+                {
+                    clean = true;
+                    minigameTaskListController.Instance.CheckGameComplete();
+                    Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
+                }
             }
 
             _templateDirtMask.Apply();
+        }
+    }
+
+    public void Cheat()
+    {
+        GetComponent<Renderer>().material = TooThDone;
+        _templateDirtMask.Apply();
+        Invoke("CheatClear", 4);
+    }
+
+    public void CheatClear()
+    {
+
+        minigameTaskListController.Instance.CheckGameComplete();
     }
 
     public enum toolsToClean

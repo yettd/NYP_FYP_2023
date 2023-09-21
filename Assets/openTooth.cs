@@ -6,20 +6,29 @@ using TMPro;
 public class openTooth : MonoBehaviour
 {
     public bool topBottom=false;
+    [SerializeField]bool Problem;
     TextMeshProUGUI asd;
 // Start is called before the first frame update
     private void OnMouseDown()
     {
+        if(minigameTaskListController.Instance.IsPause)
+        {
+            return;
+        }
+
         if(minigameTaskListController.Instance.currentStep==Steps.LOCATINGS || minigameTaskListController.Instance.currentStep == Steps.LOCATINGF|| minigameTaskListController.Instance.currentStep == Steps.LOCATINGE)
         { 
             minigameTaskListController.Instance.setGame(topBottom);
-            asd.text = $"clicked on {gameObject.name}";
+         //   minigameTaskListController.Instance.SetTeetch(gameObject);
         }
 
     }
     private void Start()
     {
-        asd = GameObject.Find("asd").GetComponent<TextMeshProUGUI>();
+        if(Problem)
+        {
+            minigameTaskListController.Instance.IncreaseTeethWithProblem();
+        }
     }
 
 }

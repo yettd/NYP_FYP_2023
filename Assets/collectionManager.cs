@@ -25,8 +25,8 @@ public class collectionManager : MonoBehaviour
     void Start()
     {
         FilterButton = FindObjectsOfType<filterButtonID>();
-        procedure.SetActive(true);
-        hygineAndTherapy.SetActive(false);
+        procedure.SetActive(false);
+        hygineAndTherapy.SetActive(true);
     }
 
     public Color GetSelected()

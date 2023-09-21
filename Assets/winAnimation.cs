@@ -1,17 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class CM : MonoBehaviour
+using DG.Tweening;
+public class winAnimation : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public GameObject hygineAndTherapy;
-    public GameObject procedure;
     void Start()
     {
-        procedure.SetActive(false);
-        hygineAndTherapy.SetActive(true);
+        transform.DOScale(new Vector3(.6f, .6f, .6f),1);
     }
 
     // Update is called once per frame

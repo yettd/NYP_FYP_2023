@@ -14,7 +14,6 @@ public class collectionSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collectionManager.CM.toolOrProcedure = true;
         ButtonReferenceManager.Instance.storeCollectionID = CollectionEnum.S;
         ChangeItems();
         collectionManager.CM.SetQuizButton();
@@ -34,7 +33,7 @@ public class collectionSpawn : MonoBehaviour
         Clear();
         int i = 0;
 
-        Debug.Log(ButtonReferenceManager.Instance.ARTorP);
+      
         if (ButtonReferenceManager.Instance.ARTorP)
         {
             if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
@@ -74,6 +73,7 @@ public class collectionSpawn : MonoBehaviour
         }
         else
         {
+            Debug.Log(ButtonReferenceManager.Instance.storedDTHButtonID);
             if (ButtonReferenceManager.Instance.storedDTHButtonID == DTHEnum.DH)
             {
 

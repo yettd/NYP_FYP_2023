@@ -20,7 +20,7 @@ public class ShowMouth : MonoBehaviour
     [SerializeField] RectTransform canvas;
     private void OnEnable()
     {
-        if(minigameTaskListController.Instance.GetGumd())
+        if (minigameTaskListController.Instance.GetGumd())
         {
             model = gums[0];
         }
@@ -29,6 +29,7 @@ public class ShowMouth : MonoBehaviour
 
             model = gums[1];
         }
+       // model = minigameTaskListController.Instance.getTeetch();
         Debug.Log("asdasd");
         ogPos = model.transform.position;
         ogrotation = model.transform.rotation;
