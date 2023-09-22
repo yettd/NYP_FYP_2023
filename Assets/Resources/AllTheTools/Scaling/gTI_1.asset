@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: 'Anterior
 
     Sickle Scaler'
-  Icon: {fileID: 21300000, guid: ccdc07fcb5744bc4cb7c8fc4cd107c69, type: 3}
+  Icon: {fileID: 21300000, guid: 9e029f47b30ef304e9b4d41c4c16e773, type: 3}
   Usage: '<b>Usage</b>
 
     Supragingival. For anterior <br>'
@@ -38,6 +38,6 @@ MonoBehaviour:
     area \r\n11. Use the appropriate sequence in the sextant"
   dentalItem: {fileID: 6798865694113663390, guid: 30e9907145a72cd4e8b9939618809cb7, type: 3}
   videoClip: {fileID: 32900000, guid: f55a26b6eeae09648b2e0bab492fa1ad, type: 3}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: 77c702c9852a9a34cb00d37c465673bc, type: 3}
   rusty: 0
   DTDH: 0

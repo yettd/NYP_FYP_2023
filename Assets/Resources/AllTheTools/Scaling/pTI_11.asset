@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: 'Gracey
 
     13/14'
-  Icon: {fileID: 21300000, guid: bbab4950f53dbed489ab74ebfe35269d, type: 3}
+  Icon: {fileID: 21300000, guid: 81aa162f6789a43499a7254528ad73d2, type: 3}
   Usage: '<b>Usage</b>
 
     Posterior teeth: Distal surfaces<br>'
@@ -29,6 +29,6 @@ MonoBehaviour:
     Functional shank \u201Cgoes up and over the \r\ntooth\u201D."
   dentalItem: {fileID: 5697753356249980126, guid: 38e7b71e3aee0f74b9ad61c3ac148a00, type: 3}
   videoClip: {fileID: 0}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: 5b0db440f5c819a409773e84cdc2e42b, type: 3}
   rusty: 0
   DTDH: 0

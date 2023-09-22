@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: 'Gracey
 
     1/2'
-  Icon: {fileID: 21300000, guid: 7f846f8c7073b0f4fa18be8f74ad9345, type: 3}
+  Icon: {fileID: 21300000, guid: 3dddc4fb1d5c6ec4e9e7ea81fe9636b0, type: 3}
   Usage: '<b>Usage</b>
 
     Anterior teeth: all tooth surfaces
@@ -51,6 +51,6 @@ MonoBehaviour:
     utilizing wrist activation"
   dentalItem: {fileID: 919132149155446097, guid: db5e7e7072ba26a4eb2cb5bf91c4ed18, type: 3}
   videoClip: {fileID: 0}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: f3904f9cdd5e9c24c863e7b145421848, type: 3}
   rusty: 0
   DTDH: 0

@@ -23,8 +23,8 @@ public class GoToQuiz : MonoBehaviour
 
     public void changeText(string text)
     {
-        typeQuiz = text;
-        t.text = $"Take {text} Quiz";
+        //typeQuiz = text;
+        //t.text = $"Take {text} Quiz";
     }
     public void Show(bool show)
     {

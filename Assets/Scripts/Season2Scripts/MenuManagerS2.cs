@@ -13,6 +13,12 @@ public class MenuManagerS2 : MonoBehaviour
     [SerializeField] private Button PlayGameBtn;
     [SerializeField] private Button CollectionsBtn;
 
+    [Header("Collections")]
+    [SerializeField] private GameObject CollectionsPanel;
+    [SerializeField] private Button SettingsBtn2;
+    [SerializeField] private Button PlayGameBtn2;
+    [SerializeField] private Button CollectionsBtn2;
+
     [Header("Settings")]
     [SerializeField] private GameObject SettingsPanel;
     [SerializeField] private Slider AudioSettingSlider;
@@ -29,7 +35,7 @@ public class MenuManagerS2 : MonoBehaviour
     bool Settingsactive;
     bool PlayGameactive;
     bool MainMenuactive;
-
+    bool CollectionsActive;
     private void Awake()
     {
         if (MainMenuactive == false)
@@ -76,6 +82,16 @@ public class MenuManagerS2 : MonoBehaviour
             MainMenuPanel.transform.gameObject.SetActive(false);
             MainMenuactive = false;
         }
+        if (CollectionsActive == true)
+        {
+            CollectionsPanel.transform.gameObject.SetActive(false);
+            CollectionsActive = false;
+        }
+        if (PlayGameactive == true)
+        {
+            PlayGamePanel.transform.gameObject.SetActive(false);
+            PlayGameactive = false;
+        }
     }
 
     public void openPlayGamePanel()
@@ -95,6 +111,16 @@ public class MenuManagerS2 : MonoBehaviour
         {
             MainMenuPanel.transform.gameObject.SetActive(false);
             MainMenuactive = false;
+        }
+        if (Settingsactive == true)
+        {
+            SettingsPanel.transform.gameObject.SetActive(false);
+            Settingsactive = false;
+        }
+        if (CollectionsActive == true)
+        {
+            CollectionsPanel.transform.gameObject.SetActive(false);
+            CollectionsActive = false;
         }
     }
 
@@ -120,6 +146,41 @@ public class MenuManagerS2 : MonoBehaviour
         {
             SettingsPanel.transform.gameObject.SetActive(false);
             Settingsactive =  false;
+        }
+        if (CollectionsActive == true)
+        {
+            CollectionsPanel.transform.gameObject.SetActive(false);
+            CollectionsActive = false;
+        }
+    }
+
+    public void openCollectionsPanel()
+    {
+        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        if (CollectionsActive == false)
+        {
+            CollectionsPanel.transform.gameObject.SetActive(true);
+            CollectionsActive = true;
+        }
+        else
+        {
+            CollectionsPanel.transform.gameObject.SetActive(false);
+            CollectionsActive = false;
+        }
+        if (PlayGameactive == true)
+        {
+            PlayGamePanel.transform.gameObject.SetActive(false);
+            PlayGameactive = false;
+        }
+        if (Settingsactive == true)
+        {
+            SettingsPanel.transform.gameObject.SetActive(false);
+            Settingsactive = false;
+        }
+        if (MainMenuactive == true)
+        {
+            MainMenuPanel.transform.gameObject.SetActive(false);
+            MainMenuactive = false;
         }
     }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: '4R4L
 
     Universal Curette'
-  Icon: {fileID: 21300000, guid: d7a7ed740af626a4a8f05e7ec011167f, type: 3}
+  Icon: {fileID: 21300000, guid: df32db3288c4ace4483a7b6f85e2217e, type: 3}
   Usage: '<b>Usage</b>
 
     - Subgingival
@@ -39,6 +39,6 @@ MonoBehaviour:
     proper angulation."
   dentalItem: {fileID: 7195490078862822958, guid: 0840505e7cc1ab44f97c4c8533a06ac8, type: 3}
   videoClip: {fileID: 32900000, guid: 2bc827940ca4d784abcd09a6403ad102, type: 3}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: 2de335010864e85488dd4820cf4a2205, type: 3}
   rusty: 0
   DTDH: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: 'Gracey
 
     17/18'
-  Icon: {fileID: 21300000, guid: 04192534e2f995c4b80eb1fa4604537b, type: 3}
+  Icon: {fileID: 21300000, guid: e333f83ba60be3d489378cd41985ae60, type: 3}
   Usage: '<b>Usage</b>
 
     Posterior teeth: Distal surfaces of the molar only (good
@@ -32,6 +32,6 @@ MonoBehaviour:
     between 70-80\xB0 "
   dentalItem: {fileID: 5775655181856688166, guid: 9ed9d115453ab7f40b1df894953d61a4, type: 3}
   videoClip: {fileID: 0}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: 5def8bc73ad267f4eb64a9bbc2d99731, type: 3}
   rusty: 0
   DTDH: 0

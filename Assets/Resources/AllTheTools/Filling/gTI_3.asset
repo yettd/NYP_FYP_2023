@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: 'Ball
 
     Burnisher'
-  Icon: {fileID: 21300000, guid: ac6f4df9f7ff4e444bb82a6635cb95dc, type: 3}
+  Icon: {fileID: 21300000, guid: 2e1256f1c79c16a44b5f1bb1137990ab, type: 3}
   Usage: '<b>Usage</b>
 
     To pack restorative material into cavity and contour,
@@ -26,6 +26,6 @@ MonoBehaviour:
   Instrumentation: 
   dentalItem: {fileID: 919132149155446097, guid: 6c91c9eeaecdedc4195ea9cc3bc6787c, type: 3}
   videoClip: {fileID: 0}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: 1579cc0788ff0094bb066f9a378f6f6b, type: 3}
   rusty: 0
   DTDH: 1

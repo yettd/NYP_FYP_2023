@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: 'Plastic
 
     Instrument'
-  Icon: {fileID: 21300000, guid: 9039ed7fb569bac489e8bb3bfe9fd78a, type: 3}
+  Icon: {fileID: 21300000, guid: c0ef4289bc974504882b9fe7b0393c4c, type: 3}
   Usage: '<b>Usage</b>
 
     Placement instruments, are designed for placing and contouring
@@ -24,6 +24,6 @@ MonoBehaviour:
   Instrumentation: 
   dentalItem: {fileID: 9095184983396422754, guid: 1dc6ea2e026bd6c4da3af72caacc11c8, type: 3}
   videoClip: {fileID: 0}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: 954a0633d796de2459c57d0ff3ad1674, type: 3}
   rusty: 0
   DTDH: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: '5/6
 
     Barnhart Curette'
-  Icon: {fileID: 21300000, guid: 6513a0825a1da23499b6d102554db560, type: 3}
+  Icon: {fileID: 21300000, guid: fd91701c9558b3940ada27365157b5f5, type: 3}
   Usage: '<b>Usage</b>
 
     Anterior teeth: all tooth surfaces
@@ -48,6 +48,6 @@ MonoBehaviour:
     coronal\r\ndirection\r\n9. Maintain neutral wrist position while utilizing wrist\r\nactivation"
   dentalItem: {fileID: 7149809392938878830, guid: 6ae3cb14c4e748849ad7604231ab7da4, type: 3}
   videoClip: {fileID: 0}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: ea1b351d12904e748b9c6c24794ee1b2, type: 3}
   rusty: 0
   DTDH: 1

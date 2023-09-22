@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: hTI_2
   m_EditorClassIdentifier: 
   Name: "Posterior \nSickle Scaler"
-  Icon: {fileID: 21300000, guid: cb375a94fcc4cfe458d8035e5b0bb6e0, type: 3}
+  Icon: {fileID: 21300000, guid: 68e7e0d8bd3d7f04ea6d03624910918a, type: 3}
   Usage: '<b>Usage</b>
 
     - Supragingival
@@ -36,6 +36,6 @@ MonoBehaviour:
     overlapping strokes at line angles and\r\nunder contact area\r"
   dentalItem: {fileID: 5633761613996137271, guid: 318a77ff74688e248b81d5b8e5691f19, type: 3}
   videoClip: {fileID: 0}
-  RustyIcon: {fileID: 0}
+  RustyIcon: {fileID: 21300000, guid: e5f4d8fd49338a24ebf0aec75cdf47c8, type: 3}
   rusty: 0
   DTDH: 0
