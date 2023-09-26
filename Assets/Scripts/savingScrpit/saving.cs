@@ -42,7 +42,7 @@ public class Saving : MonoBehaviour
             System.IO.File.Create(Application.persistentDataPath + "/current.txt");
         }
 
-
+        DontDestroyOnLoad(gameObject);
     }
 
     

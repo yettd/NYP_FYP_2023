@@ -36,6 +36,8 @@ public class minigameTaskListController : MonoBehaviour
     //sideStuff
     public GameObject goodJob;
 
+    GameCompletion GC;
+    Saving s;
     private string toolSelectedName="";
     private void Awake()
     {
@@ -51,9 +53,35 @@ public class minigameTaskListController : MonoBehaviour
 
         //load steps
         SetUpTaskList();
+        string a = Saving.save.LoadFromJson("game");
+        if (a!=null)
+        {
+            GC = JsonUtility.FromJson<GameCompletion>(Saving.save.LoadFromJson("game"));
+        }
+        else
+        {
+            GC = new GameCompletion();
+           
+        }
         
     }
 
+    private void saveGameComplation(Procedure pro)
+    {
+        switch(pro)
+        {
+            case Procedure.Scaling:
+                GC.setGC(0);
+                break;
+            case Procedure.Filling:
+                GC.setGC(1);
+                break;
+            case Procedure.Extration:
+                GC.setGC(2);
+                break;
+        }
+        Saving.save.saveToJson(GC, "game");
+    }
 
     public bool gonext()
     {
@@ -176,6 +204,7 @@ public class minigameTaskListController : MonoBehaviour
     public void OnGameComplete()
     {
         //playAnimation for completion;
+        saveGameComplation(procedure);
         WIN.Invoke();
     }
 

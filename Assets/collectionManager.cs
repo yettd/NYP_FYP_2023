@@ -27,6 +27,7 @@ public class collectionManager : MonoBehaviour
         FilterButton = FindObjectsOfType<filterButtonID>();
         procedure.SetActive(false);
         hygineAndTherapy.SetActive(true);
+        ButtonReferenceManager.Instance.LoadToolsDatabases();
     }
 
     public Color GetSelected()
@@ -36,7 +37,7 @@ public class collectionManager : MonoBehaviour
 
     private void Awake()
     {
-        if(CM==null)
+        if (CM == null)
         {
             CM = this;
         }
@@ -47,6 +48,8 @@ public class collectionManager : MonoBehaviour
 
         //DontDestroyOnLoad(this.gameObject);
     }
+
+    
 
     public void Display(int d)
     {

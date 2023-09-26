@@ -10,7 +10,6 @@ public class DentistTool : ScriptableObject
     [TextArea]
     public string Name;
     public Sprite Icon;
-
     [TextArea]
     public string Usage;
     [TextArea]

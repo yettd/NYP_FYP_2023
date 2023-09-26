@@ -65,14 +65,34 @@ public class ButtonReferenceManager : MonoBehaviour
         storedDTHButtonID = DTHEnum.DH;
     }
 
-    void LoadToolsDatabases()
+    public void LoadToolsDatabases()
     {
-       
-        S = Resources.LoadAll<DentistTool>("AllTheTools/Scaling");
-        F = Resources.LoadAll<DentistTool>("AllTheTools/Filling");
-        E = Resources.LoadAll<DentistTool>("AllTheTools/Extraction");
-        GetDh();
-        GetDt();
+        string a = Saving.save.LoadFromJson("game");
+
+        if(a!=null)
+        {
+            GameCompletion GC = JsonUtility.FromJson<GameCompletion>(a);
+
+            if(GC.GetGC(0))
+            {
+                S = Resources.LoadAll<DentistTool>("AllTheTools/Scaling");
+
+            }
+            else if (GC.GetGC(1))
+            {
+                F = Resources.LoadAll<DentistTool>("AllTheTools/Filling");
+
+            }
+            else if (GC.GetGC(2))
+            {
+                E = Resources.LoadAll<DentistTool>("AllTheTools/Extraction");
+
+            }
+            GetDh();
+            GetDt();
+        }
+        
+
 
     }
 

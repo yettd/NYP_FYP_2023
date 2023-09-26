@@ -10,10 +10,10 @@ public class Tolls : MonoBehaviour
 
     GameObject toohtSelected;
     Vector3 hitpos;
-
+    float zPos;
     protected virtual void Start()
     {
-       
+        zPos = transform.position.z;
     }
     private void Update()
     {
@@ -23,7 +23,7 @@ public class Tolls : MonoBehaviour
     private void OnMouseDrag()
     {
         Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition);
-        transform.parent.transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+        transform.parent.transform.position = new Vector3(pos.x, pos.y, zPos);
         Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
         if (letgoToUse == false)
         {
@@ -50,19 +50,7 @@ public class Tolls : MonoBehaviour
 
                 usetool(TDC, hit);
             }
-            //if (toohtSelected !=hit.collider.gameObject)
-            //{
-            //    Debug.Log("asdasdasd");
-            //    hitpos = hit.point;
-            //    toohtSelected = hit.collider.gameObject;
-            //}
-            //if(toohtSelected)
-            //{
-            //    if (Physics.Raycast(usePoint.position, hitpos - usePoint.transform.position , out RaycastHit hitTooth))
-            //    {
-              
-            //    }
-            //}
+        
         }
     }
 
