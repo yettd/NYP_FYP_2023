@@ -5,7 +5,7 @@ using UnityEngine;
 public class rotateJaws : MonoBehaviour
 {
 
-    float smooth=1f;
+    float smooth=0.1f;
     public Camera cam;
     float x;
     float newx;
@@ -31,7 +31,7 @@ public class rotateJaws : MonoBehaviour
         diffx = newx - x;
         x = newx;
         totalDegree += diffx * smooth;
-        totalDegree = Mathf.Clamp(totalDegree, -180, 180);
+        totalDegree = Mathf.Clamp(totalDegree, -90, 90);
         gameObject.transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree, transform.eulerAngles.z);
 
     }

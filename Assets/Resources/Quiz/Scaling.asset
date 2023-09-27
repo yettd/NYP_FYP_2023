@@ -13,115 +13,155 @@ MonoBehaviour:
   m_Name: Scaling
   m_EditorClassIdentifier: 
   QnA:
-  - question: 1+1
+  - question: Select an appropriate instrument which is used for supragingival debridement
+      of anterior teeth
     answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 2
-  - question: 2+2
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 2+1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
+    - Posterior sickle
+    - 5/6 Barnhart
+    - 'Anterior sickle '
+    - Gracey 1/2
     correctAnswer: 3
-  - question: 1+2
+  - question: Select an appropriate instrument which is used for supragingival debridement
+      of posterior teeth
     answers:
-    - 1
-    - 2
-    - 3
-    - 4
+    - Anterior sickle
+    - 4R4L Universal curette
+    - 'Posterior sickle '
+    - Gracey 11/12
     correctAnswer: 3
-  - question: 10+10
+  - question: Which instrument is used for debridement of mesial surface of posterior
+      teeth
     answers:
-    - 1
-    - 5
-    - 20
-    - 40
-    correctAnswer: 3
-  - question: 5+5
-    answers:
-    - 1
-    - 15
-    - 10
-    - 5
-    correctAnswer: 3
-  - question: 1+3
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 0+4
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 5-1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 6-2
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 10-6
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 1+2+3+4
-    answers:
-    - 1
-    - 10
-    - 3
-    - 4
-    correctAnswer: 2
-  - question: 10+1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 11
-    correctAnswer: 4
-  - question: 1-1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 0
-    correctAnswer: 4
-  - question: 5+4
-    answers:
-    - 9
-    - 2
-    - 3
-    - 4
+    - Gracey 11/12
+    - Gracey 9/10
+    - Gracey 13/14
+    - Gracey 17/18
     correctAnswer: 1
-  - question: 7+3
+  - question: Which instrument is used for debridement of distal surface of posterior
+      teeth
     answers:
-    - 1
-    - 2
-    - 10
-    - 4
+    - Gracey 15/16
+    - Gracey 3/4
+    - Gracey 11/12
+    - Gracey 13/14
+    correctAnswer: 4
+  - question: Which instrument is used for debridment of buccal surface of posterior
+      teeth
+    answers:
+    - Gracey 1/2
+    - Gracey 7/8
+    - Gracey 11/12
+    - Gracey 13/14
+    correctAnswer: 2
+  - question: Which instrument is used for debridment of lingual surface of posterior
+      teeth
+    answers:
+    - 'Gracey7/8 '
+    - Gracey 1/2
+    - Gracey 11/12
+    - Gracey 13/14
+    correctAnswer: 1
+  - question: Which instrument cannot be used for subgingival debridement of posterior
+      teeth
+    answers:
+    - Posterior sickle scaler
+    - 4R4L Universal curette
+    - 5/6 Barnhart
+    - Gracey 7/8
+    correctAnswer: 4
+  - question: Which instrument cannot be used for subgingival debridement of anterior
+      teeth
+    answers:
+    - 5/6 Barnhart
+    - 2R2L Universal curette
+    - Anterior sickle scaler
+    - Gracey 1/2
     correctAnswer: 3
+  - question: Which instrument is used to remove light-moderate subgingival calculus
+      deposits
+    answers:
+    - 4R4L Universal Currette only
+    - Graceys only
+    - Posterior sickle scaler and Gracey
+    - 4R4L Universal currette and Graceys
+    correctAnswer: 4
+  - question: Which instrument is used to remove supragingival calculus deposits
+    answers:
+    - Gracey 15/16
+    - Anterior and Posterior sickle scaler
+    - Posterior sickle scaler only
+    - '4R4L Universal Currette '
+    correctAnswer: 2
+  - question: What is the best angulation for instrumentation?
+    answers:
+    - 50-60
+    - 70-80
+    - 30-40
+    - 80-90
+    correctAnswer: 2
+  - question: What type of strokes should you apply when using a curette?
+    answers:
+    - walking
+    - oblique
+    - vertical
+    - lateral
+    correctAnswer: 2
+  - question: What kind of pressure is used for calculus detection?
+    answers:
+    - light pressure
+    - heavy pressure
+    - moderate pressure
+    - no pressure
+    correctAnswer: 1
+  - question: What kind of pressure is used for debridement?
+    answers:
+    - heavy pressure
+    - lateral pressure
+    - moderate pressure
+    - light pressure
+    correctAnswer: 2
+  - question: Which finger is used for finger rest?
+    answers:
+    - Thumb
+    - 4th finger
+    - 2nd finger
+    - '3rd finger '
+    correctAnswer: 2
+  - question: What is the function of the 5th finger during debridement?
+    answers:
+    - Roll the instrument
+    - 'No function '
+    - 'Hold the instrument '
+    - Tactile detection
+    correctAnswer: 2
+  - question: Which instrument is used to measure furcation?
+    answers:
+    - Nabers Probe
+    - Periodontal Probe
+    - PSR Probe
+    - '11/12 Explorer '
+    correctAnswer: 1
+  - question: 'What is the function of the 3rd finger during calculus detection? '
+    answers:
+    - Roll the instrument
+    - 'No function '
+    - 'Hold the instrument '
+    - Tactile detection
+    correctAnswer: 4
+  - question: What are the benefits of sharp instruments?
+    answers:
+    - Less chance of burnishing small pieces of calculus
+    - few strokes necessary;reduced operating time
+    - Less pressure is required to remove calculus
+    - All of the above
+    correctAnswer: 4
+  - question: Repeated sharpening and improper sharpening techniques will result
+      in the dimensions of your curettes and scalers being very thin. Ensuring the
+      need for sharpening as well as proper technique will extend the life of your
+      instruments.
+    answers:
+    - Both statement are false
+    - The first statement is false, the second statement is true
+    - The first statement is true, the second statement is false
+    - Both statements are true
+    correctAnswer: 4

@@ -18,7 +18,7 @@ public class QuizManagerS2 : MonoBehaviour
     private float timeRemaining;
 
     public int score = 0;
-    private int totalQuestionsAsked = 0;
+    private float totalQuestionsAsked = 0;
     public TMP_Text FinalScoreText;
     public GameObject MainPanel;
     public GameObject ResultsPanel;
@@ -40,6 +40,7 @@ public class QuizManagerS2 : MonoBehaviour
             QnA = Resources.Load<quiz>("Quiz/Scaling").QnA;
 
             savedHighScore = PlayerPrefs.GetInt("SHighScore", 0);
+
             title.text = "Scaling Quiz";
         }
         else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
@@ -86,6 +87,7 @@ public class QuizManagerS2 : MonoBehaviour
         MainPanel.SetActive(false);
         QuizPanel.SetActive(true);
         score = 0;
+
         totalQuestionsAsked = 0;
         GenerateQuestion();
 
@@ -187,7 +189,8 @@ public class QuizManagerS2 : MonoBehaviour
         FinalScoreText.text = "Final Score: " + score + "/10";
         QuizPanel.SetActive(false);
         ResultsPanel.SetActive(true);
-        if(score >= 70/100 * totalQuestionsAsked )
+
+        if (score >= totalQuestionsAsked / 100 * 70)
         {
             polishExtractionTools = true;
             cleanPolish();

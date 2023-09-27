@@ -10,7 +10,7 @@ public class collectionSpawn : MonoBehaviour
 
     GameObject currentShelf;
 
-
+    [SerializeField] GameObject haveOrNo;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +21,15 @@ public class collectionSpawn : MonoBehaviour
     
     void Clear()
     {
+        int a = 0;
+
         foreach (Transform child in GetComponent<ScrollRect>().content)
         {
-            GameObject.Destroy(child.gameObject);
+            if(a!=0)
+            {
+                 GameObject.Destroy(child.gameObject);
+            }
+            a++;
         }
         currentShelf = null;
     }
@@ -43,8 +49,8 @@ public class collectionSpawn : MonoBehaviour
                     //Assign the index and the Scriptable Object into the prefab
                     spawnObject(i, dentistTools);
                     i++;
-
                 }
+               
             }
             else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
             {
@@ -98,7 +104,14 @@ public class collectionSpawn : MonoBehaviour
                 }
             }
         }
-
+        if (i == 0)
+        {
+            haveOrNo.SetActive(true);
+        }
+        else
+        {
+            haveOrNo.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -109,7 +122,7 @@ public class collectionSpawn : MonoBehaviour
 
     void SpawnSelf()
     {
-        if (currentShelf == null || currentShelf.transform.GetChild(0).childCount >= 4)
+        if (currentShelf == null || currentShelf.transform.GetChild(0).childCount >= 5)
         {
             currentShelf = Instantiate(shelf, GetComponent<ScrollRect>().content);
         }

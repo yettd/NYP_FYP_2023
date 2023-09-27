@@ -13,115 +13,161 @@ MonoBehaviour:
   m_Name: Filling
   m_EditorClassIdentifier: 
   QnA:
-  - question: 1+1
+  - question: 'Which instrument is used for packing composite during a restoration? '
     answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 2
-  - question: 2+2
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 2+1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 3
-  - question: 1+2
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 3
-  - question: 10+10
-    answers:
-    - 1
-    - 5
-    - 20
-    - 40
-    correctAnswer: 3
-  - question: 5+5
-    answers:
-    - 1
-    - 15
-    - 10
-    - 5
-    correctAnswer: 3
-  - question: 1+3
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 0+4
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 5-1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 6-2
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 10-6
-    answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 4
-  - question: 1+2+3+4
-    answers:
-    - 1
-    - 10
-    - 3
-    - 4
-    correctAnswer: 2
-  - question: 10+1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 11
-    correctAnswer: 4
-  - question: 1-1
-    answers:
-    - 1
-    - 2
-    - 3
-    - 0
-    correctAnswer: 4
-  - question: 5+4
-    answers:
-    - 9
-    - 2
-    - 3
-    - 4
+    - Plastic Instrument
+    - Carver
+    - Spoon Excavator
+    - straight probe
     correctAnswer: 1
-  - question: 7+3
+  - question: Which instrument is used to mix GIC on a paper pad?
     answers:
-    - 1
-    - 2
-    - 10
-    - 4
+    - Plastic Spatula
+    - Metal Spatula
+    - Ball Burnisher
+    - 'Dycal Applicator '
+    correctAnswer: 1
+  - question: Which instrument is used to mix GIC on a glass slab?
+    answers:
+    - 'Dycal Applicator '
+    - Ball Burnisher
+    - Plastic Spatula
+    - Metal Spatula
+    correctAnswer: 4
+  - question: What is the best method to use for moisture control?
+    answers:
+    - Cotton Roll Isolation
+    - Rubber Dam Isolation
+    - Matrix Retainer
+    - Retraction with Mouth Mirror
+    correctAnswer: 2
+  - question: Which type of GIC can be used as a fissure sealant on a partially erupted
+      tooth?
+    answers:
+    - Fuji III
+    - Fuji IX
+    - Fuji II
+    - Fuji VI
+    correctAnswer: 4
+  - question: What is the most suitable instrument to mix Vitrebond?
+    answers:
+    - metal spatula
+    - Plastic spatula
+    - straight probe
+    - microbrush
+    correctAnswer: 2
+  - question: What is the most suitable instrument to mix Vitrebond?
+    answers:
+    - microbrush
+    - straight probe
+    - metal spatula
+    - Plastic spatula
+    correctAnswer: 4
+  - question: How long should you wash the tooth after acid etching?
+    answers:
+    - 15 seconds
+    - 10 seconds
+    - 20 seconds
+    - 30 seconds
     correctAnswer: 3
+  - question: How long should you acid etch a prepared tooth?
+    answers:
+    - 10 seconds
+    - 20 seconds
+    - 15 seconds
+    - 30 seconds
+    correctAnswer: 2
+  - question: Why is it not advisable to overetch?
+    answers:
+    - Overetching ensures that you have etched the tooth sufficiently and will improve
+      the bond between resin and the tooth
+    - Overetching creates more microtags for better retention of material to tooth
+    - Overetching creates a stronger bond between resin and the tooth, so you should
+      etch longer
+    - Overetching causes more demineralization that does not allow the resin to flow
+      to the overetched depth, resulting in a weaker bond
+    correctAnswer: 4
+  - question: What are the correct steps to restore a tooth with a composite filling?
+    answers:
+    - Acid Etch - Cavity Prep - Bonding Agent - Apply Primer -  Placement of composite
+    - Cavity Prep - Acid Etch - Apply Primer - Bonding Agent - Placement of GIC
+    - Cavity Prep - Apply Primer - Bonding Agent - Acid Etch - Placement of composite
+    - Cavity Prep - Acid Etch - Apply Primer - Apply Bonding Agent - Placement of
+      composite
+    correctAnswer: 4
+  - question: What are the correct steps to restore a tooth with a GIC filling?
+    answers:
+    - Cavity Prep - Apply Conditioner - Placement of GIC - Polish
+    - Cavity Prep - Apply conditioner - Apply Primer - Apply Bonding Agent - Placement
+      of GIC - Polish
+    - Cavity Prep - Acid Etch - Placement of GIC - Polish
+    - Apply conditioner - Cavity Prep - Placement of GIC - Polish
+    correctAnswer: 1
+  - question: Why do we etch the tooth?
+    answers:
+    - It promotes the bonding between enamel and resin composite restorative material.
+    - " V2: SHSS x SDM IEPP 2023 FINAL SEM V2: SHSS x SDM IEPP 2023 FINAL SEM 100%
+      10 G60  By decreasing the tooth's surface area and making it smoother, etching
+      gel improves the bonding agent's ability to adhere to the tooth.      \t By
+      decreasing the tooth's surface area and making it smoother, etching gel improves
+      the bonding agent's ability to adhere to the tooth. Turn on screen reader support  
+      To enable screen reader support, press Ctrl+Alt+Z To learn about keyboard shortcuts,
+      press Ctrl+slashAnonymous Manatee has left the document."
+    - By increasing the tooth's surface area and making it rougher, etching gel improves
+      the bonding agent's ability to adhere to the tooth.
+    - It helps to remove the dentinal smear layer.
+    correctAnswer: 3
+  - question: How many % of phospheric acid does the etchant in our clinic contain?
+    answers:
+    - 32%
+    - 31%
+    - 37%
+    - 35%
+    correctAnswer: 1
+  - question: What are some of the contraindications of Fissure sealant?
+    answers:
+    - " V2: SHSS x SDM IEPP 2023 FINAL SEM V2: SHSS x SDM IEPP 2023 FINAL SEM 100%
+      10 G62  Avoid using fissure sealant in patients seen with asthma      \t Avoid
+      using fissure sealant in patients seen with asthma Turn on screen reader support  
+      To enable screen reader support, press Ctrl+Alt+Z To learn about keyboard shortcuts,
+      press Ctrl+slashAnonymous Manatee has left the document."
+    - Avoid using any cleaning medium that may contain oils as it interferes with
+      the adhesion to the tooth surface
+    - Avoid using fissure sealant for patients younger than 8 years old
+    - We should place fissure sealant right after polishing.
+    correctAnswer: 2
+  - question: What are some features of Calcium Hydroxide Liner?
+    answers:
+    - Contains two-component, is rigid setting, Self curing, and acts as a protective
+      liner.
+    - Two-component, rigid setting, Self curing and can be used for indirect pulp
+      capping only
+    - Two-component, rigid setting, Self curing and can be used for direct pulp capping
+      only
+    - Contains two-component, is rigid setting, Self curing, acts as a protective
+      liner and can be used for direct and indirect pulp capping.
+    correctAnswer: 4
+  - question: What are the contraindications of Vitrebond?
+    answers:
+    - Indirect pulp capping
+    - Direct pulp capping
+    - Direct and Indirect pulp capping
+    - Composite resin
+    correctAnswer: 2
+  - question: What content can be found in Intermediate restorative material (IRM)?
+    answers:
+    - Zinc nitrate eugenol
+    - Zinc oxide eugenol (ZoE)
+    - Zinc oxide
+    - Zinc oxylate eugenol
+    correctAnswer: 2
+  - question: What is ZoE used for in dentistry?
+    answers:
+    - Used as a temporary filling material and base material under non-resin permanent
+      restorations such as amalgam.
+    - Used as a permanent filling material and base material under GIC
+    - Used as a temporary filling material and base material under non-resin permanent
+      restorations such as amalgam.
+    - Used as a permanent filling material and base material under non-resin permanent
+      restorations such as amalgam.
+    correctAnswer: 1

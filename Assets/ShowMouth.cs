@@ -30,9 +30,9 @@ public class ShowMouth : MonoBehaviour
             model = gums[1];
         }
        // model = minigameTaskListController.Instance.getTeetch();
-        Debug.Log("asdasd");
         ogPos = model.transform.position;
         ogrotation = model.transform.rotation;
+        Debug.Log(ogrotation);
         ogParent = model.transform.parent.gameObject;
         model.transform.parent = transform.GetChild(0).transform;
         foreach (Transform child in model.transform)
@@ -54,7 +54,7 @@ public class ShowMouth : MonoBehaviour
         transform.GetChild(0).transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, 0);
         model.transform.parent = ogParent.gameObject.transform;
         model.transform.position = ogPos;
-        model.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        model.transform.rotation=ogrotation;
         model.transform.localScale = new Vector3(1, 1, 1);
     }
 
