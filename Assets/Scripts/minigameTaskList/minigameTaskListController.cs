@@ -32,6 +32,9 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] float solvedTeetg;
     public bool IsPause;
     showTask st;
+    [Header("REMOVE")]
+    [SerializeField]GameObject testing;
+    [SerializeField] string Testname;
 
     //sideStuff
     public GameObject goodJob;
@@ -152,13 +155,14 @@ public class minigameTaskListController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            stopRotation();
+
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            RR();
+            currentStep = Steps.CHOOSINGS;
+            ToolsSelected(Testname, testing);
         }
     }
 
@@ -257,18 +261,20 @@ public class minigameTaskListController : MonoBehaviour
 
     public void ToolsSelected(string toolsname, GameObject model)
     {
-        if(currentStep==Steps.CHOOSINGS)
-        {
-           // testTool.gameObject.SetActive(true);
+
+        //if (currentStep == Steps.CHOOSINGS)
+        //{
+            // testTool.gameObject.SetActive(true);
+            toolSelectedName = toolsname;
             this.model = Instantiate(model) as GameObject;
-            this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position+cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward*2;
+            this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position + cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward * 2;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(10, 10, 10);
-            toolSelectedName = toolsname;
             Debug.LogError(toolsname);
             gonext();
             stopRotation();
-        }
+       // }
+
     }
 
     public string GetSelectedtool()

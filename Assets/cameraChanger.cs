@@ -42,6 +42,10 @@ public class cameraChanger : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        currentCam = allCam[0];
+    }
 
     public void closeCamera()
     {

@@ -11,9 +11,13 @@ public class Tolls : MonoBehaviour
     GameObject toohtSelected;
     Vector3 hitpos;
     float zPos;
+    float velocity;
+    Vector3 oldPos;
+    public float ThresholdForMax;
     protected virtual void Start()
     {
         zPos = transform.position.z;
+        oldPos = transform.position;
     }
     private void Update()
     {
@@ -22,6 +26,16 @@ public class Tolls : MonoBehaviour
     // Start is called before the first frame update
     private void OnMouseDrag()
     {
+        float dis = Vector3.Distance(transform.position, oldPos);
+        if (dis / Time.deltaTime != 0)
+        {
+
+            velocity = dis / Time.deltaTime;
+        }
+        Debug.Log(velocity);
+        oldPos = transform.position;
+
+
         Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition);
         transform.parent.transform.position = new Vector3(pos.x, pos.y, zPos);
         Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
@@ -29,6 +43,7 @@ public class Tolls : MonoBehaviour
         {
             raycastToSelcetTooth();
         }
+  
     }
 
     private void OnMouseUp()
@@ -44,10 +59,11 @@ public class Tolls : MonoBehaviour
         if (Physics.Raycast(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward, out RaycastHit hit))
         {
             TeethDirtClean TDC;
-            hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
-            if (TDC)
-            {
 
+            Debug.Log(hit.collider.gameObject.name);
+            hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
+            if (TDC && velocity<=ThresholdForMax)
+            {
                 usetool(TDC, hit);
             }
         

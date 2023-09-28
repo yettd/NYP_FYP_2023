@@ -30,6 +30,7 @@ public class InstructionToolGrant : MonoBehaviour
         RawImage slot = Instantiate(Resources.Load<RawImage>("InstructionManual/toolSlot"));
         slot.texture = texture;
         slot.transform.SetParent(ToolDisplayTab.transform);
+        slot.transform.localScale=new Vector3(3, 3, 3);
     }
     #endregion
 

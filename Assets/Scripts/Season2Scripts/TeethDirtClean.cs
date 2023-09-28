@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 public class TeethDirtClean : MonoBehaviour
@@ -11,7 +12,8 @@ public class TeethDirtClean : MonoBehaviour
     private Texture2D _templateDirtMask;
     float toatlDirtOnTeeth = 0;
     float remaindingDirt;
-    public toolsToClean ttc;
+    public List<toolsToClean> ttc= new List<toolsToClean>();
+    public List<BoxCollider> BCs = new List<BoxCollider>(); 
     Material TooThDone;
     public float percentage;
     bool clean;
@@ -78,10 +80,32 @@ public class TeethDirtClean : MonoBehaviour
 
     public void Clean(RaycastHit hit, Texture2D _brush)
     {
+        RaycastHit  thisSeemsDumb=hit;
 
-        if (minigameTaskListController.Instance.GetSelectedtool()==ttc.ToString())
+
+        for (int total = 0; total < BCs.Count; total++)
         {
+            if (BCs[total] == hit.collider)
+            {
+                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[total].ToString())
+                {
+                    cleanining(hit,_brush);
+                }
+                else
+                {
+                
+                    return;
+                }
+            }
+        }
 
+
+    }
+
+    void cleanining(RaycastHit hit, Texture2D _brush)
+    {
+        if (Physics.Raycast(hit.point, hit.point - cameraChanger.Instance.GetCurrentCam().transform.position, out hit))
+        {
             Vector2 textureCoord = hit.textureCoord;
 
             int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
@@ -106,15 +130,13 @@ public class TeethDirtClean : MonoBehaviour
                 }
             }
             Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
-            if ((remaindingDirt / toatlDirtOnTeeth) < (percentage + 0.005))
+            if ((remaindingDirt / toatlDirtOnTeeth) < (percentage + 0.005) && !clean)
             {
                 GetComponent<Renderer>().material = TooThDone;
-                if (!clean)
-                {
-                    clean = true;
-                    minigameTaskListController.Instance.CheckGameComplete();
-                    Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
-                }
+                clean = true;
+                minigameTaskListController.Instance.CheckGameComplete();
+                Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
+                
             }
 
             _templateDirtMask.Apply();

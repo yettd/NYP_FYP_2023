@@ -32,7 +32,9 @@ public class rotateJaws : MonoBehaviour
         x = newx;
         totalDegree += diffx * smooth;
         totalDegree = Mathf.Clamp(totalDegree, -90, 90);
-        gameObject.transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree, transform.eulerAngles.z);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree, transform.eulerAngles.z);
+        Debug.Log(totalDegree);
+
 
     }
 

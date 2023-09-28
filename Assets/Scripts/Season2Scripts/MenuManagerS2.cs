@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class MenuManagerS2 : MonoBehaviour
 {
     [Header("Main Menu")]
@@ -31,6 +28,8 @@ public class MenuManagerS2 : MonoBehaviour
 
     [Header("Universal")]
     [SerializeField] private Button BackBtn;
+    [SerializeField] private GameObject Camera;
+
 
     bool Settingsactive;
     bool PlayGameactive;
@@ -122,6 +121,9 @@ public class MenuManagerS2 : MonoBehaviour
             CollectionsPanel.transform.gameObject.SetActive(false);
             CollectionsActive = false;
         }
+
+        Camera.transform.DOMove(new Vector3(-2, 6, 96f),1);
+        Camera.transform.DORotate(new Vector3(45, -90, 0), 1);
     }
 
     public void openMainMenuPanel()
@@ -152,6 +154,11 @@ public class MenuManagerS2 : MonoBehaviour
             CollectionsPanel.transform.gameObject.SetActive(false);
             CollectionsActive = false;
         }
+
+        //original
+        Camera.transform.DOMove(new Vector3(34, 46.2f, -10), 1);
+        Camera.transform.DORotate(new Vector3(31.176f, 0, 0), 1);
+
     }
 
     public void openCollectionsPanel()
@@ -182,6 +189,10 @@ public class MenuManagerS2 : MonoBehaviour
             MainMenuPanel.transform.gameObject.SetActive(false);
             MainMenuactive = false;
         }
+
+        //cardboard
+        Camera.transform.DOMove(new Vector3(45.6f, -39, 140), 1);
+        Camera.transform.DORotate(new Vector3(0, 0, 0), 1);
     }
 
     public void GotoTutortialScene(string index)

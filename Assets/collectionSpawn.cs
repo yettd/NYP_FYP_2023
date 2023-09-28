@@ -114,15 +114,9 @@ public class collectionSpawn : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void SpawnSelf()
     {
-        if (currentShelf == null || currentShelf.transform.GetChild(0).childCount >= 5)
+        if (currentShelf == null || currentShelf.transform.GetChild(0).childCount >= 3)
         {
             currentShelf = Instantiate(shelf, GetComponent<ScrollRect>().content);
         }
