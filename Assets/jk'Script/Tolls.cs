@@ -32,12 +32,19 @@ public class Tolls : MonoBehaviour
 
             velocity = dis / Time.deltaTime;
         }
-        Debug.Log(velocity);
         oldPos = transform.position;
 
 
         Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition);
-        transform.parent.transform.position = new Vector3(pos.x, pos.y, zPos);
+        if(Mathf.Abs(transform.parent.transform.eulerAngles.x) >= 90)
+        {
+            transform.parent.transform.position = new Vector3(pos.x, oldPos.y, pos.z);
+        }
+        else
+        {
+
+        transform.parent.transform.position = new Vector3(pos.x, pos.y, oldPos.z);
+        }
         Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
         if (letgoToUse == false)
         {
@@ -60,10 +67,11 @@ public class Tolls : MonoBehaviour
         {
             TeethDirtClean TDC;
 
-            Debug.Log(hit.collider.gameObject.name);
+        
             hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
-            if (TDC && velocity<=ThresholdForMax)
+            if (TDC/* && velocity<=ThresholdForMax*/)
             {
+                Debug.Log(hit.collider.gameObject.name);
                 usetool(TDC, hit);
             }
         
