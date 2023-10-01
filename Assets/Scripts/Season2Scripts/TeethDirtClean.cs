@@ -17,7 +17,8 @@ public class TeethDirtClean : MonoBehaviour
 
 
 
-    public BoxCollider BCs; 
+    public BoxCollider BCs;
+    public MeshCollider MC;
     Material TooThDone;
     public float percentage;
     bool clean;
@@ -35,6 +36,11 @@ public class TeethDirtClean : MonoBehaviour
         remaindingDirt = toatlDirtOnTeeth;
         _material = GetComponent<Renderer>().material;
         BCs = GetComponent<BoxCollider>();
+        MC = GetComponent<MeshCollider>();
+        GameObject a= new GameObject("asd");
+        Instantiate(a, MC.transform.position,Quaternion.Euler(0,0,0));
+        a.transform.parent = gameObject.transform;
+        a.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void Update()

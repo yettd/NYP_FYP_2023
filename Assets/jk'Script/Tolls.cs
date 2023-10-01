@@ -69,7 +69,6 @@ public class Tolls : MonoBehaviour
         {
             if (true /* && velocity<=ThresholdForMax*/)
             {
-                Debug.Log(hit.collider.gameObject.name);
                 usetool(hit);
             }
         
