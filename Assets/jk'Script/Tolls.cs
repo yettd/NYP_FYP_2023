@@ -13,6 +13,7 @@ public class Tolls : MonoBehaviour
     float zPos;
     float velocity;
     Vector3 oldPos;
+    protected Ray ray;
     public float ThresholdForMax;
     protected virtual void Start()
     {
@@ -63,22 +64,19 @@ public class Tolls : MonoBehaviour
 
     private void raycastToSelcetTooth()
     {
-        if (Physics.Raycast(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward, out RaycastHit hit))
+        ray = new Ray(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            TeethDirtClean TDC;
-
-        
-            hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
-            if (TDC/* && velocity<=ThresholdForMax*/)
+            if (true /* && velocity<=ThresholdForMax*/)
             {
                 Debug.Log(hit.collider.gameObject.name);
-                usetool(TDC, hit);
+                usetool(hit);
             }
         
         }
     }
 
-    protected virtual void usetool(TeethDirtClean TDC, RaycastHit hit)
+    protected virtual void usetool( RaycastHit hit)
     {
         
     }

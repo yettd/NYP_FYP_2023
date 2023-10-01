@@ -45,7 +45,7 @@ public class testcode : MonoBehaviour
             if(TDC)
             {
             Debug.Log(hit.collider.gameObject.name);
-                TDC.Clean(hit,_brush);
+               // TDC.Clean(hit,_brush);
             }
             //switch (minigameTaskListController.Instance.procedure)
             //{

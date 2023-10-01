@@ -161,6 +161,10 @@ public class minigameTaskListController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
+            if(model)
+            {
+                Destroy(model);
+            }
             currentStep = Steps.CHOOSINGS;
             ToolsSelected(Testname, testing);
         }
