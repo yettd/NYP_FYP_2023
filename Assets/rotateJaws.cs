@@ -12,6 +12,8 @@ public class rotateJaws : MonoBehaviour
     bool down;
     float diffx;
     float totalDegree = 0;
+
+    
     private void OnMouseDown()
     {
         down = true;
@@ -33,6 +35,11 @@ public class rotateJaws : MonoBehaviour
     {
         if (Input.GetMouseButton(0) || Input.touchCount > 0)
         {
+            if (!down)
+            {
+                x = Input.mousePosition.x;
+                down = true;
+            }
             newx = Input.mousePosition.x;
             if (!GetComponent<SphereCollider>().enabled)
             {
@@ -45,9 +52,14 @@ public class rotateJaws : MonoBehaviour
             x = newx;
             totalDegree += diffx * smooth;
             totalDegree = Mathf.Clamp(totalDegree, -90, 90);
+
             transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree, transform.eulerAngles.z);
         }
 
+        if(Input.GetMouseButtonUp(0))
+        {
+            down = false;
+        }
     }
 
     //private void OnMouseDrag()

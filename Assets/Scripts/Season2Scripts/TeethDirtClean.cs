@@ -38,9 +38,6 @@ public class TeethDirtClean : MonoBehaviour
         BCs = GetComponent<BoxCollider>();
         MC = GetComponent<MeshCollider>();
         GameObject a= new GameObject("asd");
-        Instantiate(a, MC.transform.position,Quaternion.Euler(0,0,0));
-        a.transform.parent = gameObject.transform;
-        a.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void Update()
@@ -96,7 +93,7 @@ public class TeethDirtClean : MonoBehaviour
             return;
         }
 
-        Vector3 hitPointLocal = transform.GetChild(0).InverseTransformPoint(hit.point);
+        Vector3 hitPointLocal = transform.InverseTransformPoint(hit.point);
 
         float xAbs = Mathf.Abs(hitPointLocal.x);
         float zAbs = Mathf.Abs(hitPointLocal.z);
