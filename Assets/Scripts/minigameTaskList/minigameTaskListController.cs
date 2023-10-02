@@ -181,7 +181,6 @@ public class minigameTaskListController : MonoBehaviour
         TBgums = a;
         startminigame();
         minigameOpen = true;
-        gonext();
         cameraChanger.Instance.startCamera();
         openGame.Invoke();
     }
@@ -235,9 +234,19 @@ public class minigameTaskListController : MonoBehaviour
         else if(currentStep == Steps.CHOOSINGS)
         {
 
-            cameraChanger.Instance.closeCamera();
-            closeGame.Invoke();
-            minigameOpen = false;
+     
+            if(teethMan.tm.ZoomIn)
+            {
+                teethMan.tm.Back();
+            }
+            else
+            {
+                cameraChanger.Instance.closeCamera();
+                closeGame.Invoke();
+                minigameOpen = false;
+
+            }
+
         }
         else
         {

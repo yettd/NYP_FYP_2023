@@ -8,20 +8,41 @@ public class openTooth : MonoBehaviour
     public bool topBottom=false;
     [SerializeField]bool Problem;
     TextMeshProUGUI asd;
-// Start is called before the first frame update
+    Material mat;
+    BoxCollider bc;
+    MeshCollider mc;
+    // Start is called before the first frame update
     private void OnMouseDown()
     {
-        if(minigameTaskListController.Instance.IsPause)
+        if (minigameTaskListController.Instance.IsPause)
         {
             return;
         }
 
-        if(minigameTaskListController.Instance.currentStep==Steps.LOCATINGS || minigameTaskListController.Instance.currentStep == Steps.LOCATINGF|| minigameTaskListController.Instance.currentStep == Steps.LOCATINGE)
-        { 
-            minigameTaskListController.Instance.setGame(topBottom);
-         //   minigameTaskListController.Instance.SetTeetch(gameObject);
-        }
+        if (minigameTaskListController.Instance.currentStep == Steps.LOCATINGS || minigameTaskListController.Instance.currentStep == Steps.LOCATINGF || minigameTaskListController.Instance.currentStep == Steps.LOCATINGE)
+        {
+            if (!minigameTaskListController.Instance.minigameOpen)
+            {
+                minigameTaskListController.Instance.setGame(topBottom);
+                Debug.Log("Click");
+            }
+            else
+            {
+                //zoom in the teeth;
+                minigameTaskListController.Instance.gonext();
+                teethMan.tm.CallClickOn(gameObject.name);
 
+            }
+        }
+  
+    }
+
+    
+
+    private void OnEnable()
+    {
+        teethMan.tm.CO += HideTeeth;
+        teethMan.tm.Back += Show;
     }
     private void Start()
     {
@@ -29,6 +50,27 @@ public class openTooth : MonoBehaviour
         {
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
         }
+        mat = GetComponent<Renderer>().material;
+        bc = GetComponent<BoxCollider>();
+        mc = GetComponent<MeshCollider>();
     }
 
+    private void HideTeeth(string TeethName)
+    {
+        if(TeethName != gameObject.name)
+        {
+            mat.SetFloat("_op", 0);
+
+            bc.enabled = false;
+            mc.enabled = false;
+
+        }
+    }
+    private void Show()
+    {
+        bc.enabled = true;
+        mc.enabled = true;
+        mat.SetFloat("_op", 1);
+
+    }
 }
