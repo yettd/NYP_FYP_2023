@@ -80,30 +80,7 @@ public class TeethDirtClean : MonoBehaviour
 
     public void Clean(RaycastHit hit, Texture2D _brush)
     {
-        RaycastHit  thisSeemsDumb=hit;
-
-
-        for (int total = 0; total < BCs.Count; total++)
-        {
-            if (BCs[total] == hit.collider)
-            {
-                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[total].ToString())
-                {
-                    cleanining(hit,_brush);
-                }
-                else
-                {
-                
-                    return;
-                }
-            }
-        }
-
-
-    }
-
-    void cleanining(RaycastHit hit, Texture2D _brush)
-    {
+      
         if (Physics.Raycast(hit.point, hit.point - cameraChanger.Instance.GetCurrentCam().transform.position, out hit))
         {
             Vector2 textureCoord = hit.textureCoord;
@@ -136,11 +113,16 @@ public class TeethDirtClean : MonoBehaviour
                 clean = true;
                 minigameTaskListController.Instance.CheckGameComplete();
                 Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
-                
+
             }
 
             _templateDirtMask.Apply();
         }
+    }
+
+    void cleanining(RaycastHit hit, Texture2D _brush)
+    {
+       
     }
 
     public void Cheat()
