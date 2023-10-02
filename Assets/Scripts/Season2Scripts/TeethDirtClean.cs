@@ -12,8 +12,13 @@ public class TeethDirtClean : MonoBehaviour
     private Texture2D _templateDirtMask;
     float toatlDirtOnTeeth = 0;
     float remaindingDirt;
+    [Header("FRONT < LEFT< BACK < RIGHT")]
     public List<toolsToClean> ttc= new List<toolsToClean>();
-    public List<BoxCollider> BCs = new List<BoxCollider>(); 
+
+
+
+    public BoxCollider BCs;
+    public MeshCollider MC;
     Material TooThDone;
     public float percentage;
     bool clean;
@@ -30,6 +35,12 @@ public class TeethDirtClean : MonoBehaviour
         }
         remaindingDirt = toatlDirtOnTeeth;
         _material = GetComponent<Renderer>().material;
+        BCs = GetComponent<BoxCollider>();
+        MC = GetComponent<MeshCollider>();
+        GameObject a= new GameObject("asd");
+        Instantiate(a, MC.transform.position,Quaternion.Euler(0,0,0));
+        a.transform.parent = gameObject.transform;
+        a.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void Update()
@@ -78,51 +89,134 @@ public class TeethDirtClean : MonoBehaviour
         _material.SetTexture("_DirtMask", _templateDirtMask);
     }
 
-    public void Clean(RaycastHit hit, Texture2D _brush)
+    public void Clean(RaycastHit hit, Texture2D _brush, Ray ray)
     {
-      
-        if (Physics.Raycast(hit.point, hit.point - cameraChanger.Instance.GetCurrentCam().transform.position, out hit))
+        if(clean)
         {
-            Vector2 textureCoord = hit.textureCoord;
-
-            int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
-            int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
-            for (int x = 0; x < _brush.width; x++)
-            {
-                for (int y = 0; y < _brush.height; y++)
-                {
-                    Color pixelDirt = _brush.GetPixel(x, y);
-                    Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + x, pixelY + y);
-
-                    _templateDirtMask.SetPixel(pixelX + x, pixelY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
-                }
-            }
-            remaindingDirt = 0;
-
-            for (int i = 0; i < _dirtMaskBase.width; i++)
-            {
-                for (int j = 0; j < _dirtMaskBase.height; j++)
-                {
-                    remaindingDirt += _templateDirtMask.GetPixel(i, j).g;
-                }
-            }
-            Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
-            if ((remaindingDirt / toatlDirtOnTeeth) < (percentage + 0.005) && !clean)
-            {
-                GetComponent<Renderer>().material = TooThDone;
-                clean = true;
-                minigameTaskListController.Instance.CheckGameComplete();
-                Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
-
-            }
-
-            _templateDirtMask.Apply();
+            return;
         }
+
+        Vector3 hitPointLocal = transform.GetChild(0).InverseTransformPoint(hit.point);
+
+        float xAbs = Mathf.Abs(hitPointLocal.x);
+        float zAbs = Mathf.Abs(hitPointLocal.z);
+
+        char positionRelativeToEnemy;
+
+        if (xAbs > zAbs)
+        {
+            // Hit point is either "left" or "right" relative to the enemy
+            if (hitPointLocal.x > 0)
+            {
+                positionRelativeToEnemy = 'r';
+            }
+            else
+            {
+                positionRelativeToEnemy = 'l';
+            }
+        }
+        else
+        {
+            // Hit point is either "front" or "back" relative to the enemy
+            if (hitPointLocal.z > 0)
+            {
+                positionRelativeToEnemy = 'f';
+            }
+            else
+            {
+                positionRelativeToEnemy = 'b';
+            }
+        }
+
+        Debug.LogError(positionRelativeToEnemy);
+        bool correctTool = checkTools(positionRelativeToEnemy);
+
+        if(correctTool)
+        {
+            if(Physics.Raycast(hit.point,ray.direction,out hit))
+            {
+                cleanining(hit, _brush);
+            }
+        }
+
+    }
+
+    bool  checkTools(char a)
+    {
+        bool correct = false;
+        switch(a)
+        {
+            case 'f':
+                if(minigameTaskListController.Instance.GetSelectedtool()==ttc[0].ToString())
+                {
+                    correct = true;
+                }
+                break;
+            case 'l':
+                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[3].ToString())
+                {
+                    correct = true;
+                }
+                break;
+            case 'b':
+                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[2].ToString())
+                {
+                    correct = true;
+                }
+                break;
+            case 'r':
+                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[1].ToString())
+                {
+                    correct = true;
+                }
+                break;
+        }
+
+        return correct;
+
     }
 
     void cleanining(RaycastHit hit, Texture2D _brush)
     {
-       
+        Vector2 textureCoord = hit.textureCoord;
+        int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
+        int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
+        for (int x = 0; x < _brush.width; x++)
+        {
+            for (int y = 0; y < _brush.height; y++)
+            {
+                Color pixelDirt = _brush.GetPixel(x, y);
+                Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + x, pixelY + y);
+
+                _templateDirtMask.SetPixel(pixelX + x, pixelY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
+            }
+        }
+        remaindingDirt = 0;
+
+        for (int i = 0; i < _dirtMaskBase.width; i++)
+        {
+            for (int j = 0; j < _dirtMaskBase.height; j++)
+            {
+                remaindingDirt += _templateDirtMask.GetPixel(i, j).g;
+            }
+        }
+       // Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
+        if ((remaindingDirt / toatlDirtOnTeeth) < (percentage + 0.005) && !clean)
+        {
+            clear();
+        }
+
+        _templateDirtMask.Apply();
+    }
+
+    void clear()
+    {
+        GetComponent<Renderer>().material = TooThDone;
+        clean = true;
+        BCs.enabled = false;
+        minigameTaskListController.Instance.CheckGameComplete();
+        Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
+
     }
 
     public void Cheat()

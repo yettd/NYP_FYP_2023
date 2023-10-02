@@ -13,6 +13,7 @@ public class Tolls : MonoBehaviour
     float zPos;
     float velocity;
     Vector3 oldPos;
+    protected Ray ray;
     public float ThresholdForMax;
     protected virtual void Start()
     {
@@ -32,12 +33,19 @@ public class Tolls : MonoBehaviour
 
             velocity = dis / Time.deltaTime;
         }
-        Debug.Log(velocity);
         oldPos = transform.position;
 
 
         Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition);
-        transform.parent.transform.position = new Vector3(pos.x, pos.y, zPos);
+        if(Mathf.Abs(transform.parent.transform.eulerAngles.x) >= 90)
+        {
+            transform.parent.transform.position = new Vector3(pos.x, oldPos.y, pos.z);
+        }
+        else
+        {
+
+        transform.parent.transform.position = new Vector3(pos.x, pos.y, oldPos.z);
+        }
         Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
         if (letgoToUse == false)
         {
@@ -56,21 +64,18 @@ public class Tolls : MonoBehaviour
 
     private void raycastToSelcetTooth()
     {
-        if (Physics.Raycast(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward, out RaycastHit hit))
+        ray = new Ray(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            TeethDirtClean TDC;
-
-            Debug.Log(hit.collider.gameObject.name);
-            hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
-            if (TDC && velocity<=ThresholdForMax)
+            if (true /* && velocity<=ThresholdForMax*/)
             {
-                usetool(TDC, hit);
+                usetool(hit);
             }
         
         }
     }
 
-    protected virtual void usetool(TeethDirtClean TDC, RaycastHit hit)
+    protected virtual void usetool( RaycastHit hit)
     {
         
     }

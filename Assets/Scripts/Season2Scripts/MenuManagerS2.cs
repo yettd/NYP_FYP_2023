@@ -156,8 +156,8 @@ public class MenuManagerS2 : MonoBehaviour
         }
 
         //original
-        Camera.transform.DOMove(new Vector3(34, 7, -7), 1);
-        Camera.transform.DORotate(new Vector3(10f, 0, 0), 1);
+        Camera.transform.DOMove(new Vector3(34, 12.8f, -16), 1);
+        Camera.transform.DORotate(new Vector3(10, 0, 0), 1);
 
     }
 

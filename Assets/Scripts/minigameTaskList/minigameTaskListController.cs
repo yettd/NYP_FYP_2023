@@ -161,6 +161,10 @@ public class minigameTaskListController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
+            if(model)
+            {
+                Destroy(model);
+            }
             currentStep = Steps.CHOOSINGS;
             ToolsSelected(Testname, testing);
         }
@@ -177,7 +181,6 @@ public class minigameTaskListController : MonoBehaviour
         TBgums = a;
         startminigame();
         minigameOpen = true;
-        gonext();
         cameraChanger.Instance.startCamera();
         openGame.Invoke();
     }
@@ -231,9 +234,19 @@ public class minigameTaskListController : MonoBehaviour
         else if(currentStep == Steps.CHOOSINGS)
         {
 
-            cameraChanger.Instance.closeCamera();
-            closeGame.Invoke();
-            minigameOpen = false;
+     
+            if(teethMan.tm.ZoomIn)
+            {
+                teethMan.tm.Back();
+            }
+            else
+            {
+                cameraChanger.Instance.closeCamera();
+                closeGame.Invoke();
+                minigameOpen = false;
+
+            }
+
         }
         else
         {
@@ -262,18 +275,19 @@ public class minigameTaskListController : MonoBehaviour
     public void ToolsSelected(string toolsname, GameObject model)
     {
 
-        //if (currentStep == Steps.CHOOSINGS)
-        //{
+        if (currentStep == Steps.CHOOSINGS)
+        {
             // testTool.gameObject.SetActive(true);
             toolSelectedName = toolsname;
             this.model = Instantiate(model) as GameObject;
             this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position + cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward * 2;
+            this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(10, 10, 10);
             Debug.LogError(toolsname);
             gonext();
             stopRotation();
-       // }
+        }
 
     }
 

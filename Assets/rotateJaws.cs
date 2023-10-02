@@ -20,21 +20,7 @@ public class rotateJaws : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        newx = Input.mousePosition.x;
-        if (!GetComponent<SphereCollider>().enabled)
-        {
-            return;
-        }
-        float rotX = Input.GetAxis("Mouse X") * smooth;
-        float rotY = Input.GetAxis("Mouse Y") * smooth;
-
-        diffx = newx - x;
-        x = newx;
-        totalDegree += diffx * smooth;
-        totalDegree = Mathf.Clamp(totalDegree, -90, 90);
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree, transform.eulerAngles.z);
-        Debug.Log(totalDegree);
-
+  
 
     }
 
@@ -42,6 +28,28 @@ public class rotateJaws : MonoBehaviour
     {
         down = false;
     }
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0) || Input.touchCount > 0)
+        {
+            newx = Input.mousePosition.x;
+            if (!GetComponent<SphereCollider>().enabled)
+            {
+                return;
+            }
+            float rotX = Input.GetAxis("Mouse X") * smooth;
+            float rotY = Input.GetAxis("Mouse Y") * smooth;
+
+            diffx = newx - x;
+            x = newx;
+            totalDegree += diffx * smooth;
+            totalDegree = Mathf.Clamp(totalDegree, -90, 90);
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree, transform.eulerAngles.z);
+        }
+
+    }
+
     //private void OnMouseDrag()
     //{
     //    //if(!GetComponent<SphereCollider>().enabled)
