@@ -20,6 +20,9 @@ public class MenuManagerS2 : MonoBehaviour
     [SerializeField] private GameObject SettingsPanel;
     [SerializeField] private Slider AudioSettingSlider;
 
+    [SerializeField] private GameObject SettingsPAGE;
+
+
     [Header("Playgame")]
     [SerializeField] private GameObject PlayGamePanel;
     [SerializeField] private Button ExtractionBtn;
@@ -32,6 +35,7 @@ public class MenuManagerS2 : MonoBehaviour
 
 
     bool Settingsactive;
+    bool SettingsPageactive;
     bool PlayGameactive;
     bool MainMenuactive;
     bool CollectionsActive;
@@ -91,6 +95,14 @@ public class MenuManagerS2 : MonoBehaviour
             PlayGamePanel.transform.gameObject.SetActive(false);
             PlayGameactive = false;
         }
+        if (SettingsPageactive == true)
+        {
+            SettingsPAGE.transform.gameObject.SetActive(false);
+            SettingsPageactive = false;
+        }
+        //book
+        Camera.transform.DOMove(new Vector3(-54, 0, 170f), 1);
+        Camera.transform.DORotate(new Vector3(45, -45, 0), 1);
     }
 
     public void openPlayGamePanel()
@@ -121,7 +133,11 @@ public class MenuManagerS2 : MonoBehaviour
             CollectionsPanel.transform.gameObject.SetActive(false);
             CollectionsActive = false;
         }
-
+        if (SettingsPageactive == true)
+        {
+            SettingsPAGE.transform.gameObject.SetActive(false);
+            SettingsPageactive = false;
+        }
         Camera.transform.DOMove(new Vector3(-2, 6, 96f),1);
         Camera.transform.DORotate(new Vector3(45, -90, 0), 1);
     }
@@ -154,7 +170,11 @@ public class MenuManagerS2 : MonoBehaviour
             CollectionsPanel.transform.gameObject.SetActive(false);
             CollectionsActive = false;
         }
-
+        if (SettingsPageactive == true)
+        {
+            SettingsPAGE.transform.gameObject.SetActive(false);
+            SettingsPageactive = false;
+        }
         //original
         Camera.transform.DOMove(new Vector3(34, 12.8f, -16), 1);
         Camera.transform.DORotate(new Vector3(10, 0, 0), 1);
@@ -189,12 +209,50 @@ public class MenuManagerS2 : MonoBehaviour
             MainMenuPanel.transform.gameObject.SetActive(false);
             MainMenuactive = false;
         }
-
+        if (SettingsPageactive == true)
+        {
+            SettingsPAGE.transform.gameObject.SetActive(false);
+            SettingsPageactive = false;
+        }
         //cardboard
         Camera.transform.DOMove(new Vector3(45.6f, -39, 140), 1);
         Camera.transform.DORotate(new Vector3(0, 0, 0), 1);
     }
 
+    public void openSettingsPAGE()
+    {
+        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        if (SettingsPageactive == false)
+        {
+            SettingsPAGE.transform.gameObject.SetActive(true);
+            SettingsPageactive = true;
+        }
+        else
+        {
+            SettingsPAGE.transform.gameObject.SetActive(false);
+            SettingsPageactive = false;
+        }
+        if (MainMenuactive == true)
+        {
+            MainMenuPanel.transform.gameObject.SetActive(false);
+            MainMenuactive = false;
+        }
+        if (CollectionsActive == true)
+        {
+            CollectionsPanel.transform.gameObject.SetActive(false);
+            CollectionsActive = false;
+        }
+        if (PlayGameactive == true)
+        {
+            PlayGamePanel.transform.gameObject.SetActive(false);
+            PlayGameactive = false;
+        }
+        if (Settingsactive == true)
+        {
+            SettingsPanel.transform.gameObject.SetActive(false);
+            Settingsactive = false;
+        }
+    }
     public void GotoTutortialScene(string index)
     {
        SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
