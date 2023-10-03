@@ -36,16 +36,16 @@ public class Tolls : MonoBehaviour
         oldPos = transform.position;
 
 
-        Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition);
-        if(Mathf.Abs(transform.parent.transform.eulerAngles.x) >= 90)
-        {
-            transform.parent.transform.position = new Vector3(pos.x, oldPos.y, pos.z);
-        }
-        else
-        {
+        Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition) + cameraChanger.Instance.GetCurrentCam().transform.forward;
+        transform.parent.transform.position = new Vector3(pos.x, pos.y, pos.z);
+        //if(Mathf.Abs(transform.parent.transform.eulerAngles.x) >= 90)
+        //{
+        //    transform.parent.transform.position = new Vector3(pos.x, oldPos.y, pos.z);
+        //}
+        //else
+        //{
 
-        transform.parent.transform.position = new Vector3(pos.x, pos.y, oldPos.z);
-        }
+        //}
         Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
         if (letgoToUse == false)
         {
@@ -73,8 +73,15 @@ public class Tolls : MonoBehaviour
             }
         
         }
+        
     }
-
+    void OnDrawGizmosSelected()
+    {
+        // Draws a 5 unit long red line in front of the object
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        Gizmos.DrawRay(ray);
+    }
     protected virtual void usetool( RaycastHit hit)
     {
         

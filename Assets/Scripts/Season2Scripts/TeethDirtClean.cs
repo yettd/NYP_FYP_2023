@@ -125,12 +125,11 @@ public class TeethDirtClean : MonoBehaviour
             }
         }
 
-        Debug.LogError(positionRelativeToEnemy);
         bool correctTool = checkTools(positionRelativeToEnemy);
 
         if(correctTool)
         {
-            if(Physics.Raycast(hit.point,ray.direction,out hit))
+            if(Physics.Raycast(hit.point,cameraChanger.Instance.GetCurrentCam().transform.forward,out hit))
             {
                 cleanining(hit, _brush);
             }
@@ -178,6 +177,7 @@ public class TeethDirtClean : MonoBehaviour
         Vector2 textureCoord = hit.textureCoord;
         int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
         int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
+        Debug.LogError(textureCoord);
         for (int x = 0; x < _brush.width; x++)
         {
             for (int y = 0; y < _brush.height; y++)
