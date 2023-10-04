@@ -19,10 +19,12 @@ public class Tolls : MonoBehaviour
     {
         zPos = transform.position.z;
         oldPos = transform.position;
+
+        ray = new Ray(cameraChanger.Instance.GetCurrentCam().transform.position, (usePoint.position - cameraChanger.Instance.GetCurrentCam().transform.position));
     }
     private void Update()
     {
-
+       
     }
     // Start is called before the first frame update
     private void OnMouseDrag()
@@ -64,25 +66,29 @@ public class Tolls : MonoBehaviour
 
     private void raycastToSelcetTooth()
     {
-        ray = new Ray(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            if (true /* && velocity<=ThresholdForMax*/)
-            {
-                usetool(hit);
-            }
         
+
+        ray = new Ray(usePoint.transform.position,transform.forward);
+        RaycastHit[] hit = Physics.RaycastAll(ray, Mathf.Infinity);
+        
+        if(hit.Length>1)
+        {
+            usetool(hit);
         }
+
         
     }
     void OnDrawGizmosSelected()
     {
-        // Draws a 5 unit long red line in front of the object
-        Gizmos.color = Color.red;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
-        Gizmos.DrawRay(ray);
     }
-    protected virtual void usetool( RaycastHit hit)
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Vector3 dir = (transform.forward) * 1000;
+        Gizmos.DrawRay(usePoint.position,dir);
+    }
+    protected virtual void usetool( RaycastHit[] hit)
     {
         
     }

@@ -86,14 +86,14 @@ public class TeethDirtClean : MonoBehaviour
         _material.SetTexture("_DirtMask", _templateDirtMask);
     }
 
-    public void Clean(RaycastHit hit, Texture2D _brush, Ray ray)
+    public void Clean(RaycastHit[] hit, Texture2D _brush, Ray ray)
     {
         if(clean)
         {
             return;
         }
 
-        Vector3 hitPointLocal = transform.InverseTransformPoint(hit.point);
+        Vector3 hitPointLocal = transform.InverseTransformPoint(hit[0].point);
 
         float xAbs = Mathf.Abs(hitPointLocal.x);
         float zAbs = Mathf.Abs(hitPointLocal.z);
@@ -129,10 +129,7 @@ public class TeethDirtClean : MonoBehaviour
 
         if(correctTool)
         {
-            if(Physics.Raycast(hit.point,cameraChanger.Instance.GetCurrentCam().transform.forward,out hit))
-            {
-                cleanining(hit, _brush);
-            }
+                cleanining(hit[1], _brush);
         }
 
     }

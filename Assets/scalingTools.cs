@@ -14,13 +14,13 @@ public class scalingTools : Tolls
     }
 
     // Update is called once per frame
-    protected override void usetool( RaycastHit hit)
+    protected override void usetool( RaycastHit[] hit)
     {
 
         TeethDirtClean TDC;
 
 
-        hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
+        hit[0].collider.TryGetComponent<TeethDirtClean>(out TDC);
         if(TDC)
         {
 
