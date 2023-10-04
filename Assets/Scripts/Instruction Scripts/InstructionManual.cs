@@ -30,6 +30,7 @@ public class InstructionManual : ScriptableObject
     [Header("Extra")]
     public ItemTag[] tools;
     public InstructionLog cleared;
+    public int toolAccessId;
 
     public void Reset()
     {
