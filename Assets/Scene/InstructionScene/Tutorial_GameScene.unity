@@ -1804,6 +1804,7 @@ MonoBehaviour:
   CollectionsBtn2: {fileID: 0}
   SettingsPanel: {fileID: 0}
   AudioSettingSlider: {fileID: 0}
+  SettingsPAGE: {fileID: 0}
   PlayGamePanel: {fileID: 0}
   ExtractionBtn: {fileID: 0}
   FillingBtn: {fileID: 0}
@@ -5892,6 +5893,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ee38f3fe02f4c554095c723d3470043f, type: 2}
+    - target: {fileID: 1006034664597983191, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
+      propertyPath: m_TagString
+      value: GumSection
+      objectReference: {fileID: 0}
     - target: {fileID: 1024505698989499692, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
       propertyPath: m_Convex
       value: 0
@@ -6500,6 +6505,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ee38f3fe02f4c554095c723d3470043f, type: 2}
+    - target: {fileID: 8885188825058497005, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
+      propertyPath: m_TagString
+      value: GumSection
+      objectReference: {fileID: 0}
     - target: {fileID: 9080994952474828325, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
       propertyPath: m_Convex
       value: 0
