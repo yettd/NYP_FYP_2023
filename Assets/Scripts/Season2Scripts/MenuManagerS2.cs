@@ -69,7 +69,8 @@ public class MenuManagerS2 : MonoBehaviour
     }
     public void openSettingsPanel()
     {
-        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        AudioManager.Instance.PlayPingSound();
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (Settingsactive == false)
         {
             SettingsPanel.transform.gameObject.SetActive(true);
@@ -101,13 +102,13 @@ public class MenuManagerS2 : MonoBehaviour
             SettingsPageactive = false;
         }
         //book
-        Camera.transform.DOMove(new Vector3(-54, 0, 170f), 1);
-        Camera.transform.DORotate(new Vector3(45, -45, 0), 1);
+        Camera.transform.DOMove(new Vector3(-40, 0, 190f), 1);
+        Camera.transform.DORotate(new Vector3(90, 0, 0), 1);
     }
 
     public void openPlayGamePanel()
     {
-        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (PlayGameactive == false)
         {
             PlayGamePanel.transform.gameObject.SetActive(true);
@@ -144,7 +145,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openMainMenuPanel()
     {
-        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (MainMenuactive == false)
         {
             MainMenuPanel.transform.gameObject.SetActive(true);
@@ -183,7 +184,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openCollectionsPanel()
     {
-        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (CollectionsActive == false)
         {
             CollectionsPanel.transform.gameObject.SetActive(true);
@@ -221,7 +222,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openSettingsPAGE()
     {
-        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (SettingsPageactive == false)
         {
             SettingsPAGE.transform.gameObject.SetActive(true);

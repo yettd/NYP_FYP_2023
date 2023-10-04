@@ -5,7 +5,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     public AudioClip PingSound;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     private const string VolumeKey = "Volume";
 
@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     }
     public void SetVolume(float volume)
     {
+        Debug.Log(volume);
         audioSource.volume = volume;
         PlayerPrefs.SetFloat(VolumeKey, volume); 
     }
@@ -33,8 +34,14 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(clip);
     }
+    //public void PlayAudioOneShot(AudioClip clip, float volume = 1f)
+    //{
+    //    audioSource.PlayOneShot(clip, volume);
+    //}
     public void PlayPingSound()
     {
+        //PlayAudioOneShot(PingSound, 1f);
+        Debug.Log("Ping Played");
         PlayClip(PingSound);
     }
 
