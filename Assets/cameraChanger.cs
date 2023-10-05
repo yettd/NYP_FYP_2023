@@ -71,10 +71,10 @@ public class cameraChanger : MonoBehaviour
         zoom = true;
         focusOn = g;
         ZoomIn.gameObject.SetActive(true);
-        //
+        
         currentCam = ZoomIn;
         Debug.Log(cameraChanger.Instance.GetCurrentCam().name);
-        ZoomIn.transform.position =new Vector3(g.transform.position.x, -267.1f, -40);
+        ZoomIn.transform.position =new Vector3(g.transform.position.x, -267.1f, -50);
         Quaternion _lookRotation =Quaternion.LookRotation((g.transform.position - ZoomIn.transform.position).normalized);
         ZoomIn.transform.rotation = _lookRotation;
 
@@ -91,6 +91,7 @@ public class cameraChanger : MonoBehaviour
     {
         ZoomIn.gameObject.transform.RotateAround(focusOn.transform.position, Vector3.up, degree * Time.deltaTime);
         ZoomIn.gameObject.transform.RotateAround(focusOn.transform.position, Vector3.right, y * Time.deltaTime);
+        ZoomIn.transform.rotation = Quaternion.Euler(ZoomIn.transform.eulerAngles.x, ZoomIn.transform.eulerAngles.y, 0);
         //ZoomIn.gameObject.transform.LookAt(focusOn.transform.position,transform.up);
     }
 

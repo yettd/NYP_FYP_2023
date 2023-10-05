@@ -92,7 +92,8 @@ public class TeethDirtClean : MonoBehaviour
         {
             return;
         }
-
+        
+     //   Debug.Log(positionRelativeToEnemy);
         Vector3 hitPointLocal = transform.InverseTransformPoint(hit[0].point);
 
         float xAbs = Mathf.Abs(hitPointLocal.x);
@@ -124,16 +125,59 @@ public class TeethDirtClean : MonoBehaviour
                 positionRelativeToEnemy = 'b';
             }
         }
-
         bool correctTool = checkTools(positionRelativeToEnemy);
-
-        if(correctTool)
+        if (correctTool)
         {
-                cleanining(hit[1], _brush);
+                cleanining(hit[0], _brush);
         }
 
     }
+    public void Clean(RaycastHit hit, Texture2D _brush, Ray ray)
+    {
+        if (clean)
+        {
+            return;
+        }
 
+        //   Debug.Log(positionRelativeToEnemy);
+        Vector3 hitPointLocal = transform.InverseTransformPoint(hit.point);
+
+        float xAbs = Mathf.Abs(hitPointLocal.x);
+        float zAbs = Mathf.Abs(hitPointLocal.z);
+
+        char positionRelativeToEnemy;
+
+        if (xAbs > zAbs)
+        {
+            // Hit point is either "left" or "right" relative to the enemy
+            if (hitPointLocal.x > 0)
+            {
+                positionRelativeToEnemy = 'r';
+            }
+            else
+            {
+                positionRelativeToEnemy = 'l';
+            }
+        }
+        else
+        {
+            // Hit point is either "front" or "back" relative to the enemy
+            if (hitPointLocal.z > 0)
+            {
+                positionRelativeToEnemy = 'f';
+            }
+            else
+            {
+                positionRelativeToEnemy = 'b';
+            }
+        }
+        bool correctTool = checkTools(positionRelativeToEnemy);
+        if (correctTool)
+        {
+            cleanining(hit, _brush);
+        }
+
+    }
     bool  checkTools(char a)
     {
         bool correct = false;
@@ -171,10 +215,12 @@ public class TeethDirtClean : MonoBehaviour
 
     void cleanining(RaycastHit hit, Texture2D _brush)
     {
+
         Vector2 textureCoord = hit.textureCoord;
+        Debug.LogError(textureCoord);
         int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
         int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
-        Debug.LogError(textureCoord);
+
         for (int x = 0; x < _brush.width; x++)
         {
             for (int y = 0; y < _brush.height; y++)

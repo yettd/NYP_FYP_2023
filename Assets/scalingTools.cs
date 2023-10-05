@@ -14,17 +14,17 @@ public class scalingTools : Tolls
     }
 
     // Update is called once per frame
-    protected override void usetool( RaycastHit[] hit)
+    protected override void usetool( RaycastHit hit)
     {
 
         TeethDirtClean TDC;
 
 
-        hit[0].collider.TryGetComponent<TeethDirtClean>(out TDC);
+        hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
         if(TDC)
         {
-
-        TDC.Clean(hit, _brush,ray);
+            Debug.Log("asdasd");
+            TDC.Clean(hit, _brush,ray);
         }
     }
 }

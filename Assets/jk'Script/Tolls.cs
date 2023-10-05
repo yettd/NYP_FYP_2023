@@ -69,15 +69,20 @@ public class Tolls : MonoBehaviour
         
 
         ray = new Ray(usePoint.transform.position,transform.forward);
-        RaycastHit[] hit = Physics.RaycastAll(ray, Mathf.Infinity);
+        //RaycastHit[] hit = Physics.RaycastAll(ray, Mathf.Infinity);
         
-        if(hit.Length>1)
+        //if(hit.Length>1)
+        //{
+        //    usetool(hit);
+        //}
+
+        if(Physics.Raycast(ray,out RaycastHit hit))
         {
             usetool(hit);
         }
-
         
     }
+
     void OnDrawGizmosSelected()
     {
     }
@@ -88,7 +93,7 @@ public class Tolls : MonoBehaviour
         Vector3 dir = (transform.forward) * 1000;
         Gizmos.DrawRay(usePoint.position,dir);
     }
-    protected virtual void usetool( RaycastHit[] hit)
+    protected virtual void usetool( RaycastHit hit)
     {
         
     }

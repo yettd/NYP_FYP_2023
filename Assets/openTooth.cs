@@ -62,7 +62,7 @@ public class openTooth : MonoBehaviour
         {
             mat.SetFloat("_op", 0.1f);
            
-            bc.enabled = false;
+            //bc.enabled = false;
             mc.enabled = false;
 
         }
@@ -73,7 +73,7 @@ public class openTooth : MonoBehaviour
     }
     private void Show()
     {
-        bc.enabled = true;
+       // bc.enabled = true;
         mc.enabled = true;
         mat.SetFloat("_op", 1);
 
