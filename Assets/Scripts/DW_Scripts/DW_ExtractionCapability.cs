@@ -57,7 +57,7 @@ public class DW_ExtractionCapability
                 break;
 
             case (int)CAPABILITY.Forceps:
-                // accessor.AddComponent<DW_ForcepsTool>();
+                accessor.AddComponent<DW_ForcepsTool>().Activate();
                 break;
 
             case (int)CAPABILITY.CottonGauze:

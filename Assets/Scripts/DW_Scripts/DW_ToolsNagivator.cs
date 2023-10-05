@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class DW_ToolsNagivator
 {
-    private enum CapabilityMethod { SCALING, EXTRACTION, FILLING, NONE };
-
-    private const string toolSelectedTag = "DW_Tool";
-    private string currentTool;
     private DW_ExtractionCapability extractionAccess;
+    private const string toolSelectedTag = "DW_Tool";
+
+    private string currentTool;
+    private Vector3 startingPoint;
+    private Vector3 toolScale;
 
     public DW_ToolsNagivator()
     {
-        currentTool = string.Empty;
         extractionAccess = new DW_ExtractionCapability();
+        currentTool = string.Empty;
+        startingPoint = new Vector3(6, 0, 0);
+        toolScale = new Vector3(0.25f, 0.25f, 0.25f);
+    }
+
+    public DW_ToolsNagivator(Vector3 startingPoint, Vector3 toolScale)
+    {
+        extractionAccess = new DW_ExtractionCapability();
+        currentTool = string.Empty;
+        this.startingPoint = startingPoint;
+        this.toolScale = toolScale;
     }
 
     #region SETUP
@@ -41,35 +52,25 @@ public class DW_ToolsNagivator
     private void GetInstanceOfToolUsage()
     {
         // Clear any used tool to prevent tool pile
-        GameObject usedTool = GameObject.FindGameObjectWithTag(toolSelectedTag);
-        if (usedTool) { GameObject.Destroy(usedTool); }
+        CleanUpToolUsed();
 
         // Get new tool for use
         if (GetItemToUse(currentTool).model != null)
         {
-            GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model, new Vector3(6,0,0), Quaternion.identity);
-            cloneTool.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model, startingPoint, Quaternion.identity);
+            cloneTool.transform.localScale = toolScale;
             cloneTool.tag = toolSelectedTag;
 
             // Give access to capability level
-            GrantCapabilityOnSelectedTool(cloneTool, TutorialNagivatorScript.Instance().get_manual.toolAccessId);
+            if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1)
+                extractionAccess.GrantToolCapability(cloneTool, GetItemToUse(currentTool).itemName);
         }       
     }
 
-    private void GrantCapabilityOnSelectedTool(GameObject clone, int index)
+    private void CleanUpToolUsed()
     {
-        switch (index)
-        {
-            case (int)CapabilityMethod.SCALING:
-                break;
-
-            case (int)CapabilityMethod.EXTRACTION:
-                extractionAccess.GrantToolCapability(clone, GetItemToUse(currentTool).itemName);
-                break;
-
-            case (int)CapabilityMethod.FILLING:
-                break;
-        }
+        GameObject usedTool = GameObject.FindGameObjectWithTag(toolSelectedTag);
+        if (usedTool) { GameObject.Destroy(usedTool); }
     }
     #endregion
 }

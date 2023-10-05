@@ -5,19 +5,25 @@ using UnityEngine;
 public class DW_MoveTools
 {
     private GameObject target;
-    private Vector3 offset;
-
     private Camera cam;
 
     #region COMPONENT
-    private void BeginDrag()
+    public void Drag()
     {
-        
-    }
+        Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
+        target.transform.position = new Vector3(pos.x, pos.y, target.transform.position.z);
+        Ray ray = cam.ScreenPointToRay(cam.WorldToScreenPoint(pos));
+        if (Physics.Raycast(target.transform.position, target.transform.forward, out RaycastHit hit))
+        {
+            Debug.Log(hit.collider.gameObject.name);
+            //switch (minigameTaskListController.Instance.procedure)
+            //{
+            //    case Procedure.Scaling:
+            //        hit.collider.GetComponent<TeethDirtClean>().Clean(hit);
+            //        break;
+            //}
+        }
 
-    private void EndDrag()
-    {
-        target = null;
     }
     #endregion
 
@@ -26,7 +32,6 @@ public class DW_MoveTools
     {
         target = tool;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        BeginDrag();
     }
     #endregion
 }

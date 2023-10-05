@@ -2,28 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DW_AnestheticTool : MonoBehaviour
+public class DW_Extraction : MonoBehaviour
 {
     private DW_ElementCancelation element;
     private const string targetForUse = "GumSection";
-    private DW_MoveTools moveable;
 
     private void OnDestroy()
     {
         DeActivate();
     }
 
-    private void OnMouseDrag()
+    private void Update()
     {
-        if (moveable != null) moveable.Drag();
+
     }
 
     #region SETUP
     public void Activate()
     {
-        // Move
-        moveable = new DW_MoveTools();
-
         // Cancel all active component
         element = new DW_ElementCancelation();
         element.Activate();
@@ -67,8 +63,8 @@ public class DW_AnestheticTool : MonoBehaviour
 
         foreach (GameObject accessor in accessors)
         {
-            if (enable) SetMarkerSelection(accessor.transform.GetChild(0).gameObject);
-            else DisableMarkerSelection(accessor.transform.GetChild(0).gameObject);
+            if (enable) SetMarkerSelection(accessor);
+            else DisableMarkerSelection(accessor);
         }
     }
     #endregion

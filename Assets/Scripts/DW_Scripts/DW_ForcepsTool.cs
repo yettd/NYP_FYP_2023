@@ -2,34 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DW_AnestheticTool : MonoBehaviour
+public class DW_ForcepsTool : MonoBehaviour
 {
     private DW_ElementCancelation element;
-    private const string targetForUse = "GumSection";
-    private DW_MoveTools moveable;
+    private const string targetForUse = "TeethSection";
 
     private void OnDestroy()
     {
         DeActivate();
     }
 
-    private void OnMouseDrag()
+    private void Update()
     {
-        if (moveable != null) moveable.Drag();
+
     }
 
     #region SETUP
     public void Activate()
     {
-        // Move
-        moveable = new DW_MoveTools();
-
         // Cancel all active component
         element = new DW_ElementCancelation();
         element.Activate();
 
         // Enable used of tool
-        GrantAccessToUseAnestheicTool(true);
+        GrantAccessToUseForcespTool(true);
     }
 
     private void DeActivate()
@@ -38,7 +34,7 @@ public class DW_AnestheticTool : MonoBehaviour
         element.DeActivate();
 
         // Disable used of tool
-        GrantAccessToUseAnestheicTool(false);
+        GrantAccessToUseForcespTool(false);
     }
 
     private void SetMarkerSelection(GameObject accessor)
@@ -54,21 +50,16 @@ public class DW_AnestheticTool : MonoBehaviour
     #endregion
 
     #region COMPONENT
-    private void TargetSelectionArea()
-    {
-        // Enable used of tool
-        GrantAccessToUseAnestheicTool(true);
-    }
-
-    private void GrantAccessToUseAnestheicTool(bool enable)
+    private void GrantAccessToUseForcespTool(bool enable)
     {
         // Selection reference of target area
         GameObject[] accessors = GameObject.FindGameObjectsWithTag(targetForUse);
 
         foreach (GameObject accessor in accessors)
         {
-            if (enable) SetMarkerSelection(accessor.transform.GetChild(0).gameObject);
-            else DisableMarkerSelection(accessor.transform.GetChild(0).gameObject);
+            if (accessor)
+            if (enable) SetMarkerSelection(accessor);
+            else DisableMarkerSelection(accessor);
         }
     }
     #endregion
