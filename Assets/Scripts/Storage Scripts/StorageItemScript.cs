@@ -33,7 +33,7 @@ public class StorageItemScript : MonoBehaviour
 
     public void SelectTool()
     {
-       if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 0) minigameTaskListController.Instance.ToolsSelected(item.itemName, item.model);
+       if (TutorialNagivatorScript.Instance().get_manual.toolAccessId != 1) minigameTaskListController.Instance.ToolsSelected(item.itemName, item.model);
     }
     #endregion
 }
