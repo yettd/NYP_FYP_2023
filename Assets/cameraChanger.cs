@@ -74,7 +74,7 @@ public class cameraChanger : MonoBehaviour
         
         currentCam = ZoomIn;
         Debug.Log(cameraChanger.Instance.GetCurrentCam().name);
-        ZoomIn.transform.position =new Vector3(g.transform.position.x, -267.1f, -50);
+        ZoomIn.transform.position =new Vector3(g.transform.position.x, -267.1f, -35);
         Quaternion _lookRotation =Quaternion.LookRotation((g.transform.position - ZoomIn.transform.position).normalized);
         ZoomIn.transform.rotation = _lookRotation;
 

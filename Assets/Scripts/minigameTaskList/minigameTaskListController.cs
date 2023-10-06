@@ -283,7 +283,7 @@ public class minigameTaskListController : MonoBehaviour
             this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position + cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward;
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
-            this.model.transform.localScale = new Vector3(3, 3, 3);
+            this.model.transform.localScale = new Vector3(5, 5, 5);
             Debug.LogError(toolsname);
             gonext();
             stopRotation();

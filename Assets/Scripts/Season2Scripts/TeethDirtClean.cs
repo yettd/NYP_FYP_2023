@@ -217,10 +217,9 @@ public class TeethDirtClean : MonoBehaviour
     {
 
         Vector2 textureCoord = hit.textureCoord;
-        Debug.LogError(textureCoord);
         int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
         int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
-
+        Debug.Log(textureCoord);
         for (int x = 0; x < _brush.width; x++)
         {
             for (int y = 0; y < _brush.height; y++)
@@ -245,8 +244,8 @@ public class TeethDirtClean : MonoBehaviour
         {
             clear();
         }
-
         _templateDirtMask.Apply();
+
     }
 
     void clear()
