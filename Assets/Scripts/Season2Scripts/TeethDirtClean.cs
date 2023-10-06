@@ -37,7 +37,6 @@ public class TeethDirtClean : MonoBehaviour
         _material = GetComponent<Renderer>().material;
         BCs = GetComponent<BoxCollider>();
         MC = GetComponent<MeshCollider>();
-        GameObject a= new GameObject("asd");
     }
 
     private void Update()
