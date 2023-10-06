@@ -20,16 +20,6 @@ MonoBehaviour:
     title: ???
     instruction: ???
     completed: 1
-  tools:
-  - itemName: F
-    icon: {fileID: 2800000, guid: 9ce1db4eb917b83468054463bba6bb0e, type: 3}
-    model: {fileID: 5644587679923233987, guid: 7bd7359950f820a48b7b7f6f7216bf22, type: 3}
-  - itemName: A
-    icon: {fileID: 2800000, guid: 6af5d6edb8659304bbdbb49028117483, type: 3}
-    model: {fileID: 6904797153345702836, guid: 7aecbb144f03ca244b1ce13cf5d3bd65, type: 3}
-  - itemName: C
-    icon: {fileID: 2800000, guid: 9a6fe6d0b0303524798e52815e957728, type: 3}
-    model: {fileID: 6158489504648957015, guid: d238adde995504a4693745654b1a7997, type: 3}
+  tools: []
   cleared:
     completed: 0
-  toolAccessId: 1

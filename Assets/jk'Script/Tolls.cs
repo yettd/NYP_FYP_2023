@@ -19,10 +19,12 @@ public class Tolls : MonoBehaviour
     {
         zPos = transform.position.z;
         oldPos = transform.position;
+
+        ray = new Ray(cameraChanger.Instance.GetCurrentCam().transform.position, (usePoint.position - cameraChanger.Instance.GetCurrentCam().transform.position));
     }
     private void Update()
     {
-
+       
     }
     // Start is called before the first frame update
     private void OnMouseDrag()
@@ -36,16 +38,16 @@ public class Tolls : MonoBehaviour
         oldPos = transform.position;
 
 
-        Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition);
-        if(Mathf.Abs(transform.parent.transform.eulerAngles.x) >= 90)
-        {
-            transform.parent.transform.position = new Vector3(pos.x, oldPos.y, pos.z);
-        }
-        else
-        {
+        Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition) + cameraChanger.Instance.GetCurrentCam().transform.forward;
+        transform.parent.transform.position = new Vector3(pos.x, pos.y, pos.z);
+        //if(Mathf.Abs(transform.parent.transform.eulerAngles.x) >= 90)
+        //{
+        //    transform.parent.transform.position = new Vector3(pos.x, oldPos.y, pos.z);
+        //}
+        //else
+        //{
 
-        transform.parent.transform.position = new Vector3(pos.x, pos.y, oldPos.z);
-        }
+        //}
         Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
         if (letgoToUse == false)
         {
@@ -64,17 +66,33 @@ public class Tolls : MonoBehaviour
 
     private void raycastToSelcetTooth()
     {
-        ray = new Ray(usePoint.position, cameraChanger.Instance.GetCurrentCam().transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            if (true /* && velocity<=ThresholdForMax*/)
-            {
-                usetool(hit);
-            }
         
+
+        ray = new Ray(usePoint.transform.position,transform.forward);
+        //RaycastHit[] hit = Physics.RaycastAll(ray, Mathf.Infinity);
+        
+        //if(hit.Length>1)
+        //{
+        //    usetool(hit);
+        //}
+
+        if(Physics.Raycast(ray,out RaycastHit hit))
+        {
+            usetool(hit);
         }
+        
     }
 
+    void OnDrawGizmosSelected()
+    {
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Vector3 dir = (transform.forward) * 1000;
+        Gizmos.DrawRay(usePoint.position,dir);
+    }
     protected virtual void usetool( RaycastHit hit)
     {
         
