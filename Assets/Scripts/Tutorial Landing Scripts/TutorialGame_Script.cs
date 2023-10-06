@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class TutorialGame_Script : MonoBehaviour
 {
+    private DW_ToothExtraction extraction;
+
     private DataManageScript data;
     private const string fileDirectory = "savefile_tutorial_";
+
+    void Start()
+    {
+        SetInstructionObject();
+    }
 
     #region SETUP
     private void UpdateInstructionStatus(bool cleared)
@@ -22,6 +29,20 @@ public class TutorialGame_Script : MonoBehaviour
 
         temp.cleared.completed = cleared;
         data.SaveInfoAsNewJson(temp);
+    }
+
+    private void SetInstructionObject()
+    {
+        switch (TutorialNagivatorScript.Instance().get_manual.toolAccessId)
+        {
+            case 1:
+                extraction = new DW_ToothExtraction();
+                extraction.Begin();
+                break;
+
+            default:
+                break;
+        }
     }
     #endregion
 

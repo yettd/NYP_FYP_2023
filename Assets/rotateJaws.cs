@@ -11,52 +11,61 @@ public class rotateJaws : MonoBehaviour
     float newx;
     bool down;
     float diffx;
+    float totalDegree = 0;
+    private void OnMouseDown()
+    {
+        down = true;
 
+        x = Input.mousePosition.x;
+    }
+    private void OnMouseDrag()
+    {
+  
 
-    Vector2 Xy;
-    Vector2  newXY;
-    Vector2 diffXY;
-    Vector2 totalDegree= Vector2.zero;
- 
+    }
+
+    private void OnMouseUp()
+    {
+        down = false;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButton(0) || Input.touchCount > 0)
         {
-            if (!down)
-            {
-                Xy = Input.mousePosition;
-                down = true;
-            }
-
+            newx = Input.mousePosition.x;
             if (!GetComponent<SphereCollider>().enabled)
             {
                 return;
             }
-            newXY.x = Input.mousePosition.x;
-            newXY.y = Input.mousePosition.y;
-            diffXY = newXY - Xy;
-            Xy = newXY;
-            totalDegree += diffXY * smooth;
+            float rotX = Input.GetAxis("Mouse X") * smooth;
+            float rotY = Input.GetAxis("Mouse Y") * smooth;
 
-
-            if (cameraChanger.Instance.ZoomIn.gameObject.activeSelf)
-            {
-                cameraChanger.Instance.RoateAround(totalDegree.x, totalDegree.y);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree.x, transform.eulerAngles.z);
-            }
+            diffx = newx - x;
+            x = newx;
+            totalDegree += diffx * smooth;
+            totalDegree = Mathf.Clamp(totalDegree, -90, 90);
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, totalDegree, transform.eulerAngles.z);
         }
 
-        if(Input.GetMouseButtonUp(0))
-        {
-            totalDegree = Vector2.zero;
-            down = false;
-        }
     }
 
+    //private void OnMouseDrag()
+    //{
+    //    //if(!GetComponent<SphereCollider>().enabled)
+    //    //{
+    //    //    return;
+    //    //}
+    //    //float rotX = Input.GetAxis("Mouse X") * smooth;
+    //    //float rotY = Input.GetAxis("Mouse Y") * smooth;
 
+    //    //Vector3 right = Vector3.Cross(cam.transform.up, transform.position - cam.transform.position);
+    //    //Vector3 up = Vector3.Cross(transform.position - cam.transform.position, right);
+    //    //transform.rotation = Quaternion.AngleAxis(-rotX, up) * transform.rotation;
+    //    //transform.rotation = Quaternion.AngleAxis(rotY, right) * transform.rotation;
+
+
+    //}
     public void changeCamview(Camera cam)
     {
         this.cam = cam;

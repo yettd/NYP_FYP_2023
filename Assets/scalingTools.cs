@@ -23,8 +23,8 @@ public class scalingTools : Tolls
         hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
         if(TDC)
         {
-            Debug.Log("asdasd");
-            TDC.Clean(hit, _brush,ray);
+
+        TDC.Clean(hit, _brush,ray);
         }
     }
 }

@@ -23,7 +23,10 @@ MonoBehaviour:
   tools:
   - itemName: ??
     icon: {fileID: 2800000, guid: 9ce1db4eb917b83468054463bba6bb0e, type: 3}
+    model: {fileID: 0}
   - itemName: ??
     icon: {fileID: 2800000, guid: 6af5d6edb8659304bbdbb49028117483, type: 3}
+    model: {fileID: 0}
   cleared:
     completed: 0
+  toolAccessId: 3
