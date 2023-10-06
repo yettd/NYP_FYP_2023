@@ -11,6 +11,7 @@ public class openTooth : MonoBehaviour
     Material mat;
     BoxCollider bc;
     MeshCollider mc;
+    showTask problemToSolve;
     // Start is called before the first frame update
     private void OnMouseDown()
     {
@@ -19,7 +20,7 @@ public class openTooth : MonoBehaviour
             return;
         }
 
-        if (minigameTaskListController.Instance.currentStep == Steps.LOCATINGS || minigameTaskListController.Instance.currentStep == Steps.LOCATINGF || minigameTaskListController.Instance.currentStep == Steps.LOCATINGE)
+        if (cameraChanger.Instance.ZoomIn==false)
         {
             if (!minigameTaskListController.Instance.minigameOpen)
             {
@@ -50,6 +51,10 @@ public class openTooth : MonoBehaviour
         if (Problem)
         {
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
+            if(minigameTaskListController.Instance.procedure==Procedure.Scaling)
+            {
+                problemToSolve= Resources.Load<showTask>("minigameTasklist/scaling");
+            }
         }
         mat = GetComponent<Renderer>().material;
         bc = GetComponent<BoxCollider>();

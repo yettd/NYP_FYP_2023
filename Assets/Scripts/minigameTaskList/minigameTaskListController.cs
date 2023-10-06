@@ -115,7 +115,7 @@ public class minigameTaskListController : MonoBehaviour
 
     bool NoMorePrevStep()
     {
-        if(prevStep==Steps.LOCATINGE|| prevStep == Steps.LOCATINGF|| prevStep == Steps.LOCATINGS)
+        if(prevStep==Steps.START)
         {
             return true;
         }
@@ -137,31 +137,31 @@ public class minigameTaskListController : MonoBehaviour
         return false;
     }
 
-    public void startminigame()
-    {
-        switch(procedure)
-        {
-            case Procedure.Scaling:
-                currentStep = Steps.LOCATINGS;
-                NextSteps = currentStep + 1;
-              //  Debug.Log($"{currentStep} : {NextSteps}");
-                    break;
-            case Procedure.Extration:
-                currentStep = Steps.LOCATINGE;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-            case Procedure.Filling:
-                currentStep = Steps.LOCATINGF;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-        }
+    //public void startminigame()
+    //{
+    //    //switch(procedure)
+    //    //{
+    //    //    case Procedure.Scaling:
+    //    //        currentStep = Steps.LOCATINGS;
+    //    //        NextSteps = currentStep + 1;
+    //    //      //  Debug.Log($"{currentStep} : {NextSteps}");
+    //    //            break;
+    //    //    case Procedure.Extration:
+    //    //        currentStep = Steps.LOCATINGE;
+    //    //        NextSteps = currentStep + 1;
+    //    //        //  Debug.Log($"{currentStep} : {NextSteps}");
+    //    //        break;
+    //    //    case Procedure.Filling:
+    //    //        currentStep = Steps.LOCATINGF;
+    //    //        NextSteps = currentStep + 1;
+    //    //        //  Debug.Log($"{currentStep} : {NextSteps}");
+    //    //        break;
+    //    //}
 
-        //open minimini gameWindow
+    //    //open minimini gameWindow
 
-        //load correct mininigame
-    }
+    //    //load correct mininigame
+    //}
 
     private void Update()
     {
@@ -176,7 +176,7 @@ public class minigameTaskListController : MonoBehaviour
     public void setGame(bool a)
     {
         TBgums = a;
-        startminigame();
+      //  startminigame();
         minigameOpen = true;
         cameraChanger.Instance.startCamera();
         openGame.Invoke();
@@ -191,7 +191,7 @@ public class minigameTaskListController : MonoBehaviour
     public void SetTeetch(GameObject t)
     {
         teeth = t.transform.parent.gameObject;
-        startminigame();
+     //   startminigame();
         minigameOpen = true;
         gonext();
         cameraChanger.Instance.startCamera();
@@ -224,11 +224,11 @@ public class minigameTaskListController : MonoBehaviour
 
     public void CloseGameOrBack()
     {
-        if(currentStep==Steps.SCRAPINGS )
+        if(model!=null )
         {
             RR();
         }
-        else if(currentStep == Steps.CHOOSINGS)
+        else if(cameraChanger.Instance.ZoomIn)
         {
 
                 teethMan.tm.Back();
@@ -252,7 +252,6 @@ public class minigameTaskListController : MonoBehaviour
        
         }
 
-        goprev();
     }
 
     public void stopRotation()
@@ -263,6 +262,7 @@ public class minigameTaskListController : MonoBehaviour
     public void RR()
     {
         Destroy(model);
+        model = null;
         toolSelected = false; 
         ResumeRotation.Invoke();
     }
@@ -275,7 +275,7 @@ public class minigameTaskListController : MonoBehaviour
     public void ToolsSelected(string toolsname, GameObject model)
     {
 
-        if (currentStep == Steps.CHOOSINGS)
+        if (cameraChanger.Instance.ZoomIn)
         {
             // testTool.gameObject.SetActive(true);
             toolSelectedName = toolsname;
@@ -305,20 +305,10 @@ public class minigameTaskListController : MonoBehaviour
         {
             case Procedure.Scaling:
                 st = Resources.Load<showTask>("minigameTasklist/scaling");
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-            case Procedure.Extration:
-                currentStep = Steps.LOCATINGE;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-            case Procedure.Filling:
-                currentStep = Steps.LOCATINGF;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
                 break;
         }
         bool first = true;
+
         foreach(TaskBreakDown TBD in st.TBD)
         {
             Image slot = Instantiate(Resources.Load<Image>("minigameTasklist/Image"),TL);
@@ -363,21 +353,14 @@ public enum Procedure
 
 public enum Steps
 {
+    START,
     //scaling
-    LOCATINGS,
-    CHOOSINGS,
     SCRAPINGS,
-    END_TASKS,
     //extraion
 
-    LOCATINGE,
-    CHOOSINGE,
     SCRAPINGE,
-    END_TASKE,
     //filling
 
-    LOCATINGF,
-    CHOOSINGF,
     SCRAPINGF,
     END_TASKF
 
