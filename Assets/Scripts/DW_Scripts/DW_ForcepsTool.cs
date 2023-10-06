@@ -5,24 +5,39 @@ using UnityEngine;
 public class DW_ForcepsTool : MonoBehaviour
 {
     private DW_ElementCancelation element;
-    private const string targetForUse = "TeethSection";
+    private DW_ToolMarker marker;
+    private const string targetForUse = "DamagedTooth";
+    private DW_MoveTools moveObject;
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         DeActivate();
     }
 
-    private void Update()
+    void Update()
     {
+        // Enable of moving
+        if (moveObject != null) moveObject.Drag();
 
+        // Find the area for the use of tool
+        RaycastHit detect;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
+        {
+            if (detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null)
+            {
+                detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().ApplyProduct();
+                DeActivate();
+            }
+        }
     }
 
     #region SETUP
     public void Activate()
     {
-        // Cancel all active component
+        // Set marker
+        marker = new DW_ToolMarker(targetForUse);
+        moveObject = new DW_MoveTools();
         element = new DW_ElementCancelation();
-        element.Activate();
 
         // Enable used of tool
         GrantAccessToUseForcespTool(true);
@@ -36,30 +51,32 @@ public class DW_ForcepsTool : MonoBehaviour
         // Disable used of tool
         GrantAccessToUseForcespTool(false);
     }
-
-    private void SetMarkerSelection(GameObject accessor)
-    {
-        if (accessor.GetComponent<DW_SelectionComponent>() == null) accessor.AddComponent<DW_SelectionComponent>().Select();
-        else accessor.GetComponent<DW_SelectionComponent>().Select();
-    }
-
-    private void DisableMarkerSelection(GameObject accessor)
-    {
-        if (accessor.GetComponent<DW_SelectionComponent>() != null) accessor.GetComponent<DW_SelectionComponent>().DeSelect();
-    }
     #endregion
 
     #region COMPONENT
     private void GrantAccessToUseForcespTool(bool enable)
     {
-        // Selection reference of target area
-        GameObject[] accessors = GameObject.FindGameObjectsWithTag(targetForUse);
-
-        foreach (GameObject accessor in accessors)
+        if (enable)
         {
-            if (accessor)
-            if (enable) SetMarkerSelection(accessor);
-            else DisableMarkerSelection(accessor);
+            // Move the object
+            if (moveObject != null) moveObject.StartMove();
+
+            // Cancel all active component
+            if (element != null) element.Activate();
+        }
+
+        // Define marker usage
+        if (marker != null)
+        {
+            // Selection marker
+            marker.DisplayMarker(enable);
+
+            // Selection object
+            foreach (GameObject accessor in marker.getAccessors)
+            {
+                if (enable) accessor.AddComponent<DW_ForcepsPlacement>();
+                else Destroy(accessor.GetComponent<DW_ForcepsPlacement>());
+            }
         }
     }
     #endregion

@@ -5,28 +5,42 @@ using UnityEngine;
 public class DW_AnestheticTool : MonoBehaviour
 {
     private DW_ElementCancelation element;
+    private DW_ToolMarker marker;
     private const string targetForUse = "GumSection";
-    private DW_MoveTools moveable;
+    private DW_MoveTools moveObject;
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         DeActivate();
     }
 
-    private void OnMouseDrag()
+    void Update()
     {
-        if (moveable != null) moveable.Drag();
+        if (moveObject != null)
+        {
+            // Enable for moving
+            moveObject.Drag();
+
+            // Find the area for the use of tool
+            RaycastHit detect;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
+            {
+                if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null && !moveObject.get_isMove)
+                {
+                    detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
+                    DeActivate();
+                }
+            }
+        }
     }
 
     #region SETUP
     public void Activate()
     {
-        // Move
-        moveable = new DW_MoveTools();
-
-        // Cancel all active component
+        // Set marker
+        marker = new DW_ToolMarker(targetForUse);
+        moveObject = new DW_MoveTools();
         element = new DW_ElementCancelation();
-        element.Activate();
 
         // Enable used of tool
         GrantAccessToUseAnestheicTool(true);
@@ -40,35 +54,32 @@ public class DW_AnestheticTool : MonoBehaviour
         // Disable used of tool
         GrantAccessToUseAnestheicTool(false);
     }
-
-    private void SetMarkerSelection(GameObject accessor)
-    {
-        if (accessor.GetComponent<DW_SelectionComponent>() == null) accessor.AddComponent<DW_SelectionComponent>().Select();
-        else accessor.GetComponent<DW_SelectionComponent>().Select();
-    }
-
-    private void DisableMarkerSelection(GameObject accessor)
-    {
-        if (accessor.GetComponent<DW_SelectionComponent>() != null) accessor.GetComponent<DW_SelectionComponent>().DeSelect();
-    }
     #endregion
 
     #region COMPONENT
-    private void TargetSelectionArea()
-    {
-        // Enable used of tool
-        GrantAccessToUseAnestheicTool(true);
-    }
-
     private void GrantAccessToUseAnestheicTool(bool enable)
     {
-        // Selection reference of target area
-        GameObject[] accessors = GameObject.FindGameObjectsWithTag(targetForUse);
-
-        foreach (GameObject accessor in accessors)
+        if (enable)
         {
-            if (enable) SetMarkerSelection(accessor.transform.GetChild(0).gameObject);
-            else DisableMarkerSelection(accessor.transform.GetChild(0).gameObject);
+            // Move the object
+            if (moveObject != null) moveObject.StartMove();
+
+            // Cancel all active component
+            if (element != null) element.Activate();
+        }
+
+        // Define marker usage
+        if (marker != null)
+        {
+            // Selection marker
+            marker.DisplayMarker(enable);
+
+            // Selection object
+            foreach (GameObject accessor in marker.getAccessors)
+            {
+                if (enable) accessor.AddComponent<DW_AnestheicPlacement>();
+                else Destroy(accessor.GetComponent<DW_AnestheicPlacement>());
+            }
         }
     }
     #endregion
