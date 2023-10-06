@@ -112,6 +112,15 @@ public class minigameTaskListController : MonoBehaviour
         return false;
     }
 
+    bool NoMorePrevStep()
+    {
+        if(prevStep==Steps.LOCATINGE|| prevStep == Steps.LOCATINGF|| prevStep == Steps.LOCATINGS)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public Steps getCurrentStep()
     {
         return currentStep;
@@ -246,6 +255,7 @@ public class minigameTaskListController : MonoBehaviour
                 minigameOpen = false;
 
             }
+
 
         }
         else
