@@ -11,6 +11,7 @@ public class openTooth : MonoBehaviour
     Material mat;
     BoxCollider bc;
     MeshCollider mc;
+    showTask problemToSolve;
     // Start is called before the first frame update
     private void OnMouseDown()
     {
@@ -19,7 +20,7 @@ public class openTooth : MonoBehaviour
             return;
         }
 
-        if (minigameTaskListController.Instance.currentStep == Steps.LOCATINGS || minigameTaskListController.Instance.currentStep == Steps.LOCATINGF || minigameTaskListController.Instance.currentStep == Steps.LOCATINGE)
+        if (cameraChanger.Instance.ZoomIn==false)
         {
             if (!minigameTaskListController.Instance.minigameOpen)
             {
@@ -41,14 +42,19 @@ public class openTooth : MonoBehaviour
 
     private void OnEnable()
     {
-        teethMan.tm.CO += HideTeeth;
-        teethMan.tm.Back += Show;
+
     }
     private void Start()
     {
-        if(Problem)
+        teethMan.tm.CO += HideTeeth;
+        teethMan.tm.Back += Show;
+        if (Problem)
         {
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
+            if(minigameTaskListController.Instance.procedure==Procedure.Scaling)
+            {
+                problemToSolve= Resources.Load<showTask>("minigameTasklist/scaling");
+            }
         }
         mat = GetComponent<Renderer>().material;
         bc = GetComponent<BoxCollider>();
@@ -59,16 +65,20 @@ public class openTooth : MonoBehaviour
     {
         if(TeethName != gameObject.name)
         {
-            mat.SetFloat("_op", 0);
-
-            bc.enabled = false;
+            mat.SetFloat("_op", 0.1f);
+           
+            //bc.enabled = false;
             mc.enabled = false;
 
+        }
+        else
+        {
+            cameraChanger.Instance.ZoomInCam(gameObject);
         }
     }
     private void Show()
     {
-        bc.enabled = true;
+       // bc.enabled = true;
         mc.enabled = true;
         mat.SetFloat("_op", 1);
 

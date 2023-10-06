@@ -32,9 +32,6 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] float solvedTeetg;
     public bool IsPause;
     showTask st;
-    [Header("REMOVE")]
-    [SerializeField]GameObject testing;
-    [SerializeField] string Testname;
 
     //sideStuff
     public GameObject goodJob;
@@ -106,9 +103,22 @@ public class minigameTaskListController : MonoBehaviour
     {
         NextSteps = currentStep;
         currentStep = prevStep;
+        if(NoMorePrevStep()==false)
+        {
         prevStep--;
+
+        }
         showCorrectStep();
         pauseButton.ChangeButtonSprite();
+        return false;
+    }
+
+    bool NoMorePrevStep()
+    {
+        if(prevStep==Steps.START)
+        {
+            return true;
+        }
         return false;
     }
 
@@ -127,47 +137,34 @@ public class minigameTaskListController : MonoBehaviour
         return false;
     }
 
-    public void startminigame()
-    {
-        switch(procedure)
-        {
-            case Procedure.Scaling:
-                currentStep = Steps.LOCATINGS;
-                NextSteps = currentStep + 1;
-              //  Debug.Log($"{currentStep} : {NextSteps}");
-                    break;
-            case Procedure.Extration:
-                currentStep = Steps.LOCATINGE;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-            case Procedure.Filling:
-                currentStep = Steps.LOCATINGF;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-        }
+    //public void startminigame()
+    //{
+    //    //switch(procedure)
+    //    //{
+    //    //    case Procedure.Scaling:
+    //    //        currentStep = Steps.LOCATINGS;
+    //    //        NextSteps = currentStep + 1;
+    //    //      //  Debug.Log($"{currentStep} : {NextSteps}");
+    //    //            break;
+    //    //    case Procedure.Extration:
+    //    //        currentStep = Steps.LOCATINGE;
+    //    //        NextSteps = currentStep + 1;
+    //    //        //  Debug.Log($"{currentStep} : {NextSteps}");
+    //    //        break;
+    //    //    case Procedure.Filling:
+    //    //        currentStep = Steps.LOCATINGF;
+    //    //        NextSteps = currentStep + 1;
+    //    //        //  Debug.Log($"{currentStep} : {NextSteps}");
+    //    //        break;
+    //    //}
 
-        //open minimini gameWindow
+    //    //open minimini gameWindow
 
-        //load correct mininigame
-    }
+    //    //load correct mininigame
+    //}
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            if(model)
-            {
-                Destroy(model);
-            }
-            currentStep = Steps.CHOOSINGS;
-            ToolsSelected(Testname, testing);
-        }
     }
 
     public void IncreaseTeethWithProblem()
@@ -179,7 +176,7 @@ public class minigameTaskListController : MonoBehaviour
     public void setGame(bool a)
     {
         TBgums = a;
-        startminigame();
+      //  startminigame();
         minigameOpen = true;
         cameraChanger.Instance.startCamera();
         openGame.Invoke();
@@ -194,7 +191,7 @@ public class minigameTaskListController : MonoBehaviour
     public void SetTeetch(GameObject t)
     {
         teeth = t.transform.parent.gameObject;
-        startminigame();
+     //   startminigame();
         minigameOpen = true;
         gonext();
         cameraChanger.Instance.startCamera();
@@ -227,33 +224,34 @@ public class minigameTaskListController : MonoBehaviour
 
     public void CloseGameOrBack()
     {
-        if(currentStep==Steps.SCRAPINGS )
+        if(model!=null )
         {
             RR();
         }
-        else if(currentStep == Steps.CHOOSINGS)
+        else if(cameraChanger.Instance.ZoomIn)
         {
 
-     
-            if(teethMan.tm.ZoomIn)
-            {
                 teethMan.tm.Back();
-            }
-            else
-            {
-                cameraChanger.Instance.closeCamera();
-                closeGame.Invoke();
-                minigameOpen = false;
-
-            }
-
+                cameraChanger.Instance.ZoomOutCam();
         }
         else
         {
-            close.Invoke();
-            IsPause = true;
+            if(minigameOpen)
+            {
+                closeGame.Invoke();
+                minigameOpen = false;
+            }
+            else
+            {
+
+                cameraChanger.Instance.closeCamera();
+                close.Invoke();
+                IsPause = true;
+                return;
+            }
+       
         }
-        goprev();
+
     }
 
     public void stopRotation()
@@ -264,26 +262,28 @@ public class minigameTaskListController : MonoBehaviour
     public void RR()
     {
         Destroy(model);
+        model = null;
         toolSelected = false; 
         ResumeRotation.Invoke();
     }
     public void ResumeGame()
     {
         pause.SetActive(false);
+        IsPause = false;
     }
 
     public void ToolsSelected(string toolsname, GameObject model)
     {
 
-        if (currentStep == Steps.CHOOSINGS)
+        if (cameraChanger.Instance.ZoomIn)
         {
             // testTool.gameObject.SetActive(true);
             toolSelectedName = toolsname;
             this.model = Instantiate(model) as GameObject;
-            this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position + cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward * 2;
+            this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position + cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward;
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
-            this.model.transform.localScale = new Vector3(10, 10, 10);
+            this.model.transform.localScale = new Vector3(5, 5, 5);
             Debug.LogError(toolsname);
             gonext();
             stopRotation();
@@ -305,20 +305,10 @@ public class minigameTaskListController : MonoBehaviour
         {
             case Procedure.Scaling:
                 st = Resources.Load<showTask>("minigameTasklist/scaling");
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-            case Procedure.Extration:
-                currentStep = Steps.LOCATINGE;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
-                break;
-            case Procedure.Filling:
-                currentStep = Steps.LOCATINGF;
-                NextSteps = currentStep + 1;
-                //  Debug.Log($"{currentStep} : {NextSteps}");
                 break;
         }
         bool first = true;
+
         foreach(TaskBreakDown TBD in st.TBD)
         {
             Image slot = Instantiate(Resources.Load<Image>("minigameTasklist/Image"),TL);
@@ -363,21 +353,14 @@ public enum Procedure
 
 public enum Steps
 {
+    START,
     //scaling
-    LOCATINGS,
-    CHOOSINGS,
     SCRAPINGS,
-    END_TASKS,
     //extraion
 
-    LOCATINGE,
-    CHOOSINGE,
     SCRAPINGE,
-    END_TASKE,
     //filling
 
-    LOCATINGF,
-    CHOOSINGF,
     SCRAPINGF,
     END_TASKF
 
