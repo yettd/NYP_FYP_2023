@@ -108,6 +108,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openPlayGamePanel()
     {
+        AudioManager.Instance.PlayPingSound();
         //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (PlayGameactive == false)
         {
@@ -145,6 +146,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openMainMenuPanel()
     {
+        AudioManager.Instance.PlayPingSound();
         //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (MainMenuactive == false)
         {
@@ -179,11 +181,11 @@ public class MenuManagerS2 : MonoBehaviour
         //original
         Camera.transform.DOMove(new Vector3(34, 12.8f, -16), 1);
         Camera.transform.DORotate(new Vector3(10, 0, 0), 1);
-
     }
 
     public void openCollectionsPanel()
     {
+        AudioManager.Instance.PlayPingSound();
         //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (CollectionsActive == false)
         {
@@ -222,6 +224,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openSettingsPAGE()
     {
+        AudioManager.Instance.PlayPingSound();
         //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (SettingsPageactive == false)
         {
