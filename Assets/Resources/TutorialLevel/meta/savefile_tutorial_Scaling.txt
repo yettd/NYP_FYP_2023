@@ -43,29 +43,24 @@
         {
             "itemName": "Gracey5_6",
             "icon": {
-
                 "instanceID": 41946
             },
             "model": {
                 "instanceID": 41924
-
             }
         },
         {
             "itemName": "Gracey7_8",
             "icon": {
-
                 "instanceID": 41948
             },
             "model": {
                 "instanceID": 41926
-
             }
         },
         {
             "itemName": "Gracey11_12",
             "icon": {
-
                 "instanceID": 41952
             },
             "model": {
@@ -75,12 +70,10 @@
         {
             "itemName": "Gracey13_14",
             "icon": {
-
                 "instanceID": 41954
             },
             "model": {
                 "instanceID": 41932
-
             }
         }
     ],
