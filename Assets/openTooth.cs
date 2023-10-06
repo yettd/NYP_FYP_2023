@@ -41,12 +41,13 @@ public class openTooth : MonoBehaviour
 
     private void OnEnable()
     {
-        teethMan.tm.CO += HideTeeth;
-        teethMan.tm.Back += Show;
+
     }
     private void Start()
     {
-        if(Problem)
+        teethMan.tm.CO += HideTeeth;
+        teethMan.tm.Back += Show;
+        if (Problem)
         {
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
         }
@@ -59,16 +60,20 @@ public class openTooth : MonoBehaviour
     {
         if(TeethName != gameObject.name)
         {
-            mat.SetFloat("_op", 0);
-
-            bc.enabled = false;
+            mat.SetFloat("_op", 0.1f);
+           
+            //bc.enabled = false;
             mc.enabled = false;
 
+        }
+        else
+        {
+            cameraChanger.Instance.ZoomInCam(gameObject);
         }
     }
     private void Show()
     {
-        bc.enabled = true;
+       // bc.enabled = true;
         mc.enabled = true;
         mat.SetFloat("_op", 1);
 

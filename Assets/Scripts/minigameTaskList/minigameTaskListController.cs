@@ -32,9 +32,6 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] float solvedTeetg;
     public bool IsPause;
     showTask st;
-    [Header("REMOVE")]
-    [SerializeField]GameObject testing;
-    [SerializeField] string Testname;
 
     //sideStuff
     public GameObject goodJob;
@@ -106,7 +103,11 @@ public class minigameTaskListController : MonoBehaviour
     {
         NextSteps = currentStep;
         currentStep = prevStep;
+        if(NoMorePrevStep()==false)
+        {
         prevStep--;
+
+        }
         showCorrectStep();
         pauseButton.ChangeButtonSprite();
         return false;
@@ -164,19 +165,6 @@ public class minigameTaskListController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            if(model)
-            {
-                Destroy(model);
-            }
-            currentStep = Steps.CHOOSINGS;
-            ToolsSelected(Testname, testing);
-        }
     }
 
     public void IncreaseTeethWithProblem()
@@ -243,26 +231,27 @@ public class minigameTaskListController : MonoBehaviour
         else if(currentStep == Steps.CHOOSINGS)
         {
 
-     
-            if(teethMan.tm.ZoomIn)
-            {
                 teethMan.tm.Back();
-            }
-            else
-            {
-                cameraChanger.Instance.closeCamera();
-                closeGame.Invoke();
-                minigameOpen = false;
-
-            }
-
-
+                cameraChanger.Instance.ZoomOutCam();
         }
         else
         {
-            close.Invoke();
-            IsPause = true;
+            if(minigameOpen)
+            {
+                closeGame.Invoke();
+                minigameOpen = false;
+            }
+            else
+            {
+
+                cameraChanger.Instance.closeCamera();
+                close.Invoke();
+                IsPause = true;
+                return;
+            }
+       
         }
+
         goprev();
     }
 
@@ -280,6 +269,7 @@ public class minigameTaskListController : MonoBehaviour
     public void ResumeGame()
     {
         pause.SetActive(false);
+        IsPause = false;
     }
 
     public void ToolsSelected(string toolsname, GameObject model)
@@ -290,10 +280,10 @@ public class minigameTaskListController : MonoBehaviour
             // testTool.gameObject.SetActive(true);
             toolSelectedName = toolsname;
             this.model = Instantiate(model) as GameObject;
-            this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position + cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward * 2;
+            this.model.transform.position = cameraChanger.Instance.GetCurrentCam().gameObject.transform.position + cameraChanger.Instance.GetCurrentCam().gameObject.transform.forward;
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
-            this.model.transform.localScale = new Vector3(10, 10, 10);
+            this.model.transform.localScale = new Vector3(5, 5, 5);
             Debug.LogError(toolsname);
             gonext();
             stopRotation();

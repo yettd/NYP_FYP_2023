@@ -38,9 +38,6 @@ public class TeethDirtClean : MonoBehaviour
         BCs = GetComponent<BoxCollider>();
         MC = GetComponent<MeshCollider>();
         GameObject a= new GameObject("asd");
-        Instantiate(a, MC.transform.position,Quaternion.Euler(0,0,0));
-        a.transform.parent = gameObject.transform;
-        a.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void Update()
@@ -89,14 +86,15 @@ public class TeethDirtClean : MonoBehaviour
         _material.SetTexture("_DirtMask", _templateDirtMask);
     }
 
-    public void Clean(RaycastHit hit, Texture2D _brush, Ray ray)
+    public void Clean(RaycastHit[] hit, Texture2D _brush, Ray ray)
     {
         if(clean)
         {
             return;
         }
-
-        Vector3 hitPointLocal = transform.GetChild(0).InverseTransformPoint(hit.point);
+        
+     //   Debug.Log(positionRelativeToEnemy);
+        Vector3 hitPointLocal = transform.InverseTransformPoint(hit[0].point);
 
         float xAbs = Mathf.Abs(hitPointLocal.x);
         float zAbs = Mathf.Abs(hitPointLocal.z);
@@ -127,20 +125,59 @@ public class TeethDirtClean : MonoBehaviour
                 positionRelativeToEnemy = 'b';
             }
         }
-
-        Debug.LogError(positionRelativeToEnemy);
         bool correctTool = checkTools(positionRelativeToEnemy);
-
-        if(correctTool)
+        if (correctTool)
         {
-            if(Physics.Raycast(hit.point,ray.direction,out hit))
-            {
-                cleanining(hit, _brush);
-            }
+                cleanining(hit[0], _brush);
         }
 
     }
+    public void Clean(RaycastHit hit, Texture2D _brush, Ray ray)
+    {
+        if (clean)
+        {
+            return;
+        }
 
+        //   Debug.Log(positionRelativeToEnemy);
+        Vector3 hitPointLocal = transform.InverseTransformPoint(hit.point);
+
+        float xAbs = Mathf.Abs(hitPointLocal.x);
+        float zAbs = Mathf.Abs(hitPointLocal.z);
+
+        char positionRelativeToEnemy;
+
+        if (xAbs > zAbs)
+        {
+            // Hit point is either "left" or "right" relative to the enemy
+            if (hitPointLocal.x > 0)
+            {
+                positionRelativeToEnemy = 'r';
+            }
+            else
+            {
+                positionRelativeToEnemy = 'l';
+            }
+        }
+        else
+        {
+            // Hit point is either "front" or "back" relative to the enemy
+            if (hitPointLocal.z > 0)
+            {
+                positionRelativeToEnemy = 'f';
+            }
+            else
+            {
+                positionRelativeToEnemy = 'b';
+            }
+        }
+        bool correctTool = checkTools(positionRelativeToEnemy);
+        if (correctTool)
+        {
+            cleanining(hit, _brush);
+        }
+
+    }
     bool  checkTools(char a)
     {
         bool correct = false;
@@ -178,9 +215,11 @@ public class TeethDirtClean : MonoBehaviour
 
     void cleanining(RaycastHit hit, Texture2D _brush)
     {
+
         Vector2 textureCoord = hit.textureCoord;
         int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
         int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
+        Debug.Log(textureCoord);
         for (int x = 0; x < _brush.width; x++)
         {
             for (int y = 0; y < _brush.height; y++)
@@ -205,8 +244,8 @@ public class TeethDirtClean : MonoBehaviour
         {
             clear();
         }
-
         _templateDirtMask.Apply();
+
     }
 
     void clear()
