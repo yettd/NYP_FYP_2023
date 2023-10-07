@@ -51,14 +51,15 @@ public class openTooth : MonoBehaviour
         {
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
         }
-        mat = GetComponent<Renderer>().material;
+       // mat = GetComponent<Renderer>().material;
         bc = GetComponent<BoxCollider>();
         mc = GetComponent<MeshCollider>();
     }
 
     private void HideTeeth(string TeethName)
     {
-        if(TeethName != gameObject.name)
+        mat = GetComponent<Renderer>().material;
+        if (TeethName != gameObject.name)
         {
             mat.SetFloat("_op", 0.1f);
            

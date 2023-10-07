@@ -218,6 +218,10 @@ public class TeethDirtClean : MonoBehaviour
         Vector2 textureCoord = hit.textureCoord;
         int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
         int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
+
+        int offSetX = pixelX - (_brush.width / 2);
+
+        int offSetY = pixelY - (_brush.height / 2);
         Debug.Log(textureCoord);
         for (int x = 0; x < _brush.width; x++)
         {
@@ -251,7 +255,7 @@ public class TeethDirtClean : MonoBehaviour
     {
         GetComponent<Renderer>().material = TooThDone;
         clean = true;
-        BCs.enabled = false;
+       // BCs.enabled = false;
         minigameTaskListController.Instance.CheckGameComplete();
         Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
 

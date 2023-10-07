@@ -95,5 +95,10 @@ public class cameraChanger : MonoBehaviour
         //ZoomIn.gameObject.transform.LookAt(focusOn.transform.position,transform.up);
     }
 
+    public GameObject GetfocusOn()
+    {
+        return focusOn;
+    }
+
 
 }
