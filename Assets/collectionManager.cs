@@ -76,22 +76,26 @@ public class collectionManager : MonoBehaviour
 
     public void SetQuizButton()
     {
-        if(toolOrProcedure)
+        GTQ.Show(false);
+        if (toolOrProcedure)
         {
-            GTQ.Show(true);
+           
             ButtonReferenceManager.Instance.ARTorP = true;
-            if(ButtonReferenceManager.Instance.storeCollectionID==CollectionEnum.S)
+            if(ButtonReferenceManager.Instance.storeCollectionID==CollectionEnum.S && ButtonReferenceManager.Instance.S.Length>0)
             {
+                GTQ.Show(true);
                 GTQ.changeText("Scaling");
 
             }
-            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E && ButtonReferenceManager.Instance.E.Length > 0)
             {
+                GTQ.Show(true);
                 GTQ.changeText("Ex");
 
             }
-            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F && ButtonReferenceManager.Instance.F.Length > 0)
             {
+                GTQ.Show(true);
                 GTQ.changeText("Filling");
 
             }
@@ -99,7 +103,7 @@ public class collectionManager : MonoBehaviour
         else
         {
             ButtonReferenceManager.Instance.ARTorP = false;
-            GTQ.Show(false);
+  
         }
     }
 

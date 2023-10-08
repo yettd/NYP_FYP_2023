@@ -34,6 +34,7 @@ public class TeethDirtClean : MonoBehaviour
             }
         }
         remaindingDirt = toatlDirtOnTeeth;
+        Debug.Log(remaindingDirt);
         _material = GetComponent<Renderer>().material;
         BCs = GetComponent<BoxCollider>();
         MC = GetComponent<MeshCollider>();
@@ -228,22 +229,15 @@ public class TeethDirtClean : MonoBehaviour
             for (int y = 0; y < _brush.height; y++)
             {
                 Color pixelDirt = _brush.GetPixel(x, y);
-                Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + x, pixelY + y);
-
-                _templateDirtMask.SetPixel(pixelX + x, pixelY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
+                Color pixelDirtMask = _templateDirtMask.GetPixel(offSetX + x, offSetY + y);
+                float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
+                remaindingDirt -= removedAmount;
+                _templateDirtMask.SetPixel(offSetX + x, offSetY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
             }
         }
-        remaindingDirt = 0;
 
-        for (int i = 0; i < _dirtMaskBase.width; i++)
-        {
-            for (int j = 0; j < _dirtMaskBase.height; j++)
-            {
-                remaindingDirt += _templateDirtMask.GetPixel(i, j).g;
-            }
-        }
-       // Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
-        if ((remaindingDirt / toatlDirtOnTeeth) < (percentage + 0.005) && !clean)
+        Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
+        if ((remaindingDirt / toatlDirtOnTeeth) < (0.96f + 0.005f) && !clean)
         {
             clear();
         }
