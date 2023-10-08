@@ -65,8 +65,16 @@ public class ButtonReferenceManager : MonoBehaviour
         storedDTHButtonID = DTHEnum.DH;
     }
 
+    public void StartOver()
+    {
+       
+    }
+
     public void LoadToolsDatabases()
     {
+        ARTorP = false;
+        storedDTHButtonID = DTHEnum.DH;
+        storeCollectionID = CollectionEnum.S;
         string a = Saving.save.LoadFromJson("game");
 
         if(a!=null)
