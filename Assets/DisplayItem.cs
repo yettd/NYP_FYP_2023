@@ -76,7 +76,7 @@ public class DisplayItem : MonoBehaviour
 
         }
 
-        if(currentValue <=0 || currentValue >Text.Length)
+        if(currentValue <0 || currentValue >=Text.Length)
         {
             currentValue = oldValue;
         }

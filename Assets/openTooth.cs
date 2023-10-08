@@ -11,6 +11,9 @@ public class openTooth : MonoBehaviour
     Material mat;
     BoxCollider bc;
     MeshCollider mc;
+    public showTask st;
+    bool focus;
+    int WhichStepIsOn;
     // Start is called before the first frame update
     private void OnMouseDown()
     {
@@ -19,7 +22,7 @@ public class openTooth : MonoBehaviour
             return;
         }
 
-        if (minigameTaskListController.Instance.currentStep == Steps.LOCATINGS || minigameTaskListController.Instance.currentStep == Steps.LOCATINGF || minigameTaskListController.Instance.currentStep == Steps.LOCATINGE)
+        if (!cameraChanger.Instance.GetZoom())
         {
             if (!minigameTaskListController.Instance.minigameOpen)
             {
@@ -29,7 +32,7 @@ public class openTooth : MonoBehaviour
             else
             {
                 //zoom in the teeth;
-                minigameTaskListController.Instance.gonext();
+                //minigameTaskListController.Instance.gonext();
                 teethMan.tm.CallClickOn(gameObject.name);
 
             }
@@ -62,13 +65,16 @@ public class openTooth : MonoBehaviour
         if (TeethName != gameObject.name)
         {
             mat.SetFloat("_op", 0.1f);
-           
+            Debug.Log(mat.GetFloat("_op"));
             //bc.enabled = false;
             mc.enabled = false;
 
         }
         else
         {
+            focus = true;
+
+            minigameTaskListController.Instance.startminigame(st,WhichStepIsOn);
             cameraChanger.Instance.ZoomInCam(gameObject);
         }
     }
@@ -77,6 +83,13 @@ public class openTooth : MonoBehaviour
        // bc.enabled = true;
         mc.enabled = true;
         mat.SetFloat("_op", 1);
+
+        if(focus)
+        {
+            focus = false;
+            WhichStepIsOn = minigameTaskListController.Instance.getCSValue();
+     
+        }
 
     }
 }

@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
   m_Name: oTI_10
   m_EditorClassIdentifier: 
-  Name: 'Gracey
-
-    11/12'
+  Name: Gracey 11/12
   Icon: {fileID: 21300000, guid: 894c6b81f267e5e4493c4eea8cb7c142, type: 3}
   Usage: "<b>Usage</b>\r\nAnterior teeth: mesial and distal surfaces\r\nPosterior
     teeth: mesial surfaces only\r\nPosterior teeth: facial, lingual, and mesial \r\nsurfaces<br>"

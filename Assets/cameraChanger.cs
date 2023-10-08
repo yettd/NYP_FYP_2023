@@ -99,6 +99,9 @@ public class cameraChanger : MonoBehaviour
     {
         return focusOn;
     }
-
+    public bool GetZoom()
+    {
+        return zoom;
+    }
 
 }

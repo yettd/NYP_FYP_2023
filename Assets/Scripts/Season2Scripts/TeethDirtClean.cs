@@ -88,10 +88,11 @@ public class TeethDirtClean : MonoBehaviour
 
     public void Clean(RaycastHit[] hit, Texture2D _brush, Ray ray)
     {
-        if(clean)
+        if(clean || minigameTaskListController.Instance.currentStep != Steps.SCRAPINGS)
         {
             return;
         }
+
         
      //   Debug.Log(positionRelativeToEnemy);
         Vector3 hitPointLocal = transform.InverseTransformPoint(hit[0].point);
@@ -223,7 +224,7 @@ public class TeethDirtClean : MonoBehaviour
         int offSetX = pixelX - (_brush.width / 2);
 
         int offSetY = pixelY - (_brush.height / 2);
-        Debug.Log(textureCoord);
+        //Debug.Log(textureCoord);
         for (int x = 0; x < _brush.width; x++)
         {
             for (int y = 0; y < _brush.height; y++)
@@ -236,8 +237,8 @@ public class TeethDirtClean : MonoBehaviour
             }
         }
 
-        Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
-        if ((remaindingDirt / toatlDirtOnTeeth) < (0.96f + 0.005f) && !clean)
+       // Debug.Log("Percentage that look clean = " + (remaindingDirt / toatlDirtOnTeeth));
+        if ((remaindingDirt / toatlDirtOnTeeth) < (0.95f) && !clean)
         {
             clear();
         }
@@ -249,8 +250,8 @@ public class TeethDirtClean : MonoBehaviour
     {
         GetComponent<Renderer>().material = TooThDone;
         clean = true;
-       // BCs.enabled = false;
-        minigameTaskListController.Instance.CheckGameComplete();
+        // BCs.enabled = false;
+        minigameTaskListController.Instance.gonext();
         Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
 
     }

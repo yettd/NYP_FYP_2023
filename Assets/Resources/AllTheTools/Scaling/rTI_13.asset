@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
   m_Name: rTI_13
   m_EditorClassIdentifier: 
-  Name: 'Gracey
-
-    17/18'
+  Name: Gracey 17/18
   Icon: {fileID: 21300000, guid: e333f83ba60be3d489378cd41985ae60, type: 3}
   Usage: '<b>Usage</b>
 
@@ -24,7 +22,7 @@ MonoBehaviour:
     \r\nopposite one another on the handle, No \r\ntouching or overlap\r\n2. Rest
     pad of middle finger lightly on side of \r\ninstrument shank, touches ring finger\r\n3.
     Position the thumb, index and middle \r\nfinger properly without hyperextension
-    of joints\r\n4. Maintain a neutral wrist position\r<br>"
+    of joints\r\n4 . Maintain a neutral wrist position <br>"
   Instrumentation: "<b>Instrumentation</b>\n1. Maintain terminal shank parallel to
     long axis of tooth\r\n2. Constantly maintain toe third of the cutting edge to
     the tooth surface\r\n3. Begin at the distal line angle\r\n4. Establish and maintain

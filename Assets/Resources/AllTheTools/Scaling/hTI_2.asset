@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
   m_Name: hTI_2
   m_EditorClassIdentifier: 
-  Name: "Posterior \nSickle Scaler"
+  Name: Posterior Sickle Scaler
   Icon: {fileID: 21300000, guid: 68e7e0d8bd3d7f04ea6d03624910918a, type: 3}
   Usage: '<b>Usage</b>
 
@@ -37,5 +37,5 @@ MonoBehaviour:
   dentalItem: {fileID: 5633761613996137271, guid: 318a77ff74688e248b81d5b8e5691f19, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: e5f4d8fd49338a24ebf0aec75cdf47c8, type: 3}
-  rusty: 0
+  rusty: 1
   DTDH: 0

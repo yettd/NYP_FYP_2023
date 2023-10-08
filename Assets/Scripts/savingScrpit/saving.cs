@@ -61,13 +61,20 @@ public class Saving : MonoBehaviour
     }
     public void clearSave()
     {
-        string filePath = Application.persistentDataPath + $"/save/";
-
-        if (!System.IO.File.Exists(filePath))
+        string filePath = Application.persistentDataPath + $"/save";
+        string[] AllFile = System.IO.Directory.GetFiles(filePath);
+        if (!System.IO.Directory.Exists(filePath))
         {
+            Debug.Log("NO FOUND");
             return;
         }
-        System.IO.File.Delete(filePath);
+        foreach (string file in AllFile)
+        {
+            File.SetAttributes(file, FileAttributes.Normal);
+            File.Delete(file);
+        }
+
+      
     }
 
     public string LoadSoundFromJson()

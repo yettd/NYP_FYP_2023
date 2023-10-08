@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcf0bd622ceeb24e981caf0f2c0e411, type: 3}
   m_Name: qTI_12
   m_EditorClassIdentifier: 
-  Name: 'Gracey
-
-    15/16'
+  Name: Gracey 15/16
   Icon: {fileID: 21300000, guid: fcb15ad28e0d97140adc2f6aad4d6b3b, type: 3}
   Usage: '<b>Usage</b>
 
