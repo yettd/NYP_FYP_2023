@@ -16,4 +16,4 @@ MonoBehaviour:
   - s: 0
     i: {fileID: 21300000, guid: 7f846f8c7073b0f4fa18be8f74ad9345, type: 3}
   - s: 1
-    i: {fileID: 21300000, guid: ac6f4df9f7ff4e444bb82a6635cb95dc, type: 3}
+    i: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
