@@ -7,6 +7,7 @@ public class InstructionTemplate
     public Texture Icon;
     public string title;
     public string instruction;
+    public string requiredTool;
     public bool completed;
 }
 

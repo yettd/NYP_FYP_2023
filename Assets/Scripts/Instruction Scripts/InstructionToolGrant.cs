@@ -13,7 +13,7 @@ public class InstructionToolGrant : MonoBehaviour
     void Start()
     {
         LoadAssetManual();
-        Invoke("DisplayToolBySlot", 1);
+        Invoke("DisplayDefaultTool", 1);
     }
 
     #region SETUP
@@ -32,6 +32,19 @@ public class InstructionToolGrant : MonoBehaviour
         slot.transform.SetParent(ToolDisplayTab.transform);
         slot.transform.localScale=new Vector3(1, 1, 1);
     }
+
+    private void EmptyOutSlot()
+    {
+        int slotCapacity = ToolDisplayTab.transform.childCount;
+
+        if (slotCapacity != 0) 
+            for (int i = 0; i < slotCapacity; i++) Destroy(ToolDisplayTab.transform.GetChild(i).gameObject);
+    }
+
+    private void DisplayDefaultTool()
+    {
+        DisplayToolBySlot(-1);
+    }
     #endregion
 
     #region MAIN
@@ -44,13 +57,31 @@ public class InstructionToolGrant : MonoBehaviour
     {
 
     }
+
+    public void GetRequiredTool(GameObject obj)
+    {
+        DisplayToolBySlot(int.Parse(obj.name));
+    }
     #endregion
 
     #region COMPONENT
-    private void DisplayToolBySlot()
+    private void DisplayToolBySlot(int step)
     {
-        foreach (ItemTag tool in manual.tools)
-            SpawnSlot(tool.icon);
+        // Clear away all tool shown
+        EmptyOutSlot();
+
+        // Gerenate tool are used or required
+        if (step == -1)
+        {
+            foreach (ItemTag tool in manual.tools)
+                SpawnSlot(tool.icon);
+        }
+        else
+        {
+            foreach (ItemTag tool in manual.tools)
+                if (tool.itemName == manual.step[step].requiredTool)
+                    SpawnSlot(tool.icon);
+        }
     }
     #endregion
 }

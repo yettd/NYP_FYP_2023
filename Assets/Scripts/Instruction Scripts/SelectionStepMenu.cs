@@ -27,12 +27,20 @@ public class SelectionStepMenu : MonoBehaviour
         RawImage img = Instantiate(obj);
         return img;
     }
+
+    private RawImage GetStepImage(string pathName, int index)
+    {
+        RawImage obj = Resources.Load<RawImage>("InstructionManual/" + pathName);
+        RawImage img = Instantiate(obj);
+        img.name = index.ToString();
+        return img;
+    }
     #endregion
 
     #region COMPONENT
     private void OnGoingStep(int stepIndex, Texture icon)
     {
-        RawImage img = GetStepImage("entry");
+        RawImage img = GetStepImage("entry", stepIndex);
         img.GetComponent<StepInstructionComponent>().SetIcon(icon);
         img.GetComponent<StepInstructionComponent>().SetIndex(stepIndex + 1);
         img.GetComponent<StepInstructionComponent>().SetManualPath(manual.step[stepIndex]);

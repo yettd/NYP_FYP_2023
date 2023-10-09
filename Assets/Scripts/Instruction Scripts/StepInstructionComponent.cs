@@ -28,6 +28,11 @@ public class StepInstructionComponent : MonoBehaviour
         menu.RefreshProgressManual();
         DisplayStepInstruction();
     }
+
+    public void RefreshOfToolUsed(GameObject obj)
+    {
+        GameObject.Find("Interface").GetComponent<InstructionToolGrant>().GetRequiredTool(obj);
+    }
     #endregion
 
     #region MODIFY COMPONENT

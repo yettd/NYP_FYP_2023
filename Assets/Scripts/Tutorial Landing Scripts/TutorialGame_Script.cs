@@ -5,6 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class TutorialGame_Script : MonoBehaviour
 {
+    public static TutorialGame_Script thisScript;
+
+    private const string dwTool = "DW_Tool";
+    public string get_dwTool { get { return dwTool; } }
+
+    private const string teethTag = "TeethSection";
+    public string get_teethTag { get { return teethTag; } }
+
+    private const string gumTag = "GumSection";
+    public string get_gumTag { get { return gumTag; } }
+
+    private const string damagedTooth = "DamagedTooth";
+    public string get_damagedTooth { get { return damagedTooth; } }
+
     private DW_ToothExtraction extraction;
 
     private DataManageScript data;
@@ -12,6 +26,7 @@ public class TutorialGame_Script : MonoBehaviour
 
     void Start()
     {
+        thisScript = this;
         SetInstructionObject();
     }
 
