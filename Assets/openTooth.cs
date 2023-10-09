@@ -57,6 +57,8 @@ public class openTooth : MonoBehaviour
        // mat = GetComponent<Renderer>().material;
         bc = GetComponent<BoxCollider>();
         mc = GetComponent<MeshCollider>();
+
+        teethMan.tm.back();
     }
 
     private void HideTeeth(string TeethName)
@@ -80,7 +82,9 @@ public class openTooth : MonoBehaviour
     }
     private void Show()
     {
-       // bc.enabled = true;
+
+        mat = GetComponent<Renderer>().material;
+        // bc.enabled = true;
         mc.enabled = true;
         mat.SetFloat("_op", 1);
 

@@ -224,7 +224,7 @@ public class TeethDirtClean : MonoBehaviour
         int offSetX = pixelX - (_brush.width / 2);
 
         int offSetY = pixelY - (_brush.height / 2);
-        //Debug.Log(textureCoord);
+        Debug.Log(textureCoord);
         for (int x = 0; x < _brush.width; x++)
         {
             for (int y = 0; y < _brush.height; y++)

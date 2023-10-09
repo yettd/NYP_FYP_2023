@@ -217,9 +217,12 @@ public class MenuManagerS2 : MonoBehaviour
             SettingsPAGE.transform.gameObject.SetActive(false);
             SettingsPageactive = false;
         }
-        //cardboard
-        Camera.transform.DOMove(new Vector3(45.6f, -39, 140), 1);
-        Camera.transform.DORotate(new Vector3(0, 0, 0), 1);
+        //new
+        Camera.transform.DOMove(new Vector3(2.1f, -8f, 151f), 1);
+        Camera.transform.DORotate(new Vector3(0,-90, 0), 1);
+        ////cardboard(original)
+        //Camera.transform.DOMove(new Vector3(45.6f, -39, 140), 1);
+        //Camera.transform.DORotate(new Vector3(0, 0, 0), 1);
     }
 
     public void openSettingsPAGE()
