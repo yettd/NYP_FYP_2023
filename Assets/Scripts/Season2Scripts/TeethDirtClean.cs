@@ -5,6 +5,8 @@ using TMPro;
 
 public class TeethDirtClean : MonoBehaviour
 {
+    public ScreenShake screenShake;
+
     [SerializeField] private Texture2D _dirtMaskBase;
     //[SerializeField] private Texture2D _brush;
     [SerializeField] private Material _material;
@@ -261,6 +263,8 @@ public class TeethDirtClean : MonoBehaviour
         GetComponent<Renderer>().material = TooThDone;
         _templateDirtMask.Apply();
         Invoke("CheatClear", 4);
+
+        StartCoroutine(screenShake.Shaking());
     }
 
     public void CheatClear()

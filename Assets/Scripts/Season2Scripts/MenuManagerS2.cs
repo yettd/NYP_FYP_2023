@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MenuManagerS2 : MonoBehaviour
 {
+
+
     [Header("Main Menu")]
     [SerializeField] private GameObject MainMenuPanel;
     [SerializeField] private Button SettingsBtn;
