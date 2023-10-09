@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class DW_ToothExtraction : MonoBehaviour
 {
-    private const string subTargetTag = "DamagedTooth";
-    private const string targetTag = "TeethSection";
-
     #region SETUP
     private void SetDamagedTooth()
     {
-        GameObject[] teeths = GameObject.FindGameObjectsWithTag(targetTag);
-        foreach (GameObject teeth in teeths) teeth.transform.GetChild(Random.Range(0, teeth.transform.childCount)).tag = subTargetTag;
+        GameObject[] teeths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_teethTag);
+        foreach (GameObject teeth in teeths) teeth.transform.GetChild(Random.Range(0, teeth.transform.childCount)).tag = TutorialGame_Script.thisScript.get_damagedTooth;
     }
     #endregion
 

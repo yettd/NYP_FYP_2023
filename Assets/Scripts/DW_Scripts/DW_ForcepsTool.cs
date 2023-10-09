@@ -6,7 +6,6 @@ public class DW_ForcepsTool : MonoBehaviour
 {
     private DW_ElementCancelation element;
     private DW_ToolMarker marker;
-    private const string targetForUse = "DamagedTooth";
     private DW_MoveTools moveObject;
 
     void OnDestroy()
@@ -29,13 +28,18 @@ public class DW_ForcepsTool : MonoBehaviour
                 DeActivate();
             }
         }
+
+        if (!moveObject.get_isMove)
+        {
+            Destroy(gameObject);
+        }
     }
 
     #region SETUP
     public void Activate()
     {
         // Set marker
-        marker = new DW_ToolMarker(targetForUse);
+        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_damagedTooth);
         moveObject = new DW_MoveTools();
         element = new DW_ElementCancelation();
 

@@ -19,15 +19,16 @@ public class DW_ExtractionCapability
     {
         accessor = null;
         capabilityCoder = new List<string>();
-        SetCapabilityProperties("A", "F", "C");
+        SetCapabilityProperties();
     }
 
     #region SETUP
-    private void SetCapabilityProperties(string tool1, string tool2, string tool3)
+    private void SetCapabilityProperties()
     {
-        capabilityCoder.Add(tool1);
-        capabilityCoder.Add(tool2);
-        capabilityCoder.Add(tool3);
+        foreach (InstructionTemplate instruction in TutorialNagivatorScript.Instance().get_manual.step)
+        {
+            capabilityCoder.Add(instruction.requiredTool);
+        }
     }
     #endregion
 
@@ -61,7 +62,7 @@ public class DW_ExtractionCapability
                 break;
 
             case (int)CAPABILITY.CottonGauze:
-                // accessor.AddComponent<DW_CottonGauze>();
+                accessor.AddComponent<DW_CottonGauze>().Activate();
                 break;
 
             case (int)CAPABILITY.None:

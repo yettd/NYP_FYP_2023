@@ -5,7 +5,6 @@ using UnityEngine;
 public class DW_ToolsNagivator
 {
     private DW_ExtractionCapability extractionAccess;
-    private const string toolSelectedTag = "DW_Tool";
 
     private string currentTool;
     private Vector3 startingPoint;
@@ -59,7 +58,7 @@ public class DW_ToolsNagivator
         {
             GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model, startingPoint, Quaternion.identity);
             cloneTool.transform.localScale = toolScale;
-            cloneTool.tag = toolSelectedTag;
+            cloneTool.tag = TutorialGame_Script.thisScript.get_dwTool;
 
             // Give access to capability level
             if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1)
@@ -69,7 +68,7 @@ public class DW_ToolsNagivator
 
     private void CleanUpToolUsed()
     {
-        GameObject usedTool = GameObject.FindGameObjectWithTag(toolSelectedTag);
+        GameObject usedTool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
         if (usedTool) { GameObject.Destroy(usedTool); }
     }
     #endregion

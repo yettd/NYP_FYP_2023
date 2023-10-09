@@ -10,8 +10,9 @@ public class DW_MoveTools
     #region SETUP
     private void MoveTargetToPointer()
     {
+        Vector3 camera = GameObject.FindGameObjectWithTag("Camera2").GetComponent<Camera>().transform.position;
         Vector3 plotPoint = GameObject.FindGameObjectWithTag("Camera2").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
-        if (GetTarget()) GetTarget().transform.position = new Vector3(plotPoint.x, plotPoint.y, 0);
+        if (GetTarget()) GetTarget().transform.position = new Vector3(plotPoint.x, plotPoint.y, -0.5f);
     }
 
     private bool IsMouseReleasedActive()
@@ -26,7 +27,7 @@ public class DW_MoveTools
 
     private GameObject GetTarget()
     {
-        return GameObject.FindGameObjectWithTag("DW_Tool");
+        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
     }
     #endregion
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DW_AnestheticTool : MonoBehaviour
+public class DW_CottonGauze : MonoBehaviour
 {
     private DW_ElementCancelation element;
     private DW_ToolMarker marker;
@@ -24,16 +24,15 @@ public class DW_AnestheticTool : MonoBehaviour
             RaycastHit detect;
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
             {
-                if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null && !moveObject.get_isMove)
+                if (detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>() != null && !moveObject.get_isMove)
                 {
-                    detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
+                    detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().ApplyProduct();
                     Destroy(gameObject);
                 }
-            }
-
-            if (!moveObject.get_isMove)
-            {
-                Destroy(gameObject);
+                else if (!moveObject.get_isMove)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
@@ -42,12 +41,12 @@ public class DW_AnestheticTool : MonoBehaviour
     public void Activate()
     {
         // Set marker
-        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_gumTag);
+        marker = new DW_ToolMarker("");
         moveObject = new DW_MoveTools();
         element = new DW_ElementCancelation();
 
         // Enable used of tool
-        GrantAccessToUseAnestheicTool(true);
+        GrantAccessToUseCottonGauze(true);
     }
 
     private void DeActivate()
@@ -56,12 +55,12 @@ public class DW_AnestheticTool : MonoBehaviour
         element.DeActivate();
 
         // Disable used of tool
-        GrantAccessToUseAnestheicTool(false);
+        GrantAccessToUseCottonGauze(false);
     }
     #endregion
 
     #region COMPONENT
-    private void GrantAccessToUseAnestheicTool(bool enable)
+    private void GrantAccessToUseCottonGauze(bool enable)
     {
         if (enable)
         {
@@ -81,8 +80,8 @@ public class DW_AnestheticTool : MonoBehaviour
             // Selection object
             foreach (GameObject accessor in marker.getAccessors)
             {
-                if (enable) accessor.AddComponent<DW_AnestheicPlacement>();
-                else Destroy(accessor.GetComponent<DW_AnestheicPlacement>());
+                if (enable) accessor.AddComponent<DW_CottonGauzePlacement>();
+                else Destroy(accessor.GetComponent<DW_CottonGauzePlacement>());
             }
         }
     }
