@@ -15,25 +15,37 @@ public class DW_AnestheticTool : MonoBehaviour
 
     void Update()
     {
+        // Define accessible component
         if (moveObject != null)
         {
-            // Enable for moving
-            moveObject.Drag();
-
             // Find the area for the use of tool
             RaycastHit detect;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
+
+            // Move the object until its inactive
+            if (!moveObject.Drag())
             {
-                if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null && !moveObject.get_isMove)
+                // Detect any possible area which are targeted as placement
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
                 {
-                    detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
-                    Destroy(gameObject);
+                    if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null)
+                    {
+                        // Perform any use of product available in the placement itself
+                        detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
+                    }
                 }
+
+                // Done
+                Destroy(gameObject);
             }
 
-            if (!moveObject.get_isMove)
+            else
             {
-                Destroy(gameObject);
+                // Detect any possible area for interaction
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
+                    marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null);
+
+                else
+                    marker.ToolMarkerPossible(false);
             }
         }
     }
@@ -63,12 +75,13 @@ public class DW_AnestheticTool : MonoBehaviour
     #region COMPONENT
     private void GrantAccessToUseAnestheicTool(bool enable)
     {
+        // Init accessible tool and other
         if (enable)
         {
-            // Move the object
+            // Init the object to move
             if (moveObject != null) moveObject.StartMove();
 
-            // Cancel all active component
+            // Cancel out all unwanted component that cause clash to each other
             if (element != null) element.Activate();
         }
 
@@ -78,11 +91,15 @@ public class DW_AnestheticTool : MonoBehaviour
             // Selection marker
             marker.DisplayMarker(enable);
 
-            // Selection object
-            foreach (GameObject accessor in marker.getAccessors)
+            // Make the object interactable for the use of tool and target destination
+            if (enable)
             {
-                if (enable) accessor.AddComponent<DW_AnestheicPlacement>();
-                else Destroy(accessor.GetComponent<DW_AnestheicPlacement>());
+                foreach (GameObject accessor in marker.getAccessors)
+                {
+                    // This will allow product to be used multiple time as the component still active
+                    if (accessor.GetComponent<DW_AnestheicPlacement>() != null) accessor.GetComponent<DW_AnestheicPlacement>().ResetProdutUse();
+                    else accessor.AddComponent<DW_AnestheicPlacement>();
+                }
             }
         }
     }

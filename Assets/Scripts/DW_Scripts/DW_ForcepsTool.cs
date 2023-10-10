@@ -15,23 +15,37 @@ public class DW_ForcepsTool : MonoBehaviour
 
     void Update()
     {
-        // Enable of moving
-        if (moveObject != null) moveObject.Drag();
-
-        // Find the area for the use of tool
-        RaycastHit detect;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
+        // Define accessible component
+        if (moveObject != null)
         {
-            if (detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null)
+            // Find the area for the use of tool
+            RaycastHit detect;
+
+            // Move the object until its inactive
+            if (!moveObject.Drag())
             {
-                detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().ApplyProduct();
-                DeActivate();
-            }
-        }
+                // Detect any possible area which are targeted as placement
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
+                {
+                    if (detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null)
+                    {
+                        // Perform any use of product available in the placement itself
+                        detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().ApplyProduct();
+                    }
+                }
 
-        if (!moveObject.get_isMove)
-        {
-            Destroy(gameObject);
+                // Done
+                Destroy(gameObject);
+            }
+
+            else
+            {
+                // Detect any possible area for interaction
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
+                    marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null);
+                else
+                    marker.ToolMarkerPossible(false);
+            }
         }
     }
 
@@ -60,12 +74,13 @@ public class DW_ForcepsTool : MonoBehaviour
     #region COMPONENT
     private void GrantAccessToUseForcespTool(bool enable)
     {
+        // Init accessible tool and other
         if (enable)
         {
-            // Move the object
+            // Init the object to move
             if (moveObject != null) moveObject.StartMove();
 
-            // Cancel all active component
+            // Cancel out all unwanted component that cause clash to each other
             if (element != null) element.Activate();
         }
 
@@ -75,11 +90,14 @@ public class DW_ForcepsTool : MonoBehaviour
             // Selection marker
             marker.DisplayMarker(enable);
 
-            // Selection object
-            foreach (GameObject accessor in marker.getAccessors)
+            // Make the object interactable for the use of tool and target destination
+            if (enable)
             {
-                if (enable) accessor.AddComponent<DW_ForcepsPlacement>();
-                else Destroy(accessor.GetComponent<DW_ForcepsPlacement>());
+                foreach (GameObject accessor in marker.getAccessors)
+                {
+                    // This will allow product to be used multiple time as the component still active
+                    if (accessor.GetComponent<DW_ForcepsPlacement>() == null) accessor.AddComponent<DW_ForcepsPlacement>();
+                }
             }
         }
     }

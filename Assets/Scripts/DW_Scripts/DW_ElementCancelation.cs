@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class DW_ElementCancelation
 {
-    private const string teethTag = "TeethSection";
-    private const string gumTag = "GumSection";
-
     #region SETUP
     public void Activate()
     {
@@ -23,7 +20,7 @@ public class DW_ElementCancelation
     #region COMPONENT
     private void ApplyElementCancelThroughTooth()
     {
-        GameObject[] teeths = GameObject.FindGameObjectsWithTag(teethTag);
+        GameObject[] teeths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_teethTag);
         TeethDirtClean[] teethDirtClean_comp;
         openTooth[] openTooth_comp;
 
@@ -44,7 +41,7 @@ public class DW_ElementCancelation
 
     private void ResetElementThroughElement()
     {
-        GameObject[] teeths = GameObject.FindGameObjectsWithTag(teethTag);
+        GameObject[] teeths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_teethTag);
         TeethDirtClean[] teethDirtClean_comp;
         openTooth[] openTooth_comp;
 
