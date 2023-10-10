@@ -1,0 +1,23 @@
+{
+    "Title": "Filling",
+    "Icon": {
+        "instanceID": 51890
+    },
+    "description": "???",
+    "step": [
+        {
+            "Icon": {
+                "instanceID": 31800
+            },
+            "title": "???",
+            "instruction": "???",
+            "requiredTool": "",
+            "completed": true
+        }
+    ],
+    "tools": [],
+    "cleared": {
+        "completed": false
+    },
+    "toolAccessId": 2
+}

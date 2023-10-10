@@ -1,0 +1,69 @@
+{
+    "Title": "Extracting",
+    "Icon": {
+        "instanceID": 31798
+    },
+    "description": "User will learn about the extraction of tooth with the step to follow.",
+    "step": [
+        {
+            "Icon": {
+                "instanceID": 31800
+            },
+            "title": "Ease of feeling anything",
+            "instruction": "Apply anesthetic through the gum area to help ease of pain before the extracting the tooth.",
+            "requiredTool": "AnestheicTreatment",
+            "completed": false
+        },
+        {
+            "Icon": {
+                "instanceID": 31800
+            },
+            "title": "Pull out the tooth",
+            "instruction": "Use the forcesp tool and toogle it over to remove the damaged tooth.",
+            "requiredTool": "Forcesp",
+            "completed": true
+        },
+        {
+            "Icon": {
+                "instanceID": 31800
+            },
+            "title": "Finishing product",
+            "instruction": "Apply some cotton gauze to help clear over the unwanted particle.",
+            "requiredTool": "CottonGauze",
+            "completed": false
+        }
+    ],
+    "tools": [
+        {
+            "itemName": "Forcesp",
+            "icon": {
+                "instanceID": 31802
+            },
+            "model": {
+                "instanceID": 31804
+            }
+        },
+        {
+            "itemName": "AnestheicTreatment",
+            "icon": {
+                "instanceID": 31806
+            },
+            "model": {
+                "instanceID": 31808
+            }
+        },
+        {
+            "itemName": "CottonGauze",
+            "icon": {
+                "instanceID": 31810
+            },
+            "model": {
+                "instanceID": 31812
+            }
+        }
+    ],
+    "cleared": {
+        "completed": false
+    },
+    "toolAccessId": 1
+}

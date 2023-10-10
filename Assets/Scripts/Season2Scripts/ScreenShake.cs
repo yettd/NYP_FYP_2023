@@ -8,14 +8,14 @@ public class ScreenShake : MonoBehaviour
     public AnimationCurve curve;
     public bool start = false;
 
-    //private void Update()
-    //{
-    //    if (start)
-    //    {
-    //        start = false;
-    //        StartCoroutine(Shaking());
-    //    }
-    //}
+    private void Update()
+    {
+        if (start)
+        {
+            start = false;
+            StartCoroutine(Shaking());
+        }
+    }
     public IEnumerator Shaking()
     {
         Vector3 startPosition = transform.position;

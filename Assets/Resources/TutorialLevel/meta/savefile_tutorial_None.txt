@@ -7,10 +7,11 @@
     "step": [
         {
             "Icon": {
-                "instanceID": 45684
+                "instanceID": 39432
             },
             "title": "???",
             "instruction": "This is a test task.",
+            "requiredTool": "",
             "completed": true
         }
     ],
@@ -18,7 +19,7 @@
         {
             "itemName": "??",
             "icon": {
-                "instanceID": 45686
+                "instanceID": 31802
             },
             "model": {
                 "instanceID": 0
@@ -27,7 +28,7 @@
         {
             "itemName": "??",
             "icon": {
-                "instanceID": 45688
+                "instanceID": 31806
             },
             "model": {
                 "instanceID": 0
