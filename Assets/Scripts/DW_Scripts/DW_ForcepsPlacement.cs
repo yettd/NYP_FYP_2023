@@ -9,9 +9,6 @@ public class DW_ForcepsPlacement : MonoBehaviour
     #region SETUP
     private void ExtractToothPlacement()
     {
-        // Find tool and set it for use
-        GameObject tool = GetToolObject();
-
         // Set a tag which define to extract them and hide its existence from been seen by the user
         gameObject.tag = TutorialGame_Script.thisScript.get_toothplacement;
         GetComponent<MeshRenderer>().enabled = false;
@@ -31,6 +28,7 @@ public class DW_ForcepsPlacement : MonoBehaviour
 
     private GameObject GetToolObject()
     {
+        // Find the tool for the uses of placement
         return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
     }
     #endregion
@@ -38,9 +36,13 @@ public class DW_ForcepsPlacement : MonoBehaviour
     #region MAIN
     public void ApplyProduct()
     {
+        // Only called once when extraction are successful
         if (!isApply && !IsExtractionComplete())
         {
+            // Perform extract
             ExtractToothPlacement();
+
+            // Mark it down apply when this perform
             isApply = true;
         }
     }
@@ -49,6 +51,7 @@ public class DW_ForcepsPlacement : MonoBehaviour
     #region COMPONENT
     private bool IsExtractionComplete()
     {
+        // Finding of tooth been pulled out and doesn't shown its present
         return GetComponent<MeshRenderer>().enabled == false;
     }
     #endregion

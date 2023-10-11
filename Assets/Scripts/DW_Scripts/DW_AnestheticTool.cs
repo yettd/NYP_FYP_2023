@@ -31,11 +31,15 @@ public class DW_AnestheticTool : MonoBehaviour
                     {
                         // Perform any use of product available in the placement itself
                         detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
+
+                        // Done
+                        Destroy(gameObject);
                     }
                 }
 
-                // Done
-                Destroy(gameObject);
+                // Reset the position
+                transform.position = Vector3.zero;
+                moveObject.StartMove();
             }
 
             else
