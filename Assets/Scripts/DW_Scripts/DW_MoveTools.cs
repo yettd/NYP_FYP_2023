@@ -12,14 +12,12 @@ public class DW_MoveTools
     #region SETUP
     private void MoveTargetToPointer()
     {
-        // Get camera position
-        Vector3 camera = GameObject.FindGameObjectWithTag(referenceName).GetComponent<Camera>().transform.position;
-
         // Get plotPoint mapped with camera to use it on mouse pointer
-        Vector3 plotPoint = GameObject.FindGameObjectWithTag(referenceName).GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
+        Vector3 plotPoint = GetCameraTarget().GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
+        float tooldepth = GetCameraTarget().GetComponent<DW_ViewSwitcher>().GetToolDepthMapToCam();
 
         // Find targeted tool and move along with the mouse pointer
-        if (GetTarget()) GetTarget().transform.position = new Vector3(plotPoint.x, plotPoint.y, GetTarget().transform.position.z);
+        if (GetTarget()) GetTarget().transform.position = new Vector3(plotPoint.x, plotPoint.y, tooldepth);
     }
 
     private bool IsMouseReleasedActive()
@@ -39,6 +37,12 @@ public class DW_MoveTools
         // Find targeted object with the selected tag
         return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
     }
+
+    private GameObject GetCameraTarget()
+    {
+        // Find targeted object with the selected tag
+        return GameObject.FindGameObjectWithTag(referenceName);
+    }
     #endregion
 
     #region COMPONENT
@@ -50,8 +54,11 @@ public class DW_MoveTools
             MoveTargetToPointer();
 
             // Advance Move: Script
-            advanceScript.AdvanceMoveFeatures();
-            advanceScript.Drag(GetTarget().transform.position);
+            if (GameObject.FindGameObjectWithTag(referenceName).GetComponent<DW_ViewSwitcher>().GetMainCamViewport())
+            {
+                advanceScript.AdvanceMoveFeatures();
+                advanceScript.Drag(GetTarget().transform.position);
+            }
 
             // Release it when condition are met to the user desire
             if (IsMouseReleasedActive() || IsTouchReleasedActive()) Release();
@@ -69,7 +76,10 @@ public class DW_MoveTools
     #region MAIN
     public void StartMove()
     {
-        advanceScript = new DW_AdvanceMove(-0.3f, 3);
+        float mainCam = GetCameraTarget().GetComponent<DW_ViewSwitcher>().GetToolDepthMapToCam();
+        const int delay = 2;
+
+        advanceScript = new DW_AdvanceMove(mainCam, mainCam + 3, delay);
         isMove = true;
     }
     #endregion
