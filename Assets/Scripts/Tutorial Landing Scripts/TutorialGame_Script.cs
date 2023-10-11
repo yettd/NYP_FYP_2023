@@ -19,6 +19,9 @@ public class TutorialGame_Script : MonoBehaviour
     private const string damagedTooth = "DamagedTooth";
     public string get_damagedTooth { get { return damagedTooth; } }
 
+    private const string toothplacement = "ToothPlacement";
+    public string get_toothplacement { get { return toothplacement; } }
+
     private DW_ToothExtraction extraction;
 
     private DataManageScript data;

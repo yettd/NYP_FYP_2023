@@ -8,14 +8,12 @@ public class DW_ToolsNagivator
 
     private string currentTool;
     private Vector3 startingPoint;
-    private Vector3 toolScale;
 
     public DW_ToolsNagivator()
     {
         extractionAccess = new DW_ExtractionCapability();
         currentTool = string.Empty;
         startingPoint = new Vector3(6, 0, 0);
-        toolScale = new Vector3(0.25f, 0.25f, 0.25f);
     }
 
     public DW_ToolsNagivator(Vector3 startingPoint, Vector3 toolScale)
@@ -23,7 +21,6 @@ public class DW_ToolsNagivator
         extractionAccess = new DW_ExtractionCapability();
         currentTool = string.Empty;
         this.startingPoint = startingPoint;
-        this.toolScale = toolScale;
     }
 
     #region SETUP
@@ -56,8 +53,7 @@ public class DW_ToolsNagivator
         // Get new tool for use
         if (GetItemToUse(currentTool).model != null)
         {
-            GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model, startingPoint, Quaternion.identity);
-            cloneTool.transform.localScale = toolScale;
+            GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model);
             cloneTool.tag = TutorialGame_Script.thisScript.get_dwTool;
 
             // Give access to capability level

@@ -38,5 +38,16 @@ public class DW_ToolMarker
             else DisableMarkerSelection(accessor);
         }
     }
+
+    public void ToolMarkerPossible(bool enable)
+    {
+        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        tool.transform.GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/ToolPossible");
+
+        if (enable)
+            tool.transform.GetComponent<Renderer>().material.color = Color.green;
+        else
+            tool.transform.GetComponent<Renderer>().material.color = Color.red;
+    }
     #endregion
 }
