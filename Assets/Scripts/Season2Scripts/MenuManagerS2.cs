@@ -1,10 +1,14 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MenuManagerS2 : MonoBehaviour
 {
+    public Animator transition;
 
+
+    public Animator Wipetransition;
 
     [Header("Main Menu")]
     [SerializeField] private GameObject MainMenuPanel;
@@ -23,6 +27,7 @@ public class MenuManagerS2 : MonoBehaviour
     [SerializeField] private Slider AudioSettingSlider;
 
     [SerializeField] private GameObject SettingsPAGE;
+    [SerializeField] private GameObject SettingsTransition;
 
 
     [Header("Playgame")]
@@ -53,8 +58,16 @@ public class MenuManagerS2 : MonoBehaviour
     {
        
     }
-    public void LoadCollectionScene(string collection)
+    public void Loadcollections()
     {
+        StartCoroutine(LoadCollectionScene("collection"));
+    }
+    IEnumerator LoadCollectionScene(string collection)
+    {
+        Wipetransition.SetTrigger("Wipe");
+
+        yield return new WaitForSeconds(1f);
+
         SceneManager.LoadScene(collection);
     }
     public void LoadExtractionScene(string ExtractionMode)
@@ -106,11 +119,15 @@ public class MenuManagerS2 : MonoBehaviour
         //book
         Camera.transform.DOMove(new Vector3(-40, 0, 190f), 1);
         Camera.transform.DORotate(new Vector3(90, 0, 0), 1);
+
+        //yield return new WaitForSeconds(transitionTime);
     }
 
     public void openPlayGamePanel()
     {
         AudioManager.Instance.PlayPingSound();
+
+        //yield return new WaitForSeconds(1);
         //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (PlayGameactive == false)
         {
@@ -225,6 +242,7 @@ public class MenuManagerS2 : MonoBehaviour
         ////cardboard(original)
         //Camera.transform.DOMove(new Vector3(45.6f, -39, 140), 1);
         //Camera.transform.DORotate(new Vector3(0, 0, 0), 1);
+
     }
 
     public void openSettingsPAGE()
@@ -261,6 +279,8 @@ public class MenuManagerS2 : MonoBehaviour
             SettingsPanel.transform.gameObject.SetActive(false);
             Settingsactive = false;
         }
+
+        transition.SetTrigger("start");
     }
     public void GotoTutortialScene(string index)
     {

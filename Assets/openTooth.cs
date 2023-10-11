@@ -27,7 +27,7 @@ public class openTooth : MonoBehaviour
             if (!minigameTaskListController.Instance.minigameOpen)
             {
                 minigameTaskListController.Instance.setGame(topBottom);
-                Debug.Log("Click");
+         
             }
             else
             {
@@ -58,7 +58,7 @@ public class openTooth : MonoBehaviour
         bc = GetComponent<BoxCollider>();
         mc = GetComponent<MeshCollider>();
 
-        teethMan.tm.back();
+       // teethMan.tm.back();
     }
 
     private void HideTeeth(string TeethName)
