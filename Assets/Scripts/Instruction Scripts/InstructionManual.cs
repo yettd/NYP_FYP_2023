@@ -9,6 +9,7 @@ public class InstructionTemplate
     public string instruction;
     public string requiredTool;
     public bool completed;
+    public bool taskDone;
 }
 
 [System.Serializable]

@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameTagPlacement
+{ 
+    DW_Camera,
+    DW_Tool,
+    TeethSection,
+    GumSection,
+    DamagedTooth,
+    ToothPlacement,
+    NotTagged,
+}
+
+[System.Serializable]
+public class GameSetup_Data
+{
+    public GameObject[] props;
+    public string props_tag_name;
+}
+
 public class TutorialGame_Script : MonoBehaviour
 {
     public static TutorialGame_Script thisScript;
 
-    private const string dwTool = "DW_Tool";
-    public string get_dwTool { get { return dwTool; } }
-
-    private const string teethTag = "TeethSection";
-    public string get_teethTag { get { return teethTag; } }
-
-    private const string gumTag = "GumSection";
-    public string get_gumTag { get { return gumTag; } }
-
-    private const string damagedTooth = "DamagedTooth";
-    public string get_damagedTooth { get { return damagedTooth; } }
-
-    private const string toothplacement = "ToothPlacement";
-    public string get_toothplacement { get { return toothplacement; } }
+    [SerializeField] private GameSetup_Data[] gameInfo;
+    public GameSetup_Data[] get_GameInfo { get { return gameInfo; } }
 
     private DW_ToothExtraction extraction;
 
@@ -30,6 +36,7 @@ public class TutorialGame_Script : MonoBehaviour
     void Start()
     {
         thisScript = this;
+        SetGamePropReady();
         SetInstructionObject();
     }
 
@@ -61,6 +68,13 @@ public class TutorialGame_Script : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void SetGamePropReady()
+    {
+        foreach (GameSetup_Data info in gameInfo)
+            foreach (GameObject prop in info.props)
+                prop.tag = info.props_tag_name;
     }
     #endregion
 
