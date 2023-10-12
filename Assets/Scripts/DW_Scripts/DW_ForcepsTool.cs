@@ -53,7 +53,7 @@ public class DW_ForcepsTool : MonoBehaviour
     public void Activate()
     {
         // Set marker
-        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_damagedTooth);
+        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name);
         moveObject = new DW_MoveTools();
         element = new DW_ElementCancelation();
 

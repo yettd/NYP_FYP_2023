@@ -38,7 +38,7 @@ public class DW_AutoToolScaler : MonoBehaviour
     private GameObject GetToolTarget()
     {
         // Finding the tool that been used currently
-        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
     }
     #endregion
 

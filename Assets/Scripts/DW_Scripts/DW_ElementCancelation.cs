@@ -20,7 +20,7 @@ public class DW_ElementCancelation
     #region COMPONENT
     private void ApplyElementCancelThroughTooth()
     {
-        GameObject[] teeths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_teethTag);
+        GameObject[] teeths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.TeethSection].props_tag_name);
         TeethDirtClean[] teethDirtClean_comp;
         openTooth[] openTooth_comp;
 
@@ -41,7 +41,7 @@ public class DW_ElementCancelation
 
     private void ResetElementThroughElement()
     {
-        GameObject[] teeths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_teethTag);
+        GameObject[] teeths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.TeethSection].props_tag_name);
         TeethDirtClean[] teethDirtClean_comp;
         openTooth[] openTooth_comp;
 

@@ -58,7 +58,7 @@ public class DW_CottonGauze : MonoBehaviour
     public void Activate()
     {
         // Set marker
-        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_toothplacement);
+        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
         moveObject = new DW_MoveTools();
         element = new DW_ElementCancelation();
 

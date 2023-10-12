@@ -5,30 +5,28 @@ using UnityEngine;
 public class DW_ToolsNagivator
 {
     private DW_ExtractionCapability extractionAccess;
-
     private string currentTool;
-    private Vector3 startingPoint;
 
     public DW_ToolsNagivator()
     {
         extractionAccess = new DW_ExtractionCapability();
         currentTool = string.Empty;
-        startingPoint = new Vector3(6, 0, 0);
     }
 
-    public DW_ToolsNagivator(Vector3 startingPoint, Vector3 toolScale)
+    public DW_ToolsNagivator(Vector3 toolScale)
     {
         extractionAccess = new DW_ExtractionCapability();
         currentTool = string.Empty;
-        this.startingPoint = startingPoint;
     }
 
     #region SETUP
     private ItemTag GetItemToUse(string title)
     {
+        // Finding the tool info for reference
         foreach (ItemTag tool in StorageManager.GetInventory().get_items.ToArray())
             if (tool.itemName == title) return tool;
 
+        // Can't find the tool and not be able to reference
         return null;
     }
     #endregion
@@ -53,8 +51,9 @@ public class DW_ToolsNagivator
         // Get new tool for use
         if (GetItemToUse(currentTool).model != null)
         {
+            // Take out on the tool been selected
             GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model);
-            cloneTool.tag = TutorialGame_Script.thisScript.get_dwTool;
+            cloneTool.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name;
 
             // Give access to capability level
             if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1)
@@ -64,7 +63,10 @@ public class DW_ToolsNagivator
 
     private void CleanUpToolUsed()
     {
-        GameObject usedTool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        // Finding of used tool
+        GameObject usedTool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
+
+        // Despawn of used tool
         if (usedTool) { GameObject.Destroy(usedTool); }
     }
     #endregion
