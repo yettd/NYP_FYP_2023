@@ -921,7 +921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- Not Required -'
+  m_Text: artus  is dumb and bad at throwing
 --- !u!222 &736332344
 CanvasRenderer:
   m_ObjectHideFlags: 0
