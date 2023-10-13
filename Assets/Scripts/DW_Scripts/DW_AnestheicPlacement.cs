@@ -31,9 +31,6 @@ public class DW_AnestheicPlacement : MonoBehaviour
 
         // Find out that the dose have fully taken effect through the component
         if (anestheicDose < anestheic_maxDose) GumSectionEffect();
-
-        // This will help not to operate this component again
-        else gameObject.tag = "Untagged";
     }
 
     private void SetAnestheicDose(float amount)

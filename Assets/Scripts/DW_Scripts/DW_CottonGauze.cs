@@ -32,15 +32,12 @@ public class DW_CottonGauze : MonoBehaviour
                         // Perform any use of product available in the placement itself
                         if (!detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().IsCleaningDone())
                             detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().ApplyProduct();
-                        else
-                            // Done
-                            Destroy(gameObject);
                     }
                 }
 
                 // Detect any possible area for interaction
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
-                    marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>() != null);
+                    marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>() != null && !detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().IsCleaningDone());
 
                 else
                     marker.ToolMarkerPossible(false);

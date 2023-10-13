@@ -25,17 +25,19 @@ public class DW_ExtractionCapability
     #region SETUP
     private void SetCapabilityProperties()
     {
+        // Load information about the tool are needed for this level
         foreach (InstructionTemplate instruction in TutorialNagivatorScript.Instance().get_manual.step)
-        {
             capabilityCoder.Add(instruction.requiredTool);
-        }
     }
     #endregion
 
     #region MAIN
     public void GrantToolCapability(GameObject target, string grantId)
     {
+        // Currently selected tool need to be granted tool access
         accessor = target;
+
+        // Given the item name and identify the tool access
         AcceptToolAndGrant(EncodeCapabilityOfGrantId(grantId));
     }
     #endregion
@@ -43,14 +45,17 @@ public class DW_ExtractionCapability
     #region COMPONENT
     private int EncodeCapabilityOfGrantId(string id)
     {
+        // Find the tool which are selected and identify it with the avaialble tool given
         for (int index = 0; index < capabilityCoder.ToArray().Length; index++)
             if (capabilityCoder[index] == id) return index;
 
+        // Can't find the tool to define it then don't grant any access
         return (int)CAPABILITY.None;
     }
 
     private void AcceptToolAndGrant(int index)
     {
+        // Extraction Tool: Currently used
         switch (index)
         {
             case (int)CAPABILITY.AnestheicTool:

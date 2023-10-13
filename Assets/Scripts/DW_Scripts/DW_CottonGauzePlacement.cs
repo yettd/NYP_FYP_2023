@@ -17,7 +17,16 @@ public class DW_CottonGauzePlacement : MonoBehaviour
         if (percentageOfClearing < 100) isApply = false;
 
         // Cleaning Done
-        else cleaningDone = true;
+        else SetCleaningDone();
+    }
+
+    private void SetCleaningDone()
+    {
+        // Mark the tooth apply to the cotton gauze
+        tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothExtracted].props_tag_name;
+
+        // Mark the component that cleaning is done
+        cleaningDone = true;
     }
 
     private IEnumerator ClearingParticle()

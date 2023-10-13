@@ -8,6 +8,7 @@ public class DW_ToothExtraction
     private const string cleantooth_assetPath = "TutorialAssets/Selected_CleanTooth";
 
     private int teethIndex = 0;
+    private int toothExtract = 0;
 
     #region SETUP
     private void SetDamagedTooth()
@@ -15,8 +16,12 @@ public class DW_ToothExtraction
         // Get random teeth section
         teethIndex = Random.Range(0, GetTeeths().Length);
 
+        // Get random tooth amount to be extract
+        toothExtract = 1;
+
         // Mark a tooth of the selected teeth section and tag it
-        GetTeeths()[teethIndex].transform.GetChild(Random.Range(0, GetTeeths()[teethIndex].transform.childCount)).tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name;
+        for (int damaged = 0; damaged < toothExtract; damaged++)
+            GetTeeths()[teethIndex].transform.GetChild(Random.Range(0, GetTeeths()[teethIndex].transform.childCount)).tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name;
     }
 
     private void RefreshToothStatus()
@@ -49,6 +54,48 @@ public class DW_ToothExtraction
 
         // Update status
         RefreshToothStatus();
+    }
+
+    public bool IsCompleted()
+    {
+        // Finding of damaged tooth and tooth placement
+        bool condition = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name) ||
+            GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
+
+        // This game tag must not be found unfinished
+        return !condition;
+    }
+
+    public bool IsFailed()
+    {
+        // Getting the object of gum component
+        GameObject gumSection = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.GumSection].props_tag_name);
+        bool dosedAnestheic = false;
+
+        // Finding of gum section and anestheic placement
+        if (gumSection && gumSection.GetComponent<DW_AnestheicPlacement>() != null)
+           dosedAnestheic = gumSection.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed();
+
+        // Observe if there is tooth placement before applying the anestheic placement
+        bool condition = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
+
+        // Not all the step are met as its required
+        if (condition) return !dosedAnestheic;
+        else return condition;
+    }
+
+    public string GetExtractionProgressStatus()
+    {
+        // Gather the total extracted tooth in tag
+        int currentProgress = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothExtracted].props_tag_name).Length;
+
+        // Gather the total tag with tooth in progress 
+        int currentGoal = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name).Length 
+            + GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name).Length
+            + GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothExtracted].props_tag_name).Length;
+
+        // With the total extracted tooth and the require extract tooth. You can tell how much is need to win
+        return currentProgress + "/" + currentGoal;
     }
     #endregion
 }
