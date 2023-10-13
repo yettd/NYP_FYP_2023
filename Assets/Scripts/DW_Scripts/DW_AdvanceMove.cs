@@ -31,7 +31,7 @@ public class DW_AdvanceMove
     #region SETUP
     private void MoveTargetToDepth()
     {
-        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
         if (tool.transform.position.z < maxDepth) tool.transform.Translate(Vector3.left * 1 * Time.deltaTime);
     }
     #endregion
@@ -52,7 +52,7 @@ public class DW_AdvanceMove
     #region COMPONENT
     private void ResetDepth()
     {
-        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
         tool.transform.position = new Vector3(tool.transform.position.x, tool.transform.position.y, minDepth);
         currentPosition = tool.transform.position;
 

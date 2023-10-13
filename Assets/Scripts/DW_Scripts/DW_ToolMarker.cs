@@ -41,7 +41,7 @@ public class DW_ToolMarker
 
     public void ToolMarkerPossible(bool enable)
     {
-        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
         tool.transform.GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/ToolPossible");
 
         if (enable)

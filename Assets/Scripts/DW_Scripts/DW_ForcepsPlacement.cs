@@ -10,7 +10,7 @@ public class DW_ForcepsPlacement : MonoBehaviour
     private void ExtractToothPlacement()
     {
         // Set a tag which define to extract them and hide its existence from been seen by the user
-        gameObject.tag = TutorialGame_Script.thisScript.get_toothplacement;
+        gameObject.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name;
         GetComponent<MeshRenderer>().enabled = false;
 
         // Get tooth out off there
@@ -29,7 +29,7 @@ public class DW_ForcepsPlacement : MonoBehaviour
     private GameObject GetToolObject()
     {
         // Find the tool for the uses of placement
-        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
     }
     #endregion
 

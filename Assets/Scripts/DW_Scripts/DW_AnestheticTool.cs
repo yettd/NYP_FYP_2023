@@ -25,7 +25,7 @@ public class DW_AnestheticTool : MonoBehaviour
             if (!moveObject.Drag())
             {
                 // Detect any possible area which are targeted as placement
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
                 {
                     if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null)
                     {
@@ -38,14 +38,13 @@ public class DW_AnestheticTool : MonoBehaviour
                 }
 
                 // Reset the position
-                transform.position = Vector3.zero;
-                moveObject.StartMove();
+                Destroy(gameObject);
             }
 
             else
             {
                 // Detect any possible area for interaction
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
                     marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null);
 
                 else
@@ -57,8 +56,12 @@ public class DW_AnestheticTool : MonoBehaviour
     #region SETUP
     public void Activate()
     {
+        // Use of advance scripts
+        if (GetComponent<DW_AdvanceAnestheicTool>() == null)
+            gameObject.AddComponent<DW_AdvanceAnestheicTool>().UseAdvanceScript();
+
         // Set marker
-        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_gumTag);
+        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.GumSection].props_tag_name);
         moveObject = new DW_MoveTools();
         element = new DW_ElementCancelation();
 
@@ -101,8 +104,7 @@ public class DW_AnestheticTool : MonoBehaviour
                 foreach (GameObject accessor in marker.getAccessors)
                 {
                     // This will allow product to be used multiple time as the component still active
-                    if (accessor.GetComponent<DW_AnestheicPlacement>() != null) accessor.GetComponent<DW_AnestheicPlacement>().ResetProdutUse();
-                    else accessor.AddComponent<DW_AnestheicPlacement>();
+                    if (accessor.GetComponent<DW_AnestheicPlacement>() == null) accessor.AddComponent<DW_AnestheicPlacement>();
                 }
             }
         }

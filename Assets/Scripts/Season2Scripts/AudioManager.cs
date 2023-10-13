@@ -4,10 +4,14 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
+    public AudioClip backgroundMusic;
     public AudioClip PingSound;
-    public AudioSource audioSource;
 
-    private const string VolumeKey = "Volume";
+    private AudioSource musicSource;
+    private AudioSource sfxSource;
+
+    private const string MusicVolumeKey = "MusicVolume";
+    private const string SFXVolumeKey = "SFXVolume";
 
     private void Awake()
     {
@@ -21,28 +25,43 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        audioSource = GetComponent<AudioSource>();
-        SetVolume(PlayerPrefs.GetFloat(VolumeKey, 1f));
-    }
-    public void SetVolume(float volume)
-    {
-        Debug.Log(volume);
-        audioSource.volume = volume;
-        PlayerPrefs.SetFloat(VolumeKey, volume); 
-    }
-    public void PlayClip(AudioClip clip)
-    {
-        audioSource.PlayOneShot(clip);
-    }
-    //public void PlayAudioOneShot(AudioClip clip, float volume = 1f)
-    //{
-    //    audioSource.PlayOneShot(clip, volume);
-    //}
-    public void PlayPingSound()
-    {
-        //PlayAudioOneShot(PingSound, 1f);
-        Debug.Log("Ping Played");
-        PlayClip(PingSound);
+
+        musicSource = gameObject.AddComponent<AudioSource>();
+        sfxSource = gameObject.AddComponent<AudioSource>();
+
+        musicSource.loop = true;
+        musicSource.clip = backgroundMusic;
+
+        SetMusicVolume(PlayerPrefs.GetFloat(MusicVolumeKey, 1f));
+        SetSFXVolume(PlayerPrefs.GetFloat(SFXVolumeKey, 1f));
+
+        PlayBackgroundMusic();
     }
 
+    public void PlayBackgroundMusic()
+    {
+        musicSource.Play();
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+        PlayerPrefs.SetFloat(MusicVolumeKey, volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
+        PlayerPrefs.SetFloat(SFXVolumeKey, volume);
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
+    }
+
+    public void PlayPingSound()
+    {
+        PlaySFX(PingSound);
+    }
 }

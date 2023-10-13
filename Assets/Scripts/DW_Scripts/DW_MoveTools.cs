@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class DW_MoveTools
 {
-    private DW_AdvanceMove advanceScript;
-
-    private const string referenceName = "Camera2"; 
     private bool isMove;
 
     #region SETUP
@@ -35,40 +32,36 @@ public class DW_MoveTools
     private GameObject GetTarget()
     {
         // Find targeted object with the selected tag
-        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_dwTool);
+        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
     }
 
     private GameObject GetCameraTarget()
     {
         // Find targeted object with the selected tag
-        return GameObject.FindGameObjectWithTag(referenceName);
+        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name);
     }
     #endregion
 
     #region COMPONENT
     public bool Drag()
     {
+        // Find out move is possible
         if (isMove)
         {
             // Constant update of gameobject to mouse pointer
             MoveTargetToPointer();
 
-            // Advance Move: Script
-            if (GameObject.FindGameObjectWithTag(referenceName).GetComponent<DW_ViewSwitcher>().GetMainCamViewport())
-            {
-                advanceScript.AdvanceMoveFeatures();
-                advanceScript.Drag(GetTarget().transform.position);
-            }
-
             // Release it when condition are met to the user desire
             if (IsMouseReleasedActive() || IsTouchReleasedActive()) Release();
         }
 
+        // Check back on move status
         return isMove;
     }
 
     private void Release()
     {
+        // Make move not possible
         isMove = false;
     }
     #endregion
@@ -76,10 +69,7 @@ public class DW_MoveTools
     #region MAIN
     public void StartMove()
     {
-        float mainCam = GetCameraTarget().GetComponent<DW_ViewSwitcher>().GetToolDepthMapToCam();
-        const int delay = 2;
-
-        advanceScript = new DW_AdvanceMove(mainCam, mainCam + 3, delay);
+        // Begin to move the object
         isMove = true;
     }
     #endregion
