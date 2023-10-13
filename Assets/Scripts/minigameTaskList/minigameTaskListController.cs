@@ -7,7 +7,34 @@ using TMPro;
 public class minigameTaskListController : MonoBehaviour
 {
 
-  
+    [SerializeField] private GameObject SettingsPanel;
+    bool SettingsPanelactive;
+    public void openSettingsPanel()
+    {
+        AudioManager.Instance.PlayPingSound();
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        if (SettingsPanelactive == false)
+        {
+            SettingsPanel.transform.gameObject.SetActive(true);
+            SettingsPanelactive = true;
+        }
+        else
+        {
+            SettingsPanel.transform.gameObject.SetActive(false);
+            SettingsPanelactive = false;
+        }
+    }
+    public void CloseSettingsPanel()
+    {
+        AudioManager.Instance.PlayPingSound();
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        if (SettingsPanelactive == true)
+        {
+            SettingsPanel.transform.gameObject.SetActive(false);
+            SettingsPanelactive = false;
+        }
+    }
+
     public static minigameTaskListController Instance;
 
     public  Steps currentStep;
