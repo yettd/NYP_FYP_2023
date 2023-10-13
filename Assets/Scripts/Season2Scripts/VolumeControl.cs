@@ -1,37 +1,27 @@
-//using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.UI;
 
-//public class VolumeControl : MonoBehaviour
-//{
-//    [SerializeField] private Slider volumeSlider;
-//    vol v;
+public class VolumeControl : MonoBehaviour
+{
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider sfxVolumeSlider;
 
-//    private void Start()
-//    {
-//        volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
-//        volumeSlider.onValueChanged.AddListener(AdjustVolume);
-//        if(Saving.save.LoadSoundFromJson()!=null)
-//        {
+    private void Start()
+    {
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
-//        string a = Saving.save.LoadSoundFromJson();
-//            v = JsonUtility.FromJson<vol>(a);
+        musicVolumeSlider.onValueChanged.AddListener(AdjustMusicVolume);
+        sfxVolumeSlider.onValueChanged.AddListener(AdjustSFXVolume);
+    }
 
-//            //load the slider bar
+    private void AdjustMusicVolume(float volume)
+    {
+        AudioManager.Instance.SetMusicVolume(volume);
+    }
 
-//        }
-
-//    }
-//    private void AdjustVolume(float volume)
-//    {
-//        AudioManager.Instance.SetVolume(volume);
-//        v.volume = volume;
-
-//        Saving.save.saveSoundToJson(v);
-
-//    }
-
-//    class vol
-//    {
-//        public float volume;
-//    }
-//}
+    private void AdjustSFXVolume(float volume)
+    {
+        AudioManager.Instance.SetSFXVolume(volume);
+    }
+}
