@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class MenuManagerS2 : MonoBehaviour
 {
     public Animator transition;
-
-
     public Animator Wipetransition;
 
     [Header("Main Menu")]
@@ -57,6 +55,10 @@ public class MenuManagerS2 : MonoBehaviour
     private void Update()
     {
        
+    }
+    public void GoToMain()
+    {
+        SceneManager.LoadScene(0);
     }
     public void Loadcollections()
     {

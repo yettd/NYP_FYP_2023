@@ -2050,9 +2050,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1849499465899140983}
-        m_TargetAssemblyTypeName: TransitionLoader, Assembly-CSharp
-        m_MethodName: Loadcollections
+      - m_Target: {fileID: 1199002827}
+        m_TargetAssemblyTypeName: MenuManagerS2, Assembly-CSharp
+        m_MethodName: openSettingsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3067,7 +3067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d338934b3ea1ea8409a529d2d7a50066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 9be88e4235d88054391e6bfe8e026922, type: 3}
   PingSound: {fileID: 8300000, guid: 7c9ff44c6cc505a4bafa910ea23a3372, type: 3}
 --- !u!4 &523547329
 Transform:
@@ -7875,10 +7875,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1438855939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -770, y: 0.21091}
-  m_SizeDelta: {x: 134.0544, y: 134.0544}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 106, y: 0.29705}
+  m_SizeDelta: {x: 134.05438, y: 134.0544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194164314
 MonoBehaviour:
@@ -8089,10 +8089,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1438855939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 781.65, y: 0.0000084192}
-  m_SizeDelta: {x: 134.0544, y: 134.0544}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -113, y: 0.0000084192}
+  m_SizeDelta: {x: 134.05438, y: 134.0544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1235643818
 MonoBehaviour:
@@ -8980,6 +8980,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308458769}
   m_CullTransparentMesh: 1
+--- !u!1 &1318513655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7286146458029125536, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
+  m_PrefabInstance: {fileID: 1849499465899140981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1343431402
 GameObject:
   m_ObjectHideFlags: 0
@@ -14122,6 +14127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 606097808}
     m_Modifications:
+    - target: {fileID: 4673362054536924994, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6395883172442567545, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14206,27 +14215,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loader
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7286146458029125536, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5728180108028757461, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7286146458029125536, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1849499465899140983}
   m_SourcePrefab: {fileID: 100100000, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
 --- !u!224 &1849499465899140982 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6395883172442567545, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
   m_PrefabInstance: {fileID: 1849499465899140981}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1849499465899140983 stripped
+--- !u!114 &1849499465899140983
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5728180108028757461, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
-  m_PrefabInstance: {fileID: 1849499465899140981}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1318513655}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2c3251cf1980524db6d3447ec985079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Transition: {fileID: 7256910827551532843}
 --- !u!95 &7256910827551532843 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4673362054536924994, guid: 6546da5d371917c46a4c5f841e6c5e9e, type: 3}
