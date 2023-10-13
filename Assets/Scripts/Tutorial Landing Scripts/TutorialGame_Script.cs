@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public enum GameTagPlacement
 { 
@@ -11,6 +11,7 @@ public enum GameTagPlacement
     GumSection,
     DamagedTooth,
     ToothPlacement,
+    ToothExtracted,
     NotTagged,
 }
 
@@ -32,46 +33,73 @@ public class TutorialGame_Script : MonoBehaviour
 
     private DataManageScript data;
     private const string fileDirectory = "savefile_tutorial_";
+    private const string fileDirectoryPath = "Assets/Resources/TutorialLevel/meta/";
+
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject loseScreen;
+    [SerializeField] private GameObject statusRemark;
 
     void Start()
     {
         thisScript = this;
+
+        // Begin to find all gameobject which tagged correctly
         SetGamePropReady();
+
+        // Begin on level and setup starting property
         SetInstructionObject();
+    }
+
+    void Update()
+    {
+        // Progress the level
+        LevelInProgress();
     }
 
     #region SETUP
     private void UpdateInstructionStatus(bool cleared)
     {
-        InstructionManual temp;
-        data = new DataManageScript(data.GetPath("Assets/Resources/TutorialLevel/meta/"), fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
+        // Display the win screen of it
+        winScreen.SetActive(cleared);
 
-        if (data.FindFilePath()) // file existing will be overwritten to a new one
-            temp = data.LoadInfoThroughJson2<InstructionManual>();
+        // Display the lose screen of it
+        loseScreen.SetActive(!cleared);
+    }
 
-        else // file doesn't exist will be created and written to a new one
-            temp = TutorialNagivatorScript.Instance().get_manual;
+    private void SaveProgressForThisSession()
+    {
+        // Load instruction database
+        InstructionManual levelData;
+        data = new DataManageScript(data.GetPath(fileDirectoryPath), fileDirectory + TutorialNagivatorScript.Instance().get_manual.name + ".txt");
 
-        temp.cleared.completed = cleared;
-        data.SaveInfoAsNewJson(temp);
+        // Finding existing file and overwritten to a new one
+        if (data.FindFilePath()) levelData = data.LoadInfoThroughJson2<InstructionManual>();
+
+        // Get a new one from the selected tutorial
+        else levelData = TutorialNagivatorScript.Instance().get_manual;
+
+        // Save to text file as json of the instruction database
+        data.SaveInfoAsNewJson(levelData);
     }
 
     private void SetInstructionObject()
     {
+        // Get instruction access id to process level properties
         switch (TutorialNagivatorScript.Instance().get_manual.toolAccessId)
         {
-            case 1:
+            case 1: // Extraction
                 extraction = new DW_ToothExtraction();
                 extraction.Begin();
                 break;
 
-            default:
+            default: // Any instruction level
                 break;
         }
     }
 
     private void SetGamePropReady()
     {
+        // Find info of tag with gameobject
         foreach (GameSetup_Data info in gameInfo)
             foreach (GameObject prop in info.props)
                 prop.tag = info.props_tag_name;
@@ -79,19 +107,43 @@ public class TutorialGame_Script : MonoBehaviour
     #endregion
 
     #region MAIN
-    public void Back()
-    {
-        SetClearedCondition(true);
-        if (TutorialNagivatorScript.getScript != null) SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetTitleScene());
-        else { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
-    }
+    #endregion
 
-    public void SetClearedCondition(bool condition)
+    #region COMPONENT
+    private void SetClearedCondition(bool condition)
     {
+        // Finding of tutorial begin to setup
         if (TutorialNagivatorScript.getScript != null)
         {
+            // Update Instruction Status using data manage
             UpdateInstructionStatus(condition);
-            Debug.Log("Game Condition have been set to " + (condition ? "COMPLETE" : "NOT COMPLETE"));
+
+            // Save progress to instruction status
+            //SaveProgressForThisSession();
+        }     
+    }
+
+    private void LevelInProgress()
+    {
+        // Get instruction access id to process level properties
+        switch (TutorialNagivatorScript.Instance().get_manual.toolAccessId)
+        {
+            case 1: // Extraction
+                if (extraction != null)
+                {
+                    // Finding the extraction is completed
+                    if (extraction.IsCompleted()) SetClearedCondition(true);
+
+                    // Finding the extraction is not going well
+                    else if (extraction.IsFailed()) SetClearedCondition(false);
+
+                    // Display the remark status
+                    statusRemark.transform.GetComponent<TMP_Text>().text = extraction.GetExtractionProgressStatus();
+                }
+                break;
+
+            default: // Any instruction level
+                break;
         }
     }
     #endregion
