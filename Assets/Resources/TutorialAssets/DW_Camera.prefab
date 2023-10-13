@@ -157,10 +157,10 @@ MonoBehaviour:
   scaleData:
   - cameraRef: {fileID: 0}
     camDepthOffset: -40
-    toolScale: 1
+    toolScale: 0.1
   - cameraRef: {fileID: 0}
     camDepthOffset: -40
-    toolScale: 5
+    toolScale: 3
   - cameraRef: {fileID: 0}
     camDepthOffset: -2
     toolScale: 10
