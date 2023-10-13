@@ -1784,6 +1784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebea1a448b2dfb2468e752b6807338d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  Wipetransition: {fileID: 0}
   MainMenuPanel: {fileID: 416783774}
   SettingsBtn: {fileID: 0}
   PlayGameBtn: {fileID: 0}
@@ -1795,6 +1797,7 @@ MonoBehaviour:
   SettingsPanel: {fileID: 0}
   AudioSettingSlider: {fileID: 0}
   SettingsPAGE: {fileID: 0}
+  SettingsTransition: {fileID: 0}
   PlayGamePanel: {fileID: 0}
   ExtractionBtn: {fileID: 0}
   FillingBtn: {fileID: 0}
@@ -1851,8 +1854,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -581, y: -66}
-  m_SizeDelta: {x: -1195.3467, y: -182.2687}
+  m_AnchoredPosition: {x: -721.626, y: -66}
+  m_SizeDelta: {x: -1476.5988, y: -182.2687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &454713535
 MonoBehaviour:
@@ -2191,11 +2194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -504.79175
+      value: -550.0987
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 143
+      value: 426.574
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2227,11 +2230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 606
+      value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 390
+      value: 618
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2255,19 +2258,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3111579700300982808, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 562.6149
+      value: 744.3223
       objectReference: {fileID: 0}
     - target: {fileID: 3111579700300982808, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 170.486
+      value: 195.19
       objectReference: {fileID: 0}
     - target: {fileID: 3111579700300982808, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -80.4105
+      value: -171.2644
       objectReference: {fileID: 0}
     - target: {fileID: 3111579700300982808, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.1148
+      value: -39.982
       objectReference: {fileID: 0}
     - target: {fileID: 5549753890908552198, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_Color.a
@@ -2315,11 +2318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7910188308275086303, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 248
+      value: 262
       objectReference: {fileID: 0}
     - target: {fileID: 7910188308275086303, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000021935
+      value: -39.982
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3529,10 +3532,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 416783775}
+      - m_Target: {fileID: 1762572836}
         m_TargetAssemblyTypeName: MenuManagerS2, Assembly-CSharp
-        m_MethodName: LoadCollectionScene
-        m_Mode: 5
+        m_MethodName: GoToMain
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3754,8 +3757,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6, y: -25}
-  m_SizeDelta: {x: 245.3232, y: 748.6418}
+  m_AnchoredPosition: {x: -117, y: -70}
+  m_SizeDelta: {x: 367.5657, y: 989.8228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643336711
 MonoBehaviour:
@@ -4167,7 +4170,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1360, y: 768}
+  m_ReferenceResolution: {x: 1800, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -4763,6 +4766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762572835}
   - component: {fileID: 1762572834}
+  - component: {fileID: 1762572836}
   m_Layer: 0
   m_Name: JawManager
   m_TagString: Untagged
@@ -4797,6 +4801,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762572836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762572833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebea1a448b2dfb2468e752b6807338d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  Wipetransition: {fileID: 0}
+  MainMenuPanel: {fileID: 0}
+  SettingsBtn: {fileID: 0}
+  PlayGameBtn: {fileID: 0}
+  CollectionsBtn: {fileID: 0}
+  CollectionsPanel: {fileID: 0}
+  SettingsBtn2: {fileID: 0}
+  PlayGameBtn2: {fileID: 0}
+  CollectionsBtn2: {fileID: 0}
+  SettingsPanel: {fileID: 0}
+  AudioSettingSlider: {fileID: 0}
+  SettingsPAGE: {fileID: 0}
+  SettingsTransition: {fileID: 0}
+  PlayGamePanel: {fileID: 0}
+  ExtractionBtn: {fileID: 0}
+  FillingBtn: {fileID: 0}
+  ScalingBtn: {fileID: 0}
+  BackBtn: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!1 &1775038254
 GameObject:
   m_ObjectHideFlags: 0

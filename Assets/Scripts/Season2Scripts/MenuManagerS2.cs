@@ -58,6 +58,10 @@ public class MenuManagerS2 : MonoBehaviour
     {
        
     }
+    public void GoToMain()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void Loadcollections()
     {
         StartCoroutine(LoadCollectionScene("collection"));

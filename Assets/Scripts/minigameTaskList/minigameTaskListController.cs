@@ -193,7 +193,7 @@ public class minigameTaskListController : MonoBehaviour
     {
         TBgums = a;
         minigameOpen = true;
-        
+        pauseButton.ChangeButtonSprite();
         //cameraChanger.Instance.startCamera();
         openGame.Invoke();
     }
@@ -268,6 +268,7 @@ public class minigameTaskListController : MonoBehaviour
        
         }
 
+        pauseButton.ChangeButtonSprite();
     }
 
     public void stopRotation()
