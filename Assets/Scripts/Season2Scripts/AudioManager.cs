@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
@@ -30,8 +31,8 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        musicSource = gameObject.AddComponent < AudioSource();
-        sfxSource = gameObject.AddComponent < AudioSource();
+        musicSource = gameObject.AddComponent < AudioSource>();
+        sfxSource = gameObject.AddComponent < AudioSource>();
 
         musicSource.loop = true;
 
