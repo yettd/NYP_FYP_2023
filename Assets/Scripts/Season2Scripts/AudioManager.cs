@@ -4,10 +4,14 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public AudioClip backgroundMusic;
-    public AudioClip PingSound;
-
+    [Header("Background Music")]
+    public AudioClip[] backgroundMusicTracks;
     private AudioSource musicSource;
+
+    [Header("Sound Effects")]
+    public AudioClip[] soundEffects; 
+    public AudioClip pingSound; 
+    public AudioClip hurtSound;
     private AudioSource sfxSource;
 
     private const string MusicVolumeKey = "MusicVolume";
@@ -26,21 +30,23 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        musicSource = gameObject.AddComponent<AudioSource>();
-        sfxSource = gameObject.AddComponent<AudioSource>();
+        musicSource = gameObject.AddComponent < AudioSource();
+        sfxSource = gameObject.AddComponent < AudioSource();
 
         musicSource.loop = true;
-        musicSource.clip = backgroundMusic;
 
+        // Load music and SFX volumes from PlayerPrefs
         SetMusicVolume(PlayerPrefs.GetFloat(MusicVolumeKey, 1f));
         SetSFXVolume(PlayerPrefs.GetFloat(SFXVolumeKey, 1f));
-
-        PlayBackgroundMusic();
     }
 
-    public void PlayBackgroundMusic()
+    public void PlayBackgroundMusic(int trackIndex)
     {
-        musicSource.Play();
+        if (trackIndex >= 0 && trackIndex < backgroundMusicTracks.Length)
+        {
+            musicSource.clip = backgroundMusicTracks[trackIndex];
+            musicSource.Play();
+        }
     }
 
     public void SetMusicVolume(float volume)
@@ -55,13 +61,23 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat(SFXVolumeKey, volume);
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(int sfxIndex)
     {
-        sfxSource.PlayOneShot(clip);
+        if (sfxIndex >= 0 && sfxIndex < soundEffects.Length)
+        {
+            sfxSource.PlayOneShot(soundEffects[sfxIndex]);
+        }
     }
 
+    // Public method to play the "Ping" sound effect
     public void PlayPingSound()
     {
-        PlaySFX(PingSound);
+        PlaySFX(Array.IndexOf(soundEffects, pingSound));
+    }
+
+    // Public method to play the "Hurt" sound effect
+    public void PlayHurtSound()
+    {
+        PlaySFX(Array.IndexOf(soundEffects, hurtSound));
     }
 }
