@@ -82,11 +82,26 @@ public class minigameTaskListController : MonoBehaviour
         {
             Instance = this;
         }
+        switch (TutorialNagivatorScript.Instance().get_manual.toolAccessId)
+        {
+            case 0:
+                procedure = Procedure.Scaling;
+                break;
+            case 2:
+                procedure = Procedure.Filling;
+                break;
 
+            default: // Any instruction level
+                break;
+        }
     }
     private void Start()
     {
         //load procedure
+
+  
+
+
         //load steps
         string a = Saving.save.LoadFromJson("game");
         if (a!=null)
@@ -415,17 +430,3 @@ public enum Procedure
     Extration
 }
 
-public enum Steps
-{
-    //scaling
-    SCRAPINGS,
-    //extraion
-
-
-    //filling
-
-   
-    END_TASKF
-
-
-}

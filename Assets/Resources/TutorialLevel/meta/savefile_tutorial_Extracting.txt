@@ -1,64 +1,67 @@
 {
     "Title": "Extracting",
     "Icon": {
-        "instanceID": 31798
+        "instanceID": 36566
     },
     "description": "User will learn about the extraction of tooth with the step to follow.",
     "step": [
         {
             "Icon": {
-                "instanceID": 31800
+                "instanceID": 34610
             },
             "title": "Ease of feeling anything",
             "instruction": "Apply anesthetic through the gum area to help ease of pain before the extracting the tooth.",
             "requiredTool": "AnestheicTreatment",
-            "completed": false
+            "completed": true,
+            "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 31800
+                "instanceID": 34836
             },
             "title": "Pull out the tooth",
             "instruction": "Use the forcesp tool and toogle it over to remove the damaged tooth.",
             "requiredTool": "Forcesp",
-            "completed": true
+            "completed": true,
+            "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 31800
+                "instanceID": 34774
             },
             "title": "Finishing product",
             "instruction": "Apply some cotton gauze to help clear over the unwanted particle.",
             "requiredTool": "CottonGauze",
-            "completed": false
+            "completed": true,
+            "taskDone": false
         }
     ],
     "tools": [
         {
             "itemName": "Forcesp",
             "icon": {
-                "instanceID": 31802
+                "instanceID": 36568
             },
             "model": {
-                "instanceID": 31804
+                "instanceID": 34600
             }
         },
         {
             "itemName": "AnestheicTreatment",
             "icon": {
-                "instanceID": 31806
+                "instanceID": 36570
             },
             "model": {
-                "instanceID": 31808
+                "instanceID": 34634
             }
         },
         {
             "itemName": "CottonGauze",
             "icon": {
-                "instanceID": 31810
+                "instanceID": 36572
             },
             "model": {
-                "instanceID": 31812
+                "instanceID": 34624
             }
         }
     ],

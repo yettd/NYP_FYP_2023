@@ -36,7 +36,6 @@ public class TeethDirtClean : MonoBehaviour
             }
         }
         remaindingDirt = toatlDirtOnTeeth;
-        Debug.Log(remaindingDirt);
         _material = GetComponent<Renderer>().material;
         BCs = GetComponent<BoxCollider>();
         MC = GetComponent<MeshCollider>();

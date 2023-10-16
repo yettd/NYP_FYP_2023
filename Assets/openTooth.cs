@@ -14,6 +14,7 @@ public class openTooth : MonoBehaviour
     public showTask st;
     bool focus;
     int WhichStepIsOn;
+    [SerializeField] List<Procedure> pro = new List<Procedure>();
     // Start is called before the first frame update
     private void OnMouseDown()
     {
@@ -48,17 +49,21 @@ public class openTooth : MonoBehaviour
     }
     private void Start()
     {
+
+        
+
         teethMan.tm.CO += HideTeeth;
         teethMan.tm.Back += Show;
-        if (Problem)
+        if (pro.Contains(minigameTaskListController.Instance.procedure))
         {
+            Debug.Log(minigameTaskListController.Instance.procedure);
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
         }
        // mat = GetComponent<Renderer>().material;
         bc = GetComponent<BoxCollider>();
         mc = GetComponent<MeshCollider>();
 
-       // teethMan.tm.back();
+        teethMan.tm.back();
     }
 
     private void HideTeeth(string TeethName)
