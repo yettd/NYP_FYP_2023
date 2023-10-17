@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DW_ToothExtraction
 {
+    private DW_ToothExtraction_Addons addons;
+
     private const string damagedtooth_assetPath = "TutorialAssets/Selected_DamagedTooth";
     private const string cleantooth_assetPath = "TutorialAssets/Selected_CleanTooth";
 
     private int teethIndex = 0;
     private int toothExtract = 0;
-
+    
     #region SETUP
     private void SetDamagedTooth()
     {
@@ -49,6 +51,9 @@ public class DW_ToothExtraction
     #region MAIN
     public void Begin()
     {
+        // Setup extraction addons
+        addons = new DW_ToothExtraction_Addons();
+
         // Set random damaged tooth
         SetDamagedTooth();
 
@@ -68,20 +73,11 @@ public class DW_ToothExtraction
 
     public bool IsFailed()
     {
-        // Getting the object of gum component
-        GameObject gumSection = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.GumSection].props_tag_name);
-        bool dosedAnestheic = false;
-
-        // Finding of gum section and anestheic placement
-        if (gumSection && gumSection.GetComponent<DW_AnestheicPlacement>() != null)
-           dosedAnestheic = gumSection.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed();
-
-        // Observe if there is tooth placement before applying the anestheic placement
-        bool condition = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
+        // Live Checker: Extraction Task
+        bool condition = addons.IsFailed_ExtractionLiveCheck(toothExtract);
 
         // Not all the step are met as its required
-        if (condition) return !dosedAnestheic;
-        else return condition;
+        return condition;
     }
 
     public string GetExtractionProgressStatus()

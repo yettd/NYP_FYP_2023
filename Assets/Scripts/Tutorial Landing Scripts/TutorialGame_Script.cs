@@ -66,7 +66,7 @@ public class TutorialGame_Script : MonoBehaviour
         loseScreen.SetActive(!cleared);
     }
 
-    private void SaveProgressForThisSession()
+    private void SaveProgressForThisSession(bool condition)
     {
         // Load instruction database
         InstructionManual levelData;
@@ -79,6 +79,7 @@ public class TutorialGame_Script : MonoBehaviour
         else levelData = TutorialNagivatorScript.Instance().get_manual;
 
         // Save to text file as json of the instruction database
+        levelData.cleared.completed = condition;
         data.SaveInfoAsNewJson(levelData);
     }
 
@@ -119,7 +120,7 @@ public class TutorialGame_Script : MonoBehaviour
             UpdateInstructionStatus(condition);
 
             // Save progress to instruction status
-            //SaveProgressForThisSession();
+            SaveProgressForThisSession(condition);
         }     
     }
 

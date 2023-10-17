@@ -4,59 +4,29 @@ using UnityEngine;
 
 public class DW_AdvanceMove
 {
-    private bool isIdle;
-    private float minDepth;
-    private float maxDepth;
-
-    private float idleTimeOut;
-    private float NextTimingOfAdvanceMove = 0;
-    private Vector3 currentPosition;
-
-    public DW_AdvanceMove()
-    {
-        isIdle = false;
-        minDepth = 0;
-        maxDepth = 0;
-        idleTimeOut = 0;
-    }
-
-    public DW_AdvanceMove(float min, float max, float timeOut)
-    {
-        isIdle = false;
-        minDepth = min;
-        maxDepth = max;
-        idleTimeOut = timeOut;
-    }
-
     #region SETUP
-    private void MoveTargetToDepth()
+    private GameObject GetTargetTool()
     {
-        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
-        if (tool.transform.position.z < maxDepth) tool.transform.Translate(Vector3.left * 1 * Time.deltaTime);
+        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
     }
     #endregion
 
     #region MAIN
-    public void Drag(Vector3 position)
+    public void SnapTargetToPoint(Transform point, bool isSnap)
     {
-        if ((int)position.x != (int)currentPosition.x && (int)position.y != (int)currentPosition.y) ResetDepth();
-        if (isIdle) MoveTargetToDepth();
-    }
-
-    public void AdvanceMoveFeatures()
-    {
-        isIdle = (Time.time >= NextTimingOfAdvanceMove);
+        if (GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name).GetComponent<DW_ViewSwitcher>().GetMainCamViewport())
+        {
+            if (isSnap) GetTargetTool().transform.position = new Vector3(GetTargetTool().transform.position.x, GetTargetTool().transform.position.y, point.position.z);
+            else ResetPoint();
+        }
     }
     #endregion
 
     #region COMPONENT
-    private void ResetDepth()
+    public void ResetPoint()
     {
-        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
-        tool.transform.position = new Vector3(tool.transform.position.x, tool.transform.position.y, minDepth);
-        currentPosition = tool.transform.position;
-
-        NextTimingOfAdvanceMove = Time.time + idleTimeOut;
+        GameObject cam = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name);
+        GetTargetTool().transform.position = new Vector3(GetTargetTool().transform.position.x, GetTargetTool().transform.position.y, cam.GetComponent<DW_ViewSwitcher>().GetToolDepthMapToCam());
     }
     #endregion
 }
