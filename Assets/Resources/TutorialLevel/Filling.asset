@@ -18,9 +18,98 @@ MonoBehaviour:
   step:
   - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
     title: ???
-    instruction: ???
-    completed: 0
-  tools: []
+    instruction: 'Apply rubber dam with rubber forceps '
+    requiredTool: ' rubber dam'
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Select a slow speed handpiece with round bur '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Remove maximum decay with the bur '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Select spoon excavator '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Remove remnants of the decay '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Wash and blow dry '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Etch the dentine and enamel using etchant (37% Phosphoric Acid).  '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Etch the dentine and enamel using etchant (37% Phosphoric Acid).  '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Wash thoroughly and dry the cavity but do not over dry (desiccate)
+      it.  '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Apply primer to the whole cavity with a microbrush, blow gently,
+      the cavity should appear shiny.  '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Apply adhesive to the whole cavity with another microbrush, blow
+      gently to avoid pooling. Light cure. '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Place CR into the cavity incrementally with a plastic instrument,
+      contour the CR before light cure. '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Remove excessive CR by polishing with white stone/ smooth diamond
+      polishing burs  '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
+    title: ???
+    instruction: 'Check occlusion after removing the rubber dam and polish again
+      as required. '
+    requiredTool: 'slow speed handpiece '
+    completed: 1
+    taskDone: 0
+  tools:
+  - itemName: 
+    icon: {fileID: 0}
+    model: {fileID: 0}
   cleared:
     completed: 0
   toolAccessId: 2
