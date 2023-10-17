@@ -55,6 +55,7 @@ public class GestureDrawing : MonoBehaviour
     private void CreateLineRenderer()
     {
         lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer.positionCount = 0;
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.startWidth = 0.02f;
         lineRenderer.endWidth = 0.02f;

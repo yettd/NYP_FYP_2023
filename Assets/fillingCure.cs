@@ -2,35 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class drawing : MonoBehaviour
+public class fillingCure : MonoBehaviour
 {
+    // Start is called before the first frame update
+
     public GameObject drawingPlane; // Assign the plane in the Inspector.
     public float drawDistance = 5.02f; // Adjust this value for drawing sensitivity.
 
-    protected List<Vector3> currentDrawing = new List<Vector3>();
+    private List<Vector3> currentDrawing = new List<Vector3>();
     private LineRenderer lineRenderer;
     private Plane drawingSurface;
     private Vector3 lastMousePosition;
 
-    public string GesturName;
-
     public gestureList ges = new gestureList();
+
+    [SerializeField] List<HitPoint> hp = new List<HitPoint>();
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        string a = Saving.save.LoadFromJson("gesture");
 
-        if (a != null)
+        foreach (Transform t in transform)
         {
-            ges = JsonUtility.FromJson<gestureList>(a);
-
-            //foreach(Gesture v in ges.gestures)
-            //{
-
-            //        Debug.Log(v.points.Count);
-
-            //}
-
+            Debug.Log(t.gameObject);    
+            hp.Add(new HitPoint(false, t.transform));
         }
 
         if (drawingPlane == null)
@@ -58,9 +52,9 @@ public class drawing : MonoBehaviour
     {
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startWidth = 0.02f;
+        lineRenderer.startWidth = .5f;
         lineRenderer.positionCount = 0;
-        lineRenderer.endWidth = 0.02f;
+        lineRenderer.endWidth = .5f;
         lineRenderer.useWorldSpace = false;
     }
 
@@ -68,8 +62,7 @@ public class drawing : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            currentDrawing.Clear();
-            lineRenderer.positionCount = 0;
+            STOP();
         }
         if (Input.GetMouseButton(0))
         {
@@ -79,13 +72,14 @@ public class drawing : MonoBehaviour
             if (Physics.Raycast(ray, out hitDistance))
             {
                 Vector3 hitPoint = hitDistance.point;
-                DrawOnPlane(hitPoint);
+
+                DrawOnPlane(hitDistance.point);
             }
-            
+
         }
         if (Input.GetMouseButtonUp(0))
         {
-            Stuff();
+            STOP();
         }
     }
 
@@ -93,9 +87,12 @@ public class drawing : MonoBehaviour
     {
         if (currentDrawing.Count == 0 || Vector2.Distance(currentDrawing[currentDrawing.Count - 1], point) > drawDistance)
         {
+           
+
             currentDrawing.Add(drawingPlane.transform.InverseTransformPoint(point));
             lineRenderer.positionCount = currentDrawing.Count;
             lineRenderer.SetPosition(currentDrawing.Count - 1, currentDrawing[currentDrawing.Count - 1]);
+          
         }
     }
 
@@ -103,5 +100,49 @@ public class drawing : MonoBehaviour
     {
         currentDrawing.Clear();
         lineRenderer.positionCount = 0;
+        foreach(HitPoint aa in hp)
+        {
+            aa.hitted = false;
+        }
+    }
+
+    public void GetHit(Transform pos)
+    {
+        foreach (HitPoint aa in hp)
+        {
+            Debug.Log("HIT");
+            if (aa.point==pos)
+            {
+                aa.hitted = true;
+             
+                CheckAllHIt();
+            }
+        }
+    }
+
+    public void CheckAllHIt()
+    {
+        foreach (HitPoint aa in hp)
+        {
+            if(aa.hitted==false)
+            {
+                return;
+            }
+        }
+
+        Destroy(gameObject);
+    }
+
+}
+
+public class HitPoint
+{
+    public bool hitted;
+    public Transform point;
+
+    public HitPoint(bool hitted, Transform point)
+    {
+        this.hitted = hitted;
+        this.point = point;
     }
 }

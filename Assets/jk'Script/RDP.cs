@@ -13,11 +13,11 @@ public class RDP : drawing
         if (Input.GetMouseButtonUp(0))
             if (currentDrawing.Count > 0)
             {
-                List<Vector3> test= new List<Vector3>();
-                test = ProcessGestureWithAdaptiveEpsilon(currentDrawing);
+                //List<Vector3> test= new List<Vector3>();
+                //test = ProcessGestureWithAdaptiveEpsilon(currentDrawing);
 
                 
-                RecognizeGesture(test);
+                //RecognizeGesture(test);
             }
     }
 
