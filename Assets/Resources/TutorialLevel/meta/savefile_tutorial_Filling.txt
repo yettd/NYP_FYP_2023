@@ -1,22 +1,162 @@
 {
     "Title": "Filling",
     "Icon": {
-        "instanceID": 58534
+        "instanceID": 43390
     },
     "description": "???",
     "step": [
         {
             "Icon": {
-                "instanceID": 58536
+                "instanceID": 117090
             },
             "title": "???",
-            "instruction": "???",
-            "requiredTool": "",
+            "instruction": "Apply rubber dam with rubber forceps ",
+            "requiredTool": " rubber dam",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Select a slow speed handpiece with round bur ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Remove maximum decay with the bur ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Select spoon excavator ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Remove remnants of the decay ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Wash and blow dry ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Etch the dentine and enamel using etchant (37% Phosphoric Acid).  ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Etch the dentine and enamel using etchant (37% Phosphoric Acid).  ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Wash thoroughly and dry the cavity but do not over dry (desiccate) it.  ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Apply primer to the whole cavity with a microbrush, blow gently, the cavity should appear shiny.  ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Apply adhesive to the whole cavity with another microbrush, blow gently to avoid pooling. Light cure. ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Place CR into the cavity incrementally with a plastic instrument, contour the CR before light cure. ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Remove excessive CR by polishing with white stone/ smooth diamond polishing burs  ",
+            "requiredTool": "slow speed handpiece ",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 117090
+            },
+            "title": "???",
+            "instruction": "Check occlusion after removing the rubber dam and polish again as required. ",
+            "requiredTool": "slow speed handpiece ",
             "completed": true,
             "taskDone": false
         }
     ],
-    "tools": [],
+    "tools": [
+        {
+            "itemName": "",
+            "icon": {
+                "instanceID": 0
+            },
+            "model": {
+                "instanceID": 0
+            }
+        }
+    ],
     "cleared": {
         "completed": false
     },

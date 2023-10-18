@@ -13,6 +13,7 @@ public class TeethDirtClean : MonoBehaviour
     TextMeshProUGUI asd;
     private Texture2D _templateDirtMask;
     float toatlDirtOnTeeth = 0;
+   
     float remaindingDirt;
     [Header("FRONT < LEFT< BACK < RIGHT")]
     public List<toolsToClean> ttc= new List<toolsToClean>();
@@ -22,11 +23,22 @@ public class TeethDirtClean : MonoBehaviour
     public BoxCollider BCs;
     public MeshCollider MC;
     Material TooThDone;
+    Material Dirttooth;
     public float percentage;
     bool clean;
     private void Start()
     {
+
+    }
+
+    public void SetProblem()
+    {
+        Debug.Log("sdad");
         TooThDone = Resources.Load<Material>("Mat/clean");
+        Dirttooth = Resources.Load<Material>("Mat/teethMasks");
+
+        
+       // GetComponent<Renderer>().material = Dirttooth;
         CreateTexture();
         for (int i = 0; i < _dirtMaskBase.width; i++)
         {
@@ -36,6 +48,7 @@ public class TeethDirtClean : MonoBehaviour
             }
         }
         remaindingDirt = toatlDirtOnTeeth;
+
         _material = GetComponent<Renderer>().material;
         BCs = GetComponent<BoxCollider>();
         MC = GetComponent<MeshCollider>();

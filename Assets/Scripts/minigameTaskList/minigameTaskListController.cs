@@ -53,6 +53,7 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] UnityEvent WIN;
     public bool minigameOpen;
     [SerializeField] GameObject pause;
+    [SerializeField]List<GameObject> jaw = new List<GameObject>();
     [SerializeField] changePasueToBack pauseButton;
     bool toolSelected;
 
@@ -85,10 +86,13 @@ public class minigameTaskListController : MonoBehaviour
         switch (TutorialNagivatorScript.Instance().get_manual.toolAccessId)
         {
             case 0:
+                case 1:
                 procedure = Procedure.Scaling;
                 break;
             case 2:
                 procedure = Procedure.Filling;
+                jaw[0].SetActive(false);
+                jaw[1].SetActive(true);
                 break;
 
             default: // Any instruction level
