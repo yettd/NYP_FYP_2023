@@ -49,14 +49,19 @@ public class openTooth : MonoBehaviour
     }
     private void Start()
     {
-
-        
-
         teethMan.tm.CO += HideTeeth;
         teethMan.tm.Back += Show;
         if (pro.Contains(minigameTaskListController.Instance.procedure))
         {
-            Debug.Log(minigameTaskListController.Instance.procedure);
+
+            switch (minigameTaskListController.Instance.procedure)
+            {
+                case Procedure.Scaling:
+                    GetComponent<TeethDirtClean>().SetProblem();
+                    break;
+                case Procedure.Filling: break;
+            }
+
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
         }
        // mat = GetComponent<Renderer>().material;
