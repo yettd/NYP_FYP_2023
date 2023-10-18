@@ -11,7 +11,7 @@ public class minigameTaskListController : MonoBehaviour
     bool SettingsPanelactive;
     public void openSettingsPanel()
     {
-        AudioManager.Instance.PlayPingSound();
+        //AudioManager.Instance.PlayPingSound();
         //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (SettingsPanelactive == false)
         {
@@ -26,7 +26,7 @@ public class minigameTaskListController : MonoBehaviour
     }
     public void CloseSettingsPanel()
     {
-        AudioManager.Instance.PlayPingSound();
+        //AudioManager.Instance.PlayPingSound();
         //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         if (SettingsPanelactive == true)
         {

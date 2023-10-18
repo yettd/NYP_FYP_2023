@@ -3,8 +3,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class MenuManagerS2 : MonoBehaviour
 {
+    private AudioManager audioManager;
     public Animator transition;
     public Animator Wipetransition;
 
@@ -46,6 +48,18 @@ public class MenuManagerS2 : MonoBehaviour
     bool CollectionsActive;
     private void Awake()
     {
+        audioManager = AudioManager.Instance;
+
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found.");
+        }
+
+        if (audioManager != null)
+        {
+            audioManager.PlayBackgroundMusic(1);
+        }
+
         if (MainMenuactive == false)
         {
             MainMenuPanel.transform.gameObject.SetActive(true);
@@ -71,6 +85,10 @@ public class MenuManagerS2 : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(collection);
+        if (audioManager != null)
+        {
+            audioManager.PlayBackgroundMusic(0);
+        }
     }
     public void LoadExtractionScene(string ExtractionMode)
     {
@@ -86,8 +104,10 @@ public class MenuManagerS2 : MonoBehaviour
     }
     public void openSettingsPanel()
     {
-        AudioManager.Instance.PlayPingSound();
-        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(1);
+        }
         if (Settingsactive == false)
         {
             SettingsPanel.transform.gameObject.SetActive(true);
@@ -127,10 +147,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openPlayGamePanel()
     {
-        AudioManager.Instance.PlayPingSound();
-
-        //yield return new WaitForSeconds(1);
-        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        audioManager.PlaySFX(1);
         if (PlayGameactive == false)
         {
             PlayGamePanel.transform.gameObject.SetActive(true);
@@ -167,8 +184,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openMainMenuPanel()
     {
-        AudioManager.Instance.PlayPingSound();
-        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        audioManager.PlaySFX(1);
         if (MainMenuactive == false)
         {
             MainMenuPanel.transform.gameObject.SetActive(true);
@@ -206,8 +222,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openCollectionsPanel()
     {
-        AudioManager.Instance.PlayPingSound();
-        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        audioManager.PlaySFX(1);
         if (CollectionsActive == false)
         {
             CollectionsPanel.transform.gameObject.SetActive(true);
@@ -249,8 +264,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openSettingsPAGE()
     {
-        AudioManager.Instance.PlayPingSound();
-        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        audioManager.PlaySFX(1);
         if (SettingsPageactive == false)
         {
             SettingsPAGE.transform.gameObject.SetActive(true);

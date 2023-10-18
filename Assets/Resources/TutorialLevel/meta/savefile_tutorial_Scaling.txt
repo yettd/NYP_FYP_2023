@@ -1,13 +1,13 @@
 {
     "Title": "Scaling",
     "Icon": {
-        "instanceID": 36224
+        "instanceID": 59634
     },
     "description": "There is no description.",
     "step": [
         {
             "Icon": {
-                "instanceID": 40472
+                "instanceID": 43992
             },
             "title": "Step 1: ???",
             "instruction": "This is step 1. Go and click the next one.",
@@ -17,7 +17,7 @@
         },
         {
             "Icon": {
-                "instanceID": 40474
+                "instanceID": 59636
             },
             "title": "Step 2: ???",
             "instruction": "This is step 2. Go and click the next one.",
@@ -27,7 +27,7 @@
         },
         {
             "Icon": {
-                "instanceID": 40476
+                "instanceID": 59638
             },
             "title": "Step 3: ???",
             "instruction": "This is step 3. Go and click on complete.",
@@ -40,46 +40,46 @@
         {
             "itemName": "Gracey1_2",
             "icon": {
-                "instanceID": 40478
+                "instanceID": 59640
             },
             "model": {
-                "instanceID": 35284
+                "instanceID": 59642
             }
         },
         {
             "itemName": "Gracey5_6",
             "icon": {
-                "instanceID": 40480
+                "instanceID": 59644
             },
             "model": {
-                "instanceID": 35286
+                "instanceID": 59646
             }
         },
         {
             "itemName": "Gracey7_8",
             "icon": {
-                "instanceID": 40482
+                "instanceID": 59648
             },
             "model": {
-                "instanceID": 35272
+                "instanceID": 59650
             }
         },
         {
             "itemName": "Gracey11_12",
             "icon": {
-                "instanceID": 40484
+                "instanceID": 59652
             },
             "model": {
-                "instanceID": 35260
+                "instanceID": 59654
             }
         },
         {
             "itemName": "Gracey13_14",
             "icon": {
-                "instanceID": 40486
+                "instanceID": 59656
             },
             "model": {
-                "instanceID": 35262
+                "instanceID": 59658
             }
         }
     ],
