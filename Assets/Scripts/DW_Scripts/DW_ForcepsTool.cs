@@ -22,7 +22,7 @@ public class DW_ForcepsTool : MonoBehaviour
             RaycastHit detect;
 
             // Move the object until its inactive
-            if (!moveObject.Drag())
+            if (!moveObject.GetCurrentDragStyle())
             {
                 // Detect any possible area which are targeted as placement
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
@@ -31,11 +31,9 @@ public class DW_ForcepsTool : MonoBehaviour
                     {
                         // Perform any use of product available in the placement itself
                         detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().ApplyProduct();
+                        marker.ToolMarkerPossible(false);
                     }
                 }
-
-                // Done
-                Destroy(gameObject);
             }
 
             else

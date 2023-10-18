@@ -7,7 +7,6 @@ public class DW_AnestheticTool : MonoBehaviour
     private DW_ElementCancelation element;
     private DW_ToolMarker marker;
     private DW_MoveTools moveObject;
-    private DW_AdvanceMove advance_moveObject;
 
     void OnDestroy()
     {
@@ -23,23 +22,19 @@ public class DW_AnestheticTool : MonoBehaviour
             RaycastHit detect;
 
             // Move the object until its inactive
-            if (!moveObject.Drag())
+            if (!moveObject.GetCurrentDragStyle())
             {
                 // Detect any possible area which are targeted as placement
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
                 {
-                    if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null)
+                    if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null && 
+                        !detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed())
                     {
                         // Perform any use of product available in the placement itself
                         detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
-
-                        // Done
-                        Destroy(gameObject);
+                        marker.ToolMarkerPossible(false);
                     }
                 }
-
-                // Reset the position
-                Destroy(gameObject);
             }
 
             else
@@ -48,21 +43,16 @@ public class DW_AnestheticTool : MonoBehaviour
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
                 {
                     // Anestheic interact found!
-                    bool checkForPlacement = detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null;
+                    bool checkForPlacement = detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null &&
+                        !detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed();
 
                     // Display selection marker reader
                     marker.ToolMarkerPossible(checkForPlacement);
-
-                    // Advance Script: Move tool and clamp tool depth to the selected marker
-                    //advance_moveObject.SnapTargetToPoint(detect.collider.gameObject.transform, checkForPlacement);
                 }
                 else
                 {
                     // Display selection marker reader
                     marker.ToolMarkerPossible(false);
-
-                    // Advance Script: Move tool and clamp tool depth to the selected marker
-                    //advance_moveObject.ResetPoint();
                 }
             }
         }
@@ -74,9 +64,6 @@ public class DW_AnestheticTool : MonoBehaviour
         // Use of advance scripts
         if (GetComponent<DW_AdvanceAnestheicTool>() == null)
             gameObject.AddComponent<DW_AdvanceAnestheicTool>().UseAdvanceScript();
-
-        // Use of advance move
-        advance_moveObject = new DW_AdvanceMove();
 
         // Set marker
         marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.GumSection].props_tag_name);

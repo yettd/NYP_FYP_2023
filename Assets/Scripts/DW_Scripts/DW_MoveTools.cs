@@ -43,7 +43,7 @@ public class DW_MoveTools
     #endregion
 
     #region COMPONENT
-    public bool Drag()
+    private bool DragUntilNotMoving()
     {
         // Find out move is possible
         if (isMove)
@@ -53,6 +53,22 @@ public class DW_MoveTools
 
             // Release it when condition are met to the user desire
             if (IsMouseReleasedActive() || IsTouchReleasedActive()) Release();
+        }
+
+        // Check back on move status
+        return isMove;
+    }
+
+    private bool DragUntilObjectTrigger()
+    {
+        // Constant check to the user desire
+        isMove = (IsMouseReleasedActive() || IsTouchReleasedActive());
+
+        // Find out move is possible
+        if (isMove)
+        {
+            // Constant update of gameobject to mouse pointer
+            MoveTargetToPointer();
         }
 
         // Check back on move status
@@ -71,6 +87,12 @@ public class DW_MoveTools
     {
         // Begin to move the object
         isMove = true;
+    }
+
+    public bool GetCurrentDragStyle()
+    {
+        // Identify drag style and determine the action move
+        return DragUntilObjectTrigger();
     }
     #endregion
 }
