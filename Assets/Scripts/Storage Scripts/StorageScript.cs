@@ -38,12 +38,9 @@ public class StorageScript : MonoBehaviour
 
         // Default item
         storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select"), Resources.Load<GameObject>("StorageAssets/Models")));
-<<<<<<< Updated upstream
 
         // Display item
         component.GetUnitDisplay(storage.get_items.ToArray());
-=======
->>>>>>> Stashed changes
     }
     #endregion
 }

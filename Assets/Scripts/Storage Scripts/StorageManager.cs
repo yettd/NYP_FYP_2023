@@ -22,16 +22,10 @@ public class StorageManager
         return script;
     }
 
-<<<<<<< Updated upstream
     #region SETUP
-    private void CreateNewItemEntry(string title, Texture icon,GameObject model)
+    private void CreateNewItemEntry(string title, Texture icon, GameObject model)
     {
         items.Add(new ItemTag(title, icon, model));
-=======
-    private void CreateNewItemEntry(string title, Texture icon, GameObject ModelsOfTools)
-    {
-        items.Add(new ItemTag(title, icon, ModelsOfTools)) ;
->>>>>>> Stashed changes
     }
 
     private void RemoveItemEntry(string title)
@@ -44,14 +38,7 @@ public class StorageManager
     public void AddItem(ItemTag item)
     {
         if (items.Contains(GetItemStorage(item.itemName))) { ModifyItemContent(item); }
-<<<<<<< Updated upstream
         else { CreateNewItemEntry(item.itemName, item.icon, item.model); }
-=======
-        else { CreateNewItemEntry(item.itemName, item.icon, item.ModelsOfTools); }
-
-        // Update
-        storage.GetUnitDisplay(items.ToArray());
->>>>>>> Stashed changes
     }
 
     public void RemoveItem(string title)
