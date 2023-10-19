@@ -38,15 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< Updated upstream
   m_IndirectSpecularColor: {r: 0.6689966, g: 0.82256746, b: 0.6728636, a: 1}
-=======
-<<<<<<< Updated upstream
-  m_IndirectSpecularColor: {r: 0.6689966, g: 0.82256746, b: 0.6728636, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.4487322, g: 0.49755758, b: 0.56967306, a: 1}
->>>>>>> Stashed changes
->>>>>>> Stashed changes
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1490,7 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s:
-  - {fileID: 2800000, guid: 806eac58860f92e4dbecee2d088279c0, type: 3}
+  - {fileID: 2800000, guid: e860d87be46a5154b8e5f427d2e5b72c, type: 3}
   - {fileID: 2800000, guid: 46b148ac9dc38c4458898492f8653138, type: 3}
   i: {fileID: 239502270}
 --- !u!1 &246675430
@@ -2693,9 +2685,9 @@ MonoBehaviour:
   sfxVolumeSlider: {fileID: 1582123665}
   muteSoundButton: {fileID: 165603436}
   muteMusicButton: {fileID: 307516603}
-  soundMutedSprite: {fileID: 21300000, guid: 7f9f1dd0122124d4ca54607eea6f378b, type: 3}
+  soundMutedSprite: {fileID: 21300000, guid: 46b148ac9dc38c4458898492f8653138, type: 3}
   soundUnmutedSprite: {fileID: 21300000, guid: cd8e3f00806a8ac45b5c5a6aed106368, type: 3}
-  musicMutedSprite: {fileID: 21300000, guid: 5ba99875cfa149b4c9fcb31c96ea8e41, type: 3}
+  musicMutedSprite: {fileID: 21300000, guid: 46b148ac9dc38c4458898492f8653138, type: 3}
   musicUnmutedSprite: {fileID: 21300000, guid: 19ef9c8b79270b74db63658ff0ca7746, type: 3}
 --- !u!114 &481710598
 MonoBehaviour:
@@ -2873,19 +2865,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-<<<<<<< Updated upstream
       value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 618
-=======
-      value: 615
-      objectReference: {fileID: 0}
-    - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 335
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 1542158993485003807, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2921,7 +2905,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3111579700300982808, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-<<<<<<< Updated upstream
       value: -39.982
       objectReference: {fileID: 0}
     - target: {fileID: 5549753890908552198, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
@@ -2947,9 +2930,6 @@ PrefabInstance:
     - target: {fileID: 6100662260157581799, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_Texture
       value: 
-=======
-      value: -0.000024796
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 6283694989042134494, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3834,8 +3814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -813.74054, y: 314.9051}
-  m_SizeDelta: {x: 123.4385, y: 112.348}
+  m_AnchoredPosition: {x: -811.51605, y: 322.87155}
+  m_SizeDelta: {x: 107.8669, y: 96.4151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009677486
 MonoBehaviour:
@@ -3913,7 +3893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5e728698bc8a24943aa81cf0b5ab22b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13d4c8d6ab96edc40b42b39ef7b97317, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5351,7 +5331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -667, y: 351}
+  m_AnchoredPosition: {x: -542.35, y: 313}
   m_SizeDelta: {x: 273.6981, y: 113.8578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647606436

@@ -1,29 +1,13 @@
 {
     "Title": "Scaling",
     "Icon": {
-<<<<<<< Updated upstream
         "instanceID": 43424
-=======
-<<<<<<< Updated upstream
-        "instanceID": 51048
-=======
-        "instanceID": 34754
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     },
     "description": "There is no description.",
     "step": [
         {
             "Icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48682
-=======
-<<<<<<< Updated upstream
-                "instanceID": 47614
-=======
-                "instanceID": 34756
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             },
             "title": "Step 1: ???",
             "instruction": "This is step 1. Go and click the next one.",
@@ -33,15 +17,7 @@
         },
         {
             "Icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48684
-=======
-<<<<<<< Updated upstream
-                "instanceID": 47444
-=======
-                "instanceID": 34758
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             },
             "title": "Step 2: ???",
             "instruction": "This is step 2. Go and click the next one.",
@@ -51,15 +27,7 @@
         },
         {
             "Icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48686
-=======
-<<<<<<< Updated upstream
-                "instanceID": 47392
-=======
-                "instanceID": 34760
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             },
             "title": "Step 3: ???",
             "instruction": "This is step 3. Go and click on complete.",
@@ -72,116 +40,46 @@
         {
             "itemName": "Gracey1_2",
             "icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48688
             },
             "model": {
                 "instanceID": 42694
-=======
-<<<<<<< Updated upstream
-                "instanceID": 51050
-            },
-            "model": {
-                "instanceID": 51052
-=======
-                "instanceID": 34762
-            },
-            "ModelsOfTools": {
-                "instanceID": 34068
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             }
         },
         {
             "itemName": "Gracey5_6",
             "icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48690
             },
             "model": {
                 "instanceID": 42696
-=======
-<<<<<<< Updated upstream
-                "instanceID": 51054
-            },
-            "model": {
-                "instanceID": 51056
-=======
-                "instanceID": 34764
-            },
-            "ModelsOfTools": {
-                "instanceID": 48138
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             }
         },
         {
             "itemName": "Gracey7_8",
             "icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48692
             },
             "model": {
                 "instanceID": 42698
-=======
-<<<<<<< Updated upstream
-                "instanceID": 51058
-            },
-            "model": {
-                "instanceID": 51060
-=======
-                "instanceID": 34766
-            },
-            "ModelsOfTools": {
-                "instanceID": 34056
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             }
         },
         {
             "itemName": "Gracey11_12",
             "icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48694
             },
             "model": {
                 "instanceID": 42702
-=======
-<<<<<<< Updated upstream
-                "instanceID": 48054
-            },
-            "model": {
-                "instanceID": 51062
-=======
-                "instanceID": 34768
-            },
-            "ModelsOfTools": {
-                "instanceID": 34048
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             }
         },
         {
             "itemName": "Gracey13_14",
             "icon": {
-<<<<<<< Updated upstream
                 "instanceID": 48696
             },
             "model": {
                 "instanceID": 42704
-=======
-<<<<<<< Updated upstream
-                "instanceID": 48058
-            },
-            "model": {
-                "instanceID": 51064
-=======
-                "instanceID": 34770
-            },
-            "ModelsOfTools": {
-                "instanceID": 34038
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             }
         }
     ],
