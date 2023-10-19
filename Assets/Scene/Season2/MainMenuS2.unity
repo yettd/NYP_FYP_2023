@@ -4997,10 +4997,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clipboard
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8fb0414859c74c14f84a3f393890357d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9196,10 +9192,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7539378586441795817, guid: eadbead829f6e0b4494231bebd49bfdf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -6031708411201975295, guid: eadbead829f6e0b4494231bebd49bfdf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -9208,10 +9200,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e646c9aa25cbfc3469619f37e0015a57, type: 2}
-    - target: {fileID: 597380298134971516, guid: eadbead829f6e0b4494231bebd49bfdf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eadbead829f6e0b4494231bebd49bfdf, type: 3}
       propertyPath: m_Name
       value: DentalClinic
@@ -9256,10 +9244,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ebc03d93c1bdff34b8ed56af26cdbce1, type: 2}
-    - target: {fileID: 8333605156346235195, guid: eadbead829f6e0b4494231bebd49bfdf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
