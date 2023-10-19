@@ -7,6 +7,7 @@ public class DW_ForcepsTool : MonoBehaviour
     private DW_ElementCancelation element;
     private DW_ToolMarker marker;
     private DW_MoveTools moveObject;
+    private DW_ToolAccessory accessory;
 
     void OnDestroy()
     {
@@ -25,12 +26,14 @@ public class DW_ForcepsTool : MonoBehaviour
             if (!moveObject.GetCurrentDragStyle())
             {
                 // Detect any possible area which are targeted as placement
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
+                if (Physics.Raycast(accessory.GetToolPosition(), accessory.GetToolPointedDirection(), out detect, Mathf.Infinity))
                 {
                     if (detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null)
                     {
                         // Perform any use of product available in the placement itself
                         detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().ApplyProduct();
+
+                        // Done
                         marker.ToolMarkerPossible(false);
                     }
                 }
@@ -39,11 +42,15 @@ public class DW_ForcepsTool : MonoBehaviour
             else
             {
                 // Detect any possible area for interaction
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out detect, Mathf.Infinity))
+                if (Physics.Raycast(accessory.GetToolPosition(), accessory.GetToolPointedDirection(), out detect, Mathf.Infinity))
                     marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null);
                 else
                     marker.ToolMarkerPossible(false);
             }
+
+            // Pin down the possible area of interaction
+            accessory.DisplayToolPositionOrgin();
+            accessory.DisplayToolPositionWithOffset();
         }
     }
 
@@ -52,7 +59,14 @@ public class DW_ForcepsTool : MonoBehaviour
     {
         // Set marker
         marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name);
+
+        // Set the object to move
         moveObject = new DW_MoveTools();
+
+        // Set additional tool value for uses
+        accessory = GetComponent<DW_ToolAccessory>();
+
+        // Cancel out all unwanted script
         element = new DW_ElementCancelation();
 
         // Enable used of tool

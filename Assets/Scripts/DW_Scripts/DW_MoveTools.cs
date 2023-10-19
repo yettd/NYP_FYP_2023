@@ -26,7 +26,13 @@ public class DW_MoveTools
     private bool IsTouchReleasedActive()
     {
         // Only worked when its not worked in editor mode: Check touch if the user have lift off the touch screen
-        return !Application.isEditor && Input.touchCount != 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
+        return !Application.isEditor && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
+    }
+
+    private bool IsTouchMoveActive()
+    {
+        // Only worked when its not worked in editor mode: Check touch if the user is still moving
+        return !Application.isEditor && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved;
     }
 
     private GameObject GetTarget()
@@ -62,7 +68,7 @@ public class DW_MoveTools
     private bool DragUntilObjectTrigger()
     {
         // Constant check to the user desire
-        isMove = (IsMouseReleasedActive() || IsTouchReleasedActive());
+        isMove = (IsMouseReleasedActive() || IsTouchMoveActive());
 
         // Find out move is possible
         if (isMove)

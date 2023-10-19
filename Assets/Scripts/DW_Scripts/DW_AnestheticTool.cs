@@ -7,6 +7,7 @@ public class DW_AnestheticTool : MonoBehaviour
     private DW_ElementCancelation element;
     private DW_ToolMarker marker;
     private DW_MoveTools moveObject;
+    private DW_ToolAccessory accessory;
 
     void OnDestroy()
     {
@@ -25,7 +26,7 @@ public class DW_AnestheticTool : MonoBehaviour
             if (!moveObject.GetCurrentDragStyle())
             {
                 // Detect any possible area which are targeted as placement
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
+                if (Physics.Raycast(accessory.GetToolPosition(), accessory.GetToolPointedDirection(), out detect, Mathf.Infinity))
                 {
                     if (detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null && 
                         !detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed())
@@ -40,7 +41,7 @@ public class DW_AnestheticTool : MonoBehaviour
             else
             {
                 // Detect any possible area for interaction
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out detect, Mathf.Infinity))
+                if (Physics.Raycast(accessory.GetToolPosition(), accessory.GetToolPointedDirection(), out detect, Mathf.Infinity))
                 {
                     // Anestheic interact found!
                     bool checkForPlacement = detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>() != null &&
@@ -55,19 +56,30 @@ public class DW_AnestheticTool : MonoBehaviour
                     marker.ToolMarkerPossible(false);
                 }
             }
+
+            // Pin down the possible area of interaction
+            accessory.DisplayToolPositionOrgin();
+            accessory.DisplayToolPositionWithOffset();
         }
     }
 
     #region SETUP
     public void Activate()
     {
-        // Use of advance scripts
+        // Use of advance scripts: Anestheic Tool
         if (GetComponent<DW_AdvanceAnestheicTool>() == null)
             gameObject.AddComponent<DW_AdvanceAnestheicTool>().UseAdvanceScript();
 
         // Set marker
-        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.GumSection].props_tag_name);
+        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name);
+
+        // Set the object to move
         moveObject = new DW_MoveTools();
+
+        // Set additional tool value for uses
+        accessory = GetComponent<DW_ToolAccessory>();
+
+        // Cancel out all unwanted script
         element = new DW_ElementCancelation();
 
         // Enable used of tool

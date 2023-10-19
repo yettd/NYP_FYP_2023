@@ -38,6 +38,12 @@ public class DW_AdvanceAnestheicTool : MonoBehaviour
             GameObject sector = Instantiate(Resources.Load<GameObject>(pathName), sideOfTooth.transform.position, Quaternion.identity);
             sector.GetComponent<MeshRenderer>().enabled = false;
             sector.transform.SetParent(sideOfTooth.transform);
+
+            // Set offset to selection marker
+            sector.transform.position += sector.GetComponent<DW_GumSectorData>().GetOffsetPoint();
+
+            // Set selection marker of size
+            sector.transform.localScale = sector.GetComponent<DW_GumSectorData>().GetMarkerSize();
         }
 
         // Done

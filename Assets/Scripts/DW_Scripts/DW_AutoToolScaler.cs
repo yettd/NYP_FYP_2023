@@ -57,7 +57,7 @@ public class DW_AutoToolScaler : MonoBehaviour
         if (GetToolTarget())
         {
             // Use the current one to change the scale of the tool
-            GetToolTarget().transform.localScale = GetScaleDataForUse();
+            GetToolTarget().transform.localScale = GetToolTarget().transform.position + GetScaleDataForUse();
         }
     }
     #endregion

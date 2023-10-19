@@ -30,11 +30,10 @@ public class DW_ToothExtraction_Addons
         if (tooth)
         {
             // Looking for anesthesic to all gum placement which available
-            for (int gumSector = 0; gumSector < tooth.transform.childCount; gumSector++)
-            {
-                if (tooth.transform.GetChild(gumSector).GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed()) { anesthesicDosed = true; break; }
-                else anesthesicDosed = false;
-            }
+            if (tooth.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed())
+                anesthesicDosed = true;
+            else 
+                anesthesicDosed = false;
 
             // Extraction checker is completed
             return !anesthesicDosed;
@@ -56,11 +55,7 @@ public class DW_ToothExtraction_Addons
             // Looking for any tooth which have anesthesic apply after tooth placement
             foreach (GameObject tooth in tooths)
             {
-                // Looking for selected tooth which have anesthesic to all gum placement available
-                for (int gumSector = 0; gumSector < tooth.transform.childCount; gumSector++)
-                {
-                    if (tooth.transform.GetChild(gumSector).GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed()) { anesthesicDosed++; break; }
-                }
+                if (tooth.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed()) anesthesicDosed++;
             }
 
             // Extraction checker is completed

@@ -55,10 +55,10 @@ public class DW_ToothExtraction
         addons = new DW_ToothExtraction_Addons();
 
         // Set random damaged tooth
-        SetDamagedTooth();
+        //
 
         // Update status
-        RefreshToothStatus();
+        //
     }
 
     public bool IsCompleted()
