@@ -23,7 +23,7 @@ public class StorageManager
     }
 
     #region SETUP
-    private void CreateNewItemEntry(string title, Texture icon,GameObject model)
+    private void CreateNewItemEntry(string title, Texture icon, GameObject model)
     {
         items.Add(new ItemTag(title, icon, model));
     }
