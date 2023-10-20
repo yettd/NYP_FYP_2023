@@ -3775,7 +3775,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2084450310}
         m_TargetAssemblyTypeName: MenuManagerS2, Assembly-CSharp
-        m_MethodName: Loadcollections
+        m_MethodName: GoTocollection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

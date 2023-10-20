@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -73,6 +74,10 @@ public class MenuManagerS2 : MonoBehaviour
     public void GoToMain()
     {
         SceneManager.LoadScene(0);
+    }
+    public void GoTocollection()
+    {
+        SceneManager.LoadScene("collection");
     }
     public void Loadcollections()
     {
