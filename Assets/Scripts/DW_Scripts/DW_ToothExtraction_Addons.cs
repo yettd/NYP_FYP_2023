@@ -22,48 +22,44 @@ public class DW_ToothExtraction_Addons
     #region COMPONENT
     private bool SingleExtractionChecker()
     {
-        // Find target of the tooth placement
-        GameObject tooth = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
-        bool anesthesicDosed = false;
+        // Find tooth which targeted for extraction
+        GameObject sector = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.GumSection].props_tag_name);
+        bool anestheicDosed = false;
 
-        // Check on tooth placement is present
-        if (tooth)
+        // Get tooth placement if found and check for dosed to process
+        if (GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name))
         {
-            // Looking for anesthesic to all gum placement which available
-            if (tooth.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed())
-                anesthesicDosed = true;
-            else 
-                anesthesicDosed = false;
+            // Find if placement are set as for using it then output the result for verification
+            if (sector && sector.GetComponent<DW_AnestheicPlacement>() != null)
+                anestheicDosed = sector.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed();
 
-            // Extraction checker is completed
-            return !anesthesicDosed;
+            // Finalize the output
+            return !anestheicDosed;
         }
 
-        // There is no placement found which can be checked
-        return false;
+        // Remain false until the check is found
+        return anestheicDosed;
     }
 
     private bool MultipleExtractionChecker()
     {
-        // Find all target of the tooth placement
-        GameObject[] tooths = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
-        int anesthesicDosed = 0;
+        // Find tooth which have tooth extract
+        GameObject[] multipleTooth = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
+        int anestheicDosed = 0;
 
-        // Check on tooth placement is present
-        if (tooths.Length != 0)
+        // Get tooth individual component
+        foreach (GameObject tooth in multipleTooth)
         {
-            // Looking for any tooth which have anesthesic apply after tooth placement
-            foreach (GameObject tooth in tooths)
+            // Find if there are placement attract to it
+            if (tooth && tooth.GetComponentInChildren<DW_AnestheicPlacement>() != null)
             {
-                if (tooth.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed()) anesthesicDosed++;
+                // Get dosed and raise the amount by 1
+                if (tooth.GetComponentInChildren<DW_AnestheicPlacement>().IsAnestheicDosed()) anestheicDosed++;
             }
-
-            // Extraction checker is completed
-            return !(anesthesicDosed >= tooths.Length);
         }
 
-        // There is no placement found which can be checked
-        return false;
+        // Finalize the output by comparing the tooth extract to the number of dosed
+        return multipleTooth.Length > anestheicDosed;
     }
     #endregion
 }

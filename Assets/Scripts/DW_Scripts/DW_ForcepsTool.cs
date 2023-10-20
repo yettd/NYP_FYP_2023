@@ -34,7 +34,7 @@ public class DW_ForcepsTool : MonoBehaviour
                         detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().ApplyProduct();
 
                         // Done
-                        marker.ToolMarkerPossible(false);
+                        Destroy(gameObject);
                     }
                 }
             }
@@ -43,7 +43,14 @@ public class DW_ForcepsTool : MonoBehaviour
             {
                 // Detect any possible area for interaction
                 if (Physics.Raycast(accessory.GetToolPosition(), accessory.GetToolPointedDirection(), out detect, Mathf.Infinity))
-                    marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null);
+                {
+                    // Pull out interact found!
+                    bool checkForPlacement = detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>() != null &&
+                        !detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().IsExtractionComplete();
+
+                    // Display selection marker reader
+                    marker.ToolMarkerPossible(checkForPlacement);
+                }
                 else
                     marker.ToolMarkerPossible(false);
             }

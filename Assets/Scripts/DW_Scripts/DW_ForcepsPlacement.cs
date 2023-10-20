@@ -13,17 +13,9 @@ public class DW_ForcepsPlacement : MonoBehaviour
         gameObject.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name;
         GetComponent<MeshRenderer>().enabled = false;
 
-        // Get tooth out off there
-        MarkToothPlacement();
-    }
-
-    private void MarkToothPlacement()
-    {
-        // Make a copy of the tooth been extracted
-        GameObject toothPlacement = Instantiate(gameObject);
-
-        // Pick up the tooth by attach it on the tool
-        toothPlacement.transform.SetParent(GetToolObject().transform);
+        // Perform tool
+        if (GetComponent<DW_ForcepsAdvancement>() == null) gameObject.AddComponent<DW_ForcepsAdvancement>().PerformTool(transform);
+        else GetComponent<DW_ForcepsAdvancement>().PerformTool(transform);
     }
 
     private GameObject GetToolObject()
@@ -49,7 +41,7 @@ public class DW_ForcepsPlacement : MonoBehaviour
     #endregion
 
     #region COMPONENT
-    private bool IsExtractionComplete()
+    public bool IsExtractionComplete()
     {
         // Finding of tooth been pulled out and doesn't shown its present
         return GetComponent<MeshRenderer>().enabled == false;

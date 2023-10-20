@@ -33,6 +33,9 @@ public class DW_AnestheticTool : MonoBehaviour
                     {
                         // Perform any use of product available in the placement itself
                         detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
+
+                        // Done
+                        marker.DisplayMarker(false);
                         marker.ToolMarkerPossible(false);
                     }
                 }
@@ -71,7 +74,7 @@ public class DW_AnestheticTool : MonoBehaviour
             gameObject.AddComponent<DW_AdvanceAnestheicTool>().UseAdvanceScript();
 
         // Set marker
-        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name);
+        marker = new DW_ToolMarker(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.GumSection].props_tag_name);
 
         // Set the object to move
         moveObject = new DW_MoveTools();
@@ -102,9 +105,6 @@ public class DW_AnestheticTool : MonoBehaviour
         // Init accessible tool and other
         if (enable)
         {
-            // Init the object to move
-            if (moveObject != null) moveObject.StartMove();
-
             // Cancel out all unwanted component that cause clash to each other
             if (element != null) element.Activate();
         }
