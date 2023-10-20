@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6331236500752899076}
   - component: {fileID: 3258818072251766019}
   - component: {fileID: 8017155494782117026}
+  - component: {fileID: 988616582321527308}
   m_Layer: 0
   m_Name: MarkerPoint_Gum
   m_TagString: GumSection
@@ -105,3 +106,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &988616582321527308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101977490168124201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d14da0c2faf98c428426ba09d2a5f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0.45, z: 0}
+  size: {x: 1, y: 1, z: 1}

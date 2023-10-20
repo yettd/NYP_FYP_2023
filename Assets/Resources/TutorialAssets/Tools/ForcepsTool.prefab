@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6451904290772175733}
   - component: {fileID: 4925717922593529138}
   - component: {fileID: 5246163516495558499}
+  - component: {fileID: 1436125215482979207}
   m_Layer: 0
   m_Name: ForcepsTool
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.025367364, y: 0.17443912, z: -0.0073782704}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5024389741101910330}
-  m_Mesh: {fileID: -273092512483752323, guid: 2c366329eb581b04f9280c6e2f0e01cb, type: 3}
+  m_Mesh: {fileID: -6392522341485219019, guid: 3ad80276dbd576a43a92f838b2ac42b2, type: 3}
 --- !u!23 &5246163516495558499
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1436125215482979207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024389741101910330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd1b821036369546a2c05d40c413008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -0.65, y: 2.3, z: 0}
+  direction: {x: -1, y: 0, z: 0}
