@@ -246,8 +246,9 @@ public class TeethDirtClean : MonoBehaviour
                 Color pixelDirtMask = _templateDirtMask.GetPixel(offSetX + x, offSetY + y);
                 float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
                 remaindingDirt -= removedAmount;
-                Debug.Log(_templateDirtMask.GetPixel(offSetX + x, offSetY + y));
+                Debug.Log("BEFORE:" + _templateDirtMask.GetPixel(offSetX + x, offSetY + y));
                 _templateDirtMask.SetPixel(offSetX + x, offSetY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
+                Debug.Log("After:" + _templateDirtMask.GetPixel(offSetX + x, offSetY + y));
             }
         }
 
@@ -257,6 +258,7 @@ public class TeethDirtClean : MonoBehaviour
             clear();
         }
         _templateDirtMask.Apply();
+        _material.SetTexture("_DirtMask", _templateDirtMask);
 
     }
 
