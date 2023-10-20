@@ -38,7 +38,7 @@ public class TeethDirtClean : MonoBehaviour
         Dirttooth = Resources.Load<Material>("Mat/teethMasks");
 
         
-       // GetComponent<Renderer>().material = Dirttooth;
+        GetComponent<Renderer>().material = Dirttooth;
         CreateTexture();
         for (int i = 0; i < _dirtMaskBase.width; i++)
         {
@@ -238,7 +238,6 @@ public class TeethDirtClean : MonoBehaviour
         int offSetX = pixelX - (_brush.width / 2);
 
         int offSetY = pixelY - (_brush.height / 2);
-        Debug.Log(textureCoord);
         for (int x = 0; x < _brush.width; x++)
         {
             for (int y = 0; y < _brush.height; y++)
@@ -247,6 +246,7 @@ public class TeethDirtClean : MonoBehaviour
                 Color pixelDirtMask = _templateDirtMask.GetPixel(offSetX + x, offSetY + y);
                 float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
                 remaindingDirt -= removedAmount;
+                Debug.Log(_templateDirtMask.GetPixel(offSetX + x, offSetY + y));
                 _templateDirtMask.SetPixel(offSetX + x, offSetY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
             }
         }
