@@ -37,6 +37,18 @@ public class MenuManagerS2 : MonoBehaviour
     [SerializeField] private Button FillingBtn;
     [SerializeField] private Button ScalingBtn;
 
+    [Header("InfoPage")]
+    [SerializeField] private GameObject InfoPanel;
+    public Image image;
+    public Sprite[] images;
+    private int currentImageIndex = 0;
+    private bool disableButton = false;
+    public Image nextImage;
+    public Image previousImage;
+    public Button Next;
+    public Button Previous;
+
+
     [Header("Universal")]
     [SerializeField] private Button BackBtn;
     [SerializeField] private GameObject Camera;
@@ -47,6 +59,8 @@ public class MenuManagerS2 : MonoBehaviour
     bool PlayGameactive;
     bool MainMenuactive;
     bool CollectionsActive;
+    bool Infoactive;
+
     private void Awake()
     {
         audioManager = AudioManager.Instance;
@@ -220,6 +234,16 @@ public class MenuManagerS2 : MonoBehaviour
             SettingsPAGE.transform.gameObject.SetActive(false);
             SettingsPageactive = false;
         }
+        if (Infoactive == true)
+        {
+            InfoPanel.transform.gameObject.SetActive(false);
+            Infoactive = false;
+        }
+        Next.interactable = true;
+        Previous.interactable = true;
+        nextImage.color = Color.white;
+        previousImage.color = Color.white;
+        disableButton = false;
         //original
         Camera.transform.DOMove(new Vector3(34, 12.8f, -16), 1);
         Camera.transform.DORotate(new Vector3(10, 0, 0), 1);
@@ -303,8 +327,90 @@ public class MenuManagerS2 : MonoBehaviour
 
         transition.SetTrigger("start");
     }
+
+    public void openInfoPAGE()
+    {
+        audioManager.PlaySFX(1);
+        if (Infoactive == false)
+        {
+            InfoPanel.transform.gameObject.SetActive(true);
+            Infoactive = true;
+        }
+        else
+        {
+            InfoPanel.transform.gameObject.SetActive(false);
+            Infoactive = false;
+        }
+        if (MainMenuactive == true)
+        {
+            MainMenuPanel.transform.gameObject.SetActive(false);
+            MainMenuactive = false;
+        }
+        if (CollectionsActive == true)
+        {
+            CollectionsPanel.transform.gameObject.SetActive(false);
+            CollectionsActive = false;
+        }
+        if (PlayGameactive == true)
+        {
+            PlayGamePanel.transform.gameObject.SetActive(false);
+            PlayGameactive = false;
+        }
+        if (Settingsactive == true)
+        {
+            SettingsPanel.transform.gameObject.SetActive(false);
+            Settingsactive = false;
+        }
+        if (SettingsPageactive == true)
+        {
+            SettingsPAGE.transform.gameObject.SetActive(false);
+            SettingsPageactive = false;
+        }
+
+        transition.SetTrigger("start");
+        currentImageIndex = 0;
+        image.sprite = images[currentImageIndex];
+
+        Previous.interactable = false;
+        previousImage.color = Color.gray;
+    }
+
     public void GotoTutortialScene(string index)
     {
        SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
+    }
+
+    public void NextInfo()
+    {
+        //audioManager.PlaySFX(2);
+        if (currentImageIndex < images.Length -1)
+        {
+            audioManager.PlaySFX(2);
+            currentImageIndex++;
+            image.sprite = images[currentImageIndex];
+        }
+        else if (currentImageIndex == images.Length - 1)
+        {
+            nextImage.color = Color.grey;
+            disableButton = true;
+        }
+        Previous.interactable = true;
+        previousImage.color = Color.white;
+    }
+    public void PreviousInfo()
+    {
+        if (currentImageIndex >0)
+        {
+            audioManager.PlaySFX(2);
+            currentImageIndex--;
+            image.sprite = images[currentImageIndex];
+        }
+        else if (currentImageIndex == 0)
+        {
+            previousImage.color = Color.grey;
+            disableButton = true;
+        }
+        Next.interactable = true;
+        nextImage.color = Color.white;
     }
 }

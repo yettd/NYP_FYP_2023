@@ -281,6 +281,7 @@ MonoBehaviour:
       m_Calls: []
   minigameOpen: 0
   pause: {fileID: 0}
+  jaw: []
   pauseButton: {fileID: 0}
   problemTeeth: 0
   solvedTeetg: 0
