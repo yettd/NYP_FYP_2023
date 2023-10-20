@@ -45,7 +45,6 @@ public class collectionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         //DontDestroyOnLoad(this.gameObject);
     }
 
