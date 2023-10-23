@@ -13,7 +13,6 @@ public class TeethDirtClean : MonoBehaviour
     TextMeshProUGUI asd;
     private Texture2D _templateDirtMask;
     float toatlDirtOnTeeth = 0;
-   
     float remaindingDirt;
     [Header("FRONT < LEFT< BACK < RIGHT")]
     public List<toolsToClean> ttc= new List<toolsToClean>();

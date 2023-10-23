@@ -148,12 +148,39 @@
     ],
     "tools": [
         {
-            "itemName": "",
+            "itemName": "slowSpeed",
             "icon": {
-                "instanceID": 0
+                "instanceID": 237918
             },
             "model": {
-                "instanceID": 0
+                "instanceID": 83862
+            }
+        },
+        {
+            "itemName": "Spoonexcavator",
+            "icon": {
+                "instanceID": 237918
+            },
+            "model": {
+                "instanceID": 235092
+            }
+        },
+        {
+            "itemName": "Microbrush",
+            "icon": {
+                "instanceID": 238278
+            },
+            "model": {
+                "instanceID": 235022
+            }
+        },
+        {
+            "itemName": "plasticinstrument",
+            "icon": {
+                "instanceID": 127780
+            },
+            "model": {
+                "instanceID": 238182
             }
         }
     ],
