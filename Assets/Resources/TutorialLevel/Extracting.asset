@@ -37,14 +37,14 @@ MonoBehaviour:
     taskDone: 0
   tools:
   - itemName: Forcesp
-    icon: {fileID: 2800000, guid: 49ef171ae7cac27469e38390c26fe21e, type: 3}
+    icon: {fileID: 2800000, guid: c8f4c10c91a886e4783ee46ad1f57187, type: 3}
     model: {fileID: 5024389741101910330, guid: 9edfb7c4d09c33f499276fbaa96720a8, type: 3}
   - itemName: AnestheicTreatment
-    icon: {fileID: 2800000, guid: 96249dad5c89c4a41a6184e0e5b4711c, type: 3}
+    icon: {fileID: 2800000, guid: 6facd1d663529c144bf8d438f43ad0e7, type: 3}
     model: {fileID: 6503727786904292808, guid: 52019f31d7b5ec44aa616fe047008077, type: 3}
   - itemName: CottonGauze
-    icon: {fileID: 2800000, guid: 9a6fe6d0b0303524798e52815e957728, type: 3}
+    icon: {fileID: 2800000, guid: d4d7082b8b97c7c41b2c2148d06d3719, type: 3}
     model: {fileID: 3520120627521356768, guid: 6b7fdd2f7082fbe4fbcad4e2af562afb, type: 3}
   cleared:
-    completed: 0
+    completed: 1
   toolAccessId: 1
