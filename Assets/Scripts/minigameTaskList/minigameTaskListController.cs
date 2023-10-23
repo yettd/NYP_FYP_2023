@@ -43,7 +43,7 @@ public class minigameTaskListController : MonoBehaviour
     private int NS;
     private bool TBgums=false;
     public GameObject canvase;
-    private GameObject model;
+    private GameObject model=null;
     public Procedure procedure;
     [SerializeField] UnityEvent openGame;
     [SerializeField] UnityEvent closeGame;
@@ -338,7 +338,7 @@ public class minigameTaskListController : MonoBehaviour
     public void ToolsSelected(string toolsname, GameObject model)
     {
 
-        if (cameraChanger.Instance.GetZoom())
+        if (cameraChanger.Instance.GetZoom() && this.model==null)
         {
             // testTool.gameObject.SetActive(true);
             toolSelectedName = toolsname;
