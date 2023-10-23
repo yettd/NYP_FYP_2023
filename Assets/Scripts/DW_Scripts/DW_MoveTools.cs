@@ -32,7 +32,7 @@ public class DW_MoveTools
     private bool IsTouchMoveActive()
     {
         // Only worked when its not worked in editor mode: Check touch if the user is still moving
-        return !Application.isEditor && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved;
+        return !Application.isEditor && Input.touchCount > 0;
     }
 
     private GameObject GetTarget()

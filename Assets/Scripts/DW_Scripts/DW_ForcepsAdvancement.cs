@@ -23,7 +23,6 @@ public class DW_ForcepsAdvancement : MonoBehaviour
         GameObject forceps = Resources.Load<GameObject>("TutorialAssets/Tools/ForcepsTool");
         tool = Instantiate(forceps);
         tool.transform.position = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).transform.position;
-        tool.transform.GetComponent<MeshRenderer>().material = Resources.Load<Material>("TutorialAssets/Forcesp_Texture");
     }
 
     private void SpawnToothAsRolePlay()
