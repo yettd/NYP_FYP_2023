@@ -41,11 +41,10 @@ public class openTooth : MonoBehaviour
   
     }
 
-    
-
     private void OnEnable()
     {
 
+      //  teethMan.tm.back();
     }
     private void Start()
     {
@@ -57,9 +56,14 @@ public class openTooth : MonoBehaviour
             switch (minigameTaskListController.Instance.procedure)
             {
                 case Procedure.Scaling:
+                    
                     GetComponent<TeethDirtClean>().SetProblem();
+                    st = Resources.Load<showTask>("minigameTasklist/scaling");
                     break;
-                case Procedure.Filling: break;
+                case Procedure.Filling:
+                    GetComponent<TeethDirtClean>().SetProblem();
+                    st = Resources.Load<showTask>("minigameTasklist/Filling");
+                    break;
             }
 
             minigameTaskListController.Instance.IncreaseTeethWithProblem();
@@ -68,7 +72,6 @@ public class openTooth : MonoBehaviour
         bc = GetComponent<BoxCollider>();
         mc = GetComponent<MeshCollider>();
 
-        teethMan.tm.back();
     }
 
     private void HideTeeth(string TeethName)
