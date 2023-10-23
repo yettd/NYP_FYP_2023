@@ -234,6 +234,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.97
 --- !u!1 &40139417 stripped
 GameObject:
@@ -274,6 +275,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &97326751
 GameObject:
@@ -1106,6 +1108,7 @@ GameObject:
   - component: {fileID: 210914699}
   - component: {fileID: 210914701}
   - component: {fileID: 210914700}
+  - component: {fileID: 210914702}
   m_Layer: 5
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -1166,6 +1169,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 2022926570}
+--- !u!114 &210914702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210914698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7349fff997a93e644a67889380880d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &219238928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1563,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &239502268
 GameObject:
@@ -2411,6 +2427,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &395933150 stripped
 GameObject:
@@ -2451,6 +2468,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &416733817 stripped
 GameObject:
@@ -2707,6 +2725,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.97
 --- !u!1 &460736612
 GameObject:
@@ -2988,6 +3007,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.97
 --- !u!1001 &571859382
 PrefabInstance:
@@ -3450,6 +3470,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &725041936
 GameObject:
@@ -4665,6 +4686,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &1133806564
 GameObject:
@@ -4914,6 +4936,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &1276840532
 GameObject:
@@ -5088,6 +5111,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &1322902347
 GameObject:
@@ -5759,6 +5783,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.97
 --- !u!1 &1631189500
 GameObject:
@@ -7164,6 +7189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SettingsPanel: {fileID: 481710595}
   currentStep: 0
+  TBgums: 0
   canvase: {fileID: 97326751}
   procedure: 1
   openGame:
@@ -7779,6 +7805,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.97
 --- !u!1 &1910657793
 GameObject:
@@ -8470,6 +8497,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.98
 --- !u!1 &1991792767
 GameObject:
@@ -8665,6 +8693,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.97
 --- !u!1 &2012101770
 GameObject:
@@ -8917,6 +8946,7 @@ MonoBehaviour:
   ttc: 
   BCs: {fileID: 0}
   MC: {fileID: 0}
+  TooThDone: {fileID: 0}
   percentage: 0.97
 --- !u!1001 &2866805367986693867
 PrefabInstance:
