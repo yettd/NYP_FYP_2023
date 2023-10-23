@@ -6,8 +6,9 @@ using UnityEngine.SocialPlatforms;
 
 public class toothFilling : MonoBehaviour
 {
-    toolsForFilling tfs = toolsForFilling.Spoonexcavator;
-    [SerializeField] Mesh teethWithHold;    
+    toolsForFilling tfs = toolsForFilling.slowSpeed;
+    [SerializeField] Mesh teethWithHold;
+    [SerializeField] Material mat;
     public float threshold =0.7f;
 
     float drillTimer = 5;
@@ -17,7 +18,11 @@ public class toothFilling : MonoBehaviour
     // Start is called before the first frame update
     public void setUpProblem()
     {
-        GetComponent<Renderer>().material = Dirttooth;
+        GameObject getStart = Resources.Load<GameObject>("Mat/d");
+
+
+        teethWithHold = getStart.GetComponent<getMesh>().mesh.mesh;
+        mat = getStart.GetComponent<getMesh>().mat.material;
     }
 
     bool CorrectSide(RaycastHit hit)
@@ -35,7 +40,6 @@ public class toothFilling : MonoBehaviour
             }
             else
             {
-                Debug.Log(yAbs);
 
                 positionRelativeToEnemy = 'b'; // Hit on bottom
                 return true;
@@ -67,9 +71,16 @@ public class toothFilling : MonoBehaviour
     void Drill()
     {
         drillTimer -= Time.deltaTime;
+
+        Debug.Log("asdasd");
         if(drillTimer<0)
         {
+            if(minigameTaskListController.Instance.TBgums)
+            {
+                transform.rotation = Quaternion.Euler(180, 0, 0);
+            }
             GetComponent<MeshFilter>().mesh = teethWithHold;
+            GetComponent<Renderer>().material = mat;
             minigameTaskListController.Instance.gonext();
             nextTools();
         }

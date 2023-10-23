@@ -21,7 +21,7 @@ public class TeethDirtClean : MonoBehaviour
 
     public BoxCollider BCs;
     public MeshCollider MC;
-    Material TooThDone;
+    [SerializeField]Material TooThDone;
     Material Dirttooth;
     public float percentage;
     bool clean;
@@ -272,10 +272,9 @@ public class TeethDirtClean : MonoBehaviour
     public void Cheat()
     {
         GetComponent<Renderer>().material = TooThDone;
-        _templateDirtMask.Apply();
         Invoke("CheatClear", 4);
 
-        StartCoroutine(screenShake.Shaking());
+      //  StartCoroutine(screenShake.Shaking());
     }
 
     public void CheatClear()

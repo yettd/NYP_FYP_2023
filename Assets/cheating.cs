@@ -8,7 +8,7 @@ public class cheating : MonoBehaviour
     public void cleanALLTeeth()
     {
         minigameTaskListController.Instance.ResumeGame();
-        var a = FindObjectsByType<TeethDirtClean>(FindObjectsSortMode.None);
+        TeethDirtClean[] a = FindObjectsByType<TeethDirtClean>(FindObjectsSortMode.None); ;
 
         foreach (TeethDirtClean b in a)
         {

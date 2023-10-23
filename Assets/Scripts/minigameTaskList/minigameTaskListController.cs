@@ -41,7 +41,7 @@ public class minigameTaskListController : MonoBehaviour
     private int CS;
     private Steps NextSteps;
     private int NS;
-    private bool TBgums=false;
+    public bool TBgums=false;
     public GameObject canvase;
     private GameObject model=null;
     public Procedure procedure;
