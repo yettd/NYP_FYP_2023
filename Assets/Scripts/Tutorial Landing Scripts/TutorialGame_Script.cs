@@ -30,6 +30,7 @@ public class TutorialGame_Script : MonoBehaviour
     public GameSetup_Data[] get_GameInfo { get { return gameInfo; } }
 
     private DW_ToothExtraction extraction;
+    private DW_ExtraTooth_Addons extraction_toothAddons;
 
     private DataManageScript data;
     private const string fileDirectory = "savefile_tutorial_";
@@ -90,7 +91,12 @@ public class TutorialGame_Script : MonoBehaviour
         {
             case 1: // Extraction
                 extraction = new DW_ToothExtraction();
+                extraction_toothAddons = GetComponent<DW_ExtraTooth_Addons>();
+
                 extraction.Begin();
+
+                extraction_toothAddons.enabled = true;
+                extraction_toothAddons.Invoke("GetToothExtraction", 0.5f);
                 break;
 
             default: // Any instruction level
