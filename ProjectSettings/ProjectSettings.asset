@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: NYP
-  productName: ARdent
+  companyName: NYP(Team Underdog)
+  productName: Grace's ARdent
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 1}
@@ -133,7 +133,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.0
+  bundleVersion: 2.0
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -345,7 +345,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: c8e1f801862881a43b771565cdbfdb8c, type: 3}
+      m_Icon: {fileID: 2800000, guid: bf42d9d07de38d64885ad6c29d411379, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
