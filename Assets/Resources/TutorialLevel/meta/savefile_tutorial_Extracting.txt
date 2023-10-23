@@ -1,13 +1,13 @@
 {
     "Title": "Extracting",
     "Icon": {
-        "instanceID": 36566
+        "instanceID": 54122
     },
     "description": "User will learn about the extraction of tooth with the step to follow.",
     "step": [
         {
             "Icon": {
-                "instanceID": 34610
+                "instanceID": 32404
             },
             "title": "Ease of feeling anything",
             "instruction": "Apply anesthetic through the gum area to help ease of pain before the extracting the tooth.",
@@ -17,7 +17,7 @@
         },
         {
             "Icon": {
-                "instanceID": 34836
+                "instanceID": 32796
             },
             "title": "Pull out the tooth",
             "instruction": "Use the forcesp tool and toogle it over to remove the damaged tooth.",
@@ -27,7 +27,7 @@
         },
         {
             "Icon": {
-                "instanceID": 34774
+                "instanceID": 32690
             },
             "title": "Finishing product",
             "instruction": "Apply some cotton gauze to help clear over the unwanted particle.",
@@ -40,28 +40,28 @@
         {
             "itemName": "Forcesp",
             "icon": {
-                "instanceID": 36568
+                "instanceID": 54124
             },
             "model": {
-                "instanceID": 34600
+                "instanceID": 32366
             }
         },
         {
             "itemName": "AnestheicTreatment",
             "icon": {
-                "instanceID": 36570
+                "instanceID": 39532
             },
             "model": {
-                "instanceID": 34634
+                "instanceID": 222410
             }
         },
         {
             "itemName": "CottonGauze",
             "icon": {
-                "instanceID": 36572
+                "instanceID": 54126
             },
             "model": {
-                "instanceID": 34624
+                "instanceID": 32444
             }
         }
     ],

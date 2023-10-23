@@ -13,7 +13,6 @@ public class TeethDirtClean : MonoBehaviour
     TextMeshProUGUI asd;
     private Texture2D _templateDirtMask;
     float toatlDirtOnTeeth = 0;
-   
     float remaindingDirt;
     [Header("FRONT < LEFT< BACK < RIGHT")]
     public List<toolsToClean> ttc= new List<toolsToClean>();
@@ -22,7 +21,7 @@ public class TeethDirtClean : MonoBehaviour
 
     public BoxCollider BCs;
     public MeshCollider MC;
-    Material TooThDone;
+    [SerializeField]Material TooThDone;
     Material Dirttooth;
     public float percentage;
     bool clean;
@@ -39,6 +38,7 @@ public class TeethDirtClean : MonoBehaviour
 
         
         GetComponent<Renderer>().material = Dirttooth;
+        _material = GetComponent<Renderer>().material;
         CreateTexture();
         for (int i = 0; i < _dirtMaskBase.width; i++)
         {
@@ -49,7 +49,6 @@ public class TeethDirtClean : MonoBehaviour
         }
         remaindingDirt = toatlDirtOnTeeth;
 
-        _material = GetComponent<Renderer>().material;
         BCs = GetComponent<BoxCollider>();
         MC = GetComponent<MeshCollider>();
     }
@@ -246,9 +245,7 @@ public class TeethDirtClean : MonoBehaviour
                 Color pixelDirtMask = _templateDirtMask.GetPixel(offSetX + x, offSetY + y);
                 float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
                 remaindingDirt -= removedAmount;
-                Debug.Log("BEFORE:" + _templateDirtMask.GetPixel(offSetX + x, offSetY + y));
                 _templateDirtMask.SetPixel(offSetX + x, offSetY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
-                Debug.Log("After:" + _templateDirtMask.GetPixel(offSetX + x, offSetY + y));
             }
         }
 
@@ -258,7 +255,7 @@ public class TeethDirtClean : MonoBehaviour
             clear();
         }
         _templateDirtMask.Apply();
-        _material.SetTexture("_DirtMask", _templateDirtMask);
+        //_material.SetTexture("_DirtMask", _templateDirtMask);
 
     }
 
@@ -275,10 +272,9 @@ public class TeethDirtClean : MonoBehaviour
     public void Cheat()
     {
         GetComponent<Renderer>().material = TooThDone;
-        _templateDirtMask.Apply();
         Invoke("CheatClear", 4);
 
-        StartCoroutine(screenShake.Shaking());
+      //  StartCoroutine(screenShake.Shaking());
     }
 
     public void CheatClear()

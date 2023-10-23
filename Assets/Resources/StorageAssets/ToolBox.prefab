@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2269192562302300840
 CanvasRenderer:
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6edf12c6dbcac4898f93472db5aca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MTS: {fileID: 0}
 --- !u!114 &1990130702194033386
 MonoBehaviour:
   m_ObjectHideFlags: 0

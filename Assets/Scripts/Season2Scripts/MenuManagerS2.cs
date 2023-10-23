@@ -92,6 +92,10 @@ public class MenuManagerS2 : MonoBehaviour
     public void GoTocollection()
     {
         SceneManager.LoadScene("collection");
+        if (audioManager != null)
+        {
+            audioManager.PlayBackgroundMusic(0);
+        }
     }
     public void Loadcollections()
     {
