@@ -4012,6 +4012,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 859e3994d49a1a0468c4d0868a601093, type: 3}
   m_PrefabInstance: {fileID: 883772165}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &965440595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 904904554673984522, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
+  m_PrefabInstance: {fileID: 2866805367986693867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &965440596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965440595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ca7d3e391512048b4c504d19723676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0.2}
+  tierIndex: 1
 --- !u!1 &971692292
 GameObject:
   m_ObjectHideFlags: 0
@@ -6298,6 +6317,7 @@ GameObject:
   - component: {fileID: 1732991472}
   - component: {fileID: 1732991471}
   - component: {fileID: 1732991475}
+  - component: {fileID: 1732991476}
   m_Layer: 5
   m_Name: Interface
   m_TagString: Untagged
@@ -6422,7 +6442,8 @@ MonoBehaviour:
     - {fileID: 2866805367986693871}
     - {fileID: 2866805367986693870}
     props_tag_name: GumSection
-  - props: []
+  - props:
+    - {fileID: 965440595}
     props_tag_name: DamagedTooth
   - props: []
     props_tag_name: ToothPlacement
@@ -6433,6 +6454,18 @@ MonoBehaviour:
   winScreen: {fileID: 1090122044}
   loseScreen: {fileID: 1745778184}
   statusRemark: {fileID: 1912196792}
+--- !u!114 &1732991476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732991470}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac6dcd4dbca0a643b05094dd7dd92e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1741688688
 GameObject:
   m_ObjectHideFlags: 0
@@ -8799,6 +8832,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ee38f3fe02f4c554095c723d3470043f, type: 2}
+    - target: {fileID: 904904554673984522, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1006034664597983191, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -10290,6 +10327,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3785212043766595828, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 416733819}
+    - targetCorrespondingSourceObject: {fileID: 904904554673984522, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 965440596}
     - targetCorrespondingSourceObject: {fileID: 5700911831648095050, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1300605293}
