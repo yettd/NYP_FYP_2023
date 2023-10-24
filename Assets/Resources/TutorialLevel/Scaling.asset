@@ -16,18 +16,12 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: c8c5852e4211a254f8df40398a88137e, type: 3}
   description: There is no description.
   step:
-  - Icon: {fileID: 2800000, guid: 9eae84ce5f341324fa8b232f6a2d526d, type: 3}
-    title: 'Step 1: ???'
-    instruction: This is step 1. Go and click the next one.
+  - Icon: {fileID: 2800000, guid: a47aa06820765f8429993c5f707e6516, type: 3}
+    title: Scaling
+    instruction: Juat Scale
+    requiredTool: Gracey1_2
     completed: 1
-  - Icon: {fileID: 2800000, guid: ac6f4df9f7ff4e444bb82a6635cb95dc, type: 3}
-    title: 'Step 2: ???'
-    instruction: This is step 2. Go and click the next one.
-    completed: 1
-  - Icon: {fileID: 2800000, guid: a26e6a870bf8d5044ae8170eeb72052f, type: 3}
-    title: 'Step 3: ???'
-    instruction: This is step 3. Go and click on complete.
-    completed: 1
+    taskDone: 0
   tools:
   - itemName: Gracey1_2
     icon: {fileID: 2800000, guid: 4a6d8f4b5341d3e43838d927f3387063, type: 3}
@@ -46,3 +40,4 @@ MonoBehaviour:
     model: {fileID: 2101061212553845058, guid: 0eb9b5a7b731d5e46b897d274437dc3a, type: 3}
   cleared:
     completed: 1
+  toolAccessId: 0
