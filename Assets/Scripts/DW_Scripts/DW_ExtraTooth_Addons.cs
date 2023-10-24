@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DW_ExtraTooth_Addons : MonoBehaviour
 {
+    [SerializeField] private GameObject babyTooth;
+
     private List<GameObject> toothPlacement;
     private List<Vector3> offset;
 
@@ -29,9 +31,9 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
 
     private void SpawnTargetPoint(int index)
     {
-        // Spawn and replace the tooth with BabyMolar
-        GameObject newTooth = Resources.Load<GameObject>("TutorialAssets/BabyMolar");
-        GameObject toothInstance = Instantiate(newTooth);
+        // Spawn and replace the tooth
+        GameObject toothInstance = Instantiate(babyTooth);
+        toothInstance.name = babyTooth.name;
 
         // Identify the selected teeth and tag with damaged tooth
         toothInstance.transform.SetParent(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.TeethSection].props[toothPlacement[index].GetComponent<DW_NewToothInstance>().GetTeethIndex()].transform);

@@ -11,6 +11,7 @@ public class DW_ForcepsAdvancement : MonoBehaviour
     private bool isMove;
 
     private Transform toothTransform;
+    private string toothUsed;
 
     void Update()
     {
@@ -20,15 +21,20 @@ public class DW_ForcepsAdvancement : MonoBehaviour
     #region SETUP
     private void SpawnToolAsRolePlay()
     {
-        GameObject forceps = Resources.Load<GameObject>("TutorialAssets/Tools/ForcepsTool");
+        // Find the tool currently used
+        string toolUsed = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).name;
+        GameObject forceps = Resources.Load<GameObject>("TutorialAssets/Tools/" + toolUsed);
+
+        // Spawn the tool without the selection marker
         tool = Instantiate(forceps);
+
+        // Finalize the tool position to the plotted area
         tool.transform.position = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).transform.position;
     }
 
     private void SpawnToothAsRolePlay()
     {
-        tooth = Instantiate(Resources.Load<GameObject>("TutorialAssets/BabyMolar"));
-        tooth.GetComponent<MeshRenderer>().material = Resources.Load<Material>("TutorialAssets/Selected_CleanTooth");
+        tooth = Instantiate(Resources.Load<GameObject>("TutorialAssets/" + toothUsed));
         tooth.transform.position = toothTransform.position;
     }
 
@@ -81,12 +87,15 @@ public class DW_ForcepsAdvancement : MonoBehaviour
     #endregion
 
     #region MAIN
-    public void PerformTool(Transform _transform)
+    public void PerformTool(GameObject target)
     {
         if (!isPerforming)
         {
             // Get the latest tooth position
-            toothTransform = _transform;
+            toothTransform = target.transform;
+
+            // Get tooth id for used
+            toothUsed = target.name;
 
             // Start prepare of perfrom action
             LocateUpTooth();

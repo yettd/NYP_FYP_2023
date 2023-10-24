@@ -19,7 +19,7 @@ public class DW_AdvanceAnestheicTool : MonoBehaviour
     public void UseAdvanceScript()
     {
         // Remove the current uses of marker
-        RemovePreviousMarker();
+        isCreated = RemovePreviousMarker();
 
         // Create a new marker point by tagging it to the object
         if (!isCreated) CreateMarkerToAnestheic();
@@ -45,18 +45,31 @@ public class DW_AdvanceAnestheicTool : MonoBehaviour
             // Set selection marker of size
             sector.transform.localScale = sector.GetComponent<DW_GumSectorData>().GetMarkerSize();
         }
-
-        // Done
-        isCreated = true;
     }
 
-    private void RemovePreviousMarker()
+    private bool RemovePreviousMarker()
     {
         // Identify the previous gum section
         GameObject[] gumSection = GetObjectsByTag((int)GameTagPlacement.GumSection);
 
         // Remove the gum section tagged with it
-        foreach (GameObject section in gumSection) section.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.NotTagged].props_tag_name;
+        foreach (GameObject section in gumSection)
+        {
+            // Clear away sector which that isn't apply to any anestheicDosed
+            if (!section.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed())
+            {
+                Destroy(section);
+                return false;
+            }
+
+            // No change made to the sector
+            else
+                return true;
+
+        }
+
+        // Make it a new instance
+        return false;
     }
     #endregion
 }

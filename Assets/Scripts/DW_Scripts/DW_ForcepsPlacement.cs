@@ -14,14 +14,8 @@ public class DW_ForcepsPlacement : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
 
         // Perform tool
-        if (GetComponent<DW_ForcepsAdvancement>() == null) gameObject.AddComponent<DW_ForcepsAdvancement>().PerformTool(transform);
-        else GetComponent<DW_ForcepsAdvancement>().PerformTool(transform);
-    }
-
-    private GameObject GetToolObject()
-    {
-        // Find the tool for the uses of placement
-        return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
+        if (GetComponent<DW_ForcepsAdvancement>() == null) gameObject.AddComponent<DW_ForcepsAdvancement>().PerformTool(gameObject);
+        else GetComponent<DW_ForcepsAdvancement>().PerformTool(gameObject);
     }
     #endregion
 

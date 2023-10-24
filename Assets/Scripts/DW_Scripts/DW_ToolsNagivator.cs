@@ -53,6 +53,7 @@ public class DW_ToolsNagivator
         {
             // Take out on the tool been selected
             GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model);
+            cloneTool.name = GetItemToUse(currentTool).model.name;
             cloneTool.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name;
 
             // Give access to capability level

@@ -46,20 +46,24 @@ public class DW_ToothExtraction_Addons
         // Find tooth which have tooth extract
         GameObject[] multipleTooth = GameObject.FindGameObjectsWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name);
         int anestheicDosed = 0;
+        int totalAnestheicDosed = 0;
 
         // Get tooth individual component
         foreach (GameObject tooth in multipleTooth)
         {
             // Find if there are placement attract to it
-            if (tooth && tooth.GetComponentInChildren<DW_AnestheicPlacement>() != null)
+            if (tooth && tooth.GetComponent<DW_ForcepsPlacement>() != null && tooth.GetComponent<DW_ForcepsPlacement>().IsExtractionComplete())
             {
+                // Get the total amount of anestheic dosed
+                totalAnestheicDosed++;
+
                 // Get dosed and raise the amount by 1
-                if (tooth.GetComponentInChildren<DW_AnestheicPlacement>().IsAnestheicDosed()) anestheicDosed++;
+                if (tooth.GetComponent<DW_AnestheicPlacement>().IsAnestheicDosed()) anestheicDosed++;
             }
         }
 
         // Finalize the output by comparing the tooth extract to the number of dosed
-        return multipleTooth.Length > anestheicDosed;
+        return anestheicDosed < totalAnestheicDosed;
     }
     #endregion
 }
