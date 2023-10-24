@@ -10,7 +10,7 @@ public class fillingTool : Tolls
     protected override void Start()
     {
         base.Start();
-        letgoToUse = false;
+        //letgoToUse = false;
     }
 
     // Update is called once per frame

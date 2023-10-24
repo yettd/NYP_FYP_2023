@@ -6,7 +6,7 @@ public class Tolls : MonoBehaviour
 {
     [SerializeField] Camera cam;
     [SerializeField] Transform usePoint;
-    protected bool letgoToUse=false;
+    public bool letgoToUse=false;
 
     GameObject toohtSelected;
     Vector3 hitpos;

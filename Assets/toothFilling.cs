@@ -6,23 +6,26 @@ using UnityEngine.SocialPlatforms;
 
 public class toothFilling : MonoBehaviour
 {
-    toolsForFilling tfs = toolsForFilling.slowSpeed;
+    toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
+        toolsForFilling.tripleSyringe, toolsForFilling.etchant };
+    int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
     public float threshold =0.7f;
-
-    float drillTimer = 5;
+    GameObject decay;
+    float drillTimer = 2;
     [SerializeField] Material Dirttooth;
-
+    bool done;
+    GameObject dam;
 
     // Start is called before the first frame update
     public void setUpProblem()
     {
-        GameObject getStart = Resources.Load<GameObject>("Mat/d");
+        GameObject getStart = Resources.Load<GameObject>("Mat/filling/d");
 
-
-        teethWithHold = getStart.GetComponent<getMesh>().mesh.mesh;
-        mat = getStart.GetComponent<getMesh>().mat.material;
+        Debug.Log(getStart.GetComponent<getMesh>().getM());
+        teethWithHold = getStart.GetComponent<getMesh>().getM();
+        mat = getStart.GetComponent<getMesh>().getR();
     }
 
     bool CorrectSide(RaycastHit hit)
@@ -31,12 +34,16 @@ public class toothFilling : MonoBehaviour
 
         float yAbs = Mathf.Abs(hitPointLocal.y);
 
-        char positionRelativeToEnemy;
+        char positionRelativeToEnemy='d';
         if (yAbs > threshold)
         {
             if (hitPointLocal.y > 0)
             {
                 positionRelativeToEnemy = 't'; // Hit on top
+                if(transform.rotation.eulerAngles.x !=0)
+                {
+                    return true;
+                }
             }
             else
             {
@@ -45,6 +52,7 @@ public class toothFilling : MonoBehaviour
                 return true;
             }
         }
+        Debug.Log(positionRelativeToEnemy);
         return false;
 
 
@@ -52,43 +60,86 @@ public class toothFilling : MonoBehaviour
     }
     public void GoToStep(RaycastHit hit)
     {
+        if (done)
+        {
+            return;
+        }
+       
         if(!CorrectSide(hit))
         {
+            
             return;
         }
 
         if (correctTool())
         {
+            Debug.Log(tfs[currecntTool]);
             switch (minigameTaskListController.Instance.getCurrentStep())
             {
+                case Steps.DAM:
+                    PutDam();
+                    break;
+
                 case Steps.DRILL:
                     Drill();
+                    break;
+                case Steps.REMOVE:
+                    Clean();
                     break;
             }
         }
     }
 
+    void PutDam()
+    {
+        dam =Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"), gameObject.transform);
+        dam.transform.localPosition = new Vector3(0.0399999991f, -0.699999988f, -3.6099999f);
+        dam.transform.localRotation = Quaternion.Euler(90, 0, 0);
+        dam.transform.localScale = Vector3.one/2;
+        dam.transform.parent = null;
+        nextTools();
+    }
+
     void Drill()
     {
         drillTimer -= Time.deltaTime;
-
-        Debug.Log("asdasd");
         if(drillTimer<0)
         {
             if(minigameTaskListController.Instance.TBgums)
             {
-                transform.rotation = Quaternion.Euler(180, 0, 0);
+                transform.localRotation = Quaternion.Euler(0, 103.362f, 180);
+                gameObject.GetComponent<MeshCollider>().sharedMesh = teethWithHold;
             }
+            gameObject.GetComponent<MeshCollider>().convex = true;
+            decay = Instantiate(Resources.Load<GameObject>("mat/filling/decay"),gameObject.transform);
+
+            decay.transform.transform.localScale = Vector3.one;
+            decay.transform.localPosition = new Vector3(0,0.11f,0);
+            dam.transform.parent = gameObject.transform;
             GetComponent<MeshFilter>().mesh = teethWithHold;
             GetComponent<Renderer>().material = mat;
-            minigameTaskListController.Instance.gonext();
+            nextTools();
+        }
+    }
+
+    void DoneWIthFilliing()
+    {
+        done = true;
+    }
+
+    void Clean()
+    {
+        decay.transform.localScale -= Vector3.one * Time.deltaTime*0.5f;
+        Debug.Log("ddd");
+        if(decay.transform.localScale.x <0)
+        {
             nextTools();
         }
     }
     
     bool correctTool()
     {
-        if(minigameTaskListController.Instance.GetSelectedtool()==tfs.ToString())
+        if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool].ToString())
         {
             return true;
         }
@@ -96,14 +147,22 @@ public class toothFilling : MonoBehaviour
     }
     void nextTools()
     {
-        tfs++;
+        currecntTool++;
+        minigameTaskListController.Instance.gonext();
+        if (currecntTool >= tfs.Length)
+        {
+            currecntTool = 0;
+        }
     }
    
 
     public enum toolsForFilling
     {
+        rubberDamForceb,
         slowSpeed,
         Spoonexcavator,
+        tripleSyringe,
+        etchant,
         Microbrush,
         plasticinstrument
     }

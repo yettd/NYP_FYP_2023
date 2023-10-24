@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1c5b52cdeea88d4d9134c3446772c79, type: 3}
       propertyPath: m_Name
-      value: L_Molar_4_Hole
+      value: d
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60,16 +60,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5262197556972096918}
   m_SourcePrefab: {fileID: 100100000, guid: f1c5b52cdeea88d4d9134c3446772c79, type: 3}
---- !u!23 &488401735038631183 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -4051764779077506280, guid: f1c5b52cdeea88d4d9134c3446772c79, type: 3}
-  m_PrefabInstance: {fileID: 4684336991608509975}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &5276650898204197747 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 592352699009799524, guid: f1c5b52cdeea88d4d9134c3446772c79, type: 3}
-  m_PrefabInstance: {fileID: 4684336991608509975}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5603448243598994246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f1c5b52cdeea88d4d9134c3446772c79, type: 3}
@@ -87,5 +77,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2909c59dfe0552b4db56b70d9f0a4e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 5276650898204197747}
-  mat: {fileID: 488401735038631183}
+  mesh: {fileID: 5545985359612147301, guid: f1c5b52cdeea88d4d9134c3446772c79, type: 3}
+  mat: {fileID: 2100000, guid: e3b5f706f3a4d2e42b639b081519b900, type: 2}
