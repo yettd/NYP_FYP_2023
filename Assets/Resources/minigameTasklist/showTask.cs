@@ -25,6 +25,7 @@ public enum Steps
     DRILL,
     REMOVE,
     WASHBLOW,
+    ETCH,
     WASHBLOW2,
     PRIMER,
     BLOW,

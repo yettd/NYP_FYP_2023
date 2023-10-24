@@ -5,17 +5,15 @@ using UnityEngine;
 public class getMesh : MonoBehaviour
 {
 
-    public MeshFilter mesh;
-    public Renderer mat;
+    public Mesh mesh;
+    public Material mat;
     // Start is called before the first frame update
-    void Start()
+    public Mesh getM()
     {
-        
+        return mesh;
     }
-
-    // Update is called once per frame
-    void Update()
+    public Material getR()
     {
-        
+        return mat;
     }
 }

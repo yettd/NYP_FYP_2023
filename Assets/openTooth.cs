@@ -62,6 +62,7 @@ public class openTooth : MonoBehaviour
     {
         teethMan.tm.CO += HideTeeth;
         teethMan.tm.Back += Show;
+
         if (pro.Contains(minigameTaskListController.Instance.procedure))
         {
 
@@ -73,6 +74,7 @@ public class openTooth : MonoBehaviour
                     st = Resources.Load<showTask>("minigameTasklist/scaling");
                     break;
                 case Procedure.Filling:
+                    Debug.Log("asda");
                     GetComponent<toothFilling>().setUpProblem();
                     st = Resources.Load<showTask>("minigameTasklist/Filling");
                     break;
