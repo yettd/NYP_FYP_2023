@@ -6,7 +6,8 @@ using UnityEngine.SocialPlatforms;
 
 public class toothFilling : MonoBehaviour
 {
-    toolsForFilling[] tfs = { toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator };
+    toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
+        toolsForFilling.tripleSyringe, toolsForFilling.etchant };
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
@@ -15,6 +16,7 @@ public class toothFilling : MonoBehaviour
     float drillTimer = 2;
     [SerializeField] Material Dirttooth;
     bool done;
+    GameObject dam;
 
     // Start is called before the first frame update
     public void setUpProblem()
@@ -71,9 +73,13 @@ public class toothFilling : MonoBehaviour
 
         if (correctTool())
         {
-            Debug.Log(tfs);
+            Debug.Log(tfs[currecntTool]);
             switch (minigameTaskListController.Instance.getCurrentStep())
             {
+                case Steps.DAM:
+                    PutDam();
+                    break;
+
                 case Steps.DRILL:
                     Drill();
                     break;
@@ -84,6 +90,16 @@ public class toothFilling : MonoBehaviour
         }
     }
 
+    void PutDam()
+    {
+        dam =Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"), gameObject.transform);
+        dam.transform.localPosition = new Vector3(0.0399999991f, -0.699999988f, -3.6099999f);
+        dam.transform.localRotation = Quaternion.Euler(90, 0, 0);
+        dam.transform.localScale = Vector3.one/2;
+        dam.transform.parent = null;
+        nextTools();
+    }
+
     void Drill()
     {
         drillTimer -= Time.deltaTime;
@@ -91,7 +107,7 @@ public class toothFilling : MonoBehaviour
         {
             if(minigameTaskListController.Instance.TBgums)
             {
-                transform.rotation = Quaternion.Euler(180, 0, 0);
+                transform.localRotation = Quaternion.Euler(0, 103.362f, 180);
                 gameObject.GetComponent<MeshCollider>().sharedMesh = teethWithHold;
             }
             gameObject.GetComponent<MeshCollider>().convex = true;
@@ -99,10 +115,9 @@ public class toothFilling : MonoBehaviour
 
             decay.transform.transform.localScale = Vector3.one;
             decay.transform.localPosition = new Vector3(0,0.11f,0);
-
+            dam.transform.parent = gameObject.transform;
             GetComponent<MeshFilter>().mesh = teethWithHold;
             GetComponent<Renderer>().material = mat;
-            minigameTaskListController.Instance.gonext();
             nextTools();
         }
     }
@@ -118,7 +133,6 @@ public class toothFilling : MonoBehaviour
         Debug.Log("ddd");
         if(decay.transform.localScale.x <0)
         {
-            minigameTaskListController.Instance.gonext();
             nextTools();
         }
     }
@@ -134,7 +148,8 @@ public class toothFilling : MonoBehaviour
     void nextTools()
     {
         currecntTool++;
-        if(currecntTool >= tfs.Length)
+        minigameTaskListController.Instance.gonext();
+        if (currecntTool >= tfs.Length)
         {
             currecntTool = 0;
         }
@@ -143,8 +158,11 @@ public class toothFilling : MonoBehaviour
 
     public enum toolsForFilling
     {
+        rubberDamForceb,
         slowSpeed,
         Spoonexcavator,
+        tripleSyringe,
+        etchant,
         Microbrush,
         plasticinstrument
     }

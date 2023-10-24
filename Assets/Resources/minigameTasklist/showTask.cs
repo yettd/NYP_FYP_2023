@@ -22,6 +22,7 @@ public enum Steps
     SCRAPINGS,
 
     //filling
+    DAM,
     DRILL,
     REMOVE,
     WASHBLOW,

@@ -119,6 +119,15 @@ MonoBehaviour:
   - itemName: plasticinstrument
     icon: {fileID: 2800000, guid: db7ff8391b6781548b2e08b0891fd588, type: 3}
     model: {fileID: 402461232451059118, guid: c52731de510362d47961ad9c435e74c6, type: 3}
+  - itemName: etchant
+    icon: {fileID: 2800000, guid: db7ff8391b6781548b2e08b0891fd588, type: 3}
+    model: {fileID: 4550876686737558486, guid: f6edc7ae841047c4fb07331ae7e0e612, type: 3}
+  - itemName: rubberDamForceb
+    icon: {fileID: 2800000, guid: 49ef171ae7cac27469e38390c26fe21e, type: 3}
+    model: {fileID: 4550876686737558486, guid: 37fed25c409bb7544afeae499e18d4bc, type: 3}
+  - itemName: tripleSyringe
+    icon: {fileID: 2800000, guid: 53e14ef76f2274f4faaf7eb90da175e9, type: 3}
+    model: {fileID: 4550876686737558486, guid: 7afa5a2303d30944c998aa82a3d44110, type: 3}
   cleared:
     completed: 0
   toolAccessId: 2

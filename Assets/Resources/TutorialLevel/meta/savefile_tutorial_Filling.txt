@@ -182,6 +182,33 @@
             "model": {
                 "instanceID": 35634
             }
+        },
+        {
+            "itemName": "etchant",
+            "icon": {
+                "instanceID": 35632
+            },
+            "model": {
+                "instanceID": 165890
+            }
+        },
+        {
+            "itemName": "rubberDamForceb",
+            "icon": {
+                "instanceID": 166154
+            },
+            "model": {
+                "instanceID": 166036
+            }
+        },
+        {
+            "itemName": "tripleSyringe",
+            "icon": {
+                "instanceID": 167070
+            },
+            "model": {
+                "instanceID": 166606
+            }
         }
     ],
     "cleared": {
