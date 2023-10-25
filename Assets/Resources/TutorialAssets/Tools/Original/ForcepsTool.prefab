@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4925717922593529138}
   - component: {fileID: 5246163516495558499}
   - component: {fileID: 1436125215482979207}
+  - component: {fileID: 1881831513809263772}
   m_Layer: 0
   m_Name: ForcepsTool
   m_TagString: Untagged
@@ -98,3 +99,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: 2.3, z: 0}
   direction: {x: -1, y: 0, z: 0}
+--- !u!95 &1881831513809263772
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024389741101910330}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f3eefa1e04d712458fd14bd91d36750, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
