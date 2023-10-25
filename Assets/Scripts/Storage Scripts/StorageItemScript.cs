@@ -14,7 +14,7 @@ public class StorageItemScript : MonoBehaviour
     #region SETUP
     public void SetItemComponent(StorageComponent component, ItemTag item)
     {
-        toolsNagivator = new DW_ToolsNagivator();
+        toolsNagivator = DW_ToolsNagivator.GetToolNagivator();
 
         this.component = component;
         this.item = item;
