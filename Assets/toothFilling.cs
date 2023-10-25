@@ -18,6 +18,8 @@ public class toothFilling : MonoBehaviour
     bool done;
     GameObject dam;
 
+    Color water;
+
     // Start is called before the first frame update
     public void setUpProblem()
     {
@@ -70,10 +72,10 @@ public class toothFilling : MonoBehaviour
             
             return;
         }
-
+        Debug.Log(tfs[currecntTool]);
         if (correctTool())
         {
-            Debug.Log(tfs[currecntTool]);
+         
             switch (minigameTaskListController.Instance.getCurrentStep())
             {
                 case Steps.DAM:
@@ -86,18 +88,93 @@ public class toothFilling : MonoBehaviour
                 case Steps.REMOVE:
                     Clean();
                     break;
+                case Steps.WASHBLOW:
+                case Steps.WASHBLOW2:
+                case Steps.BLOW:
+                    washPond();
+                    break;
+                case Steps.ETCH:
+                    ETCH();
+                    break;
+                case Steps.PRIMER:
+                    PRIMER();
+                    break;
+                case Steps.FILLING:
+                    FILLING();
+                    break;
+                case Steps.CONTOUR:
+                    CONTOUR();
+                    break;
+
+                case Steps.CURE:
+                    CURE(); 
+                    break;
+
+                case Steps.POLISH:
+                    POLISH();   
+                    break;
             }
         }
     }
 
+    void ETCH()
+    {
+
+    }
+    void PRIMER()
+    {
+
+    }
+    void BLOW()
+    {
+
+    }
+    void FILLING()
+    {
+        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.5f;
+        if (decay.transform.localScale.x > 0)
+        {
+            nextTools();
+        }
+    }
+    void CONTOUR()
+    {
+
+    }
+    void CURE()
+    {
+
+    }
+    void POLISH()
+    {
+
+    }
     void PutDam()
     {
         dam =Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"), gameObject.transform);
         dam.transform.localPosition = new Vector3(0.0399999991f, -0.699999988f, -3.6099999f);
         dam.transform.localRotation = Quaternion.Euler(90, 0, 0);
         dam.transform.localScale = Vector3.one/2;
-        dam.transform.parent = null;
         nextTools();
+    }
+
+    void washPond()//washAndBlow
+    {
+
+        if (decay.transform.localScale.x > 0.5)
+        {
+            water= decay.GetComponent<Renderer>().material.color;
+            water= new Color(water.r,water.b,water.g,water.a-(Time.deltaTime*0.1f));
+           decay.GetComponent<Renderer>().material.color = water;
+            if (water.a <= 0)
+            {
+                nextTools();
+            }
+            return;
+        }
+
+        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.5f;
+    
     }
 
     void Drill()
@@ -105,7 +182,8 @@ public class toothFilling : MonoBehaviour
         drillTimer -= Time.deltaTime;
         if(drillTimer<0)
         {
-            if(minigameTaskListController.Instance.TBgums)
+            dam.transform.parent = null;
+            if (minigameTaskListController.Instance.TBgums)
             {
                 transform.localRotation = Quaternion.Euler(0, 103.362f, 180);
                 gameObject.GetComponent<MeshCollider>().sharedMesh = teethWithHold;
@@ -113,7 +191,6 @@ public class toothFilling : MonoBehaviour
             gameObject.GetComponent<MeshCollider>().convex = true;
             decay = Instantiate(Resources.Load<GameObject>("mat/filling/decay"),gameObject.transform);
 
-            decay.transform.transform.localScale = Vector3.one;
             decay.transform.localPosition = new Vector3(0,0.11f,0);
             dam.transform.parent = gameObject.transform;
             GetComponent<MeshFilter>().mesh = teethWithHold;
@@ -130,9 +207,9 @@ public class toothFilling : MonoBehaviour
     void Clean()
     {
         decay.transform.localScale -= Vector3.one * Time.deltaTime*0.5f;
-        Debug.Log("ddd");
         if(decay.transform.localScale.x <0)
         {
+            decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");
             nextTools();
         }
     }
