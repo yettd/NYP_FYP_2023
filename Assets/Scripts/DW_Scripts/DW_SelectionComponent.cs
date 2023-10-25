@@ -12,24 +12,17 @@ public class DW_SelectionComponent : MonoBehaviour
     private float fadeValue = 0;
 
     #region SETUP
-    private void ChangeMaterialState(Material material)
-    {
-        Material changeM = transform.GetComponent<Renderer>().material;
-        if (changeM != material) transform.GetComponent<Renderer>().material = material;
-    }
-
     private void StartSectionSelect()
     {
-        transform.GetComponent<Renderer>().material.color = new Color(fadeValue, 1, fadeValue);
+        transform.GetComponent<Renderer>().material.color = new Color(fadeValue, maxfadeValue, fadeValue);
         StartCoroutine(BeginSectionFade());
     }
     #endregion
 
     #region MAIN
-    public void Select(string title)
+    public void Select()
     {
         isSelected = true;
-        ChangeMaterialState(Resources.Load<Material>("TutorialAssets/Selected_" + title));
         StartSectionSelect();
     }
 

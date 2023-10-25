@@ -13,10 +13,6 @@ public class DW_AnestheicPlacement : MonoBehaviour
     #region SETUP
     private void GumSectionEffect()
     {
-        // Apply of changes in appearance in the placement component
-        transform.GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/ApplyTarget");
-        transform.GetComponent<Renderer>().material.color = new Color(anestheicDose, anestheicDose, anestheicDose, 0.5f);
-
         // Start cycle in the process in dosing the anestheic side effect
         StartCoroutine(ProductDoseLogical());
     }
@@ -37,6 +33,10 @@ public class DW_AnestheicPlacement : MonoBehaviour
     {
         // Set the amount of anestheic to be used for processing
         anestheic_maxDose += amount;
+
+        // Perform tool
+        if (GetComponent<DW_AnestheicAdvancement>() == null) gameObject.AddComponent<DW_AnestheicAdvancement>().PerformTool();
+        else GetComponent<DW_AnestheicAdvancement>().PerformTool();
     }
     #endregion
 

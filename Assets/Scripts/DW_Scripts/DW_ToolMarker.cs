@@ -16,8 +16,8 @@ public class DW_ToolMarker
     #region COMPONENT
     private void SetMarkerSelection(GameObject accessor)
     {
-        if (accessor.GetComponent<DW_SelectionComponent>() == null) accessor.AddComponent<DW_SelectionComponent>().Select(targetForUse);
-        else accessor.GetComponent<DW_SelectionComponent>().Select(targetForUse);
+        if (accessor.GetComponent<DW_SelectionComponent>() == null) accessor.AddComponent<DW_SelectionComponent>().Select();
+        else accessor.GetComponent<DW_SelectionComponent>().Select();
     }
 
     private void DisableMarkerSelection(GameObject accessor)
@@ -42,12 +42,7 @@ public class DW_ToolMarker
     public void ToolMarkerPossible(bool enable)
     {
         GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
-        tool.transform.GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/ToolPossible");
-
-        if (enable)
-            tool.transform.GetComponent<Renderer>().material.color = Color.green;
-        else
-            tool.transform.GetComponent<Renderer>().material.color = Color.red;
+        tool.transform.GetComponent<Renderer>().material.color = enable ? Color.green : Color.red;
     }
     #endregion
 }

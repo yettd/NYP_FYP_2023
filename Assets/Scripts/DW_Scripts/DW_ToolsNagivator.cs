@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class DW_ToolsNagivator
 {
+    private static DW_ToolsNagivator script;
+
     private DW_ExtractionCapability extractionAccess;
     private string currentTool;
+    private string previousTool;
 
     public DW_ToolsNagivator()
     {
         extractionAccess = new DW_ExtractionCapability();
         currentTool = string.Empty;
+        previousTool = " ";
     }
 
-    public DW_ToolsNagivator(Vector3 toolScale)
+    public static DW_ToolsNagivator GetToolNagivator()
     {
-        extractionAccess = new DW_ExtractionCapability();
-        currentTool = string.Empty;
+        if (script == null)
+        {
+            script = new DW_ToolsNagivator();
+        }
+        return script;
     }
 
     #region SETUP
@@ -38,7 +45,11 @@ public class DW_ToolsNagivator
         currentTool = title;
 
         // Create instance and process using it
-        GetInstanceOfToolUsage();
+        if (currentTool != previousTool)
+        {
+            GetInstanceOfToolUsage();
+            previousTool = currentTool;
+        }
     }
     #endregion
 
@@ -52,7 +63,7 @@ public class DW_ToolsNagivator
         if (GetItemToUse(currentTool).model != null)
         {
             // Take out on the tool been selected
-            GameObject cloneTool = GameObject.Instantiate(GetItemToUse(currentTool).model);
+            GameObject cloneTool = GameObject.Instantiate(Resources.Load<GameObject>("TutorialAssets/Tools/Marker/" + GetItemToUse(currentTool).model.name));
             cloneTool.name = GetItemToUse(currentTool).model.name;
             cloneTool.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name;
 

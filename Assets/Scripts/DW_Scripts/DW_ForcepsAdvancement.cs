@@ -13,8 +13,12 @@ public class DW_ForcepsAdvancement : MonoBehaviour
     private Transform toothTransform;
     private string toothUsed;
 
+    private const float pullOutTooth_timeOut = 1.5f;
+    private const float wrapOutFromPulling_timeOut = 3;
+
     void Update()
     {
+        // Pull out tooth by moving the tool and tooth
         PerformTheToolAndTooth(isMove, 0.5f);
     }
 
@@ -23,32 +27,46 @@ public class DW_ForcepsAdvancement : MonoBehaviour
     {
         // Find the tool currently used
         string toolUsed = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).name;
-        GameObject forceps = Resources.Load<GameObject>("TutorialAssets/Tools/" + toolUsed);
+        GameObject forceps = Resources.Load<GameObject>("TutorialAssets/Tools/AnimatedTools/" + toolUsed);
 
         // Spawn the tool without the selection marker
         tool = Instantiate(forceps);
 
         // Finalize the tool position to the plotted area
-        tool.transform.position = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).transform.position;
+        Vector3 position = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).transform.position;
+        tool.transform.position = tool.GetComponent<DW_AdvancementObject_Offset>().GetPosition(position);
     }
 
     private void SpawnToothAsRolePlay()
     {
+        // Make an instance of a tooth
         tooth = Instantiate(Resources.Load<GameObject>("TutorialAssets/" + toothUsed));
+
+        // Make tooth fit the grabbing point
+        tooth.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+        // Locate the instance to the existing tooth
         tooth.transform.position = toothTransform.position;
     }
 
     private void DespawnRolePlay(float delay)
     {
+        // Clear away tool
         Destroy(tool, delay);
+
+        // Clear away tooth
         Destroy(tooth, delay);
     }
 
     private void PerformTheToolAndTooth(bool condition, float playBack)
     {
+        // Pefrom movement until condition inactive
         if (condition)
         {
+            // Move of tool
             tool.transform.Translate(Vector3.down * playBack * Time.deltaTime);
+
+            // Move of tooth
             tooth.transform.Translate(Vector3.down * playBack * Time.deltaTime);
         }
     }
@@ -63,8 +81,11 @@ public class DW_ForcepsAdvancement : MonoBehaviour
         // Display the tooth
         SpawnToothAsRolePlay();
 
+        // Play animated tool
+        tool.GetComponent<Animator>().SetTrigger("Action");
+
         // Completed
-        Invoke("PullOutTooth", 1);
+        Invoke("PullOutTooth", pullOutTooth_timeOut);
     }
 
     private void PullOutTooth()
@@ -73,7 +94,7 @@ public class DW_ForcepsAdvancement : MonoBehaviour
         isMove = true;
 
         // Simulate until it hit the time out
-        Invoke("FinishingUpTool", 3);
+        Invoke("FinishingUpTool", wrapOutFromPulling_timeOut);
     }
 
     private void FinishingUpTool()

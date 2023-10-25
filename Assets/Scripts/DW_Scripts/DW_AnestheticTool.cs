@@ -36,7 +36,7 @@ public class DW_AnestheticTool : MonoBehaviour
 
                         // Done
                         marker.DisplayMarker(false);
-                        marker.ToolMarkerPossible(false);
+                        Destroy(gameObject);
                     }
                 }
             }
