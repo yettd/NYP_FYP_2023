@@ -10,8 +10,8 @@ public class DW_ExtractionCapability
     private enum CAPABILITY
     {
         AnestheicTool,
-        Forceps,
-        CottonGauze,
+        Forceps = 2,
+        CottonGauze = 5,
         None
     }
 
