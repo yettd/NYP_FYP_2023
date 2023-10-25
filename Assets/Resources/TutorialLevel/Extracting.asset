@@ -56,7 +56,7 @@ MonoBehaviour:
   tools:
   - itemName: Forcesp
     icon: {fileID: 2800000, guid: 1176890b185342340a5e599360c8bebe, type: 3}
-    model: {fileID: 919132149155446097, guid: 2c366329eb581b04f9280c6e2f0e01cb, type: 3}
+    model: {fileID: 5024389741101910330, guid: 9edfb7c4d09c33f499276fbaa96720a8, type: 3}
   - itemName: AnestheicTreatment
     icon: {fileID: 2800000, guid: f6e12d6edf724444c9ca047a0f27fed7, type: 3}
     model: {fileID: 6503727786904292808, guid: 52019f31d7b5ec44aa616fe047008077, type: 3}
