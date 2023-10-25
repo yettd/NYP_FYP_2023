@@ -110,7 +110,7 @@ public class fillingCure : MonoBehaviour
     {
         foreach (HitPoint aa in hp)
         {
-            Debug.Log("HIT");
+  
             if (aa.point==pos)
             {
                 aa.hitted = true;
@@ -124,12 +124,13 @@ public class fillingCure : MonoBehaviour
     {
         foreach (HitPoint aa in hp)
         {
-            if(aa.hitted==false)
+          
+            if (aa.hitted==false)
             {
                 return;
             }
         }
-
+        Debug.Log("HIT");
         Destroy(gameObject);
     }
 
