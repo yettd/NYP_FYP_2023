@@ -5,16 +5,18 @@ using UnityEngine;
 public class DW_CottonGauzePlacement : MonoBehaviour
 {
     private bool isApply = false;
+    private bool isSetToClean = false;
     private bool cleaningDone = false;
 
-    private const float clearingRateSpeed = 20;
+    private float clearingRateSpeed = 0;
     private float percentageOfClearing = 0;
+    private float currentClearing = 0;
 
     #region SETUP
     private void CheckForClearingArea()
     {
         // Find out if there are still need to be cleaned and perform the task again
-        if (percentageOfClearing < 100) isApply = false;
+        if (currentClearing < percentageOfClearing) isApply = false;
 
         // Cleaning Done
         else SetCleaningDone();
@@ -35,7 +37,7 @@ public class DW_CottonGauzePlacement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Update the clearing progress
-        percentageOfClearing += clearingRateSpeed;
+        currentClearing += clearingRateSpeed;
 
         // Check of the clearing condition
         CheckForClearingArea();
@@ -48,6 +50,18 @@ public class DW_CottonGauzePlacement : MonoBehaviour
         // Only called once when the placement is successful
         if (!isApply)
         {
+            // Set properties to clear unwanter particle
+            if (!isSetToClean)
+            {
+                percentageOfClearing = Random.Range(100, 200);
+                clearingRateSpeed = Random.Range(1, 20);
+                isSetToClean = true;
+            }
+
+            // Perform tool 
+            if (GetComponent<DW_CottonGauzeAdvancement>() != null) gameObject.GetComponent<DW_CottonGauzeAdvancement>().PerformTool(currentClearing, percentageOfClearing);
+            else gameObject.AddComponent<DW_CottonGauzeAdvancement>().PerformTool(currentClearing, percentageOfClearing);
+
             // Perform the cleaning of extracted tooth
             StartCoroutine(ClearingParticle());
 

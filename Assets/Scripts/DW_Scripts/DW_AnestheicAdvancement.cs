@@ -17,6 +17,8 @@ public class DW_AnestheicAdvancement : MonoBehaviour
     private const float toolOnApplying_timelimit = 8;
     private const float toolOnClearing_timelimit = 4;
 
+    private DW_ActionListProgram actionProgram;
+
     void Update()
     {
         // Move to the point where the gum located
@@ -24,6 +26,9 @@ public class DW_AnestheicAdvancement : MonoBehaviour
 
         // Clear away from the point
         PerformToolMovement(isMove[(int)MoveAction.putAway], direction[(int)MoveAction.putAway], playBackSpeed);
+
+        // Ready for use: Action Status
+        if (actionProgram != null) actionProgram.StartProgram();
     }
 
     #region SETUP
@@ -45,6 +50,13 @@ public class DW_AnestheicAdvancement : MonoBehaviour
     {
         // Move tool to the point until the condition inactive
         if (condition) tool.transform.Translate(direction * playBack * Time.deltaTime);
+    }
+
+    private void CreateTaskTimeLoad()
+    {
+        actionProgram.AddTaskActionLoad(toolOnLocating_timelimit);
+        actionProgram.AddTaskActionLoad(toolOnApplying_timelimit);
+        actionProgram.AddTaskActionLoad(toolOnClearing_timelimit);
     }
     #endregion
 
@@ -88,13 +100,21 @@ public class DW_AnestheicAdvancement : MonoBehaviour
         isMove[(int)MoveAction.putAway] = false;
 
         // Despawn after it's done
-        Destroy(tool); 
+        Destroy(tool);
+
+        // Disable script for use
+        enabled = false;
     }
     #endregion
 
     #region MAIN
     public void PerformTool()
     {
+        // Build in feedback when performing task
+        actionProgram = new DW_ActionListProgram();
+        CreateTaskTimeLoad();
+        actionProgram.IdentifyActionType("Ease Pain");
+
         if (!isPerforming)
         {
             // Start prepare of perfrom action

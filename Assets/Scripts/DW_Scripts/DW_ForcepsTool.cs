@@ -58,6 +58,9 @@ public class DW_ForcepsTool : MonoBehaviour
             // Pin down the possible area of interaction
             accessory.DisplayToolPositionOrgin();
             accessory.DisplayToolPositionWithOffset();
+
+            // Refresh feedback
+            TutorialGame_Script.thisScript.RefreshFeedbackContent(InterfaceFeedBack.CurrentlyInUsed);
         }
     }
 
@@ -108,6 +111,9 @@ public class DW_ForcepsTool : MonoBehaviour
         {
             // Selection marker
             marker.DisplayMarker(enable);
+
+            // GUI Status: Read it
+            TutorialGame_Script.thisScript.UpdateMarkerContent(enable);
 
             // Make the object interactable for the use of tool and target destination
             if (enable)

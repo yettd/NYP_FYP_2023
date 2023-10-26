@@ -9,6 +9,8 @@ public class DW_CottonGauze : MonoBehaviour
     private DW_MoveTools moveObject;
     private DW_ToolAccessory accessory;
 
+    private bool isClearing = false;
+
     void OnDestroy()
     {
         DeActivate();
@@ -34,10 +36,12 @@ public class DW_CottonGauze : MonoBehaviour
                         if (!detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().IsCleaningDone())
                         {
                             detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().ApplyProduct();
-
-                            // Done
-                            marker.ToolMarkerPossible(false);
+                            isClearing = true;
                         }
+
+                        // Done
+                        else
+                            marker.ToolMarkerPossible(false);
                     }
                 }
 
@@ -45,12 +49,18 @@ public class DW_CottonGauze : MonoBehaviour
                 if (Physics.Raycast(accessory.GetToolPosition(), accessory.GetToolPointedDirection(), out detect, Mathf.Infinity))
                     marker.ToolMarkerPossible(detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>() != null && !detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().IsCleaningDone());
                 else
+                {
                     marker.ToolMarkerPossible(false);
+                    isClearing = false;
+                }
             }
 
             // Pin down the possible area of interaction
             accessory.DisplayToolPositionOrgin();
             accessory.DisplayToolPositionWithOffset();
+
+            // Refresh feedback
+            if (!isClearing) TutorialGame_Script.thisScript.RefreshFeedbackContent(InterfaceFeedBack.CurrentlyInUsed);
         }
     }
 
@@ -101,6 +111,9 @@ public class DW_CottonGauze : MonoBehaviour
         {
             // Selection marker
             marker.DisplayMarker(enable);
+
+            // GUI Status: Read it
+            TutorialGame_Script.thisScript.UpdateMarkerContent(enable);
 
             // Make the object interactable for the use of tool and target destination
             if (enable)

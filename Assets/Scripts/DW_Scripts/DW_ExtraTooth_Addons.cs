@@ -47,6 +47,14 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
         toothPlacement[index].GetComponent<MeshRenderer>().enabled = false;
         toothPlacement[index].tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.NotTagged].props_tag_name;
     }
+
+    private void RefreshToothTexture()
+    {
+        foreach (GameObject teeth in TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.TeethSection].props)
+            for (int tooth = 0; tooth < teeth.transform.childCount; tooth++)
+                if (teeth.transform.GetChild(tooth).tag != TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name)
+                    teeth.transform.GetChild(tooth).GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/Selected_CleanTooth");
+    }
     #endregion
 
     #region MAIN
@@ -62,6 +70,9 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
         // Clear away all original tooth after that 
         for (int index = 0; index < toothPlacement.ToArray().Length; index++)
             ClearReferencePoint(index);
+
+        // Refresh tooth texture
+        RefreshToothTexture();
     }
     #endregion
 }
