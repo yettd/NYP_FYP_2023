@@ -16,6 +16,7 @@ public class toothFilling : MonoBehaviour
     [SerializeField] Material mat;
     public float threshold =0.7f;
     GameObject decay;
+    GameObject acid;
     float drillTimer = 2;
     [SerializeField] Material Dirttooth;
     bool done;
@@ -25,6 +26,7 @@ public class toothFilling : MonoBehaviour
     Color water= Vector4.zero;
 
     tripleSyringe TS;
+    Light lightFakePrimer;
 
     // Start is called before the first frame update
     public void setUpProblem()
@@ -127,11 +129,40 @@ public class toothFilling : MonoBehaviour
 
     void ETCH()
     {
-        nextTools(true);
+        if(acid == null)
+        {
+            acid = Instantiate(Resources.Load<GameObject>("mat/filling/acid"), gameObject.transform);
+            acid.transform.localPosition = new Vector3(0, 0.11f, 0);
+        }
+
+        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
+        if (decay.transform.localScale.x > 0.5)
+        {
+            nextTools(true);
+            return;
+        }
+      
     }
     void PRIMER()
     {
-      
+        if(lightFakePrimer==null)
+        {
+            GameObject l = Instantiate(new GameObject(),transform) as GameObject;
+            l.transform.localPosition = l.transform.localPosition + new Vector3 (0, 0.5f, 0);
+            l.AddComponent<Light>();
+            lightFakePrimer = l.GetComponent<Light>();
+            lightFakePrimer.intensity = 0;
+
+        }
+
+        lightFakePrimer.intensity += 0.001f * Time.deltaTime;
+        if (lightFakePrimer.intensity>0.01)
+        {
+            nextTools(true);
+        }
+
+
+
     }
     void BLOW()
     {
@@ -185,26 +216,27 @@ public class toothFilling : MonoBehaviour
             decay.GetComponent<Renderer>().material.color = water;
             decay.transform.localScale = Vector3.zero;
             nextTools(true);
+            Destroy(acid);
             return;
         }
 
-        if (decay.transform.localScale.x > 0.5)
+        if (decay.transform.localScale.x > 0.6)
         {
             if (!TS.WaterBlow)
             {
-        
+                if(acid && acid.transform.localScale.x>0.1)
+                {
+                    acid.transform.localScale -= Vector3.one * Time.deltaTime*0.01f;
+                }
                 water = new Color(water.r, water.b, water.g, water.a - (Time.deltaTime * 0.1f));
                 decay.GetComponent<Renderer>().material.color = water;
-            
-           
             }
             return;
         }
 
         if(TS.WaterBlow)
         {
-
-        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
+            decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
         }
     
     }
