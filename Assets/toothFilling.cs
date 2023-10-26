@@ -3,26 +3,38 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using DG.Tweening;
+using Unity.Mathematics;
 
 public class toothFilling : MonoBehaviour
 {
     toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
-        toolsForFilling.tripleSyringe, toolsForFilling.etchant };
+        toolsForFilling.tripleSyringe, toolsForFilling.etchant,
+        toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.tripleSyringe };
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
     public float threshold =0.7f;
     GameObject decay;
+    GameObject acid;
     float drillTimer = 2;
     [SerializeField] Material Dirttooth;
     bool done;
     GameObject dam;
+    bool flip = false;
 
-    Color water;
+    Color water= Vector4.zero;
+
+    tripleSyringe TS;
+    Light lightFakePrimer;
 
     // Start is called before the first frame update
     public void setUpProblem()
     {
+        if (!minigameTaskListController.Instance.TBgums)
+        {
+            flip = true;
+        }
         GameObject getStart = Resources.Load<GameObject>("Mat/filling/d");
 
         Debug.Log(getStart.GetComponent<getMesh>().getM());
@@ -42,7 +54,7 @@ public class toothFilling : MonoBehaviour
             if (hitPointLocal.y > 0)
             {
                 positionRelativeToEnemy = 't'; // Hit on top
-                if(transform.rotation.eulerAngles.x !=0)
+                if(flip)
                 {
                     return true;
                 }
@@ -69,7 +81,6 @@ public class toothFilling : MonoBehaviour
        
         if(!CorrectSide(hit))
         {
-            
             return;
         }
         Debug.Log(tfs[currecntTool]);
@@ -81,7 +92,6 @@ public class toothFilling : MonoBehaviour
                 case Steps.DAM:
                     PutDam();
                     break;
-
                 case Steps.DRILL:
                     Drill();
                     break;
@@ -119,10 +129,39 @@ public class toothFilling : MonoBehaviour
 
     void ETCH()
     {
+        if(acid == null)
+        {
+            acid = Instantiate(Resources.Load<GameObject>("mat/filling/acid"), gameObject.transform);
+            acid.transform.localPosition = new Vector3(0, 0.11f, 0);
+        }
 
+        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
+        if (decay.transform.localScale.x > 0.5)
+        {
+            nextTools(true);
+            return;
+        }
+      
     }
     void PRIMER()
     {
+        if(lightFakePrimer==null)
+        {
+            GameObject l = Instantiate(new GameObject(),transform) as GameObject;
+            l.transform.localPosition = l.transform.localPosition + new Vector3 (0, 0.5f, 0);
+            l.AddComponent<Light>();
+            lightFakePrimer = l.GetComponent<Light>();
+            lightFakePrimer.intensity = 0;
+
+        }
+
+        lightFakePrimer.intensity += 0.001f * Time.deltaTime;
+        if (lightFakePrimer.intensity>0.01)
+        {
+            nextTools(true);
+        }
+
+
 
     }
     void BLOW()
@@ -131,10 +170,10 @@ public class toothFilling : MonoBehaviour
     }
     void FILLING()
     {
-        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.5f;
+        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
         if (decay.transform.localScale.x > 0)
         {
-            nextTools();
+            nextTools(true);
         }
     }
     void CONTOUR()
@@ -151,29 +190,54 @@ public class toothFilling : MonoBehaviour
     }
     void PutDam()
     {
-        dam =Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"), gameObject.transform);
-        dam.transform.localPosition = new Vector3(0.0399999991f, -0.699999988f, -3.6099999f);
-        dam.transform.localRotation = Quaternion.Euler(90, 0, 0);
+        dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
+        dam.transform.parent=gameObject.transform;
         dam.transform.localScale = Vector3.one/2;
-        nextTools();
+        dam.transform.localPosition = Vector3.zero + new Vector3(0, 0.75f, 0); 
+        if (transform.localPosition.z < 0)
+        {
+            dam.transform.rotation = quaternion.Euler(0, 180, 0);
+        }
+
+
+        nextTools(true);
     }
 
     void washPond()//washAndBlow
     {
-
-        if (decay.transform.localScale.x > 0.5)
+        if(TS==null)
         {
-            water= decay.GetComponent<Renderer>().material.color;
-            water= new Color(water.r,water.b,water.g,water.a-(Time.deltaTime*0.1f));
-           decay.GetComponent<Renderer>().material.color = water;
-            if (water.a <= 0)
+            TS=FindObjectOfType<tripleSyringe>();
+        }
+        water = decay.GetComponent<Renderer>().material.color;
+        if (water.a <= 0)
+        {
+            water.a = 0.3f;
+            decay.GetComponent<Renderer>().material.color = water;
+            decay.transform.localScale = Vector3.zero;
+            nextTools(true);
+            Destroy(acid);
+            return;
+        }
+
+        if (decay.transform.localScale.x > 0.6)
+        {
+            if (!TS.WaterBlow)
             {
-                nextTools();
+                if(acid && acid.transform.localScale.x>0.1)
+                {
+                    acid.transform.localScale -= Vector3.one * Time.deltaTime*0.01f;
+                }
+                water = new Color(water.r, water.b, water.g, water.a - (Time.deltaTime * 0.1f));
+                decay.GetComponent<Renderer>().material.color = water;
             }
             return;
         }
 
-        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.5f;
+        if(TS.WaterBlow)
+        {
+            decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
+        }
     
     }
 
@@ -185,6 +249,7 @@ public class toothFilling : MonoBehaviour
             dam.transform.parent = null;
             if (minigameTaskListController.Instance.TBgums)
             {
+                flip=true;
                 transform.localRotation = Quaternion.Euler(0, 103.362f, 180);
                 gameObject.GetComponent<MeshCollider>().sharedMesh = teethWithHold;
             }
@@ -195,7 +260,7 @@ public class toothFilling : MonoBehaviour
             dam.transform.parent = gameObject.transform;
             GetComponent<MeshFilter>().mesh = teethWithHold;
             GetComponent<Renderer>().material = mat;
-            nextTools();
+            nextTools(true);
         }
     }
 
@@ -206,11 +271,11 @@ public class toothFilling : MonoBehaviour
 
     void Clean()
     {
-        decay.transform.localScale -= Vector3.one * Time.deltaTime*0.5f;
+        decay.transform.localScale -= Vector3.one * Time.deltaTime*0.1f;
         if(decay.transform.localScale.x <0)
         {
             decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");
-            nextTools();
+            nextTools(true);
         }
     }
     
@@ -222,10 +287,14 @@ public class toothFilling : MonoBehaviour
         }
         return false;
     }
-    void nextTools()
+    void nextTools(bool taskDone)
     {
         currecntTool++;
+        if(taskDone )
+        {
         minigameTaskListController.Instance.gonext();
+
+        }
         if (currecntTool >= tfs.Length)
         {
             currecntTool = 0;
