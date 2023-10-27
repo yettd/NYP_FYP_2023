@@ -4630,6 +4630,13 @@ MonoBehaviour:
   ExtractionBtn: {fileID: 0}
   FillingBtn: {fileID: 0}
   ScalingBtn: {fileID: 0}
+  InfoPanel: {fileID: 0}
+  image: {fileID: 0}
+  images: []
+  nextImage: {fileID: 0}
+  previousImage: {fileID: 0}
+  Next: {fileID: 0}
+  Previous: {fileID: 0}
   BackBtn: {fileID: 0}
   Camera: {fileID: 0}
 --- !u!4 &2084450311

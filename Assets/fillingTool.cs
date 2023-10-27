@@ -18,8 +18,6 @@ public class fillingTool : Tolls
     {
 
         toothFilling TDC;
-
-
         hit.collider.TryGetComponent<toothFilling>(out TDC);
         if (TDC)
         {

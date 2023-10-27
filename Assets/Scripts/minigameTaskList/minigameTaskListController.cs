@@ -91,8 +91,8 @@ public class minigameTaskListController : MonoBehaviour
                 break;
             case 2:
                 procedure = Procedure.Filling;
-                jaw[0].SetActive(false);
-                jaw[1].SetActive(true);
+                //jaw[0].SetActive(false);
+                //jaw[1].SetActive(true);
                 break;
 
             default: // Any instruction level
@@ -381,7 +381,7 @@ public class minigameTaskListController : MonoBehaviour
         //        //  Debug.Log($"{currentStep} : {NextSteps}");
         //        break;
         //}
-        foreach (Transform child in TL)
+        foreach (Transform child in TL.GetChild(0).transform.GetChild(0))
         {
             // Destroy the child object
             Destroy(child.gameObject);
@@ -390,7 +390,7 @@ public class minigameTaskListController : MonoBehaviour
         bool first = true;
         foreach(TaskBreakDown TBD in st.TBD)
         {
-            Image slot = Instantiate(Resources.Load<Image>("minigameTasklist/Image"),TL);
+            Image slot = Instantiate(Resources.Load<Image>("minigameTasklist/Image"),TL.GetChild(0).transform.GetChild(0));
             ImageOfTask.Add(slot);
             if(first)
             {

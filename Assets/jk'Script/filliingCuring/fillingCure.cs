@@ -7,7 +7,7 @@ public class fillingCure : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject drawingPlane; // Assign the plane in the Inspector.
-    public float drawDistance = 5.02f; // Adjust this value for drawing sensitivity.
+    public float drawDistance = 0.02f; // Adjust this value for drawing sensitivity.
 
     private List<Vector3> currentDrawing = new List<Vector3>();
     private LineRenderer lineRenderer;
@@ -15,6 +15,8 @@ public class fillingCure : MonoBehaviour
     private Vector3 lastMousePosition;
 
     public gestureList ges = new gestureList();
+
+    bool done;
 
     [SerializeField] List<HitPoint> hp = new List<HitPoint>();
     // Start is called before the first frame update
@@ -58,12 +60,20 @@ public class fillingCure : MonoBehaviour
         lineRenderer.useWorldSpace = false;
     }
 
-    protected virtual void HandleDrawingInput()
+    public virtual bool HandleDrawingInput()
     {
+
+       // DrawOnPlane(hit.point);
+
+        //if(done)
+        //{
+        //    return true;
+        //}
         if (Input.GetMouseButtonDown(0))
         {
             STOP();
         }
+
         if (Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -72,8 +82,9 @@ public class fillingCure : MonoBehaviour
             if (Physics.Raycast(ray, out hitDistance))
             {
                 Vector3 hitPoint = hitDistance.point;
-
                 DrawOnPlane(hitDistance.point);
+
+
             }
 
         }
@@ -81,6 +92,8 @@ public class fillingCure : MonoBehaviour
         {
             STOP();
         }
+
+        return false;
     }
 
     protected virtual void DrawOnPlane(Vector3 point)
@@ -131,7 +144,7 @@ public class fillingCure : MonoBehaviour
             }
         }
         Debug.Log("HIT");
-        Destroy(gameObject);
+        done=true;
     }
 
 }

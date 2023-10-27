@@ -14,10 +14,16 @@ public class toothFilling : MonoBehaviour
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
+
     public float threshold =0.7f;
+
     GameObject decay;
+    Renderer decayRender;
     GameObject acid;
+    Renderer acidRender;
     float drillTimer = 2;
+
+
     [SerializeField] Material Dirttooth;
     bool done;
     GameObject dam;
@@ -28,6 +34,8 @@ public class toothFilling : MonoBehaviour
     tripleSyringe TS;
     Light lightFakePrimer;
 
+    fillingCure FC;
+
     // Start is called before the first frame update
     public void setUpProblem()
     {
@@ -35,8 +43,8 @@ public class toothFilling : MonoBehaviour
         {
             flip = true;
         }
+        GameObject cap = Resources.Load<GameObject>("Mat/filling/cap");
         GameObject getStart = Resources.Load<GameObject>("Mat/filling/d");
-
         Debug.Log(getStart.GetComponent<getMesh>().getM());
         teethWithHold = getStart.GetComponent<getMesh>().getM();
         mat = getStart.GetComponent<getMesh>().getR();
@@ -100,20 +108,20 @@ public class toothFilling : MonoBehaviour
                     break;
                 case Steps.WASHBLOW:
                 case Steps.WASHBLOW2:
-                case Steps.BLOW:
                     washPond();
                     break;
                 case Steps.ETCH:
                     ETCH();
                     break;
                 case Steps.PRIMER:
+                case Steps.BLOW:
                     PRIMER();
                     break;
                 case Steps.FILLING:
                     FILLING();
                     break;
                 case Steps.CONTOUR:
-                    CONTOUR();
+                    CONTOUR(hit);
                     break;
 
                 case Steps.CURE:
@@ -133,10 +141,11 @@ public class toothFilling : MonoBehaviour
         {
             acid = Instantiate(Resources.Load<GameObject>("mat/filling/acid"), gameObject.transform);
             acid.transform.localPosition = new Vector3(0, 0.11f, 0);
+            acidRender = acid.GetComponent<Renderer>();
         }
 
-        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
-        if (decay.transform.localScale.x > 0.5)
+        acid.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
+        if (acid.transform.localScale.x > 0.5)
         {
             nextTools(true);
             return;
@@ -166,7 +175,17 @@ public class toothFilling : MonoBehaviour
     }
     void BLOW()
     {
-
+        if (TS == null)
+        {
+            TS = FindObjectOfType<tripleSyringe>();
+        }
+        if (!TS.WaterBlow)
+        {
+            if (lightFakePrimer.intensity > 0.02)
+            {
+                nextTools(true);
+            }
+        }
     }
     void FILLING()
     {
@@ -176,9 +195,12 @@ public class toothFilling : MonoBehaviour
             nextTools(true);
         }
     }
-    void CONTOUR()
+    void CONTOUR(RaycastHit hit)
     {
-
+        //if (FC.HandleDrawingInput(hit))
+        //{
+        //    nextTools(true);
+        //}
     }
     void CURE()
     {
@@ -209,12 +231,13 @@ public class toothFilling : MonoBehaviour
         {
             TS=FindObjectOfType<tripleSyringe>();
         }
-        water = decay.GetComponent<Renderer>().material.color;
+
+        water = decayRender.material.color;
         if (water.a <= 0)
         {
             water.a = 0.3f;
-            decay.GetComponent<Renderer>().material.color = water;
-            decay.transform.localScale = Vector3.zero;
+            decayRender.material.color = water;
+            decay.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
             nextTools(true);
             Destroy(acid);
             return;
@@ -229,13 +252,17 @@ public class toothFilling : MonoBehaviour
                     acid.transform.localScale -= Vector3.one * Time.deltaTime*0.01f;
                 }
                 water = new Color(water.r, water.b, water.g, water.a - (Time.deltaTime * 0.1f));
-                decay.GetComponent<Renderer>().material.color = water;
+                decayRender.material.color = water;
             }
             return;
         }
 
         if(TS.WaterBlow)
         {
+            if(acid)
+            {
+                acidRender.material.color =new Color(acidRender.material.color.r, acidRender.material.color.g, acidRender.material.color.b, acidRender.material.color.a - Time.deltaTime);
+            }
             decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
         }
     
@@ -256,6 +283,7 @@ public class toothFilling : MonoBehaviour
             gameObject.GetComponent<MeshCollider>().convex = true;
             decay = Instantiate(Resources.Load<GameObject>("mat/filling/decay"),gameObject.transform);
 
+            decayRender=decay.gameObject.GetComponent<Renderer>();
             decay.transform.localPosition = new Vector3(0,0.11f,0);
             dam.transform.parent = gameObject.transform;
             GetComponent<MeshFilter>().mesh = teethWithHold;
@@ -272,7 +300,7 @@ public class toothFilling : MonoBehaviour
     void Clean()
     {
         decay.transform.localScale -= Vector3.one * Time.deltaTime*0.1f;
-        if(decay.transform.localScale.x <0)
+        if(decay.transform.localScale.x <0.2)
         {
             decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");
             nextTools(true);

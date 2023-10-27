@@ -19,7 +19,11 @@ public class hitPoint : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("asdas");
+      
+    }
+
+    public void hit()
+    {
         fc.GetHit(transform);
     }
 }
