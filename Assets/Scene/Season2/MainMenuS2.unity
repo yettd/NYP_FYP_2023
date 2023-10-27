@@ -9143,12 +9143,15 @@ MonoBehaviour:
   InfoPanel: {fileID: 296895611}
   image: {fileID: 2021503982}
   images:
-  - {fileID: 21300000, guid: 52417244a489e2245881bcc7f63b5076, type: 3}
-  - {fileID: 21300000, guid: 832890a2b1421d64cab26d1f4be02ed4, type: 3}
-  - {fileID: 21300000, guid: 30fc4b4952e391842b3a0edebf71917c, type: 3}
-  - {fileID: 21300000, guid: 808eed5ab55cc3349afb5759d7bfa58a, type: 3}
-  - {fileID: 21300000, guid: cc8a102d001a3134888c3d96063580b1, type: 3}
-  - {fileID: 21300000, guid: c586145b6ad27e04ca899b6b422cd075, type: 3}
+  - {fileID: 21300000, guid: bcdcf84428dc94a458201adbe464a2b9, type: 3}
+  - {fileID: 21300000, guid: ae7437b1e1bc530438ae669e1de4e123, type: 3}
+  - {fileID: 21300000, guid: 0132adfaca439ca46b12dc3007e767b8, type: 3}
+  - {fileID: 21300000, guid: d49c8719cbf4c894badecd079b0f1c0a, type: 3}
+  - {fileID: 21300000, guid: 54698920036b0c34ab89b004baa4ce09, type: 3}
+  - {fileID: 21300000, guid: f22a843041ea4d645adb43db8da2f034, type: 3}
+  - {fileID: 21300000, guid: 18e0f51d0c6e39b46a7c9f5492bcb6e3, type: 3}
+  - {fileID: 21300000, guid: 5880bcff0c1149f4481b994a4ad11421, type: 3}
+  - {fileID: 21300000, guid: c39953688c3cd5640acd90af779a16f7, type: 3}
   nextImage: {fileID: 449030127}
   previousImage: {fileID: 1159774098}
   Next: {fileID: 449030126}
@@ -15486,8 +15489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000038146973, y: -0.000038146973}
-  m_SizeDelta: {x: 1240.1688, y: 793.47}
+  m_AnchoredPosition: {x: 0.000038146973, y: 0.000019073}
+  m_SizeDelta: {x: 1240.1688, y: 747.4104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021503982
 MonoBehaviour:
