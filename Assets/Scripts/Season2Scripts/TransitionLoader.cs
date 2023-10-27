@@ -4,18 +4,52 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TransitionLoader : MonoBehaviour
 {
-    public Animator Transition;
+    public Animator BasicTransition;
+    public Animator CupboardTransition;
 
+    public float TransitionTime = 3f;
     public void Loadcollections()
     {
-        StartCoroutine(LoadCollectionScene("collection"));
+        StartCoroutine(LoadLevelCollection(4));
     }
-    IEnumerator LoadCollectionScene(string collection)
+    public void LoadMainMenu()
     {
-        Transition.SetTrigger("Wipe");
-
-        yield return new WaitForSeconds(1f);
-
-        SceneManager.LoadSceneAsync(collection);
+        StartCoroutine(LoadLevelMainMenu(0));
     }
+    public void LoadMiniGameTutorial()
+    {
+        StartCoroutine(LoadLevelTutorial(9));
+    }
+    //public void LoadGameScene()
+    //{
+    //    StartCoroutine(LoadLevel(6));
+    //}
+
+    public IEnumerator LoadLevelCollection(int levelIndex)
+    {
+        BasicTransition.SetTrigger("start");
+
+        yield return new WaitForSeconds(TransitionTime);
+
+        SceneManager.LoadSceneAsync(levelIndex);
+    }
+
+    public IEnumerator LoadLevelTutorial(int levelIndex)
+    {
+        CupboardTransition.SetTrigger("StartCupboard");
+        Debug.Log("retard running lah");
+        yield return new WaitForSeconds(TransitionTime);
+
+        SceneManager.LoadSceneAsync(levelIndex);
+    }
+
+    public IEnumerator LoadLevelMainMenu(int levelIndex)
+    {
+        BasicTransition.SetTrigger("start");
+
+        yield return new WaitForSeconds(TransitionTime);
+
+        SceneManager.LoadSceneAsync(levelIndex);
+    }
+
 }

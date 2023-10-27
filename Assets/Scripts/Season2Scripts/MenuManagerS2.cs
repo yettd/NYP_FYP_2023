@@ -103,7 +103,7 @@ public class MenuManagerS2 : MonoBehaviour
     }
     IEnumerator LoadCollectionScene(string collection)
     {
-        Wipetransition.SetTrigger("Wipe");
+        //Wipetransition.SetTrigger("Wipe");
 
         yield return new WaitForSeconds(1f);
 
