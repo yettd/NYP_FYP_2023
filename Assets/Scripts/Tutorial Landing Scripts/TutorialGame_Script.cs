@@ -17,8 +17,9 @@ public enum GameTagPlacement
 
 public enum InterfaceFeedBack
 {
-    CurrentlyInUsed,
     PerformingUsedTool,
+    CancelledInQueueTool,
+    CurrentlyInUsed,
     Idle
 }
 
@@ -48,6 +49,9 @@ public class TutorialGame_Script : MonoBehaviour
     [SerializeField] private GameObject statusRemark;
     [SerializeField] private GameObject actionStatus;
 
+    private InterfaceFeedBack onGoingFeedback;
+    public InterfaceFeedBack get_onGoingFeedback { get { return onGoingFeedback; } }
+
     void Start()
     {
         thisScript = this;
@@ -57,6 +61,9 @@ public class TutorialGame_Script : MonoBehaviour
 
         // Begin on level and setup starting property
         SetInstructionObject();
+
+        // Set the default feedback to idle
+        onGoingFeedback = InterfaceFeedBack.Idle;
     }
 
     void Update()
@@ -84,13 +91,14 @@ public class TutorialGame_Script : MonoBehaviour
         actionStatus.transform.GetChild(0).GetComponent<TMP_Text>().text = title;
 
         // Display until its not acitve
-        Invoke("SetVisibleActionStatus", 2);
+        Invoke("SetVisibleActionStatus", 3);
     }
 
     private void SetVisibleActionStatus()
     {
         // Get the interface not visible
         actionStatus.SetActive(false);
+        onGoingFeedback = InterfaceFeedBack.Idle;
     }
 
     private void SaveProgressForThisSession(bool condition)
@@ -141,21 +149,33 @@ public class TutorialGame_Script : MonoBehaviour
     #region MAIN
     public void AdvancementContent(string title, float progressValue)
     {
-        // Display the progress status
-        if (!actionStatus.activeInHierarchy) actionStatus.SetActive(true);
+        // Find out where the performing tool is not cancelled
+        if (onGoingFeedback != InterfaceFeedBack.CancelledInQueueTool)
+        {
+            // Display the progress status
+            onGoingFeedback = InterfaceFeedBack.PerformingUsedTool;
+            if (!actionStatus.activeInHierarchy) actionStatus.SetActive(true);
 
-        // Update the content of the current progress
-        if (progressValue >= 0) UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.PerformingUsedTool) + title + "\n" + progressValue.ToString("0.0") + " %");
-        else UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.Idle));
+            // Update the content of the current progress
+            if (progressValue >= 0) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + title + "\n" + progressValue.ToString("0.0") + " %");
+            else UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.Idle));
+        }
     }
 
-    public void UpdateMarkerContent(bool visible)
+    public void UseFeedbackDisplay(InterfaceFeedBack feedback, bool visible, string title)
     {
-        // Display the progress status
-        actionStatus.SetActive(visible);
+        // Find the possible task to play
+        if (onGoingFeedback != InterfaceFeedBack.PerformingUsedTool) onGoingFeedback = feedback;
 
-        // Update the content to manage the user for direction
-        if (visible) actionStatus.GetComponentInChildren<TMP_Text>().text = GetActionListDescription(InterfaceFeedBack.CurrentlyInUsed);
+        // Continue to display perform task progress instead of marker content
+        if (onGoingFeedback != InterfaceFeedBack.PerformingUsedTool)
+        {
+            // Display the progress status
+            actionStatus.SetActive(visible);
+
+            // Update the content to manage the user for direction
+            if (visible) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + (title != string.Empty ? title : string.Empty));
+        }
     }
 
     public void RefreshFeedbackContent(InterfaceFeedBack feedback)
@@ -165,7 +185,7 @@ public class TutorialGame_Script : MonoBehaviour
         {
             // Currently using tool
             case InterfaceFeedBack.CurrentlyInUsed:
-                UpdateMarkerContent(true);
+                UseFeedbackDisplay(InterfaceFeedBack.CurrentlyInUsed, true, string.Empty);
                 break;
         }
     }
@@ -223,6 +243,10 @@ public class TutorialGame_Script : MonoBehaviour
             // When tool is performing the given task
             case InterfaceFeedBack.PerformingUsedTool:
                 return "Performing Task: ";
+
+            // When tool is currently set to be performing and something interupt the process
+            case InterfaceFeedBack.CancelledInQueueTool:
+                return "The following task have been cancelled: ";
 
             // When there is no action made from user
             case InterfaceFeedBack.Idle:
