@@ -33,10 +33,16 @@ public class DW_AnestheicPlacement : MonoBehaviour
     {
         // Set the amount of anestheic to be used for processing
         anestheic_maxDose += amount;
+    }
 
-        // Perform tool
-        if (GetComponent<DW_AnestheicAdvancement>() == null) gameObject.AddComponent<DW_AnestheicAdvancement>().PerformTool();
-        else GetComponent<DW_AnestheicAdvancement>().PerformTool();
+    public void ProgressToDosed()
+    {
+        // Set amount of dose to it
+        SetAnestheicDose(0.8f);
+        StartCoroutine(ProductDoseLogical());
+
+        // Done
+        isApply = true;
     }
     #endregion
 
@@ -46,12 +52,9 @@ public class DW_AnestheicPlacement : MonoBehaviour
         // Only called once when this is apply
         if (!isApply)
         {
-            // Set amount of dose to it
-            SetAnestheicDose(0.8f);
-            StartCoroutine(ProductDoseLogical());
-
-            // Done
-            isApply = true;
+            // Perform tool
+            if (GetComponent<DW_AnestheicAdvancement>() == null) gameObject.AddComponent<DW_AnestheicAdvancement>().PerformTool();
+            else GetComponent<DW_AnestheicAdvancement>().PerformTool();
         }
     }
     #endregion

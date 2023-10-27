@@ -9,13 +9,19 @@ public class DW_ForcepsPlacement : MonoBehaviour
     #region SETUP
     private void ExtractToothPlacement()
     {
+        // Perform tool
+        if (GetComponent<DW_ForcepsAdvancement>() == null) gameObject.AddComponent<DW_ForcepsAdvancement>().PerformTool(gameObject);
+        else GetComponent<DW_ForcepsAdvancement>().PerformTool(gameObject);
+    }
+
+    public void ConfirmToothPlacement()
+    {
         // Set a tag which define to extract them and hide its existence from been seen by the user
         gameObject.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.ToothPlacement].props_tag_name;
         GetComponent<MeshRenderer>().enabled = false;
 
-        // Perform tool
-        if (GetComponent<DW_ForcepsAdvancement>() == null) gameObject.AddComponent<DW_ForcepsAdvancement>().PerformTool(gameObject);
-        else GetComponent<DW_ForcepsAdvancement>().PerformTool(gameObject);
+        // Mark it down apply when this perform
+        isApply = true;
     }
     #endregion
 
@@ -27,9 +33,6 @@ public class DW_ForcepsPlacement : MonoBehaviour
         {
             // Perform extract
             ExtractToothPlacement();
-
-            // Mark it down apply when this perform
-            isApply = true;
         }
     }
     #endregion

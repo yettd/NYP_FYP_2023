@@ -34,7 +34,7 @@ public class DW_ForcepsTool : MonoBehaviour
                         detect.collider.gameObject.GetComponent<DW_ForcepsPlacement>().ApplyProduct();
 
                         // Done
-                        Destroy(gameObject);
+                        GetComponent<MeshRenderer>().enabled = false;
                     }
                 }
             }
@@ -113,7 +113,7 @@ public class DW_ForcepsTool : MonoBehaviour
             marker.DisplayMarker(enable);
 
             // GUI Status: Read it
-            TutorialGame_Script.thisScript.UpdateMarkerContent(enable);
+            TutorialGame_Script.thisScript.UseFeedbackDisplay(InterfaceFeedBack.CurrentlyInUsed, enable, string.Empty);
 
             // Make the object interactable for the use of tool and target destination
             if (enable)

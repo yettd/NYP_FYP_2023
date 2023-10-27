@@ -22,7 +22,8 @@ public class DW_ActionListProgram
     private float DoProgress()
     {
         // Calcuate by the percentage of the total time
-        return 100 / maxProgress * progress;
+        float percentage = 100 / maxProgress;
+        return Mathf.Clamp(percentage * progress + percentage, 0, 100);
     }
     #endregion
 
