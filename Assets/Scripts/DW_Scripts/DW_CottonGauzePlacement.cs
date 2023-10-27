@@ -42,6 +42,23 @@ public class DW_CottonGauzePlacement : MonoBehaviour
         // Check of the clearing condition
         CheckForClearingArea();
     }
+
+    public void GetClearingToWork()
+    {
+        // Set properties to clear unwanter particle
+        if (!isSetToClean)
+        {
+            percentageOfClearing = Random.Range(100, 200);
+            clearingRateSpeed = Random.Range(1, 20);
+            isSetToClean = true;
+        }
+
+        // Perform the cleaning of extracted tooth
+        StartCoroutine(ClearingParticle());
+
+        // Done
+        isApply = true;
+    }
     #endregion
 
     #region MAIN
@@ -50,23 +67,9 @@ public class DW_CottonGauzePlacement : MonoBehaviour
         // Only called once when the placement is successful
         if (!isApply)
         {
-            // Set properties to clear unwanter particle
-            if (!isSetToClean)
-            {
-                percentageOfClearing = Random.Range(100, 200);
-                clearingRateSpeed = Random.Range(1, 20);
-                isSetToClean = true;
-            }
-
             // Perform tool 
-            if (GetComponent<DW_CottonGauzeAdvancement>() != null) gameObject.GetComponent<DW_CottonGauzeAdvancement>().PerformTool(currentClearing, percentageOfClearing);
-            else gameObject.AddComponent<DW_CottonGauzeAdvancement>().PerformTool(currentClearing, percentageOfClearing);
-
-            // Perform the cleaning of extracted tooth
-            StartCoroutine(ClearingParticle());
-
-            // Done
-            isApply = true;
+            if (GetComponent<DW_CottonGauzeAdvancement>() != null) gameObject.GetComponent<DW_CottonGauzeAdvancement>().PerformTool(currentClearing + clearingRateSpeed, percentageOfClearing);
+            else gameObject.AddComponent<DW_CottonGauzeAdvancement>().PerformTool(currentClearing + clearingRateSpeed, percentageOfClearing);
         }
     }
     #endregion
