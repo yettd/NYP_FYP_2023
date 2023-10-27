@@ -15,6 +15,13 @@ public enum GameTagPlacement
     NotTagged,
 }
 
+public enum InterfaceFeedBack
+{
+    CurrentlyInUsed,
+    PerformingUsedTool,
+    Idle
+}
+
 [System.Serializable]
 public class GameSetup_Data
 {
@@ -39,6 +46,7 @@ public class TutorialGame_Script : MonoBehaviour
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
     [SerializeField] private GameObject statusRemark;
+    [SerializeField] private GameObject actionStatus;
 
     void Start()
     {
@@ -67,6 +75,24 @@ public class TutorialGame_Script : MonoBehaviour
         loseScreen.SetActive(!cleared);
     }
 
+    private void UpdateInstructionActionStatus(string title)
+    {
+        // Reset the visible status
+        CancelInvoke("SetVisibleActionStatus");
+
+        // Update the content to the given title
+        actionStatus.transform.GetChild(0).GetComponent<TMP_Text>().text = title;
+
+        // Display until its not acitve
+        Invoke("SetVisibleActionStatus", 2);
+    }
+
+    private void SetVisibleActionStatus()
+    {
+        // Get the interface not visible
+        actionStatus.SetActive(false);
+    }
+
     private void SaveProgressForThisSession(bool condition)
     {
         // Load instruction database
@@ -92,7 +118,6 @@ public class TutorialGame_Script : MonoBehaviour
             case 1: // Extraction
                 extraction = new DW_ToothExtraction();
                 extraction_toothAddons = GetComponent<DW_ExtraTooth_Addons>();
-
                 extraction.Begin();
 
                 extraction_toothAddons.enabled = true;
@@ -114,6 +139,36 @@ public class TutorialGame_Script : MonoBehaviour
     #endregion
 
     #region MAIN
+    public void AdvancementContent(string title, float progressValue)
+    {
+        // Display the progress status
+        if (!actionStatus.activeInHierarchy) actionStatus.SetActive(true);
+
+        // Update the content of the current progress
+        if (progressValue >= 0) UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.PerformingUsedTool) + title + "\n" + progressValue.ToString("0.0") + " %");
+        else UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.Idle));
+    }
+
+    public void UpdateMarkerContent(bool visible)
+    {
+        // Display the progress status
+        actionStatus.SetActive(visible);
+
+        // Update the content to manage the user for direction
+        if (visible) actionStatus.GetComponentInChildren<TMP_Text>().text = GetActionListDescription(InterfaceFeedBack.CurrentlyInUsed);
+    }
+
+    public void RefreshFeedbackContent(InterfaceFeedBack feedback)
+    {
+        // Identify the feedback given
+        switch (feedback)
+        {
+            // Currently using tool
+            case InterfaceFeedBack.CurrentlyInUsed:
+                UpdateMarkerContent(true);
+                break;
+        }
+    }
     #endregion
 
     #region COMPONENT
@@ -152,6 +207,30 @@ public class TutorialGame_Script : MonoBehaviour
             default: // Any instruction level
                 break;
         }
+    }
+    #endregion
+
+    #region MISC
+    private string GetActionListDescription(InterfaceFeedBack feedBack)
+    {
+        // Identify the feedback needed for use
+        switch (feedBack)
+        {
+            // When tool is selected
+            case InterfaceFeedBack.CurrentlyInUsed:
+                return "Drag the tool around to move it.\nDeselect tool to adjust rotation of the teeth.";
+
+            // When tool is performing the given task
+            case InterfaceFeedBack.PerformingUsedTool:
+                return "Performing Task: ";
+
+            // When there is no action made from user
+            case InterfaceFeedBack.Idle:
+                return "Done!";
+        }
+
+        // Can't define any of the possible feedback
+        return "???";
     }
     #endregion
 }

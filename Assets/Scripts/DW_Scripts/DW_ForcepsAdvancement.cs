@@ -16,10 +16,15 @@ public class DW_ForcepsAdvancement : MonoBehaviour
     private const float pullOutTooth_timeOut = 1.5f;
     private const float wrapOutFromPulling_timeOut = 3;
 
+    private DW_ActionListProgram actionProgram;
+
     void Update()
     {
         // Pull out tooth by moving the tool and tooth
         PerformTheToolAndTooth(isMove, 0.5f);
+
+        // Ready for use: Action Status
+        if (actionProgram != null) actionProgram.StartProgram();
     }
 
     #region SETUP
@@ -70,6 +75,12 @@ public class DW_ForcepsAdvancement : MonoBehaviour
             tooth.transform.Translate(Vector3.down * playBack * Time.deltaTime);
         }
     }
+
+    private void CreateTaskTimeLoad()
+    {
+        actionProgram.AddTaskActionLoad(pullOutTooth_timeOut);
+        actionProgram.AddTaskActionLoad(wrapOutFromPulling_timeOut);
+    }
     #endregion
 
     #region COMPONENT
@@ -104,12 +115,20 @@ public class DW_ForcepsAdvancement : MonoBehaviour
 
         // Make it disappear from site
         DespawnRolePlay(1);
+
+        // Disable script for use
+        enabled = false;
     }
     #endregion
 
     #region MAIN
     public void PerformTool(GameObject target)
     {
+        // Build in feedback when performing task
+        actionProgram = new DW_ActionListProgram();
+        CreateTaskTimeLoad();
+        actionProgram.IdentifyActionType("Removal");
+
         if (!isPerforming)
         {
             // Get the latest tooth position
