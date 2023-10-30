@@ -7,10 +7,10 @@ public class TransitionLoader : MonoBehaviour
     public Animator BasicTransition;
     public Animator CupboardTransition;
 
-    public float TransitionTime = 3f;
+    public float TransitionTime = 10f;
     public void Loadcollections()
     {
-        StartCoroutine(LoadLevelCollection(4));
+        StartCoroutine(LoadLevelTutorial(4));
     }
     public void LoadMainMenu()
     {
@@ -19,6 +19,10 @@ public class TransitionLoader : MonoBehaviour
     public void LoadMiniGameTutorial()
     {
         StartCoroutine(LoadLevelTutorial(9));
+    }
+    public void LoadGamescene()
+    {
+        StartCoroutine(LoadLevelTutorial(6));
     }
     //public void LoadGameScene()
     //{
