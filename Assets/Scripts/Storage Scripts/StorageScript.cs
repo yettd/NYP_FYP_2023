@@ -8,6 +8,9 @@ public class StorageScript : MonoBehaviour
     private StorageComponent component;
     private InstructionManual manual;
 
+    private const string deselectConvention = "N";
+    public string get_deselectConvention { get { return deselectConvention; } }
+
     #region SETUP
     public void LoadAssetStorage(StorageComponent component)
     {
@@ -37,7 +40,7 @@ public class StorageScript : MonoBehaviour
         foreach (ItemTag tool in manual.tools) storage.AddItem(tool);
 
         // Default item
-        storage.AddItem(new ItemTag("N", Resources.Load<Texture>("StorageAssets/Icon/Select"), Resources.Load<GameObject>("StorageAssets/Models")));
+        storage.AddItem(new ItemTag(deselectConvention, Resources.Load<Texture>("StorageAssets/Icon/Select"), Resources.Load<GameObject>("StorageAssets/Models")));
 
         // Display item
         component.GetUnitDisplay(storage.get_items.ToArray());
