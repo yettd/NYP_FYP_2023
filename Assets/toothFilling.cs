@@ -11,7 +11,8 @@ public class toothFilling : MonoBehaviour
     toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
         toolsForFilling.tripleSyringe, toolsForFilling.etchant,
         toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.tripleSyringe,toolsForFilling.Microbrush,
-        toolsForFilling.tripleSyringe,toolsForFilling.lightCure };
+        toolsForFilling.tripleSyringe,toolsForFilling.lightCure,toolsForFilling.plasticinstrument,
+        toolsForFilling.plasticinstrument,toolsForFilling.lightCure,toolsForFilling.rubberDamForceb };
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
@@ -35,7 +36,7 @@ public class toothFilling : MonoBehaviour
     tripleSyringe TS;
     Light lightFakePrimer;
 
-    fillingCure FC;
+    GameObject FC;
 
     // Start is called before the first frame update
     public void setUpProblem()
@@ -89,6 +90,12 @@ public class toothFilling : MonoBehaviour
 
 
     }
+
+    public void NextStepForce()
+    {
+        nextTools(true);
+    }
+
     public void GoToStep(RaycastHit hit)
     {
       
@@ -259,18 +266,18 @@ public class toothFilling : MonoBehaviour
     }
     void FILLING()
     {
-        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
-        if (decay.transform.localScale.x > 0)
+        decay.transform.localScale += Vector3.one * Time.deltaTime;
+        if(decay.transform.localScale.x > 1.2)
         {
+            decay.transform.localScale = Vector3.zero;
+            FC= Instantiate(Resources.Load<GameObject>("mat/filling/cap"),transform) as GameObject;
+            FC.transform.localPosition = Vector3.zero;
             nextTools(true);
         }
     }
     void CONTOUR(RaycastHit hit)
     {
-        //if (FC.HandleDrawingInput(hit))
-        //{
-        //    nextTools(true);
-        //}
+        
     }
     void CURE()
     {

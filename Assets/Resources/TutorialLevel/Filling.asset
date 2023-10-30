@@ -128,6 +128,9 @@ MonoBehaviour:
   - itemName: tripleSyringe
     icon: {fileID: 2800000, guid: 53e14ef76f2274f4faaf7eb90da175e9, type: 3}
     model: {fileID: 4550876686737558486, guid: 7afa5a2303d30944c998aa82a3d44110, type: 3}
+  - itemName: lightCure
+    icon: {fileID: 2800000, guid: 49ef171ae7cac27469e38390c26fe21e, type: 3}
+    model: {fileID: 5464252453992992785, guid: fc0f2a80daab04a41a37108576580ad3, type: 3}
   cleared:
     completed: 0
   toolAccessId: 2
