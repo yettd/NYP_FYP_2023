@@ -209,6 +209,15 @@
             "model": {
                 "instanceID": 51356
             }
+        },
+        {
+            "itemName": "lightCure",
+            "icon": {
+                "instanceID": 36092
+            },
+            "model": {
+                "instanceID": 51352
+            }
         }
     ],
     "cleared": {

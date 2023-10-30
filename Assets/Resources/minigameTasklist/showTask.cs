@@ -30,6 +30,7 @@ public enum Steps
     WASHBLOW2,
     PRIMER,
     BLOW,
+    ADHESIVE,
     FILLING,
     CONTOUR,
     CURE,
