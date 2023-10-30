@@ -72,12 +72,14 @@ public class ButtonReferenceManager : MonoBehaviour
 
     public void LoadToolsDatabases()
     {
+        dhTools.Clear();
+        dtTools.Clear();
         ARTorP = false;
         storedDTHButtonID = DTHEnum.DH;
         storeCollectionID = CollectionEnum.S;
         string a = Saving.save.LoadFromJson("game");
 
-        if(a!=null)
+        if (a!=null)
         {
             GameCompletion GC = JsonUtility.FromJson<GameCompletion>(a);
 
@@ -136,6 +138,7 @@ public class ButtonReferenceManager : MonoBehaviour
             if (a.DTDH)
             {
                 dtTools.Add(a);
+                Debug.Log("asd1");
             }
         }
         foreach (DentistTool a in E)

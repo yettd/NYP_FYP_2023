@@ -157,7 +157,7 @@ public class toothFilling : MonoBehaviour
         if(lightFakePrimer==null)
         {
             GameObject l = Instantiate(new GameObject(),transform) as GameObject;
-            l.transform.localPosition = l.transform.localPosition + new Vector3 (0, 0.5f, 0);
+            l.transform.localPosition = l.transform.localPosition + new Vector3 (0, 0.61f, 0);
             l.AddComponent<Light>();
             lightFakePrimer = l.GetComponent<Light>();
             lightFakePrimer.intensity = 0;
