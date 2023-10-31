@@ -102,14 +102,13 @@ public class minigameTaskListController : MonoBehaviour
     }
     private void Start()
     {
-        //load procedure
-
-        NameForttOOL=GameObject.Find("EquipmentTypeTxt").GetComponent<TextMeshProUGUI>();   
+   
         //load steps
         string a = Saving.save.LoadFromJson("game");
         if (a!=null)
         {
             GC = JsonUtility.FromJson<GameCompletion>(Saving.save.LoadFromJson("game"));
+            Debug.Log(a);
         }
         else
         {
@@ -336,6 +335,10 @@ public class minigameTaskListController : MonoBehaviour
 
     public void ToolsSelected(string toolsname, GameObject model)
     {
+        if (NameForttOOL == null)
+        {
+            NameForttOOL = GameObject.Find("EquipmentTypeTxt").GetComponent<TextMeshProUGUI>();
+        }
         if (this.model != null)
         {
             toolSelected = false;

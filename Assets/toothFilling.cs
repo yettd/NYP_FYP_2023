@@ -25,7 +25,7 @@ public class toothFilling : MonoBehaviour
     GameObject acid;
     Renderer acidRender;
     float drillTimer = 2;
-
+    Mesh OriginalMesh;
 
     [SerializeField] Material Dirttooth;
     bool done;
@@ -38,7 +38,7 @@ public class toothFilling : MonoBehaviour
     Light lightFakePrimer;
 
     GameObject FC;
-
+    Renderer FR;
     // Start is called before the first frame update
     public void setUpProblem()
     {
@@ -46,6 +46,7 @@ public class toothFilling : MonoBehaviour
         {
             flip = true;
         }
+        OriginalMesh = GetComponent<MeshFilter>().mesh;
         GameObject cap = Resources.Load<GameObject>("Mat/filling/cap");
         GameObject getStart = Resources.Load<GameObject>("Mat/filling/d");
         Debug.Log(getStart.GetComponent<getMesh>().getM());
@@ -152,7 +153,6 @@ public class toothFilling : MonoBehaviour
                 case Steps.CURE:
                     CURE(); 
                     break;
-
                 case Steps.POLISH:
                     POLISH();   
                     break;
@@ -276,6 +276,7 @@ public class toothFilling : MonoBehaviour
             FC= Instantiate(Resources.Load<GameObject>("mat/filling/cap"),transform) as GameObject;
 
             FC.GetComponentInChildren<fillingCure>().SetTF(this);
+            FR=FC.transform.GetChild(0).gameObject.GetComponent<Renderer>();
             FC.transform.localPosition = Vector3.zero;
             GetComponent<MeshCollider>().enabled = false;
             nextTools(true);
@@ -283,11 +284,24 @@ public class toothFilling : MonoBehaviour
     }
     void CURE()
     {
-        nextTools(true);
+        if(FR.material.color.r>=1)
+        {
+            nextTools(true);
+        }
+        FR.material.color=new Color(FR.material.color.r+Time.deltaTime, FR.material.color.r + Time.deltaTime, FR.material.color.r + Time.deltaTime, 1.0f);
+      
     }
     void POLISH()
     {
-        nextTools(true);
+        if(FC.transform.localPosition.y > -0.5)
+        {
+
+            GetComponent<MeshFilter>().mesh = OriginalMesh;
+            Destroy(FC);
+            dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
+            nextTools(true);
+        }
+        FC.transform.localPosition -= Vector3.up * Time.deltaTime * 0.5f;
     }
     void PutDam()
     {
