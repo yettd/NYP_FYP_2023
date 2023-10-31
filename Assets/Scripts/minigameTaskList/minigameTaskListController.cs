@@ -52,6 +52,7 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] UnityEvent ResumeRotation;
     [SerializeField] UnityEvent WIN;
     public bool minigameOpen;
+    TextMeshProUGUI NameForttOOL;
     [SerializeField] GameObject pause;
     [SerializeField]List<GameObject> jaw = new List<GameObject>();
     [SerializeField] changePasueToBack pauseButton;
@@ -103,9 +104,7 @@ public class minigameTaskListController : MonoBehaviour
     {
         //load procedure
 
-  
-
-
+        NameForttOOL=GameObject.Find("EquipmentTypeTxt").GetComponent<TextMeshProUGUI>();   
         //load steps
         string a = Saving.save.LoadFromJson("game");
         if (a!=null)
@@ -337,9 +336,16 @@ public class minigameTaskListController : MonoBehaviour
 
     public void ToolsSelected(string toolsname, GameObject model)
     {
-
-        if (cameraChanger.Instance.GetZoom() && this.model==null)
+        if (this.model != null)
         {
+            toolSelected = false;
+            Destroy(this.model);
+            this.model=null;
+        }
+
+        if (cameraChanger.Instance.GetZoom() )
+        {
+       
             // testTool.gameObject.SetActive(true);
             toolSelectedName = toolsname;
             this.model = Instantiate(model) as GameObject;
@@ -347,6 +353,7 @@ public class minigameTaskListController : MonoBehaviour
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(5, 5, 5);
+            NameForttOOL.text= toolsname;
             stopRotation();
         }
 

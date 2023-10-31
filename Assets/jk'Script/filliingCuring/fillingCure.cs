@@ -14,7 +14,6 @@ public class fillingCure : MonoBehaviour
     private Plane drawingSurface;
     private Vector3 lastMousePosition;
 
-    public gestureList ges = new gestureList();
 
     bool done;
 
@@ -43,6 +42,7 @@ public class fillingCure : MonoBehaviour
     protected virtual void Update()
     {
         HandleDrawingInput();
+
     }
 
     protected virtual void Stuff()
@@ -62,8 +62,7 @@ public class fillingCure : MonoBehaviour
 
     public virtual bool HandleDrawingInput()
     {
-
-       // DrawOnPlane(hit.point);
+        // DrawOnPlane(hit.point);
 
         //if(done)
         //{
@@ -82,8 +81,10 @@ public class fillingCure : MonoBehaviour
             if (Physics.Raycast(ray, out hitDistance))
             {
                 Vector3 hitPoint = hitDistance.point;
-                DrawOnPlane(hitDistance.point);
 
+              
+                DrawOnPlane(hitDistance.point);
+             
 
             }
 
@@ -100,8 +101,6 @@ public class fillingCure : MonoBehaviour
     {
         if (currentDrawing.Count == 0 || Vector2.Distance(currentDrawing[currentDrawing.Count - 1], point) > drawDistance)
         {
-           
-
             currentDrawing.Add(drawingPlane.transform.InverseTransformPoint(point));
             lineRenderer.positionCount = currentDrawing.Count;
             lineRenderer.SetPosition(currentDrawing.Count - 1, currentDrawing[currentDrawing.Count - 1]);
@@ -127,7 +126,7 @@ public class fillingCure : MonoBehaviour
             if (aa.point==pos)
             {
                 aa.hitted = true;
-             
+                Debug.Log("sad");
                 CheckAllHIt();
             }
         }

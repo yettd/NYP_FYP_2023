@@ -64,13 +64,16 @@ public class DW_ToolsNagivator
         {
             // Take out on the tool been selected
             GameObject cloneTool = GameObject.Instantiate(Resources.Load<GameObject>("TutorialAssets/Tools/Marker/" + GetItemToUse(currentTool).model.name));
-            cloneTool.name = GetItemToUse(currentTool).model.name;
             cloneTool.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name;
+
+            // Clear marker as there are any dulipate tool convention
+            CleanUpUsedMarker(GetItemToUse(currentTool).model.name);
+            cloneTool.name = GetItemToUse(currentTool).model.name;
 
             // Give access to capability level
             if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1)
                 extractionAccess.GrantToolCapability(cloneTool, GetItemToUse(currentTool).itemName);
-        }       
+        }
     }
 
     private void CleanUpToolUsed()
@@ -80,6 +83,16 @@ public class DW_ToolsNagivator
 
         // Despawn of used tool
         if (usedTool) { GameObject.Destroy(usedTool); }
+    }
+
+    private void CleanUpUsedMarker(string newTool)
+    {
+        // Finding for marker
+        GameObject toolMarker = GameObject.Find(newTool);
+
+        // Despawn of used marker
+        if (toolMarker && toolMarker.tag != TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name)
+            GameObject.Destroy(toolMarker);
     }
     #endregion
 }

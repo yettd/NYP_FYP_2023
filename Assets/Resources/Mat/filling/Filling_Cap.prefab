@@ -340,8 +340,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawingPlane: {fileID: 7586315628206290764}
   drawDistance: 0.02
-  ges:
-    gestures: []
 --- !u!1 &7800316222799565705
 GameObject:
   m_ObjectHideFlags: 0

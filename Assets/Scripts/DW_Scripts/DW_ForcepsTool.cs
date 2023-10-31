@@ -35,6 +35,7 @@ public class DW_ForcepsTool : MonoBehaviour
 
                         // Done
                         GetComponent<MeshRenderer>().enabled = false;
+                        Destroy(GetComponent<DW_ForcepsTool>());
                     }
                 }
             }

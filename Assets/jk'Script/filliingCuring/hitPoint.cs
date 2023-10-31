@@ -19,11 +19,11 @@ public class hitPoint : MonoBehaviour
 
     private void OnMouseEnter()
     {
-      
+        fc.GetHit(transform);
     }
 
     public void hit()
     {
-        fc.GetHit(transform);
+    
     }
 }

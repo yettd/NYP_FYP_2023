@@ -1,13 +1,13 @@
 {
     "Title": "Filling",
     "Icon": {
-        "instanceID": 51348
+        "instanceID": 39734
     },
     "description": "???",
     "step": [
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Apply rubber dam with rubber forceps ",
@@ -17,7 +17,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Select a slow speed handpiece with round bur ",
@@ -27,7 +27,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Remove maximum decay with the bur ",
@@ -37,7 +37,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Select spoon excavator ",
@@ -47,7 +47,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Remove remnants of the decay ",
@@ -57,7 +57,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Wash and blow dry ",
@@ -67,7 +67,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Etch the dentine and enamel using etchant (37% Phosphoric Acid).  ",
@@ -77,7 +77,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Etch the dentine and enamel using etchant (37% Phosphoric Acid).  ",
@@ -87,7 +87,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Wash thoroughly and dry the cavity but do not over dry (desiccate) it.  ",
@@ -97,7 +97,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Apply primer to the whole cavity with a microbrush, blow gently, the cavity should appear shiny.  ",
@@ -107,7 +107,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Apply adhesive to the whole cavity with another microbrush, blow gently to avoid pooling. Light cure. ",
@@ -117,7 +117,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Place CR into the cavity incrementally with a plastic instrument, contour the CR before light cure. ",
@@ -127,7 +127,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Remove excessive CR by polishing with white stone/ smooth diamond polishing burs  ",
@@ -137,7 +137,7 @@
         },
         {
             "Icon": {
-                "instanceID": 36298
+                "instanceID": 39736
             },
             "title": "???",
             "instruction": "Check occlusion after removing the rubber dam and polish again as required. ",
@@ -150,64 +150,73 @@
         {
             "itemName": "slowSpeed",
             "icon": {
-                "instanceID": 51350
+                "instanceID": 39738
             },
             "model": {
-                "instanceID": 51352
+                "instanceID": 32578
             }
         },
         {
             "itemName": "Spoonexcavator",
             "icon": {
-                "instanceID": 36096
+                "instanceID": 39740
             },
             "model": {
-                "instanceID": 36852
+                "instanceID": 32590
             }
         },
         {
             "itemName": "Microbrush",
             "icon": {
-                "instanceID": 36078
+                "instanceID": 39742
             },
             "model": {
-                "instanceID": 36842
+                "instanceID": 32564
             }
         },
         {
             "itemName": "plasticinstrument",
             "icon": {
-                "instanceID": 36080
+                "instanceID": 39744
             },
             "model": {
-                "instanceID": 36844
+                "instanceID": 32582
             }
         },
         {
             "itemName": "etchant",
             "icon": {
-                "instanceID": 36080
+                "instanceID": 39744
             },
             "model": {
-                "instanceID": 36836
+                "instanceID": 39746
             }
         },
         {
             "itemName": "rubberDamForceb",
             "icon": {
-                "instanceID": 36092
+                "instanceID": 39748
             },
             "model": {
-                "instanceID": 36850
+                "instanceID": 39750
             }
         },
         {
             "itemName": "tripleSyringe",
             "icon": {
-                "instanceID": 51354
+                "instanceID": 39752
             },
             "model": {
-                "instanceID": 51356
+                "instanceID": 39754
+            }
+        },
+        {
+            "itemName": "lightCure",
+            "icon": {
+                "instanceID": 39748
+            },
+            "model": {
+                "instanceID": 32578
             }
         }
     ],

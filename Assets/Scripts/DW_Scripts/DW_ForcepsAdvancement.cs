@@ -12,6 +12,7 @@ public class DW_ForcepsAdvancement : MonoBehaviour
 
     private Transform toothTransform;
     private string toothUsed;
+    private string toolReference;
 
     private const float pullOutTooth_timeOut = 1.5f;
     private const float wrapOutFromPulling_timeOut = 3;
@@ -35,7 +36,7 @@ public class DW_ForcepsAdvancement : MonoBehaviour
     private void SpawnToolAsRolePlay()
     {
         // Find the tool currently used
-        GameObject toolUsed = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
+        GameObject toolUsed = GameObject.Find(toolReference);
 
         // Assigned tool
         if (toolUsed)
@@ -176,6 +177,11 @@ public class DW_ForcepsAdvancement : MonoBehaviour
 
         // Get tooth id for used
         toothUsed = target.name;
+
+        // Get reference tool before it deselect
+        GameObject toolFinder = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
+        toolReference = toolFinder.name;
+        toolFinder.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.NotTagged].props_tag_name;
     }
     #endregion
 }

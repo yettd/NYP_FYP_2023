@@ -10,7 +10,9 @@ public class toothFilling : MonoBehaviour
 {
     toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
         toolsForFilling.tripleSyringe, toolsForFilling.etchant,
-        toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.tripleSyringe };
+        toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.tripleSyringe,toolsForFilling.Microbrush,
+        toolsForFilling.tripleSyringe,toolsForFilling.lightCure,toolsForFilling.plasticinstrument,
+        toolsForFilling.plasticinstrument,toolsForFilling.lightCure,toolsForFilling.rubberDamForceb };
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
@@ -34,7 +36,7 @@ public class toothFilling : MonoBehaviour
     tripleSyringe TS;
     Light lightFakePrimer;
 
-    fillingCure FC;
+    GameObject FC;
 
     // Start is called before the first frame update
     public void setUpProblem()
@@ -48,6 +50,14 @@ public class toothFilling : MonoBehaviour
         Debug.Log(getStart.GetComponent<getMesh>().getM());
         teethWithHold = getStart.GetComponent<getMesh>().getM();
         mat = getStart.GetComponent<getMesh>().getR();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            nextTools(true);
+        }
     }
 
     bool CorrectSide(RaycastHit hit)
@@ -80,8 +90,16 @@ public class toothFilling : MonoBehaviour
 
 
     }
+
+    public void NextStepForce()
+    {
+        nextTools(true);
+    }
+
     public void GoToStep(RaycastHit hit)
     {
+      
+
         if (done)
         {
             return;
@@ -117,6 +135,10 @@ public class toothFilling : MonoBehaviour
                 case Steps.BLOW:
                     PRIMER();
                     break;
+                case Steps.ADHESIVE:
+                    ADHESIVE();
+                    break;
+
                 case Steps.FILLING:
                     FILLING();
                     break;
@@ -152,6 +174,46 @@ public class toothFilling : MonoBehaviour
         }
       
     }
+    private void ADHESIVE()
+    {
+        if (tfs[currecntTool]==toolsForFilling.Microbrush)
+        {
+            decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
+            if(decay.transform.localScale.x >0.7)
+            {
+                nextTools(false);
+            }
+            return;
+        }
+        if (tfs[currecntTool] == toolsForFilling.tripleSyringe)
+        {
+            if (TS == null)
+            {
+                TS = FindObjectOfType<tripleSyringe>();
+            }
+            if(TS.WaterBlow)
+            {
+                if(decayRender.material.color.a>=0.98)
+                {
+                    nextTools(false);
+                }
+
+                decayRender.material.color = new Color(decayRender.material.color.r, decayRender.material.color.g, decayRender.material.color.b, decayRender.material.color.a +Time.deltaTime);
+            }
+            return;
+        }
+        if (tfs[currecntTool] == toolsForFilling.lightCure)
+        {
+            if (decayRender.material.color.r >= 0.98)
+            {
+                nextTools(true);
+            }
+            decayRender.material.color = new Color(decayRender.material.color.r+Time.deltaTime, decayRender.material.color.g + Time.deltaTime, decayRender.material.color.b + Time.deltaTime, decayRender.material.color.a);
+            
+            return;
+        }
+    }
+
     void PRIMER()
     {
         if(lightFakePrimer==null)
@@ -164,13 +226,28 @@ public class toothFilling : MonoBehaviour
 
         }
 
-        lightFakePrimer.intensity += 0.001f * Time.deltaTime;
-        if (lightFakePrimer.intensity>0.01)
+
+        if (lightFakePrimer.intensity>0.01 && tfs[currecntTool]==toolsForFilling.Microbrush)
         {
             nextTools(true);
+            return;
         }
-
-
+        else if (tfs[currecntTool] == toolsForFilling.tripleSyringe )
+        {
+            if (TS == null)
+            {
+                TS = FindObjectOfType<tripleSyringe>();
+            }
+            if (!TS.WaterBlow)
+            {
+                if (lightFakePrimer.intensity > 0.02)
+                {
+                    nextTools(true);
+                    return;
+                }
+            }
+        }
+        lightFakePrimer.intensity += 0.001f * Time.deltaTime;
 
     }
     void BLOW()
@@ -189,18 +266,18 @@ public class toothFilling : MonoBehaviour
     }
     void FILLING()
     {
-        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
-        if (decay.transform.localScale.x > 0)
+        decay.transform.localScale += Vector3.one * Time.deltaTime;
+        if(decay.transform.localScale.x > 1.2)
         {
+            decay.transform.localScale = Vector3.zero;
+            FC= Instantiate(Resources.Load<GameObject>("mat/filling/cap"),transform) as GameObject;
+            FC.transform.localPosition = Vector3.zero;
             nextTools(true);
         }
     }
     void CONTOUR(RaycastHit hit)
     {
-        //if (FC.HandleDrawingInput(hit))
-        //{
-        //    nextTools(true);
-        //}
+        
     }
     void CURE()
     {
@@ -239,6 +316,10 @@ public class toothFilling : MonoBehaviour
             decayRender.material.color = water;
             decay.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
             nextTools(true);
+            if(acid)
+            {
+                decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/glue");
+            }
             Destroy(acid);
             return;
         }
@@ -261,7 +342,7 @@ public class toothFilling : MonoBehaviour
         {
             if(acid)
             {
-                acidRender.material.color =new Color(acidRender.material.color.r, acidRender.material.color.g, acidRender.material.color.b, acidRender.material.color.a - Time.deltaTime);
+                //acidRender.material.color =new Color(acidRender.material.color.r, acidRender.material.color.g, acidRender.material.color.b, acidRender.material.color.a - Time.deltaTime);
             }
             decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
         }
@@ -338,6 +419,7 @@ public class toothFilling : MonoBehaviour
         tripleSyringe,
         etchant,
         Microbrush,
+        lightCure,
         plasticinstrument
     }
 }
