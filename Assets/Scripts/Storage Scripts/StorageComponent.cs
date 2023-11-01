@@ -66,15 +66,21 @@ public class StorageComponent : MonoBehaviour
     {
         displayTab.transform.GetChild(0).GetComponent<TMP_Text>().text = item.itemName;
         displayTab.transform.GetChild(1).GetComponent<RawImage>().texture = item.icon;
+        StartCoroutine(DisplayText(item.itemName));
     }
     #endregion
 
     #region COMPONENT
-    private IEnumerator DisplayText()
+    private IEnumerator DisplayText(string title)
     {
-        displayTab.transform.GetChild(0).gameObject.SetActive(true);
+        bool condition = title != GameObject.FindGameObjectWithTag("Storage").GetComponent<StorageScript>().get_deselectConvention;
+
+        TutorialGame_Script.thisScript.get_itemDisplayName.SetActive(true);
+        TutorialGame_Script.thisScript.get_itemDisplayName.GetComponent<TMP_Text>().text = condition ? title : "Deselect tool";
         yield return new WaitForSeconds(1);
-        displayTab.transform.GetChild(0).gameObject.SetActive(false);
+
+        if (!condition)
+            TutorialGame_Script.thisScript.get_itemDisplayName.GetComponent<TMP_Text>().text = "???";
     }
     #endregion
 }
