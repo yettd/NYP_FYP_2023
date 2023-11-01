@@ -48,9 +48,12 @@ public class TutorialGame_Script : MonoBehaviour
     [SerializeField] private GameObject loseScreen;
     [SerializeField] private GameObject statusRemark;
     [SerializeField] private GameObject actionStatus;
+    [SerializeField] private GameObject displayItemName;
 
     private InterfaceFeedBack onGoingFeedback;
     public InterfaceFeedBack get_onGoingFeedback { get { return onGoingFeedback; } }
+
+    public GameObject get_itemDisplayName { get { return displayItemName; } }
 
     void Start()
     {
