@@ -5822,7 +5822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7046151560408951161, guid: 207946f3330362c4a9ec3f7932a67531, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7327242036862606594, guid: 207946f3330362c4a9ec3f7932a67531, type: 3}
       propertyPath: m_RaycastTarget

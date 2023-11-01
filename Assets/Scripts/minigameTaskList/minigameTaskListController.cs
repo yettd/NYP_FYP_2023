@@ -51,6 +51,9 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] UnityEvent StopRotation;
     [SerializeField] UnityEvent ResumeRotation;
     [SerializeField] UnityEvent WIN;
+
+    [SerializeField] UnityEvent GIC;
+    [SerializeField] UnityEvent GIClose;
     public bool minigameOpen;
     TextMeshProUGUI NameForttOOL;
     [SerializeField] GameObject pause;
@@ -74,10 +77,10 @@ public class minigameTaskListController : MonoBehaviour
     //tool step and Selection
     [SerializeField]GameObject toolSelection;
     GameObject toolStep;
-
-
-    //text
-    [SerializeField]TextMeshProUGUI AmtProblem;
+    public bool gic=false;
+    GameObject Almagotrrr;
+   //text
+   [SerializeField]TextMeshProUGUI AmtProblem;
     private void Awake()
     {
         if (Instance==null)
@@ -102,7 +105,8 @@ public class minigameTaskListController : MonoBehaviour
     }
     private void Start()
     {
-   
+         Almagotrrr = GameObject.Find("Almagotrrr");
+        Almagotrrr.SetActive(false);
         //load steps
         string a = Saving.save.LoadFromJson("game");
         if (a!=null)
@@ -348,7 +352,16 @@ public class minigameTaskListController : MonoBehaviour
 
         if (cameraChanger.Instance.GetZoom() )
         {
-       
+            if(!gic)
+            {
+                GIC.Invoke();
+                return;
+            }
+            if(Almagotrrr.activeSelf)
+            {
+                GIClose.Invoke();
+            }
+
             // testTool.gameObject.SetActive(true);
             toolSelectedName = toolsname;
             this.model = Instantiate(model) as GameObject;
