@@ -19,6 +19,7 @@ public class GameCompletion
                 break;
 
             case 1:
+                Debug.Log("sdadsad");
                 gameFilling = true;
                 break;
 

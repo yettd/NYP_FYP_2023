@@ -24,6 +24,6 @@ public class hitPoint : MonoBehaviour
 
     public void hit()
     {
-    
+        fc.GetHit(transform);
     }
 }

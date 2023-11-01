@@ -14,8 +14,13 @@ public class fillingCure : MonoBehaviour
     private Plane drawingSurface;
     private Vector3 lastMousePosition;
 
+    toothFilling tf;
+
 
     bool done;
+
+    public void SetTF(toothFilling tf)
+    { this.tf = tf; }           
 
     [SerializeField] List<HitPoint> hp = new List<HitPoint>();
     // Start is called before the first frame update
@@ -45,18 +50,27 @@ public class fillingCure : MonoBehaviour
 
     }
 
-    protected virtual void Stuff()
+    public void Stuff(RaycastHit hit)
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitDistance;
 
+            Vector3 hitPoint = hit.point;
+
+
+            DrawOnPlane(hit.point);
+
+
+        
     }
 
     protected virtual void CreateLineRenderer()
     {
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startWidth = .5f;
+        lineRenderer.startWidth = 0.02739716f;
         lineRenderer.positionCount = 0;
-        lineRenderer.endWidth = .5f;
+        lineRenderer.endWidth = 0.02739716f;
         lineRenderer.useWorldSpace = false;
     }
 
@@ -104,7 +118,6 @@ public class fillingCure : MonoBehaviour
             currentDrawing.Add(drawingPlane.transform.InverseTransformPoint(point));
             lineRenderer.positionCount = currentDrawing.Count;
             lineRenderer.SetPosition(currentDrawing.Count - 1, currentDrawing[currentDrawing.Count - 1]);
-          
         }
     }
 
@@ -144,6 +157,7 @@ public class fillingCure : MonoBehaviour
         }
         Debug.Log("HIT");
         done=true;
+        tf.NextStepForce();
     }
 
 }

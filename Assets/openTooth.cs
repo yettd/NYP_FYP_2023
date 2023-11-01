@@ -94,7 +94,6 @@ public class openTooth : MonoBehaviour
         if (TeethName != gameObject.name)
         {
             mat.SetFloat("_op", 0.1f);
-            Debug.Log(mat.GetFloat("_op"));
             //bc.enabled = false;
             mc.enabled = false;
 

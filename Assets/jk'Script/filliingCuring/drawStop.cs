@@ -25,4 +25,9 @@ public class drawStop : MonoBehaviour
     {
         d.STOP();
     }
+
+    public void stopDrawing()
+    {
+        d.STOP();
+    }
 }

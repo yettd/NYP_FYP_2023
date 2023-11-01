@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 7329009174497461716}
   - component: {fileID: 5138044149589033654}
   - component: {fileID: 3675437997901142643}
-  - component: {fileID: 4652299133393607944}
+  - component: {fileID: 2058545697713889211}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -247,7 +247,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4652299133393607944
+--- !u!114 &2058545697713889211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,11 +256,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5891729819000719254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa45f8a3c614dc0438f91f341b7f21cd, type: 3}
+  m_Script: {fileID: 11500000, guid: de70c049ff809124e951b6b29f3fe46f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   usePoint: {fileID: 7807335934614244302}
+  letgoToUse: 0
   ThresholdForMax: 0
   canvas: {fileID: 0}
   _brush: {fileID: 0}
