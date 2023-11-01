@@ -5,6 +5,7 @@ using UnityEngine;
 public class DW_CottonGauzeAdvancement : MonoBehaviour
 {
     private bool isPerforming = false;
+    private GameObject tool;
 
     void Update()
     {
@@ -13,6 +14,14 @@ public class DW_CottonGauzeAdvancement : MonoBehaviour
     }
 
     #region SETUP
+    private void GetToolForUse()
+    {
+        GameObject toolUsed = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
+        tool = Instantiate(Resources.Load<GameObject>("TutorialAssets/Tools/Original/" + toolUsed.name));
+
+        tool.transform.position = toolUsed.transform.position;
+        Destroy(tool, 1);
+    }
     #endregion
 
     #region MAIN
@@ -22,6 +31,7 @@ public class DW_CottonGauzeAdvancement : MonoBehaviour
         if (isPerforming)
         {
             GetComponent<DW_CottonGauzePlacement>().GetClearingToWork();
+            if (!tool) GetToolForUse();
             TutorialGame_Script.thisScript.AdvancementContent("Finishing product", Mathf.Clamp(100 / percentageOfCompletion * current, 0, 100));
         }
     }

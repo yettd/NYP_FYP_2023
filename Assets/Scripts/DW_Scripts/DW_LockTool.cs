@@ -9,12 +9,9 @@ public class DW_LockTool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Application.isEditor)
-        {
-            isLocked = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name) ||
+        isLocked = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name) ||
                 TutorialGame_Script.thisScript.get_onGoingFeedback == InterfaceFeedBack.PerformingUsedTool;
 
-            GetComponent<rotateJaws>().enabled = !isLocked;
-        }
+        GetComponent<rotateJaws>().enabled = !isLocked;
     }
 }

@@ -36,6 +36,7 @@ public class DW_CottonGauze : MonoBehaviour
                         if (!detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().IsCleaningDone())
                         {
                             detect.collider.gameObject.GetComponent<DW_CottonGauzePlacement>().ApplyProduct();
+                            GetComponent<Renderer>().enabled = false;
                             isClearing = true;
                         }
 
@@ -51,6 +52,7 @@ public class DW_CottonGauze : MonoBehaviour
                 else
                 {
                     marker.ToolMarkerPossible(false);
+                    GetComponent<Renderer>().enabled = true;
                     isClearing = false;
                 }
             }

@@ -35,6 +35,7 @@ public class DW_ForcepsTool : MonoBehaviour
 
                         // Done
                         GetComponent<MeshRenderer>().enabled = false;
+                        DW_RatioProgram.program.FindRatioData(Vector2.Distance(gameObject.transform.position, detect.collider.gameObject.transform.position), detect.collider.gameObject.transform.localScale.x);
                         Destroy(GetComponent<DW_ForcepsTool>());
                     }
                 }
