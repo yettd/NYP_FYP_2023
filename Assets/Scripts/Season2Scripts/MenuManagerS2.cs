@@ -127,6 +127,7 @@ public class MenuManagerS2 : MonoBehaviour
     }
     public void openSettingsPanel()
     {
+        Vibrator.Vibrate(10000);
         if (audioManager != null)
         {
             audioManager.PlaySFX(1);
