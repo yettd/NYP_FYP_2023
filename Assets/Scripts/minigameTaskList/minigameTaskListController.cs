@@ -352,7 +352,7 @@ public class minigameTaskListController : MonoBehaviour
 
         if (cameraChanger.Instance.GetZoom() )
         {
-            if(!gic)
+            if(!gic && toolsname== "Applicator")
             {
                 GIC.Invoke();
                 return;

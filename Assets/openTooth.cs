@@ -75,7 +75,7 @@ public class openTooth : MonoBehaviour
                     break;
                 case Procedure.Filling:
                     Debug.Log("asda");
-                    GetComponent<toothFillingGIC>().setUpProblem();
+                    GetComponent<toothFilling>().setUpProblem();
                     st = Resources.Load<showTask>("minigameTasklist/Filling");
                     break;
             }
