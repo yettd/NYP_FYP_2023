@@ -387,23 +387,6 @@ public class minigameTaskListController : MonoBehaviour
 
         TL.gameObject.SetActive(true);
         toolSelection.SetActive(true);
-        //switch (procedure)
-        //{
-        //    case Procedure.Scaling:
-        //        st = Resources.Load<showTask>("minigameTasklist/scaling");
-        //        //  Debug.Log($"{currentStep} : {NextSteps}");
-        //        break;
-        //    case Procedure.Extration:
-        //        currentStep = Steps.LOCATINGE;
-        //        NextSteps = currentStep + 1;
-        //        //  Debug.Log($"{currentStep} : {NextSteps}");
-        //        break;
-        //    case Procedure.Filling:
-        //        currentStep = Steps.LOCATINGF;
-        //        NextSteps = currentStep + 1;
-        //        //  Debug.Log($"{currentStep} : {NextSteps}");
-        //        break;
-        //}
         foreach (Transform child in TL.GetChild(0).transform.GetChild(0))
         {
             // Destroy the child object
@@ -422,23 +405,31 @@ public class minigameTaskListController : MonoBehaviour
             }
             
         }
-
+        int i = 0;
+        foreach (TaskBreakDown TBD in st.TBD)
+        {
+            ImageOfTask[i].sprite = TBD.i;
+            i++;
+        }
     }
     private void showCorrectStep()
     {
-        int i= 0;
+
+        int i = 0;
         foreach (TaskBreakDown TBD in st.TBD)
         {
-            if(TBD.s==currentStep)
+            if (TBD.s == currentStep)
             {
-                ImageOfTask[i].sprite = TBD.i;
+                ImageOfTask[i].color = new Vector4(1, 1, 1, 1f);
             }
             else
             {
-                ImageOfTask[i].sprite = null;
+                ImageOfTask[i].color = new Vector4(1,1,1,.5f);
             }
             i++;
         }
+
+
     }
 
     public int  getCSValue()

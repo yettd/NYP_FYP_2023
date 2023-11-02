@@ -35,6 +35,10 @@ public enum Steps
     CONTOUR,
     CURE,
     POLISH,
+    //gic
+    DENTINE,
+    APPLICATOR,
+    SPREAD,
 
     END_TASKF
 
