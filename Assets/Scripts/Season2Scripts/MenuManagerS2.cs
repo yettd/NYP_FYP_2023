@@ -53,12 +53,15 @@ public class MenuManagerS2 : MonoBehaviour
     [SerializeField] private Button BackBtn;
     [SerializeField] private GameObject Camera;
 
+    [Header("StampCollection")]
+    [SerializeField] private GameObject StampCollection;
 
     bool Settingsactive;
     bool SettingsPageactive;
     bool PlayGameactive;
     bool MainMenuactive;
     bool CollectionsActive;
+    bool StampActive;
     bool Infoactive;
 
     private void Awake()
@@ -417,5 +420,33 @@ public class MenuManagerS2 : MonoBehaviour
         }
         Next.interactable = true;
         nextImage.color = Color.white;
+    }
+
+    public void openStampCollection()
+    {
+        Vibrator.Vibrate(10000);
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(1);
+        }
+        if (StampActive == false)
+        {
+            StampCollection.transform.gameObject.SetActive(true);
+            StampActive = true;
+        }
+    }
+
+    public void CloseStampCollection()
+    {
+        Vibrator.Vibrate(10000);
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(1);
+        }
+        if (StampActive == true)
+        {
+            StampCollection.transform.gameObject.SetActive(false);
+            StampActive = false;
+        }
     }
 }
