@@ -7117,6 +7117,7 @@ GameObject:
   - component: {fileID: 1732991471}
   - component: {fileID: 1732991475}
   - component: {fileID: 1732991476}
+  - component: {fileID: 1732991477}
   m_Layer: 5
   m_Name: Interface
   m_TagString: Untagged
@@ -7257,7 +7258,7 @@ MonoBehaviour:
   loseScreen: {fileID: 1745778184}
   statusRemark: {fileID: 1912196792}
   actionStatus: {fileID: 1791061008}
-  displayItemName: {fileID: 0}
+  displayItemName: {fileID: 717035640}
 --- !u!114 &1732991476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7271,6 +7272,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   babyTooth: {fileID: 413519644921013579, guid: 64a23d8b2ad06ef479ac6d1f71c13c81, type: 3}
+--- !u!114 &1732991477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732991470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b694dc1705329247a2c286314c060c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskPanel: {fileID: 821244283}
 --- !u!1 &1741688688
 GameObject:
   m_ObjectHideFlags: 0
