@@ -130,7 +130,8 @@ public class MenuManagerS2 : MonoBehaviour
     }
     public void openSettingsPanel()
     {
-        Vibrator.Vibrate(10000);
+        Handheld.Vibrate();
+
         if (audioManager != null)
         {
             audioManager.PlaySFX(1);
@@ -170,6 +171,8 @@ public class MenuManagerS2 : MonoBehaviour
         Camera.transform.DORotate(new Vector3(90, 0, 0), 1);
 
         //yield return new WaitForSeconds(transitionTime);
+        Vibrator.Vibrate(10000);
+        Handheld.Vibrate();
     }
 
     public void openPlayGamePanel()

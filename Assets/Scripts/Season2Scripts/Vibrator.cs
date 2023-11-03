@@ -19,7 +19,6 @@ public static class Vibrator
         if(IsAndroid())
         {
             vibrator.Call("vibrate", milliseconds);
-
         }
         else
         {
