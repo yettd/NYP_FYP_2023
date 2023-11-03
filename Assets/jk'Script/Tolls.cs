@@ -40,6 +40,7 @@ public class Tolls : MonoBehaviour
 
         Vector3 pos = cameraChanger.Instance.GetCurrentCam().ScreenToWorldPoint(Input.mousePosition) + cameraChanger.Instance.GetCurrentCam().transform.forward;
         transform.parent.transform.position = new Vector3(pos.x, pos.y, pos.z);
+        Debug.Log(pos);
         //if(Mathf.Abs(transform.parent.transform.eulerAngles.x) >= 90)
         //{
         //    transform.parent.transform.position = new Vector3(pos.x, oldPos.y, pos.z);

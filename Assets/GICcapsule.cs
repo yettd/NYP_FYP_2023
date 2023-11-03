@@ -13,8 +13,13 @@ public class GICcapsule : Tolls
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
+       
         //letgoToUse = false;
+    }
+
+    private void OnMouseDown()
+    {
+        base.Start();
     }
 
     // Update is called once per frame

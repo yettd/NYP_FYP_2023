@@ -15,12 +15,15 @@ public class fillingCure : MonoBehaviour
     private Vector3 lastMousePosition;
 
     toothFilling tf;
+    toothFillingGIC tff;
 
 
     bool done;
 
     public void SetTF(toothFilling tf)
-    { this.tf = tf; }           
+    { this.tf = tf; }
+    public void SetTF(toothFillingGIC tf)
+    { this.tff = tf; }
 
     [SerializeField] List<HitPoint> hp = new List<HitPoint>();
     // Start is called before the first frame update
@@ -157,7 +160,12 @@ public class fillingCure : MonoBehaviour
         }
         Debug.Log("HIT");
         done=true;
-        tf.NextStepForce();
+        if(tf)
+        {
+            tf.NextStepForce();
+            return;
+        }
+        tff.NextStepForce();
     }
 
 }

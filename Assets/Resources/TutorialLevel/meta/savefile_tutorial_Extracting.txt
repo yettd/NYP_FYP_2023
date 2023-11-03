@@ -1,33 +1,33 @@
 {
-    "Title": "Extracting",
+    "Title": "Extraction",
     "Icon": {
-        "instanceID": 31896
+        "instanceID": 31886
     },
     "description": "User will learn about the extraction of tooth with the step to follow.",
     "step": [
         {
             "Icon": {
-                "instanceID": 51722
+                "instanceID": 31888
             },
             "title": "Understanding",
             "instruction": "Locate the Issue of the problem ",
-            "requiredTool": "AnestheicTreatment",
+            "requiredTool": "Syringe",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 51730
+                "instanceID": 31890
             },
             "title": "Ease Pain",
             "instruction": "Apply anesthetic through the gum area to help ease of pain before the extracting the tooth.",
-            "requiredTool": "AnestheicTreatment",
+            "requiredTool": "Syringe",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 51728
+                "instanceID": 31892
             },
             "title": "Ready Up",
             "instruction": "Prepare the Foresceps for removal",
@@ -37,7 +37,7 @@
         },
         {
             "Icon": {
-                "instanceID": 51726
+                "instanceID": 31894
             },
             "title": "Clamp",
             "instruction": "Apply some cotton gauze to help clear over the unwanted particle.",
@@ -47,7 +47,7 @@
         },
         {
             "Icon": {
-                "instanceID": 51724
+                "instanceID": 31896
             },
             "title": "Removal",
             "instruction": "Use the forcesp tool and toogle it over to remove the damaged tooth.",
@@ -57,7 +57,7 @@
         },
         {
             "Icon": {
-                "instanceID": 51732
+                "instanceID": 31898
             },
             "title": "Finishing product",
             "instruction": "Apply some cotton gauze to help clear over the unwanted particle.",
@@ -70,6 +70,15 @@
         {
             "itemName": "Forcesp",
             "icon": {
+                "instanceID": 31900
+            },
+            "model": {
+                "instanceID": 31902
+            }
+        },
+        {
+            "itemName": "Syringe",
+            "icon": {
                 "instanceID": 31904
             },
             "model": {
@@ -77,21 +86,12 @@
             }
         },
         {
-            "itemName": "AnestheicTreatment",
+            "itemName": "CottonGauze",
             "icon": {
                 "instanceID": 31908
             },
             "model": {
                 "instanceID": 31910
-            }
-        },
-        {
-            "itemName": "CottonGauze",
-            "icon": {
-                "instanceID": 31912
-            },
-            "model": {
-                "instanceID": 31914
             }
         }
     ],

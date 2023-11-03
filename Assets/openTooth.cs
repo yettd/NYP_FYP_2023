@@ -52,7 +52,7 @@ public class openTooth : MonoBehaviour
         for (int i = 0; i < pro.Count; i++)
         {
 
-             if (pro[i] == Procedure.Filling)
+            if (pro[i] == Procedure.Filling)
             {
                 gameObject.AddComponent<toothFilling>();
             }
@@ -63,9 +63,9 @@ public class openTooth : MonoBehaviour
         teethMan.tm.CO += HideTeeth;
         teethMan.tm.Back += Show;
 
+        st = Resources.Load<showTask>("minigameTasklist/notask");
         if (pro.Contains(minigameTaskListController.Instance.procedure))
         {
-
             switch (minigameTaskListController.Instance.procedure)
             {
                 case Procedure.Scaling:

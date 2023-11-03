@@ -7,13 +7,10 @@ using DG.Tweening;
 using Unity.Mathematics;
 using static Unity.Burst.Intrinsics.X86.Avx;
 
-public class toothFilling : MonoBehaviour
+public class toothFillingGIC : MonoBehaviour
 {
     toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
-        toolsForFilling.tripleSyringe, toolsForFilling.etchant,
-        toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.tripleSyringe,toolsForFilling.Microbrush,
-        toolsForFilling.tripleSyringe,toolsForFilling.lightCure,toolsForFilling.plasticinstrument,
-        toolsForFilling.plasticinstrument,toolsForFilling.lightCure,toolsForFilling.rubberDamForceb };
+        toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.applicator};
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
@@ -116,7 +113,7 @@ public class toothFilling : MonoBehaviour
         Debug.Log(tfs[currecntTool]);
         if (correctTool())
         {
-         
+
             switch (minigameTaskListController.Instance.getCurrentStep())
             {
                 case Steps.DAM:
@@ -132,41 +129,29 @@ public class toothFilling : MonoBehaviour
                 case Steps.WASHBLOW2:
                     washPond();
                     break;
-                case Steps.ETCH:
-                    ETCH();
-                    break;
-                case Steps.PRIMER:
-                case Steps.BLOW:
-                    PRIMER();
-                    break;
-                case Steps.ADHESIVE:
-                    ADHESIVE();
+                case Steps.DENTINE:
+                    dentine();
                     break;
 
-                case Steps.FILLING:
-                    FILLING();
+                case Steps.APPLICATOR:
+                    APPLICATOR();
                     break;
-                //case Steps.CONTOUR:
-                //    CONTOUR(hit);
-                //    break;
 
-                case Steps.CURE:
-                    CURE(); 
-                    break;
-                case Steps.POLISH:
-                    POLISH();   
+                case Steps.SPREAD:
+                    SPread();   
                     break;
             }
         }
     }
 
-    void ETCH()
+    private void dentine()
     {
-        if(acid == null)
+        if (acid == null)
         {
             acid = Instantiate(Resources.Load<GameObject>("mat/filling/acid"), gameObject.transform);
             acid.transform.localPosition = new Vector3(0, 0.11f, 0);
             acidRender = acid.GetComponent<Renderer>();
+            acidRender.material.color= Color.white;
         }
 
         acid.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
@@ -175,46 +160,26 @@ public class toothFilling : MonoBehaviour
             nextTools(true);
             return;
         }
-      
     }
-    private void ADHESIVE()
+    private void APPLICATOR()
     {
-        if (tfs[currecntTool]==toolsForFilling.Microbrush)
+        decay.transform.localScale += Vector3.one * Time.deltaTime * 0.5f;
+        if (decay.transform.localScale.x > 1)
         {
-            decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
-            if(decay.transform.localScale.x >0.7)
-            {
-                nextTools(false);
-            }
-            return;
-        }
-        if (tfs[currecntTool] == toolsForFilling.tripleSyringe)
-        {
-            if (TS == null)
-            {
-                TS = FindObjectOfType<tripleSyringe>();
-            }
-            if(TS.WaterBlow)
-            {
-                if(decayRender.material.color.a>=0.98)
-                {
-                    nextTools(false);
-                }
+            decay.transform.localScale = Vector3.zero;
+            FC = Instantiate(Resources.Load<GameObject>("mat/filling/cap"), transform) as GameObject;
 
-                decayRender.material.color = new Color(decayRender.material.color.r, decayRender.material.color.g, decayRender.material.color.b, decayRender.material.color.a +Time.deltaTime);
-            }
-            return;
+            FC.GetComponentInChildren<fillingCure>().SetTF(this);
+            FR = FC.transform.GetChild(0).gameObject.GetComponent<Renderer>();
+            FC.transform.localPosition = Vector3.zero;
+            GetComponent<MeshCollider>().enabled = false;
+            nextTools(true);
         }
-        if (tfs[currecntTool] == toolsForFilling.lightCure)
-        {
-            if (decayRender.material.color.r >= 0.98)
-            {
-                nextTools(true);
-            }
-            decayRender.material.color = new Color(decayRender.material.color.r+Time.deltaTime, decayRender.material.color.g + Time.deltaTime, decayRender.material.color.b + Time.deltaTime, decayRender.material.color.a);
-            
-            return;
-        }
+    }
+
+    private void SPread()
+    {
+
     }
 
     void PRIMER()
@@ -267,42 +232,8 @@ public class toothFilling : MonoBehaviour
             }
         }
     }
-    void FILLING()
-    {
-        decay.transform.localScale += Vector3.one * Time.deltaTime*0.5f;
-        if(decay.transform.localScale.x > 1)
-        {
-            decay.transform.localScale = Vector3.zero;
-            FC= Instantiate(Resources.Load<GameObject>("mat/filling/cap"),transform) as GameObject;
+  
 
-            FC.GetComponentInChildren<fillingCure>().SetTF(this);
-            FR=FC.transform.GetChild(0).gameObject.GetComponent<Renderer>();
-            FC.transform.localPosition = Vector3.zero;
-            GetComponent<MeshCollider>().enabled = false;
-            nextTools(true);
-        }
-    }
-    void CURE()
-    {
-        if(FR.material.color.r>=1)
-        {
-            nextTools(true);
-        }
-        FR.material.color=new Color(FR.material.color.r+Time.deltaTime, FR.material.color.r + Time.deltaTime, FR.material.color.r + Time.deltaTime, 1.0f);
-      
-    }
-    void POLISH()
-    {
-        if(FC.transform.localPosition.y > -0.5)
-        {
-
-            GetComponent<MeshFilter>().mesh = OriginalMesh;
-            Destroy(FC);
-            dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
-            nextTools(true);
-        }
-        FC.transform.localPosition -= Vector3.up * Time.deltaTime * 0.5f;
-    }
     void PutDam()
     {
         dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
@@ -403,7 +334,7 @@ public class toothFilling : MonoBehaviour
             nextTools(true);
         }
     }
-    
+   
     bool correctTool()
     {
         if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool].ToString())
