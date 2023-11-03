@@ -32,19 +32,19 @@ MonoBehaviour:
   - Icon: {fileID: 2800000, guid: 4cab2711ea230c041aae5ff86384c303, type: 3}
     title: Ready Up
     instruction: Prepare the Foresceps for removal
-    requiredTool: Forcesp
+    requiredTool: Forceps
     completed: 1
-    taskDone: 0
+    taskDone: 1
   - Icon: {fileID: 2800000, guid: d65fe7afa063e3943950a1a9e7bc1165, type: 3}
     title: Clamp
     instruction: Apply some cotton gauze to help clear over the unwanted particle.
-    requiredTool: Forcesp
+    requiredTool: Forceps
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: d2fa814a86618b742a75ba620fb75ac2, type: 3}
     title: Removal
     instruction: Use the forcesp tool and toogle it over to remove the damaged tooth.
-    requiredTool: Forcesp
+    requiredTool: Forceps
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 4564ccceaed8732409c0981b2e3e2066, type: 3}
@@ -52,11 +52,11 @@ MonoBehaviour:
     instruction: Apply some cotton gauze to help clear over the unwanted particle.
     requiredTool: CottonGauze
     completed: 1
-    taskDone: 0
+    taskDone: 1
   tools:
-  - itemName: Forcesp
+  - itemName: Forceps
     icon: {fileID: 2800000, guid: 1176890b185342340a5e599360c8bebe, type: 3}
-    model: {fileID: 5024389741101910330, guid: 9edfb7c4d09c33f499276fbaa96720a8, type: 3}
+    model: {fileID: 1950412441950968655, guid: 97ea940a2867636459eeaf70f724bee2, type: 3}
   - itemName: Syringe
     icon: {fileID: 2800000, guid: f6e12d6edf724444c9ca047a0f27fed7, type: 3}
     model: {fileID: 6503727786904292808, guid: 52019f31d7b5ec44aa616fe047008077, type: 3}
@@ -64,5 +64,5 @@ MonoBehaviour:
     icon: {fileID: 2800000, guid: dc7330a4a23e3a2478a6ce3b17fb3f93, type: 3}
     model: {fileID: 3520120627521356768, guid: 6b7fdd2f7082fbe4fbcad4e2af562afb, type: 3}
   cleared:
-    completed: 1
+    completed: 0
   toolAccessId: 1

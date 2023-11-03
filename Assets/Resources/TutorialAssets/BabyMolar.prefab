@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1471748662151696295}
   - component: {fileID: 5909298654269501524}
   - component: {fileID: -1613564421163987839}
+  - component: {fileID: 7079005696372426533}
   m_Layer: 0
   m_Name: BabyMolar
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0968552, y: 1.7754767, z: 1.1337318}
   m_Center: {x: -0.024782449, y: -0.11884391, z: -0.0019184649}
+--- !u!114 &7079005696372426533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413519644921013579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b49c859e437b2449349a7d82b52943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

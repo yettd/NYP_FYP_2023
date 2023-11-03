@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 864834334372897857}
   - component: {fileID: 386813387171739016}
   m_Layer: 0
-  m_Name: ForcepsTool
+  m_Name: Forceps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
