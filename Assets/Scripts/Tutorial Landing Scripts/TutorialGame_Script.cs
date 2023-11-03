@@ -39,6 +39,7 @@ public class TutorialGame_Script : MonoBehaviour
 
     private DW_ToothExtraction extraction;
     private DW_ExtraTooth_Addons extraction_toothAddons;
+    private DW_TaskAddons tasking;
 
     private DataManageScript data;
     private const string fileDirectory = "savefile_tutorial_";
@@ -54,10 +55,14 @@ public class TutorialGame_Script : MonoBehaviour
     public InterfaceFeedBack get_onGoingFeedback { get { return onGoingFeedback; } }
 
     public GameObject get_itemDisplayName { get { return displayItemName; } }
+    public DW_TaskAddons getTasking { get { return tasking; } }
 
     void Start()
     {
         thisScript = this;
+
+        // Build in task manage row
+        tasking = GetComponent<DW_TaskAddons>();
 
         // Begin to find all gameobject which tagged correctly
         SetGamePropReady();
@@ -127,12 +132,18 @@ public class TutorialGame_Script : MonoBehaviour
         switch (TutorialNagivatorScript.Instance().get_manual.toolAccessId)
         {
             case 1: // Extraction
+                // Game Logical Script
                 extraction = new DW_ToothExtraction();
+
+                // Tooth Spawning Script (Baby Molar)
                 extraction_toothAddons = GetComponent<DW_ExtraTooth_Addons>();
                 extraction.Begin();
 
                 extraction_toothAddons.enabled = true;
                 extraction_toothAddons.Invoke("GetToothExtraction", 0.5f);
+
+                // Task Logical Script (Addons)
+                tasking.Setup(Resources.Load<showTask>("minigameTasklist/Extraction"));
                 break;
 
             default: // Any instruction level
@@ -146,6 +157,32 @@ public class TutorialGame_Script : MonoBehaviour
         foreach (GameSetup_Data info in gameInfo)
             foreach (GameObject prop in info.props)
                 prop.tag = info.props_tag_name;
+    }
+
+    private string GetActionListDescription(InterfaceFeedBack feedBack)
+    {
+        // Identify the feedback needed for use
+        switch (feedBack)
+        {
+            // When tool is selected
+            case InterfaceFeedBack.CurrentlyInUsed:
+                return GetCamViewInUsedTool();
+
+            // When tool is performing the given task
+            case InterfaceFeedBack.PerformingUsedTool:
+                return "Performing Task: ";
+
+            // When tool is currently set to be performing and something interupt the process
+            case InterfaceFeedBack.CancelledInQueueTool:
+                return "The following task have been cancelled: ";
+
+            // When there is no action made from user
+            case InterfaceFeedBack.Idle:
+                return "Done!";
+        }
+
+        // Can't define any of the possible feedback
+        return "???";
     }
     #endregion
 
@@ -204,7 +241,7 @@ public class TutorialGame_Script : MonoBehaviour
             UpdateInstructionStatus(condition);
 
             // Save progress to instruction status
-            SaveProgressForThisSession(condition);
+            //SaveProgressForThisSession(condition);
         }     
     }
 
@@ -234,30 +271,33 @@ public class TutorialGame_Script : MonoBehaviour
     #endregion
 
     #region MISC
-    private string GetActionListDescription(InterfaceFeedBack feedBack)
+    private string GetCamViewInUsedTool()
     {
-        // Identify the feedback needed for use
-        switch (feedBack)
+        switch (FindCamViewIndex())
         {
-            // When tool is selected
-            case InterfaceFeedBack.CurrentlyInUsed:
-                return "Drag the tool around to move it.\nDeselect tool to adjust rotation of the teeth.";
+            case 1:
+                return "Drag the tool around to move it.\nClick on the tooth to view closely.";
 
-            // When tool is performing the given task
-            case InterfaceFeedBack.PerformingUsedTool:
-                return "Performing Task: ";
+            case 2:
+                return "Zoom in for better view.\nClick on the teeth to view closely.";
 
-            // When tool is currently set to be performing and something interupt the process
-            case InterfaceFeedBack.CancelledInQueueTool:
-                return "The following task have been cancelled: ";
+            default:
+                return "Zoom out for better view.\nDeselect tool when its done.";
+        }
+    }
 
-            // When there is no action made from user
-            case InterfaceFeedBack.Idle:
-                return "Done!";
+    private int FindCamViewIndex()
+    {
+        int index = 0;
+        ToolScale_Data[] data = GameObject.FindGameObjectWithTag(gameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name).GetComponent<DW_AutoToolScaler>().get_scaleData;
+
+        foreach (ToolScale_Data current in data)
+        {
+            if (current.cameraRef.gameObject.activeInHierarchy) break;
+            index++;
         }
 
-        // Can't define any of the possible feedback
-        return "???";
+        return index;
     }
     #endregion
 }
