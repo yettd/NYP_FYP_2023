@@ -42,7 +42,10 @@ public class DW_CottonGauze : MonoBehaviour
 
                         // Done
                         else
+                        {
+                            TutorialGame_Script.thisScript.getTasking.GetStepClearance(name);
                             marker.ToolMarkerPossible(false);
+                        }
                     }
                 }
 

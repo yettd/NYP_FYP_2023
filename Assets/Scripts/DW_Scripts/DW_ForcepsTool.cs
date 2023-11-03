@@ -8,6 +8,7 @@ public class DW_ForcepsTool : MonoBehaviour
     private DW_ToolMarker marker;
     private DW_MoveTools moveObject;
     private DW_ToolAccessory accessory;
+    // pirvate DW_ToolHandler handler;
 
     void OnDestroy()
     {
@@ -35,7 +36,7 @@ public class DW_ForcepsTool : MonoBehaviour
 
                         // Done
                         GetComponent<MeshRenderer>().enabled = false;
-                        DW_RatioProgram.program.FindRatioData(Vector2.Distance(gameObject.transform.position, detect.collider.gameObject.transform.position), detect.collider.gameObject.transform.localScale.x);
+                        TutorialGame_Script.thisScript.getTasking.GetStepClearance(name);
                         Destroy(GetComponent<DW_ForcepsTool>());
                     }
                 }

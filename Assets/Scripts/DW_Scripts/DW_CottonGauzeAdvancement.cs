@@ -33,6 +33,8 @@ public class DW_CottonGauzeAdvancement : MonoBehaviour
             GetComponent<DW_CottonGauzePlacement>().GetClearingToWork();
             if (!tool) GetToolForUse();
             TutorialGame_Script.thisScript.AdvancementContent("Finishing product", Mathf.Clamp(100 / percentageOfCompletion * current, 0, 100));
+
+            if (current >= percentageOfCompletion) TutorialGame_Script.thisScript.getTasking.GetStepClearance(tool.name);
         }
     }
     #endregion

@@ -35,7 +35,6 @@ public class DW_AnestheticTool : MonoBehaviour
                         detect.collider.gameObject.GetComponent<DW_AnestheicPlacement>().ApplyProduct();
 
                         // Done
-                        DW_RatioProgram.program.FindRatioData(Vector2.Distance(gameObject.transform.position, detect.collider.gameObject.transform.position), detect.collider.gameObject.transform.localScale.x);
                         Destroy(GetComponent<DW_AnestheticTool>());
                     }
                 }

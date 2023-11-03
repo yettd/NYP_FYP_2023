@@ -39,6 +39,9 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
         toothInstance.transform.SetParent(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.TeethSection].props[toothPlacement[index].GetComponent<DW_NewToothInstance>().GetTeethIndex()].transform);
         toothInstance.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name;
         toothInstance.transform.position = toothPlacement[index].transform.position + offset[index];
+
+        // Update tooth settings
+        toothInstance.GetComponent<DW_ToothSettings>().toothIndex = index;
     }
 
     private void ClearReferencePoint(int index)

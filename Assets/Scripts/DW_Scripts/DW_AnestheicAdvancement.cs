@@ -57,6 +57,9 @@ public class DW_AnestheicAdvancement : MonoBehaviour
             Vector3 position = toolUsed.transform.position;
             tool.transform.position = tool.GetComponent<DW_AdvancementObject_Offset>().GetPosition(position);
 
+            // Put to task check
+            TutorialGame_Script.thisScript.getTasking.GetStepClearance(toolUsed.name);
+
             // Remove active DW_Tool out of play
             Destroy(toolUsed);
         }
@@ -142,7 +145,7 @@ public class DW_AnestheicAdvancement : MonoBehaviour
         Destroy(tool);
 
         // Disable script for use
-        enabled = false;
+        Destroy(GetComponent<DW_AnestheicAdvancement>());
     }
     #endregion
 

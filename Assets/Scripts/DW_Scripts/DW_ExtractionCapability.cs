@@ -7,6 +7,9 @@ public class DW_ExtractionCapability
     private List<string> capabilityCoder;
     private GameObject accessor;
 
+    private bool isSelectedAnestheicTool = false;
+    private bool isSelectedForceps = false;
+
     private enum CAPABILITY
     {
         AnestheicTool,
@@ -59,20 +62,51 @@ public class DW_ExtractionCapability
         switch (index)
         {
             case (int)CAPABILITY.AnestheicTool:
+                // Get tool enable for use
                 accessor.AddComponent<DW_AnestheticTool>().Activate();
+
+                // Check tasking is completed
+                if (!GetTaskCheckComplete(isSelectedAnestheicTool)) isSelectedAnestheicTool = true;
                 break;
 
             case (int)CAPABILITY.Forceps:
+                // Get tool enable for use
                 accessor.AddComponent<DW_ForcepsTool>().Activate();
+
+                // Check tasking is completed
+                if (!GetTaskCheckComplete(isSelectedForceps)) isSelectedForceps = true;
                 break;
 
             case (int)CAPABILITY.CottonGauze:
+                // Get tool enable for use
                 accessor.AddComponent<DW_CottonGauze>().Activate();
+
+                // Check tasking is completed
+                GetTaskCheckComplete(true);
                 break;
 
             case (int)CAPABILITY.None:
                 break;
         }
+    }
+    #endregion
+
+    #region MISC
+    private bool GetTaskCheckComplete(bool condition)
+    {
+        // Find for the step have been checked
+        if (!condition)
+        {
+            // Get clearance from the latest with required tool for checking
+            TutorialGame_Script.thisScript.getTasking.GetStepClearance(GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).name);
+
+            // Mark this check as completed
+            return false;
+        }
+
+        // Prompt back the user that the current step have been completed
+        TutorialGame_Script.thisScript.getTasking.GetStepClearance(string.Empty);
+        return true;
     }
     #endregion
 }

@@ -49,6 +49,7 @@ public class DW_ForcepsAdvancement : MonoBehaviour
 
             // Spawn the tool without the selection marker
             tool = Instantiate(forceps);
+            tool.name = toolUsed.name;
 
             // Finalize the tool position to the plotted area
             Vector3 position = toolUsed.transform.position;
@@ -80,11 +81,17 @@ public class DW_ForcepsAdvancement : MonoBehaviour
 
     private void DespawnRolePlay(float delay)
     {
+        // Update content
+        TutorialGame_Script.thisScript.getTasking.GetStepClearance(tool.name);
+
         // Clear away tool
         Destroy(tool, delay);
 
         // Clear away tooth
         Destroy(tooth, delay);
+
+        // Remove script for use
+        Destroy(GetComponent<DW_ForcepsAdvancement>(), delay);
     }
 
     private void PerformTheToolAndTooth(bool condition, float playBack)
@@ -159,9 +166,6 @@ public class DW_ForcepsAdvancement : MonoBehaviour
 
         // Make it disappear from site
         DespawnRolePlay(1);
-
-        // Remove script for use
-        Destroy(GetComponent<DW_ForcepsAdvancement>());
     }
     #endregion
 
