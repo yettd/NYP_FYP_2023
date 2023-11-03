@@ -57,7 +57,7 @@ public class Tolls : MonoBehaviour
   
     }
 
-    private void OnMouseUp()
+    protected virtual void OnMouseUp()
     {
         if(letgoToUse)
         {
@@ -67,8 +67,6 @@ public class Tolls : MonoBehaviour
 
     private void raycastToSelcetTooth()
     {
-        
-
         ray = new Ray(usePoint.transform.position,transform.forward);
         //RaycastHit[] hit = Physics.RaycastAll(ray, Mathf.Infinity);
         

@@ -349,7 +349,7 @@ public class minigameTaskListController : MonoBehaviour
             Destroy(this.model);
             this.model=null;
         }
-        stopRotation();
+        stopRotation(); 
         if (cameraChanger.Instance.GetZoom() )
         {
             if(!gic && toolsname== "Applicator")

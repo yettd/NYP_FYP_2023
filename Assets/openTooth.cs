@@ -54,7 +54,7 @@ public class openTooth : MonoBehaviour
 
             if (pro[i] == Procedure.Filling)
             {
-                gameObject.AddComponent<toothFilling>();
+                gameObject.AddComponent<toothFillingGIC>();
             }
         }
     }
@@ -75,8 +75,8 @@ public class openTooth : MonoBehaviour
                     break;
                 case Procedure.Filling:
                     Debug.Log("asda");
-                    GetComponent<toothFilling>().setUpProblem();
-                    st = Resources.Load<showTask>("minigameTasklist/Filling");
+                    GetComponent<toothFillingGIC>().setUpProblem();
+                    st = Resources.Load<showTask>("minigameTasklist/Filling2");
                     break;
             }
 

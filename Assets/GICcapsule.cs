@@ -12,7 +12,7 @@ public class GICcapsule : Tolls
     int taps = 0;
     bool down = false;
     bool preRequisite = false;
-
+    bool tapDone = false;
     public GameObject model;
     // Start is called before the first frame update
     protected override void Start()
@@ -21,38 +21,55 @@ public class GICcapsule : Tolls
         //letgoToUse = false;
     }
 
+    private void Update()
+    {
+        if(!tapDone)
+        {
+            return;
+        }
+        Debug.Log(down);
+        if (Input.GetMouseButton(0) && down)
+        {
+            Debug.Log("here2");
+            if (transform.localScale.x > 80)
+            {
+                transform.localScale -= new Vector3(1, 0, 0) * Time.timeScale;
+                return;
+            }
+            preRequisite = true;
+        }
+    }
+
     private void OnMouseDown()
     {
-        //if(!down && taps <3)
-        //{
-        //    taps++;
-        //    down = true;
-        //}
-        //if(taps < 3)
-        //{
-        //    return;
-        //}
-
-
-        //if(transform.localScale.x > 80)
-        //{
-        //    transform.localScale -= new Vector3(1, 0, 0) * Time.timeScale;
-        //    return;
-        //}
-        //preRequisite=true;
         base.Start();
+        if(!down)
+        {
+            taps++;
+            down = true;
+        }
+        if (taps < 3)
+        {
+            return;
+        }
+        tapDone = true;
+     
+   
 
     }
-    private void OnMouseUp()
+    protected override void OnMouseUp()
     {
-        down= false;
+        down = false;
+        base.OnMouseUp();
     }
 
     // Update is called once per frame
     protected override void usetool(RaycastHit hit)
     {
-        
-      
+        if(!preRequisite)
+        {
+            return;
+        }
         if(!shake)
         {
             amalgator amalgator;
