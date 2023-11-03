@@ -9,6 +9,10 @@ public class GICcapsule : Tolls
     [SerializeField] RectTransform canvas;
     [SerializeField] Texture2D _brush;
     [SerializeField] bool shake = false;
+    int taps = 0;
+    bool down = false;
+    bool preRequisite = false;
+
     public GameObject model;
     // Start is called before the first frame update
     protected override void Start()
@@ -19,12 +23,35 @@ public class GICcapsule : Tolls
 
     private void OnMouseDown()
     {
+        //if(!down && taps <3)
+        //{
+        //    taps++;
+        //    down = true;
+        //}
+        //if(taps < 3)
+        //{
+        //    return;
+        //}
+
+
+        //if(transform.localScale.x > 80)
+        //{
+        //    transform.localScale -= new Vector3(1, 0, 0) * Time.timeScale;
+        //    return;
+        //}
+        //preRequisite=true;
         base.Start();
+
+    }
+    private void OnMouseUp()
+    {
+        down= false;
     }
 
     // Update is called once per frame
     protected override void usetool(RaycastHit hit)
     {
+        
       
         if(!shake)
         {

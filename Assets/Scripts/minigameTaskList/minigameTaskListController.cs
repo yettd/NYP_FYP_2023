@@ -328,7 +328,7 @@ public class minigameTaskListController : MonoBehaviour
     {
         Destroy(model);
         toolSelected = false; 
-        
+        GIClose.Invoke();
         ResumeRotation.Invoke();
     }
     public void ResumeGame()
@@ -349,7 +349,7 @@ public class minigameTaskListController : MonoBehaviour
             Destroy(this.model);
             this.model=null;
         }
-
+        stopRotation();
         if (cameraChanger.Instance.GetZoom() )
         {
             if(!gic && toolsname== "Applicator")
@@ -370,7 +370,7 @@ public class minigameTaskListController : MonoBehaviour
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(5, 5, 5);
             NameForttOOL.text= toolsname;
-            stopRotation();
+          
         }
 
     }
