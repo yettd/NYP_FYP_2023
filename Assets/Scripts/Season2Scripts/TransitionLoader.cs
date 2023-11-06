@@ -6,7 +6,6 @@ public class TransitionLoader : MonoBehaviour
 {
     public Animator BasicTransition;
     public Animator CupboardTransition;
-
     public float TransitionTime = 10f;
     public void Loadcollections()
     {
@@ -14,11 +13,23 @@ public class TransitionLoader : MonoBehaviour
     }
     public void LoadMainMenu()
     {
-        StartCoroutine(LoadLevelMainMenu(0));
+        StartCoroutine(LoadLevelTutorial(0));
     }
-    public void LoadMiniGameTutorial()
+    public void LoadTutorialLanding()
     {
-        StartCoroutine(LoadLevelTutorial(9));
+        StartCoroutine(LoadLevelTutorial(0));
+    }
+    public void LoadMiniGameTutorialScaling()
+    {
+        StartCoroutine(LoadLevelScaling("Scaling"));
+    }
+    public void LoadMiniGameTutorialFilling()
+    {
+        StartCoroutine(LoadLevelFilling("Filling"));
+    }
+    public void LoadMiniGameTutorialExctraction()
+    {
+        StartCoroutine(LoadLevelExtraction("Extracting"));
     }
     public void LoadGamescene()
     {
@@ -46,7 +57,30 @@ public class TransitionLoader : MonoBehaviour
 
         SceneManager.LoadSceneAsync(levelIndex);
     }
+    public IEnumerator LoadLevelScaling(string index)
+    {
+        CupboardTransition.SetTrigger("StartCupboard");
+        Debug.Log("retard running lah");
+        yield return new WaitForSeconds(TransitionTime);
 
+        SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
+    }
+    public IEnumerator LoadLevelFilling(string index)
+    {
+        CupboardTransition.SetTrigger("StartCupboard");
+        Debug.Log("retard running lah");
+        yield return new WaitForSeconds(TransitionTime);
+
+        SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
+    }
+    public IEnumerator LoadLevelExtraction(string index)
+    {
+        CupboardTransition.SetTrigger("StartCupboard");
+        Debug.Log("retard running lah");
+        yield return new WaitForSeconds(TransitionTime);
+
+        SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
+    }
     public IEnumerator LoadLevelMainMenu(int levelIndex)
     {
         BasicTransition.SetTrigger("start");
@@ -55,5 +89,8 @@ public class TransitionLoader : MonoBehaviour
 
         SceneManager.LoadSceneAsync(levelIndex);
     }
-
+    public void GotoTutortialScene(string index)
+    {
+        SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
+    }
 }

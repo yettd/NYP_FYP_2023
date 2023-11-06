@@ -321,6 +321,12 @@ MonoBehaviour:
   WIN:
     m_PersistentCalls:
       m_Calls: []
+  GIC:
+    m_PersistentCalls:
+      m_Calls: []
+  GIClose:
+    m_PersistentCalls:
+      m_Calls: []
   minigameOpen: 0
   pause: {fileID: 0}
   jaw: []
@@ -330,6 +336,7 @@ MonoBehaviour:
   IsPause: 0
   goodJob: {fileID: 0}
   toolSelection: {fileID: 0}
+  gic: 0
   AmtProblem: {fileID: 0}
   TL: {fileID: 0}
 --- !u!4 &69268443
@@ -672,7 +679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4711098943271490931, guid: 207946f3330362c4a9ec3f7932a67531, type: 3}
       propertyPath: TransitionTime
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4711098943271490931, guid: 207946f3330362c4a9ec3f7932a67531, type: 3}
       propertyPath: BasicTransition
@@ -768,7 +775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7046151560408951161, guid: 207946f3330362c4a9ec3f7932a67531, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00012207
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7046151560408951161, guid: 207946f3330362c4a9ec3f7932a67531, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -784,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7612913738725958595, guid: 207946f3330362c4a9ec3f7932a67531, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
