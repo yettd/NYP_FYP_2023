@@ -309,11 +309,11 @@ public class toothFilling : MonoBehaviour
         dam.transform.parent=gameObject.transform;
         dam.transform.localScale = Vector3.one/2;
         dam.transform.localPosition = Vector3.zero + new Vector3(0, 0.75f, 0); 
-        if (transform.localPosition.z < 0)
-        {
-            dam.transform.rotation = quaternion.Euler(0, 180, 0);
-        }
-
+        //if (transform.localPosition.z > 0)
+        //{
+        //    dam.transform.rotation = quaternion.Euler(0, 180, 0);
+        //}
+        dam.transform.LookAt(transform.parent.position, Vector3.up);
 
         nextTools(true);
     }

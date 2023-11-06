@@ -17,6 +17,7 @@ public class fillingTool : Tolls
     protected override void usetool(RaycastHit hit)
     {
 
+        Debug.Log("ddd");
         toothFilling TDC;
         hit.collider.TryGetComponent<toothFilling>(out TDC);
         if (TDC)

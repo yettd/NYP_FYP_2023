@@ -99,7 +99,6 @@ public class toothFillingGIC : MonoBehaviour
 
     public void GoToStep(RaycastHit hit)
     {
-      
 
         if (done)
         {

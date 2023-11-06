@@ -13,7 +13,9 @@ public class openTooth : MonoBehaviour
     MeshCollider mc;
     public showTask st;
     bool focus;
+    public bool GIC;
     int WhichStepIsOn;
+    
     [SerializeField] List<Procedure> pro = new List<Procedure>();
     // Start is called before the first frame update
     private void OnMouseDown()
@@ -46,7 +48,7 @@ public class openTooth : MonoBehaviour
     private void OnEnable()
     {
 
-        teethMan.tm.back();
+        //teethMan.tm.back();
     }
 
     private void Awake()
@@ -56,6 +58,7 @@ public class openTooth : MonoBehaviour
 
             if (pro[i] == Procedure.Filling)
             {
+                gameObject.AddComponent<toothFilling>();
                 gameObject.AddComponent<toothFillingGIC>();
             }
         }
@@ -77,6 +80,12 @@ public class openTooth : MonoBehaviour
                     break;
                 case Procedure.Filling:
                     Debug.Log("asda");
+                    if (!GIC)
+                    {
+                        GetComponent<toothFilling>().setUpProblem();
+                        st = Resources.Load<showTask>("minigameTasklist/Filling");
+                        break;
+                    }
                     GetComponent<toothFillingGIC>().setUpProblem();
                     st = Resources.Load<showTask>("minigameTasklist/Filling2");
                     break;
