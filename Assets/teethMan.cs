@@ -8,10 +8,11 @@ public class teethMan : MonoBehaviour
     public static teethMan tm;
     public delegate void ClickOn(string TeethName);
     public delegate void BackToOriginal();
+    public delegate void ChangeText(string text, bool a);
 
     public ClickOn CO;
     public BackToOriginal Back;
-
+    public ChangeText CT;
 
     public bool ZoomIn=false;
     private void Awake()
@@ -40,5 +41,9 @@ public class teethMan : MonoBehaviour
     {
         Back();
         ZoomIn = false;
+    }
+    public void ct(string t , bool a)
+    {
+        CT(t,a);
     }
 }
