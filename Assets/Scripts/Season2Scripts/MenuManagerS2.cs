@@ -427,7 +427,6 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openStampCollection()
     {
-        Vibrator.Vibrate(10000);
         if (audioManager != null)
         {
             audioManager.PlaySFX(1);
@@ -441,7 +440,6 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void CloseStampCollection()
     {
-        Vibrator.Vibrate(10000);
         if (audioManager != null)
         {
             audioManager.PlaySFX(1);

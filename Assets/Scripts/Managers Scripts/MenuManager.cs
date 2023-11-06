@@ -173,7 +173,7 @@ public class MenuManager : MonoBehaviour
     // change to demo video scene
     public void OnDemoVidClicked()
     {
-        AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
+        //AudioPlayer.Instance.PlayAudioOneShot(0, .5f);
         sceneChanger.ChangeToVideoScene();
     }
 
