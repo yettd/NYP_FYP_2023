@@ -209,7 +209,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -227,7 +227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   usePoint: {fileID: 6337938010825911640}
-  letgoToUse: 0
   ThresholdForMax: 0
   canvas: {fileID: 0}
   _brush: {fileID: 2800000, guid: 6086f0625101e0f4ca1dbfb76bbd8197, type: 3}

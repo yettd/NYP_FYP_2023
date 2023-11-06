@@ -27,9 +27,8 @@ public class openTooth : MonoBehaviour
         {
             if (!minigameTaskListController.Instance.minigameOpen)
             {
-                //zoom in gum
                 minigameTaskListController.Instance.setGame(topBottom);
-                teethMan.tm.CT("Swipe to rotate \n Click on teeth to zoom in further",false);
+         
             }
             else
             {
@@ -37,7 +36,6 @@ public class openTooth : MonoBehaviour
                 //minigameTaskListController.Instance.gonext();
                 teethMan.tm.CallClickOn(gameObject.name);
 
-                teethMan.tm.CT("Click on the correct tool to use ",true);
             }
         }
   
@@ -46,7 +44,7 @@ public class openTooth : MonoBehaviour
     private void OnEnable()
     {
 
-        teethMan.tm.back();
+      //  teethMan.tm.back();
     }
 
     private void Awake()

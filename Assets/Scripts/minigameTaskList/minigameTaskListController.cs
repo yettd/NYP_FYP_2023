@@ -290,17 +290,13 @@ public class minigameTaskListController : MonoBehaviour
         if(toolSelected ==true)
         {
             RR();
-
-            teethMan.tm.CT("Click on the correct tool to use ", true);
         }
         else if(cameraChanger.Instance.GetZoom()==true)
         {
             TL.gameObject.SetActive(false);
             toolSelection.SetActive(false);
             teethMan.tm.Back();
-            cameraChanger.Instance.ZoomOutCam();
-
-            teethMan.tm.CT("Swipe to rotate \n Click on teeth to zoom in further", false);
+                cameraChanger.Instance.ZoomOutCam();
         }
         else
         {
@@ -308,8 +304,6 @@ public class minigameTaskListController : MonoBehaviour
             {
                 closeGame.Invoke();
                 minigameOpen = false;
-
-                teethMan.tm.CT("Click on which gum to zoom in", false);
             }
             else
             {
@@ -345,7 +339,10 @@ public class minigameTaskListController : MonoBehaviour
 
     public void ToolsSelected(string toolsname, GameObject model)
     {
-    
+        if (NameForttOOL == null)
+        {
+            NameForttOOL = GameObject.Find("EquipmentTypeTxt").GetComponent<TextMeshProUGUI>();
+        }
         if (this.model != null)
         {
             toolSelected = false;
@@ -372,7 +369,7 @@ public class minigameTaskListController : MonoBehaviour
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(5, 5, 5);
-            teethMan.tm.ct($"{toolsname}\n Click and drag the handle to use it", true);
+            NameForttOOL.text= toolsname;
           
         }
 
