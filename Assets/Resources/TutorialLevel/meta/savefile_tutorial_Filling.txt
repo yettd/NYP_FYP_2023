@@ -227,6 +227,15 @@
             "model": {
                 "instanceID": 37382
             }
+        },
+        {
+            "itemName": "ballBurnisher",
+            "icon": {
+                "instanceID": 40834
+            },
+            "model": {
+                "instanceID": 123976
+            }
         }
     ],
     "cleared": {

@@ -13,7 +13,7 @@ public class toothFilling : MonoBehaviour
         toolsForFilling.tripleSyringe, toolsForFilling.etchant,
         toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.tripleSyringe,toolsForFilling.Microbrush,
         toolsForFilling.tripleSyringe,toolsForFilling.lightCure,toolsForFilling.plasticinstrument,
-        toolsForFilling.plasticinstrument,toolsForFilling.lightCure,toolsForFilling.rubberDamForceb };
+        toolsForFilling.plasticinstrument,toolsForFilling.lightCure,toolsForFilling.ballBurnisher };
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
@@ -315,6 +315,8 @@ public class toothFilling : MonoBehaviour
         //}
         dam.transform.LookAt(transform.parent.position, Vector3.up);
 
+        dam.transform.rotation = Quaternion.Euler(0,transform.rotation.y,0);
+
         nextTools(true);
     }
 
@@ -437,6 +439,7 @@ public class toothFilling : MonoBehaviour
         etchant,
         Microbrush,
         lightCure,
+        ballBurnisher,
         plasticinstrument
     }
 }

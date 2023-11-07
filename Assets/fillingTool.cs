@@ -19,10 +19,16 @@ public class fillingTool : Tolls
 
         Debug.Log("ddd");
         toothFilling TDC;
+        toothFillingGIC TDCGIC;
         hit.collider.TryGetComponent<toothFilling>(out TDC);
         if (TDC)
         {
             TDC.GoToStep(hit);
+        }
+        hit.collider.TryGetComponent<toothFillingGIC>(out TDCGIC);
+        if (TDCGIC)
+        {
+            TDCGIC.GoToStep(hit);
         }
     }
 }
