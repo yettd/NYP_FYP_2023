@@ -134,6 +134,9 @@ MonoBehaviour:
   - itemName: Applicator
     icon: {fileID: 2800000, guid: 5ac05867484f3c245a624e1df5f689d0, type: 3}
     model: {fileID: 6877122494220354542, guid: 863ba92705cd9fd428812d793a9ad398, type: 3}
+  - itemName: ballBurnisher
+    icon: {fileID: 2800000, guid: 5ac05867484f3c245a624e1df5f689d0, type: 3}
+    model: {fileID: 4550876686737558486, guid: d5d16a4f8887ee041a9ee72a72467b09, type: 3}
   cleared:
     completed: 0
   toolAccessId: 2
