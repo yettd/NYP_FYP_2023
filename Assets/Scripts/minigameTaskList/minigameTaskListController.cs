@@ -149,6 +149,7 @@ public class minigameTaskListController : MonoBehaviour
         if (NS >= st.TBD.Length)
         {
             CheckGameComplete();
+            NS--;
             return true;
         }
 
@@ -194,35 +195,14 @@ public class minigameTaskListController : MonoBehaviour
         if(NS<st.TBD.Length)
         {
 
-        NextSteps = st.TBD[NS].s;
+            NextSteps = st.TBD[NS].s;
         }
 
 
 
         SetUpTaskList();
         showCorrectStep();
-        //switch(procedure)
-        //{
-        //    case Procedure.Scaling:
-        //        currentStep = Steps.LOCATINGS;
-        //        NextSteps = currentStep + 1;
-        //      //  Debug.Log($"{currentStep} : {NextSteps}");
-        //            break;
-        //    case Procedure.Extration:
-        //        currentStep = Steps.LOCATINGE;
-        //        NextSteps = currentStep + 1;
-        //        //  Debug.Log($"{currentStep} : {NextSteps}");
-        //        break;
-        //    case Procedure.Filling:
-        //        currentStep = Steps.LOCATINGF;
-        //        NextSteps = currentStep + 1;
-        //        //  Debug.Log($"{currentStep} : {NextSteps}");
-        //        break;
-        //}
-
-        //open minimini gameWindow
-
-        //load correct mininigame
+   
     }
 
     private void Update()

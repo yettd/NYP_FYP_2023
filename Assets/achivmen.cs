@@ -67,4 +67,16 @@ public class achivmen : MonoBehaviour
         }
     }
 
+    public void UnlockAchivement(int id = -1 , string NameOfAchivement="")
+    {
+        foreach (AllAchivment AA in allAchivments)
+        {
+            if(id == AA.id || NameOfAchivement == AA.AchivmentName)
+            {
+                AA.have = true;
+            }
+        }
+    }
+
+
 }

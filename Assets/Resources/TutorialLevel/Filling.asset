@@ -120,7 +120,7 @@ MonoBehaviour:
     icon: {fileID: 2800000, guid: db7ff8391b6781548b2e08b0891fd588, type: 3}
     model: {fileID: 402461232451059118, guid: c52731de510362d47961ad9c435e74c6, type: 3}
   - itemName: etchant
-    icon: {fileID: 2800000, guid: db7ff8391b6781548b2e08b0891fd588, type: 3}
+    icon: {fileID: 2800000, guid: 54249c24d4285f142a08d83322b4de28, type: 3}
     model: {fileID: 4550876686737558486, guid: f6edc7ae841047c4fb07331ae7e0e612, type: 3}
   - itemName: rubberDamForceb
     icon: {fileID: 2800000, guid: 49ef171ae7cac27469e38390c26fe21e, type: 3}
@@ -132,10 +132,10 @@ MonoBehaviour:
     icon: {fileID: 2800000, guid: 49ef171ae7cac27469e38390c26fe21e, type: 3}
     model: {fileID: 5464252453992992785, guid: fc0f2a80daab04a41a37108576580ad3, type: 3}
   - itemName: Applicator
-    icon: {fileID: 2800000, guid: 5ac05867484f3c245a624e1df5f689d0, type: 3}
+    icon: {fileID: 2800000, guid: 8d6ca0d2d35d7f14292737d1501a9744, type: 3}
     model: {fileID: 6877122494220354542, guid: 863ba92705cd9fd428812d793a9ad398, type: 3}
   - itemName: ballBurnisher
-    icon: {fileID: 2800000, guid: 5ac05867484f3c245a624e1df5f689d0, type: 3}
+    icon: {fileID: 2800000, guid: 2e1256f1c79c16a44b5f1bb1137990ab, type: 3}
     model: {fileID: 4550876686737558486, guid: d5d16a4f8887ee041a9ee72a72467b09, type: 3}
   cleared:
     completed: 0
