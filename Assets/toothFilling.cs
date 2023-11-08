@@ -108,12 +108,12 @@ public class toothFilling : MonoBehaviour
         {
             return;
         }
-       
-        if(!CorrectSide(hit))
+
+        if (!CorrectSide(hit))
         {
+            Debug.Log(tfs[currecntTool]);
             return;
         }
-        Debug.Log(tfs[currecntTool]);
         if (correctTool())
         {
          
@@ -182,7 +182,7 @@ public class toothFilling : MonoBehaviour
         if (tfs[currecntTool]==toolsForFilling.Microbrush)
         {
             decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
-            if(decay.transform.localScale.x >0.7)
+            if(decay.transform.localScale.x >1.1)
             {
                 nextTools(false);
             }
@@ -270,7 +270,7 @@ public class toothFilling : MonoBehaviour
     void FILLING()
     {
         decay.transform.localScale += Vector3.one * Time.deltaTime*0.5f;
-        if(decay.transform.localScale.x > 1)
+        if(decay.transform.localScale.x > 1.3)
         {
             decay.transform.localScale = Vector3.zero;
             FC= Instantiate(Resources.Load<GameObject>("mat/filling/cap"),transform) as GameObject;
@@ -336,13 +336,13 @@ public class toothFilling : MonoBehaviour
             nextTools(true);
             if(acid)
             {
-                decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/glue");
+                decay.transform.GetChild(0).GetComponent<Renderer>().material = Resources.Load<Material>("mat/glue");
             }
             Destroy(acid);
             return;
         }
 
-        if (decay.transform.localScale.x > 0.6)
+        if (decay.transform.localScale.x > 1.1)
         {
             if (!TS.WaterBlow)
             {
@@ -375,14 +375,15 @@ public class toothFilling : MonoBehaviour
             dam.transform.parent = null;
             if (minigameTaskListController.Instance.TBgums)
             {
+                Debug.Log("FLIP");
                 flip=true;
                 transform.localRotation = Quaternion.Euler(0, 103.362f, 180);
                 gameObject.GetComponent<MeshCollider>().sharedMesh = teethWithHold;
             }
             gameObject.GetComponent<MeshCollider>().convex = true;
-            decay = Instantiate(Resources.Load<GameObject>("mat/filling/decay"),gameObject.transform);
+            decay = Instantiate(Resources.Load<GameObject>("mat/filling/FYP_GunkNEW"),gameObject.transform);
 
-            decayRender=decay.gameObject.GetComponent<Renderer>();
+            decayRender=decay.transform.GetChild(0).gameObject.GetComponent<Renderer>();
             decay.transform.localPosition = new Vector3(0,0.11f,0);
             dam.transform.parent = gameObject.transform;
             GetComponent<MeshFilter>().mesh = teethWithHold;
@@ -401,7 +402,7 @@ public class toothFilling : MonoBehaviour
         decay.transform.localScale -= Vector3.one * Time.deltaTime*0.1f;
         if(decay.transform.localScale.x <0.2)
         {
-            decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");
+            decay.transform.GetChild(0).GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");
             nextTools(true);
         }
     }

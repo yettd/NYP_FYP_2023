@@ -58,8 +58,17 @@ public class openTooth : MonoBehaviour
 
             if (pro[i] == Procedure.Filling)
             {
-                gameObject.AddComponent<toothFilling>();
-                gameObject.AddComponent<toothFillingGIC>();
+                if(!GIC)
+                {
+
+                    gameObject.AddComponent<toothFilling>();
+                }
+                else
+                {
+
+                    gameObject.AddComponent<toothFillingGIC>();
+                }
+
             }
         }
     }

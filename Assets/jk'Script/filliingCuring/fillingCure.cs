@@ -126,6 +126,8 @@ public class fillingCure : MonoBehaviour
 
     public void STOP()
     {
+        if(done) return;
+
         currentDrawing.Clear();
         lineRenderer.positionCount = 0;
         foreach(HitPoint aa in hp)

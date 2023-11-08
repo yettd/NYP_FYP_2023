@@ -26,14 +26,7 @@ public class tripleSyringe : fillingTool
     protected override void usetool(RaycastHit hit)
     {
 
-        toothFilling TDC;
-
-
-        hit.collider.TryGetComponent<toothFilling>(out TDC);
-        if (TDC)
-        {
-            TDC.GoToStep(hit);
-        }
+        base.usetool(hit);
     }
 
     private void OnDestroy()

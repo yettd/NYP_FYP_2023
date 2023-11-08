@@ -10,7 +10,8 @@ using static Unity.Burst.Intrinsics.X86.Avx;
 public class toothFillingGIC : MonoBehaviour
 {
     toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
-        toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.applicator};
+        toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,
+        toolsForFilling.tripleSyringe,toolsForFilling.Applicator,toolsForFilling.plasticinstrument,toolsForFilling.cotton,toolsForFilling.ballBurnisher};
     int currecntTool = 0;
     [SerializeField] Mesh teethWithHold;
     [SerializeField] Material mat;
@@ -104,12 +105,12 @@ public class toothFillingGIC : MonoBehaviour
         {
             return;
         }
-       
-        if(!CorrectSide(hit))
+
+        Debug.Log(tfs[currecntTool]);
+        if (!CorrectSide(hit))
         {
             return;
         }
-        Debug.Log(tfs[currecntTool]);
         if (correctTool())
         {
 
@@ -163,7 +164,7 @@ public class toothFillingGIC : MonoBehaviour
     private void APPLICATOR()
     {
         decay.transform.localScale += Vector3.one * Time.deltaTime * 0.5f;
-        if (decay.transform.localScale.x > 1)
+        if (decay.transform.localScale.x > 1.1)
         {
             decay.transform.localScale = Vector3.zero;
             FC = Instantiate(Resources.Load<GameObject>("mat/filling/cap"), transform) as GameObject;
@@ -178,6 +179,11 @@ public class toothFillingGIC : MonoBehaviour
 
     private void SPread()
     {
+        if (FR.material.color.r >= 1)
+        {
+            nextTools(true);
+        }
+        FR.material.color = new Color(FR.material.color.r + Time.deltaTime, FR.material.color.r + Time.deltaTime, FR.material.color.r + Time.deltaTime, 1.0f);
 
     }
 
@@ -250,9 +256,9 @@ public class toothFillingGIC : MonoBehaviour
 
     void washPond()//washAndBlow
     {
-        if(TS==null)
+        if (TS == null)
         {
-            TS=FindObjectOfType<tripleSyringe>();
+            TS = FindObjectOfType<tripleSyringe>();
         }
 
         water = decayRender.material.color;
@@ -260,23 +266,23 @@ public class toothFillingGIC : MonoBehaviour
         {
             water.a = 0.3f;
             decayRender.material.color = water;
-            decay.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+            decay.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             nextTools(true);
-            if(acid)
+            if (acid)
             {
-                decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/glue");
+                decay.transform.GetChild(0).GetComponent<Renderer>().material = Resources.Load<Material>("mat/glue");
             }
             Destroy(acid);
             return;
         }
 
-        if (decay.transform.localScale.x > 0.6)
+        if (decay.transform.localScale.x > 1.1)
         {
             if (!TS.WaterBlow)
             {
-                if(acid && acid.transform.localScale.x>0.1)
+                if (acid && acid.transform.localScale.x > 0.1)
                 {
-                    acid.transform.localScale -= Vector3.one * Time.deltaTime*0.01f;
+                    acid.transform.localScale -= Vector3.one * Time.deltaTime * 0.01f;
                 }
                 water = new Color(water.r, water.b, water.g, water.a - (Time.deltaTime * 0.1f));
                 decayRender.material.color = water;
@@ -284,34 +290,36 @@ public class toothFillingGIC : MonoBehaviour
             return;
         }
 
-        if(TS.WaterBlow)
+        if (TS.WaterBlow)
         {
-            if(acid)
+            if (acid)
             {
                 //acidRender.material.color =new Color(acidRender.material.color.r, acidRender.material.color.g, acidRender.material.color.b, acidRender.material.color.a - Time.deltaTime);
             }
             decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
         }
-    
+
+
     }
 
     void Drill()
     {
         drillTimer -= Time.deltaTime;
-        if(drillTimer<0)
+        if (drillTimer < 0)
         {
             dam.transform.parent = null;
             if (minigameTaskListController.Instance.TBgums)
             {
-                flip=true;
+                Debug.Log("ddd");
+                flip = true;
                 transform.localRotation = Quaternion.Euler(0, 103.362f, 180);
                 gameObject.GetComponent<MeshCollider>().sharedMesh = teethWithHold;
             }
             gameObject.GetComponent<MeshCollider>().convex = true;
-            decay = Instantiate(Resources.Load<GameObject>("mat/filling/decay"),gameObject.transform);
+            decay = Instantiate(Resources.Load<GameObject>("mat/filling/FYP_GunkNEW"), gameObject.transform);
 
-            decayRender=decay.gameObject.GetComponent<Renderer>();
-            decay.transform.localPosition = new Vector3(0,0.11f,0);
+            decayRender = decay.transform.GetChild(0).gameObject.GetComponent<Renderer>();
+            decay.transform.localPosition = new Vector3(0, 0.11f, 0);
             dam.transform.parent = gameObject.transform;
             GetComponent<MeshFilter>().mesh = teethWithHold;
             GetComponent<Renderer>().material = mat;
@@ -326,10 +334,10 @@ public class toothFillingGIC : MonoBehaviour
 
     void Clean()
     {
-        decay.transform.localScale -= Vector3.one * Time.deltaTime*0.1f;
-        if(decay.transform.localScale.x <0.2)
+        decay.transform.localScale -= Vector3.one * Time.deltaTime * 0.1f;
+        if (decay.transform.localScale.x < 0.2)
         {
-            decay.GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");
+            decay.transform.GetChild(0).GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");
             nextTools(true);
         }
     }
@@ -363,9 +371,11 @@ public class toothFillingGIC : MonoBehaviour
         slowSpeed,
         Spoonexcavator,
         tripleSyringe,
-        applicator,
+        Applicator,
         etchant,
         Microbrush,
+        ballBurnisher,
+        cotton,
         lightCure,
         plasticinstrument
     }

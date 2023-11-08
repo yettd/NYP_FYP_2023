@@ -241,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6799671287103278269}
   m_Layer: 0
-  m_Name: applicator
+  m_Name: Applicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
