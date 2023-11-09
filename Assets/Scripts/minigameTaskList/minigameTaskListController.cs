@@ -279,6 +279,10 @@ public class minigameTaskListController : MonoBehaviour
                     break;
             }
         }
+        if(achivmen.instance.GetIfUnlock(0) && achivmen.instance.GetIfUnlock(1) )
+        {
+            achivmen.instance.GetIfUnlock(3);
+        }
 
 
         saveGameComplation(procedure);
