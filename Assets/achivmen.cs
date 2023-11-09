@@ -21,6 +21,7 @@ public class achivmen : MonoBehaviour
         achimentListPanel = Resources.Load<GameObject>("achivment/achivment");
         ALP = Instantiate(achimentListPanel) as GameObject;
         ALP.SetActive(false);
+        sets();
     }
     public void sets()
     {
@@ -91,6 +92,17 @@ public class achivmen : MonoBehaviour
                 AA.have = true;
             }
         }
+    }
+    public bool GetIfUnlock(int id = -1, string NameOfAchivement = "")
+    {
+        foreach (AllAchivment AA in allAchivments)
+        {
+            if (id == AA.id || NameOfAchivement == AA.AchivmentName)
+            {
+                return (AA.have);
+            }
+        }
+        return false;
     }
 
 
