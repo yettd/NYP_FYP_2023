@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class minigameTaskListController : MonoBehaviour
 {
@@ -62,6 +63,7 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] changePasueToBack pauseButton;
     bool toolSelected;
 
+    public GameObject instrution;
 
     TextMeshProUGUI timerText;
 
@@ -419,6 +421,17 @@ public class minigameTaskListController : MonoBehaviour
                 slot.sprite = TBD.i;
                 first = false;
             }
+            slot.AddComponent<Button>().onClick.AddListener(() =>
+            {
+                if (instrution.transform.parent==slot.transform)
+                {
+                    instrution.SetActive(false);
+                }
+                instrution.SetActive(true);
+                instrution.transform.parent=slot.transform;
+                instrution.transform.position = new Vector3(100, 0, 0);
+                instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
+            });
             
         }
         int i = 0;
