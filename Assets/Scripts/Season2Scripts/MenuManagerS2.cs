@@ -55,6 +55,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     [Header("StampCollection")]
     [SerializeField] private GameObject StampCollection;
+    [SerializeField] private GameObject achivmentText;
 
     bool Settingsactive;
     bool SettingsPageactive;
@@ -446,6 +447,12 @@ public class MenuManagerS2 : MonoBehaviour
         }
         if (StampActive == true)
         {
+            achivmentText = GameObject.Find("achivment(Clone)");
+            if(achivmentText != null)
+            {
+                achivmentText.SetActive(false);
+            }
+
             StampCollection.transform.gameObject.SetActive(false);
             StampActive = false;
         }
