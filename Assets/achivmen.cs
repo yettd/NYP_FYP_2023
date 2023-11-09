@@ -65,7 +65,8 @@ public class achivmen : MonoBehaviour
         {
             if(AA.have)
             {
-          
+
+                achivementList[AA.id].color = new Vector4(1,1,1,1);
              
                 achivementList[AA.id].sprite = AA.AchivmentImage;
                 achivementList[AA.id].gameObject.AddComponent<Button>().onClick.AddListener(() =>
@@ -73,12 +74,19 @@ public class achivmen : MonoBehaviour
                         ALP.SetActive(true);
                         ALP.transform.parent = achivementList[AA.id].transform;
                         ALP.transform.localPosition = new Vector3(0, 110, 0);
-                        ALP.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = $"<b><size=200>{AA.name}</size></b>\n <size=150>{AA.Des}</size>";
+                        ALP.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = $"<b><size=200>{AA.AchivmentName}</size></b>\n <size=150>{AA.Des}</size>";
                     });
             }
             else
             {
-                achivementList[AA.id].sprite = AA.AchivmentImageLock;
+                Button btn;
+                achivementList[(int)AA.id].TryGetComponent<Button>(out btn);
+                if(btn != null)
+                {
+                    btn.enabled= false;
+                }
+                achivementList[AA.id].color = new Vector4(0, 0, 0, 0.5f);
+                achivementList[AA.id].sprite = AA.AchivmentImage;
             }
         }
     }

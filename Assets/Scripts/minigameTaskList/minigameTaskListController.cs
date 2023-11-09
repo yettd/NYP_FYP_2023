@@ -211,8 +211,6 @@ public class minigameTaskListController : MonoBehaviour
             NextSteps = st.TBD[NS].s;
         }
 
-
-
         SetUpTaskList();
         showCorrectStep();
    
@@ -281,7 +279,8 @@ public class minigameTaskListController : MonoBehaviour
         }
         if(achivmen.instance.GetIfUnlock(0) && achivmen.instance.GetIfUnlock(1) )
         {
-            achivmen.instance.GetIfUnlock(3);
+            Debug.Log("asdasd");
+            achivmen.instance.UnlockAchivement(3);
         }
 
 
