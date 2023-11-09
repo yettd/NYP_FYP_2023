@@ -298,8 +298,8 @@ public class toothFilling : MonoBehaviour
 
             GetComponent<MeshFilter>().mesh = OriginalMesh;
             Destroy(FC);
-            Destroy(dam);
-           // dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
+
+            dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
             nextTools(true);
         }
         FC.transform.localPosition -= Vector3.up * Time.deltaTime * 0.5f;

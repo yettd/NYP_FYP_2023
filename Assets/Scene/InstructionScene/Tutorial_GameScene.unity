@@ -2707,6 +2707,7 @@ MonoBehaviour:
   BackBtn: {fileID: 0}
   Camera: {fileID: 0}
   StampCollection: {fileID: 0}
+  achivmentText: {fileID: 0}
 --- !u!4 &416783776
 Transform:
   m_ObjectHideFlags: 0
@@ -4419,7 +4420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &888863143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8389,6 +8390,7 @@ MonoBehaviour:
   BackBtn: {fileID: 0}
   Camera: {fileID: 0}
   StampCollection: {fileID: 0}
+  achivmentText: {fileID: 0}
 --- !u!1 &1775038254
 GameObject:
   m_ObjectHideFlags: 0
@@ -8545,7 +8547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1814461632
 RectTransform:
   m_ObjectHideFlags: 0

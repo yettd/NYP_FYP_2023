@@ -385,7 +385,7 @@ public class minigameTaskListController : MonoBehaviour
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(5, 5, 5);
-            teethMan.tm.ct($"{toolsname}\n Click and drag the handle to use it", true);
+            teethMan.tm.ct($"{toolsname}\n Click and drag the handle to use it \n Click back deselet and to rotate camera again", true);
           
         }
 
