@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class minigameTaskListController : MonoBehaviour
 {
@@ -62,6 +63,7 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] changePasueToBack pauseButton;
     bool toolSelected;
 
+    public GameObject instrution;
 
     TextMeshProUGUI timerText;
 
@@ -304,7 +306,7 @@ public class minigameTaskListController : MonoBehaviour
         {
             RR();
 
-            teethMan.tm.CT("Click on the correct tool to use ", true);
+            teethMan.tm.backText( true);
         }
         else if(cameraChanger.Instance.GetZoom()==true)
         {
@@ -385,7 +387,7 @@ public class minigameTaskListController : MonoBehaviour
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(5, 5, 5);
-            teethMan.tm.ct($"{toolsname}\n Click and drag the handle to use it", true);
+            teethMan.tm.ct($"{toolsname}\n Click and drag the handle to use it \n Click back deselet and to rotate camera again", true);
           
         }
 
@@ -419,6 +421,17 @@ public class minigameTaskListController : MonoBehaviour
                 slot.sprite = TBD.i;
                 first = false;
             }
+            slot.AddComponent<Button>().onClick.AddListener(() =>
+            {
+                if (instrution.transform.parent==slot.transform)
+                {
+                    instrution.SetActive(false);
+                }
+                instrution.SetActive(true);
+                instrution.transform.parent=slot.transform;
+                instrution.transform.position = new Vector3(100, 0, 0);
+                instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
+            });
             
         }
         int i = 0;

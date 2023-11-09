@@ -9,6 +9,7 @@ public class TaskBreakDown
 {
     public Steps s;
     public Sprite i;
+    public string Des;
 }
 
 [CreateAssetMenu(fileName = "ShowTask", menuName = "showTask")]

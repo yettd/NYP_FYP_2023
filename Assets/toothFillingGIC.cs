@@ -352,7 +352,7 @@ public class toothFillingGIC : MonoBehaviour
 
     void Clean()
     {
-        decay.transform.localScale -= Vector3.one * Time.deltaTime * 0.1f;
+        decay.transform.localScale -= Vector3.one * Time.deltaTime * 0.3f;
         if (decay.transform.localScale.x < 0.2)
         {
             decay.transform.GetChild(0).GetComponent<Renderer>().material = Resources.Load<Material>("mat/water");

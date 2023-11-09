@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d982afba0d2eb24f8f86262faead9c7, type: 3}
   m_Name: Achivement 3
   m_EditorClassIdentifier: 
-  AchivmentName: clean
-  AchivmentImage: {fileID: 21300000, guid: 2de335010864e85488dd4820cf4a2205, type: 3}
+  AchivmentName: Fast dentist
+  AchivmentImage: {fileID: 21300000, guid: f4fedd779ad592241995339e2e069fac, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 0b358fceadc0d204e81718845f05aa90, type: 3}
-  have: 0
+  Des: complete all procedure under a minunte
+  have: 1
   id: 3

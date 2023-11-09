@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameCompletion
 {
-    public bool gameScaling;
+    public bool gameScaling=true;
 
-    public bool gameFilling;
+    public bool gameFilling = true;
 
-    public bool gameExtraion;
+    public bool gameExtraion = true;
 
     public void setGC(int a)
     {

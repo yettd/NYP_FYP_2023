@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d982afba0d2eb24f8f86262faead9c7, type: 3}
   m_Name: Achivement 4
   m_EditorClassIdentifier: 
-  AchivmentName: clean
-  AchivmentImage: {fileID: 21300000, guid: 2de335010864e85488dd4820cf4a2205, type: 3}
+  AchivmentName: unlock all DH tool
+  AchivmentImage: {fileID: 21300000, guid: faf70d1f78c9ef247aadb76238262207, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 0b358fceadc0d204e81718845f05aa90, type: 3}
-  have: 0
+  Des: Unlock all dental hygine tool
+  have: 1
   id: 4

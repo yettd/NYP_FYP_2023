@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class openTooth : MonoBehaviour
 {
     public bool topBottom=false;
@@ -38,8 +39,26 @@ public class openTooth : MonoBehaviour
                 //zoom in the teeth;
                 //minigameTaskListController.Instance.gonext();
                 teethMan.tm.CallClickOn(gameObject.name);
+                toothFilling tf;
+                toothFillingGIC tfGIC;
 
-                teethMan.tm.CT("Click on the correct tool to use ",true);
+                TryGetComponent<toothFilling>(out tf);
+                teethMan.tm.CT("Click on the correct tool to use for Scaling ", true);
+                teethMan.tm.s = "Click on the correct tool to use for Scaling ";
+                if (tf)
+                {
+
+                    teethMan.tm.CT("Click on the correct tool to use for \nCR Restoration ", true);
+                    teethMan.tm.s = "Click on the correct tool to use for \nCR Restoration  ";
+                }
+                TryGetComponent<toothFillingGIC>(out tfGIC);
+                if (tfGIC)
+                {
+
+                    teethMan.tm.CT("Click on the correct tool to use for \n GIC Restoration", true);
+                    teethMan.tm.s = "Click on the correct tool to use for \n GIC Restoration ";
+                }
+
             }
         }
   

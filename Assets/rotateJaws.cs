@@ -41,7 +41,7 @@ public class rotateJaws : MonoBehaviour
 
             if (cameraChanger.Instance.ZoomIn.gameObject.activeSelf)
             {
-                cameraChanger.Instance.RoateAround(totalDegree.x, totalDegree.y);
+                cameraChanger.Instance.RoateAround(totalDegree.x, -totalDegree.y);
             }
             else
             {
