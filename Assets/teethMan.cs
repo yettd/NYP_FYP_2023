@@ -14,6 +14,7 @@ public class teethMan : MonoBehaviour
     public BackToOriginal Back;
     public ChangeText CT;
 
+    public string s;
     public bool ZoomIn=false;
     private void Awake()
     {
@@ -45,5 +46,9 @@ public class teethMan : MonoBehaviour
     public void ct(string t , bool a)
     {
         CT(t,a);
+    }
+    public void backText( bool a)
+    {
+        CT(s, a);
     }
 }

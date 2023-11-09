@@ -304,7 +304,7 @@ public class minigameTaskListController : MonoBehaviour
         {
             RR();
 
-            teethMan.tm.CT("Click on the correct tool to use ", true);
+            teethMan.tm.backText( true);
         }
         else if(cameraChanger.Instance.GetZoom()==true)
         {

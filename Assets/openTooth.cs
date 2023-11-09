@@ -44,16 +44,19 @@ public class openTooth : MonoBehaviour
 
                 TryGetComponent<toothFilling>(out tf);
                 teethMan.tm.CT("Click on the correct tool to use for Scaling ", true);
+                teethMan.tm.s = "Click on the correct tool to use for Scaling ";
                 if (tf)
                 {
 
                     teethMan.tm.CT("Click on the correct tool to use for \nCR Restoration ", true);
+                    teethMan.tm.s = "Click on the correct tool to use for \nCR Restoration  ";
                 }
                 TryGetComponent<toothFillingGIC>(out tfGIC);
                 if (tfGIC)
                 {
 
                     teethMan.tm.CT("Click on the correct tool to use for \n GIC Restoration", true);
+                    teethMan.tm.s = "Click on the correct tool to use for \n GIC Restoration ";
                 }
 
             }
