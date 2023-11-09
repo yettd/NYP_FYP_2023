@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+
 public class minigameTaskListController : MonoBehaviour
 {
 
@@ -51,7 +52,7 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] UnityEvent StopRotation;
     [SerializeField] UnityEvent ResumeRotation;
     [SerializeField] UnityEvent WIN;
-
+    float timerForGame;
     [SerializeField] UnityEvent GIC;
     [SerializeField] UnityEvent GIClose;
     public bool minigameOpen;
@@ -61,6 +62,8 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] changePasueToBack pauseButton;
     bool toolSelected;
 
+
+    TextMeshProUGUI timerText;
 
     [SerializeField]float problemTeeth;
     [SerializeField] float solvedTeetg;
@@ -105,14 +108,18 @@ public class minigameTaskListController : MonoBehaviour
     }
     private void Start()
     {
-         Almagotrrr = GameObject.Find("Almagotrrr");
+        timerForGame = 0;
+        timerText= GameObject.Find("timer").GetComponent<TextMeshProUGUI>();
+        timerText.text = "0";
+        StartCoroutine("increaseTimer");
+        Almagotrrr = GameObject.Find("Almagotrrr");
         Almagotrrr.SetActive(false);
         //load steps
         string a = Saving.save.LoadFromJson("game");
         if (a!=null)
         {
             GC = JsonUtility.FromJson<GameCompletion>(Saving.save.LoadFromJson("game"));
-            Debug.Log(a);
+         
         }
         else
         {
@@ -120,6 +127,13 @@ public class minigameTaskListController : MonoBehaviour
            
         }
         
+    }
+    IEnumerator increaseTimer()
+    {
+        yield return new WaitForSeconds(1);
+        timerForGame++;
+        timerText.text =timerForGame.ToString();
+        StartCoroutine("increaseTimer");
     }
 
     private void saveGameComplation(Procedure pro)
@@ -189,7 +203,6 @@ public class minigameTaskListController : MonoBehaviour
 
         this.st = st;
         CS = DidAStep;
-        Debug.Log(CS);
         currentStep = st.TBD[CS].s;
         NS = CS + 1;
         if(NS<st.TBD.Length)
@@ -251,6 +264,23 @@ public class minigameTaskListController : MonoBehaviour
     public void OnGameComplete()
     {
         //playAnimation for completion;
+        StopAllCoroutines();
+
+        if(timerForGame < 60)
+        {
+            switch(procedure)
+            {
+                case Procedure.Scaling:
+                    achivmen.instance.UnlockAchivement(0,"scalingInMin");
+                    break;
+
+                case Procedure.Filling:
+                    achivmen.instance.UnlockAchivement(1, "scalingInMin");
+                    break;
+            }
+        }
+
+
         saveGameComplation(procedure);
         WIN.Invoke();
     }

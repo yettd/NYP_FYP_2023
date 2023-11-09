@@ -6,6 +6,7 @@ using UnityEngine.SocialPlatforms;
 using DG.Tweening;
 using Unity.Mathematics;
 using static Unity.Burst.Intrinsics.X86.Avx;
+using System;
 
 public class toothFillingGIC : MonoBehaviour
 {
@@ -140,8 +141,25 @@ public class toothFillingGIC : MonoBehaviour
                 case Steps.SPREAD:
                     SPread();   
                     break;
+                case Steps.POLISH:
+                    POLISH();
+                    break;
             }
         }
+    }
+
+    private void POLISH()
+    {
+        if (FC.transform.localPosition.y > -0.5)
+        {
+
+            GetComponent<MeshFilter>().mesh = OriginalMesh;
+            Destroy(FC);
+            Destroy(dam);
+            // dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
+            nextTools(true);
+        }
+        FC.transform.localPosition -= Vector3.up * Time.deltaTime * 0.5f;
     }
 
     private void dentine()
@@ -346,6 +364,8 @@ public class toothFillingGIC : MonoBehaviour
     {
         if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool].ToString())
         {
+
+            Debug.Log("asdasdasd :" + minigameTaskListController.Instance.GetSelectedtool());
             return true;
         }
         return false;

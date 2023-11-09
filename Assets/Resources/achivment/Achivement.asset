@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d982afba0d2eb24f8f86262faead9c7, type: 3}
   m_Name: Achivement
   m_EditorClassIdentifier: 
-  AchivmentName: clean
-  AchivmentImage: {fileID: 21300000, guid: 2de335010864e85488dd4820cf4a2205, type: 3}
-  AchivmentImageLock: {fileID: 21300000, guid: df32db3288c4ace4483a7b6f85e2217e, type: 3}
+  AchivmentName: scalingInMin
+  AchivmentImage: {fileID: 21300000, guid: 46b148ac9dc38c4458898492f8653138, type: 3}
+  AchivmentImageLock: {fileID: 21300000, guid: 64e8e53c5b8386340a8accec2818daf7, type: 3}
+  Des: Did scaling in a min
   have: 0
   id: 0

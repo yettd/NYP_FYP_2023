@@ -51,7 +51,6 @@ public class rotateJaws : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0))
         {
-            Debug.Log(cameraChanger.Instance.GetZoom());
             if(cameraChanger.Instance.GetZoom())
             {
                 totalDegree = Vector2.zero;

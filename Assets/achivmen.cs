@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.EventSystems;
 
 public class achivmen : MonoBehaviour
 {
@@ -11,11 +13,14 @@ public class achivmen : MonoBehaviour
     [SerializeField]Image[] achivementImg;
     [SerializeField]List<Image> achivementList;
 
+    GameObject achimentListPanel;
+    GameObject ALP;
     // Start is called before the first frame update
     void Start()
     {
-
-
+        achimentListPanel = Resources.Load<GameObject>("achivment/achivment");
+        ALP = Instantiate(achimentListPanel) as GameObject;
+        ALP.SetActive(false);
     }
     public void sets()
     {
@@ -33,6 +38,7 @@ public class achivmen : MonoBehaviour
             }
             if (achivementImg[i] != null)
             {
+              
                 achivementList.Add(achivementImg[i]);
             }
             i++;
@@ -58,7 +64,16 @@ public class achivmen : MonoBehaviour
         {
             if(AA.have)
             {
+          
+             
                 achivementList[AA.id].sprite = AA.AchivmentImage;
+                achivementList[AA.id].gameObject.AddComponent<Button>().onClick.AddListener(() =>
+                    {
+                        ALP.SetActive(true);
+                        ALP.transform.parent = achivementList[AA.id].transform;
+                        ALP.transform.localPosition = new Vector3(0, 110, 0);
+                        ALP.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = $"<b><size=200>{AA.name}</size></b>\n <size=150>{AA.Des}</size>";
+                    });
             }
             else
             {

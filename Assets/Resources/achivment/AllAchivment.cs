@@ -12,6 +12,7 @@ public class AllAchivment : ScriptableObject
     public Sprite AchivmentImage;
     public Sprite AchivmentImageLock;
 
+    public string Des;
 
     public bool have;
     public int id;
