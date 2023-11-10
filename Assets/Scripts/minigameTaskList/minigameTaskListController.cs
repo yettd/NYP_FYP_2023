@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 
 public class minigameTaskListController : MonoBehaviour
 {
+    private AudioManager audioManager;
 
     [SerializeField] private GameObject SettingsPanel;
     bool SettingsPanelactive;
@@ -88,6 +89,12 @@ public class minigameTaskListController : MonoBehaviour
    [SerializeField]TextMeshProUGUI AmtProblem;
     private void Awake()
     {
+        audioManager = AudioManager.Instance;
+
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found.");
+        }
         if (Instance==null)
         {
             Instance = this;
@@ -157,7 +164,7 @@ public class minigameTaskListController : MonoBehaviour
 
     public bool gonext()
     {
-
+        audioManager.PlaySFX(5);
         CS = NS;
         currentStep = st.TBD[CS].s;
         showCorrectStep();

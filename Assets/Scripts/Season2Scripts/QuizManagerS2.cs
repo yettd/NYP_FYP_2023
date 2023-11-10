@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class QuizManagerS2 : MonoBehaviour
 {
+    private AudioManager audioManager;
+
     List<QnA> QnA;
     public GameObject[] options;
     public int CurrentQuestion;
@@ -25,8 +27,22 @@ public class QuizManagerS2 : MonoBehaviour
     public GameObject QuizPanel;
     private int highScore;
 
-    public bool polishExtractionTools; //for later
+    //public bool polishExtractionTools; //for later
 
+    private void Awake()
+    {
+        audioManager = AudioManager.Instance;
+
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found.");
+        }
+
+        if (audioManager != null)
+        {
+            audioManager.PlayBackgroundMusic(2);
+        }
+    }
     public void openMainMenu()
     {
         SceneManager.LoadScene(0);
@@ -130,7 +146,7 @@ public class QuizManagerS2 : MonoBehaviour
     public void Correct()
     {
         score++;
-
+        audioManager.PlaySFX(4);
         totalQuestionsAsked++;
         if (totalQuestionsAsked < 10)
         {
@@ -145,6 +161,7 @@ public class QuizManagerS2 : MonoBehaviour
     public void Wrong()
     {
         totalQuestionsAsked++;
+        audioManager.PlaySFX(4);
         if (totalQuestionsAsked < 10)
         {
             GenerateQuestion();
@@ -192,7 +209,7 @@ public class QuizManagerS2 : MonoBehaviour
 
         if (score >= totalQuestionsAsked / 100 * 70)
         {
-            polishExtractionTools = true;
+            //polishExtractionTools = true;
             cleanPolish();
         }
         if (score > highScore)
