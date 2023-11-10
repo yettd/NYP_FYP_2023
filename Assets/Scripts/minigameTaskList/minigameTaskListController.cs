@@ -55,6 +55,8 @@ public class minigameTaskListController : MonoBehaviour
     [SerializeField] UnityEvent ResumeRotation;
     [SerializeField] UnityEvent WIN;
     float timerForGame;
+    float timerForMin;
+    float timerForTenth;
     [SerializeField] UnityEvent GIC;
     [SerializeField] UnityEvent GIClose;
     public bool minigameOpen;
@@ -120,7 +122,7 @@ public class minigameTaskListController : MonoBehaviour
     {
         timerForGame = 0;
         timerText= GameObject.Find("timer").GetComponent<TextMeshProUGUI>();
-        timerText.text = "0";
+        timerText.text = "0 : 00";
         StartCoroutine("increaseTimer");
         Almagotrrr = GameObject.Find("Almagotrrr");
         Almagotrrr.SetActive(false);
@@ -142,7 +144,17 @@ public class minigameTaskListController : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         timerForGame++;
-        timerText.text =timerForGame.ToString();
+        if(timerForGame > 9)
+        {
+            timerForTenth++;
+            if(timerForTenth>=6)
+            {
+                timerForMin++;
+                timerForTenth = 0;
+            }
+            timerForGame = 0;
+        }
+        timerText.text =$"{timerForMin} : {timerForTenth}{timerForGame.ToString()}";
         StartCoroutine("increaseTimer");
     }
 
@@ -274,7 +286,7 @@ public class minigameTaskListController : MonoBehaviour
         //playAnimation for completion;
         StopAllCoroutines();
 
-        if(timerForGame < 60)
+        if(timerForMin < 10)
         {
             switch(procedure)
             {
