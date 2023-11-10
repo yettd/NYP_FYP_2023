@@ -17,38 +17,38 @@ MonoBehaviour:
   description: User will learn about the extraction of tooth with the step to follow.
   step:
   - Icon: {fileID: 2800000, guid: 39d0d38f98dfd0c4fb9e1c1d9b4c5aef, type: 3}
-    title: Understanding
+    title: Extraction
     instruction: 'Locate the Issue of the problem '
     requiredTool: Syringe
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: cc3b5eb67aac85d499bc070351f15031, type: 3}
-    title: Ease Pain
+    title: Extraction
     instruction: Apply anesthetic through the gum area to help ease of pain before
       the extracting the tooth.
     requiredTool: Syringe
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 4cab2711ea230c041aae5ff86384c303, type: 3}
-    title: Ready Up
+    title: Extraction
     instruction: Prepare the Foresceps for removal
     requiredTool: Forceps
     completed: 1
     taskDone: 1
   - Icon: {fileID: 2800000, guid: d65fe7afa063e3943950a1a9e7bc1165, type: 3}
-    title: Clamp
+    title: Extraction
     instruction: Apply some cotton gauze to help clear over the unwanted particle.
     requiredTool: Forceps
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: d2fa814a86618b742a75ba620fb75ac2, type: 3}
-    title: Removal
+    title: Extraction
     instruction: Use the forcesp tool and toogle it over to remove the damaged tooth.
     requiredTool: Forceps
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 4564ccceaed8732409c0981b2e3e2066, type: 3}
-    title: Finishing product
+    title: Extraction
     instruction: Apply some cotton gauze to help clear over the unwanted particle.
     requiredTool: CottonGauze
     completed: 1
