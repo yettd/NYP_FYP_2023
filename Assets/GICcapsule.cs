@@ -27,16 +27,32 @@ public class GICcapsule : Tolls
         {
             return;
         }
-        Debug.Log(down);
+        if (!preRequisite)
+        {
+
+            teethMan.tm.ct("compress the capsule", true);
+        }
+        else
+        {
+
+            teethMan.tm.ct("put it in the Amalgamator", true);
+        }
+
         if (Input.GetMouseButton(0) && down)
         {
             Debug.Log("here2");
             if (transform.localScale.x > 80)
             {
-                transform.localScale -= new Vector3(1, 0, 0) * Time.timeScale;
+                transform.localScale -= new Vector3(1, 0, 0) * Time.timeScale*.1f;
                 return;
             }
+            teethMan.tm.ct("put it in the Amalgamator", true);
             preRequisite = true;
+        }
+        if (shake)
+        {
+
+            teethMan.tm.ct("put it in the applicator to start using it", true);
         }
     }
 
@@ -52,6 +68,7 @@ public class GICcapsule : Tolls
         {
             return;
         }
+        teethMan.tm.ct("compress the capsule", true);
         tapDone = true;
      
    

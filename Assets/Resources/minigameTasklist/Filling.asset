@@ -35,23 +35,23 @@ MonoBehaviour:
     i: {fileID: 21300000, guid: 5ff2c18ca1fa01647b7e115ba21e84cb, type: 3}
     Des: apply the primer
   - s: 8
-    i: {fileID: 21300000, guid: e8dca6d41b4b77944a1529fa19db173d, type: 3}
+    i: {fileID: 21300000, guid: 5ff2c18ca1fa01647b7e115ba21e84cb, type: 3}
     Des: blow and drry the primer
   - s: 9
-    i: {fileID: 21300000, guid: f6d9e4476096f514480d8c4ad4ca7274, type: 3}
+    i: {fileID: 21300000, guid: e8dca6d41b4b77944a1529fa19db173d, type: 3}
     Des: appl the adhesive
   - s: 10
-    i: {fileID: 21300000, guid: 974980deb18c21646a60a503a8c8e25f, type: 3}
+    i: {fileID: 21300000, guid: f6d9e4476096f514480d8c4ad4ca7274, type: 3}
     Des: put the filling mat
   - s: 11
-    i: {fileID: 21300000, guid: 11775dda19114e347aa7edb799f347f4, type: 3}
+    i: {fileID: 21300000, guid: 974980deb18c21646a60a503a8c8e25f, type: 3}
     Des: contour
   - s: 12
-    i: {fileID: 21300000, guid: b0ce3e95ce5b25949a6aef2f8469543d, type: 3}
+    i: {fileID: 21300000, guid: 974980deb18c21646a60a503a8c8e25f, type: 3}
     Des: light cure it
   - s: 13
-    i: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    i: {fileID: 21300000, guid: 11775dda19114e347aa7edb799f347f4, type: 3}
     Des: 'polish '
   - s: 17
     i: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    Des: 
+    Des: DONE

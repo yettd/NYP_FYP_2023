@@ -380,6 +380,7 @@ public class minigameTaskListController : MonoBehaviour
         {
             if(!gic && toolsname== "Applicator")
             {
+                teethMan.tm.ct("tap the GIC capsule 3 time", true);
                 GIC.Invoke();
                 return;
             }
