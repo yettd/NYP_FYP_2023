@@ -70,6 +70,7 @@ public class minigameTaskListController : MonoBehaviour
 
     [SerializeField]float problemTeeth;
     [SerializeField] float solvedTeetg;
+    GameObject insturitionParent;
     public bool IsPause;
     showTask st;
 
@@ -430,13 +431,15 @@ public class minigameTaskListController : MonoBehaviour
             }
             slot.AddComponent<Button>().onClick.AddListener(() =>
             {
-                if (instrution.transform.parent==slot.transform)
+                if (instrution.transform.parent==slot.gameObject.transform)
                 {
+                    instrution.transform.parent = null;
                     instrution.SetActive(false);
+                    return;
                 }
                 instrution.SetActive(true);
                 instrution.transform.parent=slot.transform;
-                instrution.transform.position = new Vector3(100, 0, 0);
+                instrution.transform.localPosition = new Vector3(300, 0, 0);
                 instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
             });
             
