@@ -14,96 +14,94 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Filling
   Icon: {fileID: 2800000, guid: 98e88f6fd8b64804f9532228f7412555, type: 3}
-  description: ???
+  description: Remove Plaque and fill in the hole that was made
   step:
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
+  - Icon: {fileID: 2800000, guid: 3e231ad603f43214fbc222b00d670a1e, type: 3}
+    title: Filling
     instruction: 'Apply rubber dam with rubber forceps '
     requiredTool: ' rubber dam'
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Select a slow speed handpiece with round bur '
+  - Icon: {fileID: 2800000, guid: 8cd826ed839dd9848bf92a1301e3b46a, type: 3}
+    title: Filling
+    instruction: 'Select a slow speed handpiece with round bur and Remove maximum
+      decay with the bur  '
     requiredTool: 'slow speed handpiece '
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Remove maximum decay with the bur '
-    requiredTool: 'slow speed handpiece '
-    completed: 1
-    taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
+  - Icon: {fileID: 2800000, guid: ad4e3a02313437645988abda79f8db95, type: 3}
+    title: Filling
     instruction: 'Select spoon excavator '
-    requiredTool: 'slow speed handpiece '
+    requiredTool: Spoonexcavator
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
+  - Icon: {fileID: 2800000, guid: 9257cecebab5bd540b343dc8b5e93d22, type: 3}
+    title: Filling
+    instruction: Wash And Blow dry
+    requiredTool: 'tripleSyringe '
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 5ce1c19e7b5dd614fb1143c563c9a530, type: 3}
+    title: Filling
     instruction: 'Remove remnants of the decay '
-    requiredTool: 'slow speed handpiece '
+    requiredTool: Microbrush
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Wash and blow dry '
-    requiredTool: 'slow speed handpiece '
-    completed: 1
-    taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
+  - Icon: {fileID: 2800000, guid: fbca0aba9a025994ea3dcb51fe87f15d, type: 3}
+    title: Filling
     instruction: 'Etch the dentine and enamel using etchant (37% Phosphoric Acid).  '
-    requiredTool: 'slow speed handpiece '
+    requiredTool: etchant
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Etch the dentine and enamel using etchant (37% Phosphoric Acid).  '
-    requiredTool: 'slow speed handpiece '
+  - Icon: {fileID: 2800000, guid: 3f9cc17957c76d9469aa5a04feb25db8, type: 3}
+    title: Filling
+    instruction: Select Gic Capsule, Tap The Capsule Gently To Loosen The Powder
+    requiredTool: GIC
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Wash thoroughly and dry the cavity but do not over dry (desiccate)
-      it.  '
-    requiredTool: 'slow speed handpiece '
+  - Icon: {fileID: 2800000, guid: 601a3606f87cc1049bd63c7543f7674d, type: 3}
+    title: Filling
+    instruction: Compress The End Of The Capsule
+    requiredTool: GIC
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Apply primer to the whole cavity with a microbrush, blow gently,
-      the cavity should appear shiny.  '
-    requiredTool: 'slow speed handpiece '
+  - Icon: {fileID: 2800000, guid: 76cd7285c3143064f821d0c3f3df726e, type: 3}
+    title: Filling
+    instruction: Place The CapsuleInto The Amalgamator For Mixing
+    requiredTool: GIC
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Apply adhesive to the whole cavity with another microbrush, blow
-      gently to avoid pooling. Light cure. '
-    requiredTool: 'slow speed handpiece '
+  - Icon: {fileID: 2800000, guid: 48d85289013809d46b56cf3267fdfe40, type: 3}
+    title: Filling
+    instruction: After Mixing, Fit The Capsule On The Gic Applicator (Dispenser Gun)
+    requiredTool: Applicator
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Place CR into the cavity incrementally with a plastic instrument,
-      contour the CR before light cure. '
-    requiredTool: 'slow speed handpiece '
+  - Icon: {fileID: 2800000, guid: 28b931b7f02ee1a4284b984b908dd458, type: 3}
+    title: Filling
+    instruction: Dispense The Material Into The Cavity To Fill It With The Applicator
+      And Contour The Filling Before It Dries
+    requiredTool: Applicator
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
-    instruction: 'Remove excessive CR by polishing with white stone/ smooth diamond
-      polishing burs  '
-    requiredTool: 'slow speed handpiece '
+  - Icon: {fileID: 2800000, guid: 6612d5864b8feee49b5ee6296dc27093, type: 3}
+    title: Filling
+    instruction: Spread A Thin Layer Of Vaseline To Protect From Moisture Contamination
+    requiredTool: cotton
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: dccc991edf8b7ba4dba155fc8ac86cf0, type: 3}
-    title: ???
+  - Icon: {fileID: 2800000, guid: da73db227ca24794ebf6d7491f7ef738, type: 3}
+    title: Filling
     instruction: 'Check occlusion after removing the rubber dam and polish again
       as required. '
-    requiredTool: 'slow speed handpiece '
+    requiredTool: ballBurnisher
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: da73db227ca24794ebf6d7491f7ef738, type: 3}
+    title: Filling
+    instruction: Check Occulsion After Removing The Rudder Dam And Polish Again As
+      Required
+    requiredTool: ballBurnisher
     completed: 1
     taskDone: 0
   tools:
@@ -140,6 +138,9 @@ MonoBehaviour:
   - itemName: cotton
     icon: {fileID: 2800000, guid: b8e262587ae53034fb5bbb313dd07910, type: 3}
     model: {fileID: 4550876686737558486, guid: bf4f7680a580113419ec53aa757b561f, type: 3}
+  - itemName: GIC
+    icon: {fileID: 2800000, guid: 8cfadc423ac79f143a6f1dbbd5599bf9, type: 3}
+    model: {fileID: 919132149155446097, guid: da834ba7703ea264fbe7086a0a60583f, type: 3}
   cleared:
     completed: 0
   toolAccessId: 2

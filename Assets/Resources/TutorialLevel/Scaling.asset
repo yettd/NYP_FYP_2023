@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Scaling
   Icon: {fileID: 2800000, guid: c8c5852e4211a254f8df40398a88137e, type: 3}
-  description: There is no description.
+  description: You will have to Scale the teeth for this minigame
   step:
   - Icon: {fileID: 2800000, guid: a47aa06820765f8429993c5f707e6516, type: 3}
     title: Scaling
-    instruction: Juat Scale
+    instruction: Use the Correct Gracey to scale the Tar Tar of theteeth and make
+      it clean
     requiredTool: Gracey1_2
     completed: 1
     taskDone: 0
