@@ -6,7 +6,9 @@ using UnityEngine.EventSystems;
 public class Hoverover : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler
 {
     rotateJaws rj;
-  
+
+   
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (rj == null)
@@ -22,6 +24,8 @@ public class Hoverover : MonoBehaviour , IPointerEnterHandler, IPointerExitHandl
         rj.overUI = false;
         Debug.Log("testDONE");
     }
+
+ 
 
 
 
