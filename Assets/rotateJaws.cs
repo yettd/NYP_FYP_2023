@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class rotateJaws : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class rotateJaws : MonoBehaviour
     bool down;
     float diffx;
 
+    public bool overUI;
 
     Vector2 Xy;
     Vector2  newXY;
@@ -20,8 +23,10 @@ public class rotateJaws : MonoBehaviour
  
     private void Update()
     {
-        if (Input.GetMouseButton(0) || Input.touchCount > 0)
+       
+        if ((Input.GetMouseButton(0) || Input.touchCount > 0)&& overUI==false)
         {
+
             if (!down)
             {
                 Xy = Input.mousePosition;
