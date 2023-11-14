@@ -28,7 +28,7 @@ public class MinigameScore : MonoBehaviour
         ratingTime[0].text=GC.scalingTime.ToString();
         ratingimage[0].sprite = ratingSprite[GC.scalingRating];
 
-        ratingTime[1].text = GC.scalingTime.ToString();
+        ratingTime[1].text = GC.FillingTime.ToString();
         ratingimage[1].sprite = ratingSprite[GC.FillingRating];
         ratingTime[2].text = GC.scalingTime.ToString();
         ratingimage[2].sprite = ratingSprite[GC.ExtrationRating];
