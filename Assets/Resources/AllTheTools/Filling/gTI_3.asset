@@ -28,4 +28,5 @@ MonoBehaviour:
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 1579cc0788ff0094bb066f9a378f6f6b, type: 3}
   rusty: 1
+  view: 0
   DTDH: 1
