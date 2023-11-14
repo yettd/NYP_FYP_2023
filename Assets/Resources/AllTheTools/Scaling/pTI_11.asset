@@ -26,8 +26,12 @@ MonoBehaviour:
     Adapt lower blade.\r\n3. Apply small vertical /or oblique strokes, \r\noverlapping.\r\n4.
     Functional shank \u201Cgoes up and over the \r\ntooth\u201D."
   dentalItem: {fileID: 5697753356249980126, guid: 38e7b71e3aee0f74b9ad61c3ac148a00, type: 3}
-  videoClip: {fileID: 0}
+  videoClip: {fileID: 32900000, guid: 50b28bdd6eb509142820da5d8856ffd9, type: 3}
   RustyIcon: {fileID: 21300000, guid: 5b0db440f5c819a409773e84cdc2e42b, type: 3}
+<<<<<<< Updated upstream
   rusty: 1
+=======
+  rusty: 0
+>>>>>>> Stashed changes
   view: 0
   DTDH: 0

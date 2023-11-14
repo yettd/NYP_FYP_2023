@@ -31,6 +31,10 @@ MonoBehaviour:
   dentalItem: {fileID: 5775655181856688166, guid: 9ed9d115453ab7f40b1df894953d61a4, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 5def8bc73ad267f4eb64a9bbc2d99731, type: 3}
+<<<<<<< Updated upstream
   rusty: 1
+=======
+  rusty: 0
+>>>>>>> Stashed changes
   view: 0
   DTDH: 0
