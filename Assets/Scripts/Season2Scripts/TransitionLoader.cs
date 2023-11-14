@@ -47,8 +47,8 @@ public class TransitionLoader : MonoBehaviour
 
     public IEnumerator LoadLevelCollection(int levelIndex)
     {
-        BasicTransition.SetTrigger("start");
-
+        //BasicTransition.SetTrigger("start");
+        CupboardTransition.SetTrigger("StartCupboard");
         yield return new WaitForSeconds(TransitionTime);
 
         SceneManager.LoadSceneAsync(levelIndex);
