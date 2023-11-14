@@ -30,9 +30,6 @@ public class collectionButton : MonoBehaviour
         //Each button is unique and have their own index
         button.onClick.AddListener(() =>
         {
-            //Assign the index so that tru out the app will able to know which tool was last picked
-              // ButtonReferenceManager.Instance.storedIndex = index;
-
             //Assign the ID to ToolSelection so that we can know where we came from
             //  ButtonReferenceManager.Instance.storedButtonID = ButtonENUM.TOOLSELECTION;
             collectionManager.CM.Display(index);

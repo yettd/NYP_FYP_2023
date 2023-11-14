@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: f4fedd779ad592241995339e2e069fac, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 0b358fceadc0d204e81718845f05aa90, type: 3}
   Des: complete all procedure under a minunte
-  have: 1
+  have: 0
   id: 3
