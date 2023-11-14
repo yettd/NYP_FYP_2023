@@ -209,22 +209,14 @@ public class QuizManagerS2 : MonoBehaviour
             DisplayFinalScore();
         }
     }
-
     public void setAnswers()
     {
         for (int i = 0; i < options.Length; i++)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false;
+            options[i].GetComponent<AnswerScript>().isCorrect = (i == QnA[CurrentQuestion].correctAnswer - 1);
             options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = QnA[CurrentQuestion].answers[i];
-
-            if (QnA[CurrentQuestion].correctAnswer == i + 1)
-            {
-                options[i].GetComponent<AnswerScript>().isCorrect = true;
-                Debug.Log("Correct answer: " + QnA[CurrentQuestion].correctAnswer);
-            }
         }
     }
-
     public void GenerateQuestion()
     {
         if (QnA.Count == 0 || totalQuestionsAsked >= 10)
@@ -234,10 +226,12 @@ public class QuizManagerS2 : MonoBehaviour
         }
 
         CurrentQuestion = Random.Range(0, QnA.Count);
+        ShuffleAnswers(QnA[CurrentQuestion]); // Shuffle answers
         QuestionTxt.text = QnA[CurrentQuestion].question;
         setAnswers();
         QnA.RemoveAt(CurrentQuestion);
     }
+
 
     private void DisplayFinalScore()
     {
@@ -337,6 +331,29 @@ public class QuizManagerS2 : MonoBehaviour
             questions[i] = questions[randomIndex];
             questions[randomIndex] = temp;
         }
+    }
+
+    private void ShuffleAnswers(QnA question)
+    {
+        int correctAnswerIndex = question.correctAnswer - 1; 
+        string correctAnswer = question.answers[correctAnswerIndex];
+
+        for (int i = 0; i < question.answers.Length; i++)
+        {
+            string temp = question.answers[i];
+            int randomIndex = Random.Range(i, question.answers.Length);
+            question.answers[i] = question.answers[randomIndex];
+            question.answers[randomIndex] = temp;
+        }
+        for (int i = 0; i < question.answers.Length; i++)
+        {
+            if (question.answers[i] == correctAnswer)
+            {
+                correctAnswerIndex = i;
+                break;
+            }
+        }
+        question.correctAnswer = correctAnswerIndex + 1; 
     }
 
     private void UpdateTeethImagesBasedOnTime(float remainingTime)

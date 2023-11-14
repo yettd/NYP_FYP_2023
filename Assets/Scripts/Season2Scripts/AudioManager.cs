@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
         }
         bool isMusicMuted = PlayerPrefs.GetInt("IsMusicMuted", 0) == 1;
         bool isSoundMuted = PlayerPrefs.GetInt("IsSoundMuted", 0) == 1;
+
         musicSource = gameObject.AddComponent<AudioSource>();
         sfxSource = gameObject.AddComponent <AudioSource>();
 
@@ -36,6 +37,8 @@ public class AudioManager : MonoBehaviour
 
         SetMusicVolume(PlayerPrefs.GetFloat(MusicVolumeKey, 1f));
         SetSFXVolume(PlayerPrefs.GetFloat(SFXVolumeKey, 1f));
+        MuteMusic(isMusicMuted);
+        MuteSFX(isSoundMuted);
 
         PlayBackgroundMusic(0); 
     }

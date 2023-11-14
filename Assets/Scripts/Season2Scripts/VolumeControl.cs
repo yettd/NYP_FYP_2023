@@ -23,9 +23,6 @@ public class VolumeControl : MonoBehaviour
         isMusicMuted = PlayerPrefs.GetInt("IsMusicMuted", 0) == 1;
         isSoundMuted = PlayerPrefs.GetInt("IsSoundMuted", 0) == 1;
 
-        AudioManager.Instance.MuteMusic(isMusicMuted);
-        AudioManager.Instance.MuteSFX(isSoundMuted);
-
         UpdateMusicMuteButton();
         UpdateSoundMuteButton();
 
@@ -34,7 +31,6 @@ public class VolumeControl : MonoBehaviour
         muteSoundButton.onClick.AddListener(ToggleSoundMute);
         muteMusicButton.onClick.AddListener(ToggleMusicMute);
     }
-
     private void AdjustMusicVolume(float volume)
     {
         AudioManager.Instance.SetMusicVolume(volume);
