@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class minigameTaskListController : MonoBehaviour
 {
@@ -121,6 +122,10 @@ public class minigameTaskListController : MonoBehaviour
     private void Start()
     {
         timerForGame = 0;
+        if(SceneManager.GetActiveScene().name== "Tutorial_Extraction")
+        {
+            teethMan.tm.dis();
+        }
         timerText= GameObject.Find("timer").GetComponent<TextMeshProUGUI>();
         timerText.text = "0 : 00";
         StartCoroutine("increaseTimer");

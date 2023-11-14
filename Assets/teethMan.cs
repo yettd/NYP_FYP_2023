@@ -9,10 +9,12 @@ public class teethMan : MonoBehaviour
     public delegate void ClickOn(string TeethName);
     public delegate void BackToOriginal();
     public delegate void ChangeText(string text, bool a);
+    public delegate void Disappear();
 
     public ClickOn CO;
     public BackToOriginal Back;
     public ChangeText CT;
+    public Disappear dis;
 
     public string s;
     public bool ZoomIn=false;
@@ -50,5 +52,9 @@ public class teethMan : MonoBehaviour
     public void backText( bool a)
     {
         CT(s, a);
+    }
+    public void gone(bool a)
+    {
+        dis();
     }
 }
