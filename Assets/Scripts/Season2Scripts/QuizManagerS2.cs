@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class QuizManagerS2 : MonoBehaviour
 {
@@ -25,6 +26,14 @@ public class QuizManagerS2 : MonoBehaviour
     public GameObject MainPanel;
     public GameObject ResultsPanel;
     public GameObject QuizPanel;
+    public GameObject correctImage;
+    public GameObject wrongImage;
+    public GameObject NoTouchPanel;
+
+    public Image pristineTeethImage;
+    public Image slightlyDecayedTeethImage;
+    public Image fullyDecayedTeethImage;
+
     private int highScore;
 
     //public bool polishExtractionTools; //for later
@@ -43,6 +52,22 @@ public class QuizManagerS2 : MonoBehaviour
             audioManager.PlayBackgroundMusic(2);
         }
     }
+    private void Update()
+    {
+        if (QuizPanel.activeSelf && timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            UpdateTeethImagesBasedOnTime(timeRemaining);
+            UpdateTimerDisplay();
+
+            if (timeRemaining <= 0)
+            {
+                timeRemaining = 0;
+                DisplayFinalScore();
+            }
+        }
+    }
+
     public void openMainMenu()
     {
         SceneManager.LoadScene(0);
@@ -100,6 +125,7 @@ public class QuizManagerS2 : MonoBehaviour
 
     public void StartQuiz()
     {
+        LoadAndShuffleQuestions();
         MainPanel.SetActive(false);
         QuizPanel.SetActive(true);
         score = 0;
@@ -143,10 +169,20 @@ public class QuizManagerS2 : MonoBehaviour
         highScoreTextOnMain.text = "High Score: " + savedHighScore + "/10";
     }
 
+    public IEnumerator ShowImage(GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
+    }
+
     public void Correct()
     {
         score++;
         audioManager.PlaySFX(4);
+        StartCoroutine(ShowImage(correctImage));
+        StartCoroutine(ShowImage(NoTouchPanel));
+
         totalQuestionsAsked++;
         if (totalQuestionsAsked < 10)
         {
@@ -162,6 +198,8 @@ public class QuizManagerS2 : MonoBehaviour
     {
         totalQuestionsAsked++;
         audioManager.PlaySFX(4);
+        StartCoroutine(ShowImage(wrongImage));
+        StartCoroutine(ShowImage(NoTouchPanel));
         if (totalQuestionsAsked < 10)
         {
             GenerateQuestion();
@@ -240,21 +278,6 @@ public class QuizManagerS2 : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (QuizPanel.activeSelf && timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-            UpdateTimerDisplay();
-
-            if (timeRemaining <= 0)
-            {
-                timeRemaining = 0;
-                DisplayFinalScore();
-            }
-        }
-    }
-
     private  void cleanPolish()
     {
         if(ButtonReferenceManager.Instance.storeCollectionID== CollectionEnum.S)
@@ -285,5 +308,44 @@ public class QuizManagerS2 : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private void LoadAndShuffleQuestions()
+    {
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+        {
+            QnA = new List<QnA>(Resources.Load<quiz>("Quiz/Scaling").QnA);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+        {
+            QnA = new List<QnA>(Resources.Load<quiz>("Quiz/Extration").QnA);
+        }
+        else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        {
+            QnA = new List<QnA>(Resources.Load<quiz>("Quiz/Filling").QnA);
+        }
+
+        ShuffleQuestions(QnA);
+    }
+
+    private void ShuffleQuestions(List<QnA> questions)
+    {
+        for (int i = 0; i < questions.Count; i++)
+        {
+            QnA temp = questions[i];
+            int randomIndex = Random.Range(i, questions.Count);
+            questions[i] = questions[randomIndex];
+            questions[randomIndex] = temp;
+        }
+    }
+
+    private void UpdateTeethImagesBasedOnTime(float remainingTime)
+    {
+        float firstThreshold = quizDuration * 0.66f;
+        float secondThreshold = quizDuration * 0.33f; 
+
+        pristineTeethImage.color = new Color(1, 1, 1, remainingTime > firstThreshold ? 1 : 0);
+        slightlyDecayedTeethImage.color = new Color(1, 1, 1, remainingTime <= firstThreshold && remainingTime > secondThreshold ? 1 : 0);
+        fullyDecayedTeethImage.color = new Color(1, 1, 1, remainingTime <= secondThreshold ? 1 : 0);
     }
 }

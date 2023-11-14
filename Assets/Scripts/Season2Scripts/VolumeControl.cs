@@ -20,9 +20,17 @@ public class VolumeControl : MonoBehaviour
         musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
         sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
+        isMusicMuted = PlayerPrefs.GetInt("IsMusicMuted", 0) == 1;
+        isSoundMuted = PlayerPrefs.GetInt("IsSoundMuted", 0) == 1;
+
+        AudioManager.Instance.MuteMusic(isMusicMuted);
+        AudioManager.Instance.MuteSFX(isSoundMuted);
+
+        UpdateMusicMuteButton();
+        UpdateSoundMuteButton();
+
         musicVolumeSlider.onValueChanged.AddListener(AdjustMusicVolume);
         sfxVolumeSlider.onValueChanged.AddListener(AdjustSFXVolume);
-
         muteSoundButton.onClick.AddListener(ToggleSoundMute);
         muteMusicButton.onClick.AddListener(ToggleMusicMute);
     }
@@ -44,15 +52,25 @@ public class VolumeControl : MonoBehaviour
     private void ToggleSoundMute()
     {
         isSoundMuted = !isSoundMuted;
-        AudioManager.Instance.SetSFXVolume(isSoundMuted ? 0f : sfxVolumeSlider.value);
+        AudioManager.Instance.MuteSFX(isSoundMuted);
+        PlayerPrefs.SetInt("IsSoundMuted", isSoundMuted ? 1 : 0);
         UpdateSoundMuteButton();
+        if (!isSoundMuted)
+        {
+            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        }
     }
 
     private void ToggleMusicMute()
     {
         isMusicMuted = !isMusicMuted;
-        AudioManager.Instance.SetMusicVolume(isMusicMuted ? 0f : musicVolumeSlider.value);
+        AudioManager.Instance.MuteMusic(isMusicMuted);
+        PlayerPrefs.SetInt("IsMusicMuted", isMusicMuted ? 1 : 0);
         UpdateMusicMuteButton();
+        if (!isMusicMuted)
+        {
+            musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        }
     }
     private void UpdateSoundMuteButton()
     {

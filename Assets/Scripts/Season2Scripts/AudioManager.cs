@@ -27,7 +27,8 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        bool isMusicMuted = PlayerPrefs.GetInt("IsMusicMuted", 0) == 1;
+        bool isSoundMuted = PlayerPrefs.GetInt("IsSoundMuted", 0) == 1;
         musicSource = gameObject.AddComponent<AudioSource>();
         sfxSource = gameObject.AddComponent <AudioSource>();
 
@@ -72,4 +73,14 @@ public class AudioManager : MonoBehaviour
     //{
     //    PlaySFX(Array.IndexOf(sfxClips, pingSound));
     //}
+
+    public void MuteMusic(bool mute)
+    {
+        musicSource.mute = mute;
+    }
+
+    public void MuteSFX(bool mute)
+    {
+        sfxSource.mute = mute;
+    }
 }
