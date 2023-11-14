@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d982afba0d2eb24f8f86262faead9c7, type: 3}
   m_Name: Achivement 6
   m_EditorClassIdentifier: 
-  AchivmentName: unlock all  tool
+  AchivmentName: unlock filling  tool
   AchivmentImage: {fileID: 21300000, guid: cdf9d734b5b96f14db7560482ea6b605, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: f728773551bb02244ba092715e6ded25, type: 3}
   Des: unlock all DH tool

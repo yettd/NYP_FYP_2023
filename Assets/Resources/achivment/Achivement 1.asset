@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: ad5591382e2b2b244a649b76d1d3e330, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: e9d2ea0e6013d124987c480b26f5d362, type: 3}
   Des: did filling in a minute
-  have: 1
+  have: 0
   id: 1

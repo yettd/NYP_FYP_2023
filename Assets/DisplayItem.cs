@@ -53,6 +53,8 @@ public class DisplayItem : MonoBehaviour
         toolDescText.text = Text[0];
         currentValue = 0;
         toolImage.sprite = dentistTool.Icon;
+        dentistTool.view = true;
+        ButtonReferenceManager.Instance.unlockAchivement();
     }
 
     public void Spread(string a)

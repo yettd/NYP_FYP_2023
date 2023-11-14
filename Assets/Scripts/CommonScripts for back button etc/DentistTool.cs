@@ -24,5 +24,6 @@ public class DentistTool : ScriptableObject
     [Header("RustyVersion")]
     public Sprite RustyIcon;
     public bool rusty = true;
+    public bool view;
     public bool DTDH = true; // true DT / false DH
 }
