@@ -22,6 +22,7 @@ public class openTooth : MonoBehaviour
     // Start is called before the first frame update
     private void OnMouseDown()
     {
+        Debug.Log("dd");
         if (minigameTaskListController.Instance.IsPause)
         {
             return;
@@ -121,7 +122,8 @@ public class openTooth : MonoBehaviour
                     st = Resources.Load<showTask>("minigameTasklist/Filling2");
                     break;
                 case Procedure.Extration:
-
+                    
+                    st = Resources.Load<showTask>("minigameTasklist/Extraction");
                     problem = true;
                     break;
             }

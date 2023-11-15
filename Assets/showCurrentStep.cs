@@ -25,7 +25,7 @@ public class showCurrentStep : MonoBehaviour
         img.color = new Vector4(1, 1, 1, 1);
         showInstrution.color = new Vector4(0, 0, 0, 1);
         showInstrution.text= minigameTaskListController.Instance.returnCurrentstep();
-        DOVirtual.Color(new Vector4(1,1,1,1), new Vector4(1, 1, 1, 0), 5, (value) =>
+        DOVirtual.Color(new Vector4(1,1,1,1), new Vector4(1, 1, 1, 0), 10, (value) =>
         {
             showInstrution.color = new Vector4(0,0,0,value.a);
             img.color = value;

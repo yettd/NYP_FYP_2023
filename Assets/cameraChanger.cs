@@ -92,10 +92,10 @@ public class cameraChanger : MonoBehaviour
         zoom = false;
     }
 
-    public void RoateAround(float degree,float y)
+    public void RoateAround(float degreex,float degreey)
     {
-        ZoomIn.gameObject.transform.RotateAround(focusOn.transform.position, Vector3.up, degree * Time.deltaTime);
-        ZoomIn.gameObject.transform.RotateAround(focusOn.transform.position, Vector3.right, y * Time.deltaTime);
+        ZoomIn.gameObject.transform.RotateAround(focusOn.transform.position, Vector3.up, degreex * Time.deltaTime);
+        ZoomIn.gameObject.transform.RotateAround(focusOn.transform.position, Vector3.right, degreey * Time.deltaTime);
         ZoomIn.transform.rotation = Quaternion.Euler(ZoomIn.transform.eulerAngles.x, ZoomIn.transform.eulerAngles.y, 0);
         //ZoomIn.gameObject.transform.LookAt(focusOn.transform.position,transform.up);
     }
