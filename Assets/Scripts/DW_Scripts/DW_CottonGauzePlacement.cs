@@ -29,6 +29,10 @@ public class DW_CottonGauzePlacement : MonoBehaviour
 
         // Mark the component that cleaning is done
         cleaningDone = true;
+
+        // Remove used tool
+        GameObject tool = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);
+        if (tool) Destroy(tool);
     }
 
     private IEnumerator ClearingParticle()

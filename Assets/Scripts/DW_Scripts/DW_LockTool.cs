@@ -5,6 +5,7 @@ using UnityEngine;
 public class DW_LockTool : MonoBehaviour
 {
     private bool isLocked;
+    public GameObject LockedGUI;
 
     // Update is called once per frame
     void Update()
@@ -13,5 +14,6 @@ public class DW_LockTool : MonoBehaviour
                 TutorialGame_Script.thisScript.get_onGoingFeedback == InterfaceFeedBack.PerformingUsedTool;
 
         GetComponent<rotateJaws>().enabled = !isLocked;
+        LockedGUI.SetActive(isLocked);
     }
 }

@@ -7,13 +7,13 @@ public class DW_ElementCancelation
     #region SETUP
     public void Activate()
     {
-        ApplyElementCancelThroughTooth();
-        ApplyElementCancelThroughGum();
+        //ApplyElementCancelThroughTooth();
+        //ApplyElementCancelThroughGum();
     }
 
     public void DeActivate()
     {
-        ResetElementThroughElement();
+        //ResetElementThroughElement();
     }
     #endregion
 
