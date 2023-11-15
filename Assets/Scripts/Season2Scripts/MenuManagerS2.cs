@@ -46,6 +46,9 @@ public class MenuManagerS2 : MonoBehaviour
     public Button Next;
     public Button Previous;
 
+    [Header("Universal")]
+    [SerializeField] private GameObject CreditPanel;
+
 
     [Header("Universal")]
     [SerializeField] private Button BackBtn;
@@ -65,6 +68,8 @@ public class MenuManagerS2 : MonoBehaviour
     bool StampActive;
     bool Infoactive;
     bool ImageBookActive;
+    bool CreditActive;
+
 
     private void Awake()
     {
@@ -75,10 +80,10 @@ public class MenuManagerS2 : MonoBehaviour
             Debug.LogError("AudioManager not found.");
         }
 
-        if (audioManager != null)
-        {
-            audioManager.PlayBackgroundMusic(1);
-        }
+        //if (audioManager != null)
+        //{
+        //    audioManager.PlayBackgroundMusic(1);
+        //}
 
         if (MainMenuactive == false)
         {
@@ -479,4 +484,21 @@ public class MenuManagerS2 : MonoBehaviour
         }
     }
 
+    public void openCredit()
+    {
+        if (CreditActive == false)
+        {
+            CreditPanel.transform.gameObject.SetActive(true);
+            CreditActive = true;
+        }
+    }
+
+    public void closeCredit()
+    {
+        if (CreditActive == true)
+        {
+            CreditPanel.transform.gameObject.SetActive(false);
+            CreditActive = false;
+        }
+    }
 }
