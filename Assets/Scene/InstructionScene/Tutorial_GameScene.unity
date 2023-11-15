@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6689966, g: 0.82256746, b: 0.6728636, a: 1}
+  m_IndirectSpecularColor: {r: 0.7240193, g: 0.87885416, b: 0.73370683, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1555,6 +1555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7349fff997a93e644a67889380880d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LockedGUI: {fileID: 0}
 --- !u!1 &219238928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,7 +3093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebea1a448b2dfb2468e752b6807338d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
+  BookOpen: {fileID: 0}
   Wipetransition: {fileID: 0}
   MainMenuPanel: {fileID: 416783774}
   SettingsBtn: {fileID: 0}
@@ -3121,6 +3122,7 @@ MonoBehaviour:
   Camera: {fileID: 0}
   StampCollection: {fileID: 0}
   achivmentText: {fileID: 0}
+  ImageBook: {fileID: 0}
 --- !u!4 &416783776
 Transform:
   m_ObjectHideFlags: 0
@@ -6919,7 +6921,7 @@ Transform:
   m_GameObject: {fileID: 1347662710}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 0.98, z: 8.1}
+  m_LocalPosition: {x: 0, y: 0.981, z: 8.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8913,11 +8915,9 @@ MonoBehaviour:
     props_tag_name: ToothExtracted
   - props: []
     props_tag_name: Untagged
-  winScreen: {fileID: 1090122044}
   loseScreen: {fileID: 1745778184}
   statusRemark: {fileID: 1912196792}
   actionStatus: {fileID: 1791061008}
-  displayItemName: {fileID: 0}
 --- !u!114 &1732991476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9716,7 +9716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebea1a448b2dfb2468e752b6807338d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
+  BookOpen: {fileID: 0}
   Wipetransition: {fileID: 0}
   MainMenuPanel: {fileID: 0}
   SettingsBtn: {fileID: 0}
@@ -9745,6 +9745,7 @@ MonoBehaviour:
   Camera: {fileID: 0}
   StampCollection: {fileID: 0}
   achivmentText: {fileID: 0}
+  ImageBook: {fileID: 0}
 --- !u!1 &1772066113
 GameObject:
   m_ObjectHideFlags: 0
