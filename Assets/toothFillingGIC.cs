@@ -371,6 +371,7 @@ public class toothFillingGIC : MonoBehaviour
             Debug.Log("asdasdasd :" + minigameTaskListController.Instance.GetSelectedtool());
             return true;
         }
+        minigameTaskListController.Instance.wrongTool();
         return false;
     }
     void nextTools(bool taskDone)

@@ -412,6 +412,8 @@ public class toothFilling : MonoBehaviour
         {
             return true;
         }
+
+        minigameTaskListController.Instance.wrongTool();
         return false;
     }
     void nextTools(bool taskDone)

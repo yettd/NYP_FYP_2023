@@ -154,6 +154,10 @@ public class TeethDirtClean : MonoBehaviour
         {
                 cleanining(hit[0], _brush);
         }
+        else
+        {
+            minigameTaskListController.Instance.wrongTool();
+        }
 
     }
     public void Clean(RaycastHit hit, Texture2D _brush, Ray ray)

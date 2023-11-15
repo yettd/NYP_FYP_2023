@@ -14,6 +14,11 @@ public class minigameTaskListController : MonoBehaviour
     public GameObject setting;
     [SerializeField] private GameObject SettingsPanel;
     bool SettingsPanelactive;
+    [SerializeField]GameObject wrong;
+    public void wrongTool()
+    {
+        wrong.SetActive(true);
+    }
     public void openSettingsPanel()
     {
         //AudioManager.Instance.PlayPingSound();
@@ -253,8 +258,8 @@ public class minigameTaskListController : MonoBehaviour
 
         RectTransform rectTransform = AmtProblem.transform.parent.GetComponent<RectTransform>();
         ogTeethAmtAnchor = new Vector4(rectTransform.anchorMin.x, rectTransform.anchorMin.y, rectTransform.anchorMax.x, rectTransform.anchorMax.y);
-        rectTransform.DOAnchorMin(new Vector2(0.7588887f, 0.783f), 0.001f);
-        rectTransform.DOAnchorMax(new Vector2(0.8584447f, 0.9841976f), 0.001f);
+        rectTransform.DOAnchorMin(new Vector2(0.7361111f, 0.78f), 0.001f);
+        rectTransform.DOAnchorMax(new Vector2(0.837889f, 0.9841976f), 0.001f);
         rectTransform.DOAnchorPos(new Vector2(0, 0f), 0.001f);
 
         rectTransform = timerText.transform.parent.GetComponent<RectTransform>();
@@ -498,7 +503,6 @@ public class minigameTaskListController : MonoBehaviour
 
         if(achivmen.instance.GetIfUnlock(0) && achivmen.instance.GetIfUnlock(1) )
         {
-            Debug.Log("asdasd");
             achivmen.instance.UnlockAchivement(3);
         }
 
@@ -522,7 +526,7 @@ public class minigameTaskListController : MonoBehaviour
         if(toolSelected ==true)
         {
             RR();
-     
+            teethMan.tm.changeToolColor("");
             teethMan.tm.backText( true);
         }
         else if(cameraChanger.Instance.GetZoom()==true)

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class tripleSyringe : fillingTool
 {
+    public Image[] buttonPress;
     // Start is called before the first frame update
     public bool WaterBlow = false;
     Canvas c;
@@ -38,5 +39,13 @@ public class tripleSyringe : fillingTool
     {
         WaterBlow=blow; 
     }
-    
+    public void buttonePress(Image button)
+    {
+        foreach (Image t in buttonPress)
+        {
+            t.color= new Vector4(1f, 1f, 1f, 1f);
+        }
+        button.color = new Vector4(0.509434f, 0.509434f, 0.509434f, 0.5f);
+    }
+
 }
