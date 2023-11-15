@@ -430,7 +430,7 @@ public class MenuManagerS2 : MonoBehaviour
     {
         if (audioManager != null)
         {
-            audioManager.PlaySFX(1);
+            audioManager.PlaySFX(7);
         }
         if (StampActive == false)
         {
@@ -443,7 +443,7 @@ public class MenuManagerS2 : MonoBehaviour
     {
         if (audioManager != null)
         {
-            audioManager.PlaySFX(1);
+            audioManager.PlaySFX(7);
         }
         if (StampActive == true)
         {

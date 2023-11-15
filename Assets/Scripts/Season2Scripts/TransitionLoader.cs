@@ -4,9 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TransitionLoader : MonoBehaviour
 {
+    private AudioManager audioManager;
     public Animator BasicTransition;
     public Animator CupboardTransition;
     public float TransitionTime = 10f;
+
+    //public void Awake()
+    //{
+    //    audioManager = AudioManager.Instance;
+    //    if (audioManager == null)
+    //    {
+    //        Debug.LogError("AudioManager not found.");
+    //    }
+    //}
     public void Loadcollections()
     {
         StartCoroutine(LoadLevelTutorial(4));
@@ -21,14 +31,17 @@ public class TransitionLoader : MonoBehaviour
     }
     public void LoadMiniGameTutorialScaling()
     {
+        //audioManager.PlaySFX(1);
         StartCoroutine(LoadLevelScaling("Scaling"));
     }
     public void LoadMiniGameTutorialFilling()
     {
+        //audioManager.PlaySFX(1);
         StartCoroutine(LoadLevelFilling("Filling"));
     }
     public void LoadMiniGameTutorialExctraction()
     {
+        //audioManager.PlaySFX(1);
         StartCoroutine(LoadLevelExtraction("Extracting"));
     }
     public void LoadGamescene()

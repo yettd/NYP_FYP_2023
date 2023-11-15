@@ -19,14 +19,14 @@ MonoBehaviour:
   - Icon: {fileID: 2800000, guid: 3e231ad603f43214fbc222b00d670a1e, type: 3}
     title: Filling
     instruction: 'Apply rubber dam with rubber forceps '
-    requiredTool: ' rubber dam'
+    requiredTool: rubberDamForceb
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 8cd826ed839dd9848bf92a1301e3b46a, type: 3}
     title: Filling
     instruction: 'Select a slow speed handpiece with round bur and Remove maximum
       decay with the bur  '
-    requiredTool: 'slow speed handpiece '
+    requiredTool: slowSpeed
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: ad4e3a02313437645988abda79f8db95, type: 3}
@@ -38,7 +38,7 @@ MonoBehaviour:
   - Icon: {fileID: 2800000, guid: 9257cecebab5bd540b343dc8b5e93d22, type: 3}
     title: Filling
     instruction: Wash And Blow dry
-    requiredTool: 'tripleSyringe '
+    requiredTool: tripleSyringe
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 5ce1c19e7b5dd614fb1143c563c9a530, type: 3}

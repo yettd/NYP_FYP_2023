@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class scalingTools : Tolls
 {
+    private AudioManager audioManager;
     [SerializeField] RectTransform canvas;
     [SerializeField] Texture2D _brush;
     // Start is called before the first frame update
+    private void awake()
+    {
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found.");
+        }
+
+    }
     protected override void Start()
     {
         base.Start();
@@ -23,6 +32,7 @@ public class scalingTools : Tolls
         hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
         if(TDC)
         {
+            audioManager.PlaySFX(1);
             Debug.Log("asdasd");
             TDC.Clean(hit, _brush,ray);
         }
