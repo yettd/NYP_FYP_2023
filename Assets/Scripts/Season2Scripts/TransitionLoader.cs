@@ -63,7 +63,7 @@ public class TransitionLoader : MonoBehaviour
         //BasicTransition.SetTrigger("start");
         CupboardTransition.SetTrigger("StartCupboard");
         yield return new WaitForSeconds(TransitionTime);
-
+        AudioManager.Instance.PlayBackgroundMusic(3);
         SceneManager.LoadSceneAsync(levelIndex);
     }
 
@@ -72,6 +72,7 @@ public class TransitionLoader : MonoBehaviour
         CupboardTransition.SetTrigger("StartCupboard");
         Debug.Log("retard running lah");
         yield return new WaitForSeconds(TransitionTime);
+        AudioManager.Instance.PlayBackgroundMusic(3);
 
         SceneManager.LoadSceneAsync(levelIndex);
     }
@@ -80,6 +81,7 @@ public class TransitionLoader : MonoBehaviour
         CupboardTransition.SetTrigger("StartCupboard");
         Debug.Log("retard running lah");
         yield return new WaitForSeconds(TransitionTime);
+        AudioManager.Instance.PlayBackgroundMusic(3);
 
         SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
     }
@@ -88,6 +90,7 @@ public class TransitionLoader : MonoBehaviour
         CupboardTransition.SetTrigger("StartCupboard");
         Debug.Log("retard running lah");
         yield return new WaitForSeconds(TransitionTime);
+        AudioManager.Instance.PlayBackgroundMusic(3);
 
         SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
     }
@@ -96,6 +99,7 @@ public class TransitionLoader : MonoBehaviour
         CupboardTransition.SetTrigger("StartCupboard");
         Debug.Log("retard running lah");
         yield return new WaitForSeconds(TransitionTime);
+        AudioManager.Instance.PlayBackgroundMusic(3);
 
         SceneManager.LoadScene(TutorialNagivatorScript.Instance().GetManualLoaded(index));
     }
