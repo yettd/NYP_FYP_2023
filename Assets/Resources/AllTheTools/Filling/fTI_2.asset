@@ -22,7 +22,7 @@ MonoBehaviour:
     pliable restorative materials into cavity preparations and other dental procedures.<br>'
   InstrumentGrasp: 
   Instrumentation: 
-  dentalItem: {fileID: 9095184983396422754, guid: 1dc6ea2e026bd6c4da3af72caacc11c8, type: 3}
+  dentalItem: {fileID: 253997733023698905, guid: 6afbb361de75cb14b8501afd9e54c07b, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 954a0633d796de2459c57d0ff3ad1674, type: 3}
   rusty: 1

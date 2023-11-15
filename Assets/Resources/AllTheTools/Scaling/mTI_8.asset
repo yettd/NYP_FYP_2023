@@ -35,7 +35,7 @@ MonoBehaviour:
     at mesial line angle\r\n2. Constantly maintain toe third of the cutting edge
     to tooth surface\r\n3. Maintain a neutral wrist position while utilizing wrist
     activation\r"
-  dentalItem: {fileID: 2729037960981150789, guid: 15fd8bb6aa4c8b547bbf8dbc345e2219, type: 3}
+  dentalItem: {fileID: 8220572352072537749, guid: a5e26501ee971074e95bf34fa6770f23, type: 3}
   videoClip: {fileID: 32900000, guid: 05a926cba1b045d4d87c26c625438948, type: 3}
   RustyIcon: {fileID: 21300000, guid: 40de9b876bf82f647ac162c4b80fdc3c, type: 3}
   rusty: 1

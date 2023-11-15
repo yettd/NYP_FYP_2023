@@ -28,7 +28,7 @@ MonoBehaviour:
     the tooth surface\r\n3. Begin at the distal line angle\r\n4. Establish and maintain
     correct face-to-tooth surface angulation for insertion at 0\xB0 and start scaling
     between 70-80\xB0 "
-  dentalItem: {fileID: 5775655181856688166, guid: 9ed9d115453ab7f40b1df894953d61a4, type: 3}
+  dentalItem: {fileID: 2129415604553573745, guid: 30bc2976c88f59a4ca7fb31a7379f0e5, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 5def8bc73ad267f4eb64a9bbc2d99731, type: 3}
   rusty: 1
