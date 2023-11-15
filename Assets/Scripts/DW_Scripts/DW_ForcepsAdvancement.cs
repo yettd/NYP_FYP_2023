@@ -180,7 +180,7 @@ public class DW_ForcepsAdvancement : MonoBehaviour
         toothTransform = target.transform;
 
         // Get tooth id for used
-        toothUsed = target.name;
+        toothUsed = target.name + "N";
 
         // Get reference tool before it deselect
         GameObject toolFinder = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name);

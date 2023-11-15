@@ -18,7 +18,7 @@ MonoBehaviour:
   step:
   - Icon: {fileID: 2800000, guid: a47aa06820765f8429993c5f707e6516, type: 3}
     title: Scaling
-    instruction: Use the Correct Gracey to scale the Tar Tar of theteeth and make
+    instruction: Use the Correct Gracey to scale the Tar Tar of the teeth and make
       it clean
     requiredTool: Gracey1_2
     completed: 1

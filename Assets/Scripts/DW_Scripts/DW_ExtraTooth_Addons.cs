@@ -41,7 +41,7 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
         toothInstance.transform.position = toothPlacement[index].transform.position + offset[index];
 
         // Update tooth settings
-        toothInstance.GetComponent<DW_ToothSettings>().toothIndex = index;
+        //toothInstance.GetComponent<DW_ToothSettings>().toothIndex = index;
     }
 
     private void ClearReferencePoint(int index)
@@ -51,13 +51,29 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
         toothPlacement[index].tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.NotTagged].props_tag_name;
     }
 
-    private void RefreshToothTexture()
+    private void RefreshToothSetup()
     {
+        // Declare tooth setup condition
+        bool setup = false;
+
+        // Search for all teeth section
         foreach (GameObject teeth in TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.TeethSection].props)
+        {
+            // Bring out all tooth for setup
             for (int tooth = 0; tooth < teeth.transform.childCount; tooth++)
-                if (teeth.transform.GetChild(tooth).tag != TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name)
-                    teeth.transform.GetChild(tooth).GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/Selected_CleanTooth");
+            {
+                // Find the damaged tooth to set right condition
+                setup = teeth.transform.GetChild(tooth).tag != TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name;
+
+                // Texture: Setup condition doesn't find any problem then perform this task
+                if (setup) teeth.transform.GetChild(tooth).GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/Selected_CleanTooth");
+
+                // Problem: Setup condition assigned accordingly
+                teeth.transform.GetChild(tooth).GetComponent<openTooth>().problem = !setup;
+            }
+        }
     }
+
     #endregion
 
     #region MAIN
@@ -74,8 +90,8 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
         for (int index = 0; index < toothPlacement.ToArray().Length; index++)
             ClearReferencePoint(index);
 
-        // Refresh tooth texture
-        RefreshToothTexture();
+        // Refresh tooth setup
+        RefreshToothSetup();
     }
     #endregion
 }

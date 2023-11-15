@@ -45,16 +45,13 @@ public class TutorialGame_Script : MonoBehaviour
     private const string fileDirectory = "savefile_tutorial_";
     private const string fileDirectoryPath = "Assets/Resources/TutorialLevel/meta/";
 
-    [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
     [SerializeField] private GameObject statusRemark;
     [SerializeField] private GameObject actionStatus;
-    [SerializeField] private GameObject displayItemName;
 
     private InterfaceFeedBack onGoingFeedback;
     public InterfaceFeedBack get_onGoingFeedback { get { return onGoingFeedback; } }
 
-    public GameObject get_itemDisplayName { get { return displayItemName; } }
     public DW_TaskAddons getTasking { get { return tasking; } }
 
     void Start()
@@ -84,19 +81,19 @@ public class TutorialGame_Script : MonoBehaviour
     private void UpdateInstructionStatus(bool cleared)
     {
         // Display the win screen of it
-        winScreen.SetActive(cleared);
-        minigameTaskListController.Instance.OnGameComplete();
+        if (cleared) minigameTaskListController.Instance.OnGameComplete();
+
         // Display the lose screen of it
         loseScreen.SetActive(!cleared);
     }
 
-    private void UpdateInstructionActionStatus(string title)
+    private void UpdateInstructionActionStatus(string title, bool center)
     {
         // Reset the visible status
         CancelInvoke("SetVisibleActionStatus");
 
         // Update the content to the given title
-        actionStatus.transform.GetChild(0).GetComponent<TMP_Text>().text = title;
+        teethMan.tm.CT(title, center);
 
         // Display until its not acitve
         Invoke("SetVisibleActionStatus", 3);
@@ -166,7 +163,7 @@ public class TutorialGame_Script : MonoBehaviour
         {
             // When tool is selected
             case InterfaceFeedBack.CurrentlyInUsed:
-                return GetCamViewInUsedTool();
+                return GameObject.FindGameObjectWithTag(gameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name).name + "\n" + GetCamViewInUsedTool();
 
             // When tool is performing the given task
             case InterfaceFeedBack.PerformingUsedTool:
@@ -197,8 +194,8 @@ public class TutorialGame_Script : MonoBehaviour
             if (!actionStatus.activeInHierarchy) actionStatus.SetActive(true);
 
             // Update the content of the current progress
-            if (progressValue >= 0) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + title + "\n" + progressValue.ToString("0.0") + " %");
-            else UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.Idle));
+            if (progressValue >= 0) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + title + "\n" + progressValue.ToString("0.0") + " %", false);
+            else UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.Idle), false);
         }
     }
 
@@ -214,7 +211,10 @@ public class TutorialGame_Script : MonoBehaviour
             actionStatus.SetActive(visible);
 
             // Update the content to manage the user for direction
-            if (visible) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + (title != string.Empty ? title : string.Empty));
+            bool centerAlignment = onGoingFeedback == InterfaceFeedBack.CurrentlyInUsed && 
+                FindCamViewIndex() != GameObject.FindGameObjectWithTag(gameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name).GetComponent<DW_AutoToolScaler>().get_scaleData.Length - 1;
+
+            if (visible) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + (title != string.Empty ? title : string.Empty), centerAlignment);
         }
     }
 
@@ -273,14 +273,13 @@ public class TutorialGame_Script : MonoBehaviour
     #region MISC
     private string GetCamViewInUsedTool()
     {
+        // Find the view cam to display text accordingly
         switch (FindCamViewIndex())
         {
             case 1:
                 return "Drag the tool around to move it.\nClick on the tooth to view closely.";
-
             case 2:
                 return "Zoom in for better view.\nClick on the teeth to view closely.";
-
             default:
                 return "Zoom out for better view.\nDeselect tool when its done.";
         }
@@ -288,16 +287,15 @@ public class TutorialGame_Script : MonoBehaviour
 
     private int FindCamViewIndex()
     {
-        int index = 0;
+        // Get data from other script
         ToolScale_Data[] data = GameObject.FindGameObjectWithTag(gameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name).GetComponent<DW_AutoToolScaler>().get_scaleData;
 
-        foreach (ToolScale_Data current in data)
-        {
-            if (current.cameraRef.gameObject.activeInHierarchy) break;
-            index++;
-        }
+        // Search for available cam in used
+        for (int index = 0; index < data.Length; index++)
+            if (data[index].cameraRef.gameObject.activeInHierarchy) return index;
 
-        return index;
+        // Find nothing and give a negative value
+        return -1;
     }
     #endregion
 }
