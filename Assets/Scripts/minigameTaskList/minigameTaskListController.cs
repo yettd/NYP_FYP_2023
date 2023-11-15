@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class minigameTaskListController : MonoBehaviour
 {
@@ -121,22 +122,25 @@ public class minigameTaskListController : MonoBehaviour
     private void Start()
     {
         timerForGame = 0;
+        if(SceneManager.GetActiveScene().name== "Tutorial_Extraction")
+        {
+            teethMan.tm.dis();
+        }
         timerText= GameObject.Find("timer").GetComponent<TextMeshProUGUI>();
         timerText.text = "0 : 00";
         StartCoroutine("increaseTimer");
         Almagotrrr = GameObject.Find("Almagotrrr");
         Almagotrrr.SetActive(false);
         //load steps
-        string a = Saving.save.LoadFromJson("game");
+        string a = Saving.save.LoadFromJson("timeandRating");
         if (a!=null)
         {
-            GC = JsonUtility.FromJson<GameCompletion>(Saving.save.LoadFromJson("game"));
+            GC = JsonUtility.FromJson<GameCompletion>(Saving.save.LoadFromJson("timeandRating"));
          
         }
         else
         {
             GC = new GameCompletion();
-           
         }
         
     }
@@ -172,7 +176,7 @@ public class minigameTaskListController : MonoBehaviour
                 GC.setGC(2);
                 break;
         }
-        Saving.save.saveToJson(GC, "game");
+        Saving.save.saveToJson(GC, "timeandRating");
     }
 
     public bool gonext()
@@ -281,12 +285,93 @@ public class minigameTaskListController : MonoBehaviour
 
     //end
 
+    public string saveTimeAndRating()
+    {
+        return $"{timerForMin} : {timerForTenth}{timerForGame}";
+    }
+
+    public bool returnTimeInSec(float highscore)
+    {
+        float second = timerForMin *60 + (timerForTenth*10 + timerForGame );
+
+        if (second < highscore || highscore == -1 ) {
+            switch (procedure)
+            {
+                case Procedure.Scaling:
+                    GC.scalingInSecond = second;
+                    break;
+
+                case Procedure.Filling:
+                    GC.FillingInSecond = second;
+                    break;
+            }
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public void ScoreSystem()
+    {
+        switch (procedure)
+        {
+            case Procedure.Scaling:
+                if (returnTimeInSec(GC.scalingInSecond))
+                {
+                    if(timerForMin<5)
+                    {
+                        GC.scalingRating = 3;
+                    }
+                    else if (timerForMin < 10)
+                    {
+                        GC.scalingRating = 2;
+                    }
+                    else if (timerForMin < 15)
+                    {
+                        GC.scalingRating = 1;
+                    }
+                    else
+                    {
+                        GC.scalingRating = 0;
+                    }
+                    GetComponent<ScoreDisplay>().DisplayScore(GC.scalingRating);
+                    GC.scalingTime = saveTimeAndRating();
+                }
+                break;
+
+            case Procedure.Filling:
+                if (returnTimeInSec(GC.FillingInSecond))
+                {
+                    if (timerForMin < 5)
+                    {
+                        GC.FillingRating = 3;
+                    }
+                    else if (timerForMin < 10)
+                    {
+                        GC.FillingRating = 2;
+                    }
+                    else if (timerForMin < 15)
+                    {
+                        GC.FillingRating = 1;
+                    }
+                    else
+                    {
+                        GC.FillingRating = 0;
+                    }
+                    GetComponent<ScoreDisplay>().DisplayScore(GC.FillingRating);
+                    GC.FillingTime = saveTimeAndRating();
+                }
+                break;
+        }
+    }
+
     public void OnGameComplete()
     {
         //playAnimation for completion;
         StopAllCoroutines();
 
-        if(timerForMin < 10)
+        if (timerForMin < 10)
         {
             switch(procedure)
             {
@@ -299,6 +384,10 @@ public class minigameTaskListController : MonoBehaviour
                     break;
             }
         }
+        ScoreSystem();
+
+
+
         if(achivmen.instance.GetIfUnlock(0) && achivmen.instance.GetIfUnlock(1) )
         {
             Debug.Log("asdasd");

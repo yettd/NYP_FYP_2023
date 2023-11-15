@@ -65,11 +65,6 @@ public class ButtonReferenceManager : MonoBehaviour
         storedDTHButtonID = DTHEnum.DH;
     }
 
-    public void StartOver()
-    {
-       
-    }
-
     public void LoadToolsDatabases()
     {
         dhTools.Clear();
@@ -79,24 +74,67 @@ public class ButtonReferenceManager : MonoBehaviour
         storeCollectionID = CollectionEnum.S;
         string a = Saving.save.LoadFromJson("game");
 
+
+        S = Resources.LoadAll<DentistTool>("AllTheTools/Scaling");
+
+        F = Resources.LoadAll<DentistTool>("AllTheTools/Filling");
+
+        E = Resources.LoadAll<DentistTool>("AllTheTools/Extraction");
+        GetDh();
+        GetDt();
         if (a!=null)
         {
             GameCompletion GC = JsonUtility.FromJson<GameCompletion>(a);
 
-        
-            S = Resources.LoadAll<DentistTool>("AllTheTools/Scaling");
-
-            F = Resources.LoadAll<DentistTool>("AllTheTools/Filling");
-
-            E = Resources.LoadAll<DentistTool>("AllTheTools/Extraction");
 
             
-            GetDh();
-            GetDt();
-        }
         
+        }
+    }
 
-
+    public void unlockAchivement()
+    {
+        Debug.Log("asdasd");
+        bool ok = true;
+        foreach (DentistTool tool in E)
+        {
+            if(tool.view==false)
+            {
+                ok = false;
+                break;
+            }
+        }
+        if(ok)
+        {
+            achivmen.instance.UnlockAchivement(4, "seenAllextration");
+        }
+        ok = true;
+        foreach (DentistTool tool in S)
+        {
+            if (tool.view == false)
+            {
+                ok = false;
+                break;
+            }
+        }
+        if (ok)
+        {
+            achivmen.instance.UnlockAchivement(5, "seenAllextration");
+        }
+        ok = true;
+        foreach (DentistTool tool in F)
+        {
+            if (tool.view == false)
+            {
+                ok = false;
+                break;
+            }
+        }
+        if (ok)
+        {
+            achivmen.instance.UnlockAchivement(6, "seenAllextration");
+        }
+        ok = true;
     }
 
     void GetDh()
@@ -131,7 +169,6 @@ public class ButtonReferenceManager : MonoBehaviour
             if (a.DTDH)
             {
                 dtTools.Add(a);
-                Debug.Log("asd1");
             }
         }
         foreach (DentistTool a in E)

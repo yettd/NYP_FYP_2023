@@ -11,7 +11,13 @@ public class Instruction_Text : MonoBehaviour
     private void Start()
     {
         teethMan.tm.CT+=textChange;
+        teethMan.tm.dis = becomeGone;
         ogpos=transform.localPosition;
+    }
+
+    public void becomeGone()
+    {
+        gameObject.SetActive(false);
     }
 
     public void textChange(string t, bool a)

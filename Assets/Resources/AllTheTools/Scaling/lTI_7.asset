@@ -48,7 +48,8 @@ MonoBehaviour:
     pressure in a coronal direction\r\n11. Maintain a neutral wrist position while
     utilizing wrist activation"
   dentalItem: {fileID: 3458975624826605584, guid: b8801bc626a282d4c90da6b3cf4b705c, type: 3}
-  videoClip: {fileID: 0}
+  videoClip: {fileID: 32900000, guid: 05a926cba1b045d4d87c26c625438948, type: 3}
   RustyIcon: {fileID: 21300000, guid: 8b1f2b3f7fd37f646b1327f90eb59893, type: 3}
   rusty: 1
+  view: 0
   DTDH: 0

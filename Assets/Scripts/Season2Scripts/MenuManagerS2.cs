@@ -131,7 +131,6 @@ public class MenuManagerS2 : MonoBehaviour
     }
     public void openSettingsPanel()
     {
-        Handheld.Vibrate();
 
         if (audioManager != null)
         {

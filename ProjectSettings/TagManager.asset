@@ -9,6 +9,12 @@ TagManager:
   - sceneChangerTag
   - InstructionBoard
   - GumSection
+  - Camera2
+  - TeethSection
+  - DamagedTooth
+  - DW_Tool
+  - ToothPlacement
+  - ToothExtracted
   layers:
   - Default
   - TransparentFX

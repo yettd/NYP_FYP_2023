@@ -10,6 +10,18 @@ public class GameCompletion
 
     public bool gameExtraion = true;
 
+    public int scalingRating = 0;
+    public int FillingRating = 0;
+    public int ExtrationRating = 0;
+
+    public float scalingInSecond = -1;
+    public float FillingInSecond = -1;
+    public float ExtrationInSecond = -1;
+
+    public string scalingTime = "not done yet";
+    public string FillingTime = "not done yet";
+    public string ExtrationTime = "not done yet";
+
     public void setGC(int a)
     {
         switch(a)

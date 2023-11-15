@@ -85,7 +85,7 @@ public class TutorialGame_Script : MonoBehaviour
     {
         // Display the win screen of it
         winScreen.SetActive(cleared);
-
+        minigameTaskListController.Instance.OnGameComplete();
         // Display the lose screen of it
         loseScreen.SetActive(!cleared);
     }
