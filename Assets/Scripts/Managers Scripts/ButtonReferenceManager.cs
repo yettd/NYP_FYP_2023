@@ -106,7 +106,7 @@ public class ButtonReferenceManager : MonoBehaviour
         }
         if(ok)
         {
-            achivmen.instance.UnlockAchivement(4, "seenAllextration");
+            achivmen.instance.UnlockAchivement(6, "seenAllextration");
         }
         ok = true;
         foreach (DentistTool tool in S)
@@ -119,7 +119,7 @@ public class ButtonReferenceManager : MonoBehaviour
         }
         if (ok)
         {
-            achivmen.instance.UnlockAchivement(5, "seenAllextration");
+            achivmen.instance.UnlockAchivement(4, "seenAllextration");
         }
         ok = true;
         foreach (DentistTool tool in F)
@@ -132,7 +132,11 @@ public class ButtonReferenceManager : MonoBehaviour
         }
         if (ok)
         {
-            achivmen.instance.UnlockAchivement(6, "seenAllextration");
+            achivmen.instance.UnlockAchivement(5, "seenAllextration");
+        }
+        if(achivmen.instance.GetIfUnlock(6) && achivmen.instance.GetIfUnlock(4) && achivmen.instance.GetIfUnlock(5))
+        {
+            achivmen.instance.UnlockAchivement(7, "seenAllextration");
         }
         ok = true;
     }

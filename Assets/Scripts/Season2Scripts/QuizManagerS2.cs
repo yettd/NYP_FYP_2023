@@ -242,6 +242,21 @@ public class QuizManagerS2 : MonoBehaviour
         if (score >= totalQuestionsAsked / 100 * 70)
         {
             //polishExtractionTools = true;
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+            {
+                achivmen.instance.UnlockAchivement(9,"asdasd");
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            {
+                achivmen.instance.UnlockAchivement(11, "asdasd");
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            {
+
+                achivmen.instance.UnlockAchivement(10, "asdasd");
+            }
+
+
             cleanPolish();
         }
         if (score > highScore)
