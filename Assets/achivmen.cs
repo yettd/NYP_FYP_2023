@@ -15,13 +15,18 @@ public class achivmen : MonoBehaviour
 
     GameObject achimentListPanel;
     GameObject ALP;
+    bool seted;
     // Start is called before the first frame update
     void Start()
     {
         achimentListPanel = Resources.Load<GameObject>("achivment/achivment");
         ALP = Instantiate(achimentListPanel) as GameObject;
         ALP.SetActive(false);
+        if(seted)
+        {
         sets();
+            seted = true;
+        }
     }
     public void sets()
     {
@@ -93,13 +98,24 @@ public class achivmen : MonoBehaviour
 
     public void UnlockAchivement(int id = -1 , string NameOfAchivement="")
     {
+        bool unlock=false;
         foreach (AllAchivment AA in allAchivments)
         {
+            Debug.Log(AA.id);
             if(id == AA.id || NameOfAchivement == AA.AchivmentName)
             {
                 AA.have = true;
             }
+            if((!AA.have && AA.id != 13) && (AA.have && AA.id == 13))
+            {
+                unlock = false;
+            }
         }
+        if(unlock)
+        {
+            UnlockAchivement(13, "all");
+        }
+        
     }
     public bool GetIfUnlock(int id = -1, string NameOfAchivement = "")
     {
