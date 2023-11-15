@@ -106,8 +106,10 @@ public class minigameTaskListController : MonoBehaviour
         switch (TutorialNagivatorScript.Instance().get_manual.toolAccessId)
         {
             case 0:
-                case 1:
                 procedure = Procedure.Scaling;
+                break;
+            case 1:
+                procedure = Procedure.Extration;
                 break;
             case 2:
                 procedure = Procedure.Filling;
@@ -304,6 +306,9 @@ public class minigameTaskListController : MonoBehaviour
                 case Procedure.Filling:
                     GC.FillingInSecond = second;
                     break;
+                case Procedure.Extration:
+                    GC.ExtrationInSecond = second;
+                    break;
             }
             return true;
         }
@@ -360,6 +365,29 @@ public class minigameTaskListController : MonoBehaviour
                         GC.FillingRating = 0;
                     }
                     GetComponent<ScoreDisplay>().DisplayScore(GC.FillingRating);
+                    GC.FillingTime = saveTimeAndRating();
+                }
+                break;
+            case Procedure.Extration:
+                if (returnTimeInSec(GC.ExtrationInSecond))
+                {
+                    if (timerForMin < 5)
+                    {
+                        GC.ExtrationRating = 3;
+                    }
+                    else if (timerForMin < 10)
+                    {
+                        GC.ExtrationRating = 2;
+                    }
+                    else if (timerForMin < 15)
+                    {
+                        GC.ExtrationRating = 1;
+                    }
+                    else
+                    {
+                        GC.ExtrationRating = 0;
+                    }
+                    GetComponent<ScoreDisplay>().DisplayScore(GC.ExtrationRating);
                     GC.FillingTime = saveTimeAndRating();
                 }
                 break;

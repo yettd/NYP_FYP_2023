@@ -16,6 +16,7 @@ public class openTooth : MonoBehaviour
     bool focus;
     public bool GIC;
     int WhichStepIsOn;
+    public bool problem = false;
     
     [SerializeField] List<Procedure> pro = new List<Procedure>();
     // Start is called before the first frame update
@@ -36,29 +37,30 @@ public class openTooth : MonoBehaviour
             }
             else
             {
-                //zoom in the teeth;
-                //minigameTaskListController.Instance.gonext();
-                teethMan.tm.CallClickOn(gameObject.name);
-                toothFilling tf;
-                toothFillingGIC tfGIC;
-
-                TryGetComponent<toothFilling>(out tf);
-                teethMan.tm.CT("Click on the correct tool to use for Scaling ", true);
-                teethMan.tm.s = "Click on the correct tool to use for Scaling ";
-                if (tf)
+                if (problem)
                 {
+                    //zoom in the teeth;
+                    teethMan.tm.CallClickOn(gameObject.name);
+                    toothFilling tf;
+                    toothFillingGIC tfGIC;
 
-                    teethMan.tm.CT("Click on the correct tool to use for \nCR Restoration ", true);
-                    teethMan.tm.s = "Click on the correct tool to use for \nCR Restoration  ";
+                    TryGetComponent<toothFilling>(out tf);
+                    teethMan.tm.CT("Click on the correct tool to use for Scaling ", true);
+                    teethMan.tm.s = "Click on the correct tool to use for Scaling ";
+                    if (tf)
+                    {
+
+                        teethMan.tm.CT("Click on the correct tool to use for \nCR Restoration ", true);
+                        teethMan.tm.s = "Click on the correct tool to use for \nCR Restoration  ";
+                    }
+                    TryGetComponent<toothFillingGIC>(out tfGIC);
+                    if (tfGIC)
+                    {
+
+                        teethMan.tm.CT("Click on the correct tool to use for \n GIC Restoration", true);
+                        teethMan.tm.s = "Click on the correct tool to use for \n GIC Restoration ";
+                    }
                 }
-                TryGetComponent<toothFillingGIC>(out tfGIC);
-                if (tfGIC)
-                {
-
-                    teethMan.tm.CT("Click on the correct tool to use for \n GIC Restoration", true);
-                    teethMan.tm.s = "Click on the correct tool to use for \n GIC Restoration ";
-                }
-
             }
         }
   
@@ -104,6 +106,7 @@ public class openTooth : MonoBehaviour
                 case Procedure.Scaling:
                     
                     GetComponent<TeethDirtClean>().SetProblem();
+                    problem = true;
                     st = Resources.Load<showTask>("minigameTasklist/scaling");
                     break;
                 case Procedure.Filling:
@@ -111,11 +114,17 @@ public class openTooth : MonoBehaviour
                     if (!GIC)
                     {
                         GetComponent<toothFilling>().setUpProblem();
+                        problem = true;
                         st = Resources.Load<showTask>("minigameTasklist/Filling");
                         break;
                     }
                     GetComponent<toothFillingGIC>().setUpProblem();
+                    problem = true;
                     st = Resources.Load<showTask>("minigameTasklist/Filling2");
+                    break;
+                case Procedure.Extration:
+
+                    problem = true;
                     break;
             }
 
@@ -140,7 +149,6 @@ public class openTooth : MonoBehaviour
         else
         {
             focus = true;
-
             minigameTaskListController.Instance.startminigame(st,WhichStepIsOn);
             cameraChanger.Instance.ZoomInCam(gameObject);
         }

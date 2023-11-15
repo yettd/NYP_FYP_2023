@@ -15,6 +15,7 @@ public class teethMan : MonoBehaviour
     public BackToOriginal Back;
     public ChangeText CT;
     public Disappear dis;
+    public ClickOn changeToolColor;
 
     public string s;
     public bool ZoomIn=false;
@@ -38,6 +39,10 @@ public class teethMan : MonoBehaviour
     {
         CO(teethOn);
         ZoomIn = true;
+    }
+    public void Changetoolcolor(string a)
+    {
+        changeToolColor(a);
     }
 
     public void back()
