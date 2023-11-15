@@ -30,7 +30,6 @@ public class rotateJaws : MonoBehaviour
             {
                 Xy = Input.mousePosition;
                 down = true;
-                totalDegree = Vector2.zero;
                 return;
             }
 
