@@ -21,7 +21,7 @@ MonoBehaviour:
     To hold articulating marking paper  '
   InstrumentGrasp: 
   Instrumentation: 
-  dentalItem: {fileID: 7247525142385303725, guid: 24dbad678588cf6439c7832860deae22, type: 3}
+  dentalItem: {fileID: 770716291918092576, guid: 01f8f4aaead81534da0cc12c76732fe3, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 2a2632de862a0eb48a7292e36d87a64a, type: 3}
   rusty: 1

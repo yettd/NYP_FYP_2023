@@ -36,7 +36,7 @@ MonoBehaviour:
     a coronal direction \r\n9. Apply appropriate lateral pressure in a coronal direction
     \r\n10. Demonstrate overlapping strokes at line angles and under the contact
     area \r\n11. Use the appropriate sequence in the sextant"
-  dentalItem: {fileID: 6798865694113663390, guid: 30e9907145a72cd4e8b9939618809cb7, type: 3}
+  dentalItem: {fileID: 3096485365482944558, guid: 4062233eb940b96429858842429e31f7, type: 3}
   videoClip: {fileID: 32900000, guid: f55a26b6eeae09648b2e0bab492fa1ad, type: 3}
   RustyIcon: {fileID: 21300000, guid: 77c702c9852a9a34cb00d37c465673bc, type: 3}
   rusty: 1

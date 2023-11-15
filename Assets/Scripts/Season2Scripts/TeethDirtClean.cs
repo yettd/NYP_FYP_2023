@@ -25,9 +25,19 @@ public class TeethDirtClean : MonoBehaviour
     Material Dirttooth;
     public float percentage;
     bool clean;
+    AudioManager audioManager;
     private void Start()
     {
 
+    }
+    private void Awake()
+    {
+        audioManager = AudioManager.Instance;
+
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found.");
+        }
     }
 
     public void SetProblem()
@@ -245,6 +255,7 @@ public class TeethDirtClean : MonoBehaviour
                 Color pixelDirtMask = _templateDirtMask.GetPixel(offSetX + x, offSetY + y);
                 float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
                 remaindingDirt -= removedAmount;
+                audioManager.PlaySFX(6);
                 _templateDirtMask.SetPixel(offSetX + x, offSetY + y, new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
             }
         }

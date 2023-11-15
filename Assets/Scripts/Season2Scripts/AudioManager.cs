@@ -86,4 +86,9 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.mute = mute;
     }
+
+    public void stopPlaying()
+    {
+        sfxSource.Stop();
+    }
 }

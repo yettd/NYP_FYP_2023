@@ -259,6 +259,8 @@ public class toothFillingGIC : MonoBehaviour
 
     void PutDam()
     {
+
+        AudioManager.Instance.PlaySFX(8);
         dam = Instantiate(Resources.Load<GameObject>("mat/filling/rubberDamForceb"));
         dam.transform.parent=gameObject.transform;
         dam.transform.localScale = Vector3.one/2;
@@ -352,6 +354,7 @@ public class toothFillingGIC : MonoBehaviour
 
     void Clean()
     {
+        AudioManager.Instance.PlaySFX(6);
         decay.transform.localScale -= Vector3.one * Time.deltaTime * 0.3f;
         if (decay.transform.localScale.x < 0.2)
         {

@@ -8,7 +8,7 @@ public class scalingTools : Tolls
     [SerializeField] RectTransform canvas;
     [SerializeField] Texture2D _brush;
     // Start is called before the first frame update
-    private void awake()
+    private void Awake()
     {
         if (audioManager == null)
         {
@@ -32,7 +32,6 @@ public class scalingTools : Tolls
         hit.collider.TryGetComponent<TeethDirtClean>(out TDC);
         if(TDC)
         {
-            audioManager.PlaySFX(1);
             Debug.Log("asdasd");
             TDC.Clean(hit, _brush,ray);
         }

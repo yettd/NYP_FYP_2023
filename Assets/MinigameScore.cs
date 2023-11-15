@@ -30,7 +30,7 @@ public class MinigameScore : MonoBehaviour
 
         ratingTime[1].text = GC.FillingTime.ToString();
         ratingimage[1].sprite = ratingSprite[GC.FillingRating];
-        ratingTime[2].text = GC.scalingTime.ToString();
+        ratingTime[2].text = GC.ExtrationTime.ToString();
         ratingimage[2].sprite = ratingSprite[GC.ExtrationRating];
     }
 

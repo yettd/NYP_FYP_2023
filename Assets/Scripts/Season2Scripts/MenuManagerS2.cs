@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuManagerS2 : MonoBehaviour
 {
     private AudioManager audioManager;
-    public Animator transition;
+    public Animator BookOpen;
     public Animator Wipetransition;
 
     [Header("Main Menu")]
@@ -26,10 +26,8 @@ public class MenuManagerS2 : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private GameObject SettingsPanel;
     [SerializeField] private Slider AudioSettingSlider;
-
     [SerializeField] private GameObject SettingsPAGE;
     [SerializeField] private GameObject SettingsTransition;
-
 
     [Header("Playgame")]
     [SerializeField] private GameObject PlayGamePanel;
@@ -56,6 +54,8 @@ public class MenuManagerS2 : MonoBehaviour
     [Header("StampCollection")]
     [SerializeField] private GameObject StampCollection;
     [SerializeField] private GameObject achivmentText;
+    [SerializeField] private GameObject ImageBook;
+
 
     bool Settingsactive;
     bool SettingsPageactive;
@@ -64,6 +64,7 @@ public class MenuManagerS2 : MonoBehaviour
     bool CollectionsActive;
     bool StampActive;
     bool Infoactive;
+    bool ImageBookActive;
 
     private void Awake()
     {
@@ -336,7 +337,7 @@ public class MenuManagerS2 : MonoBehaviour
             Settingsactive = false;
         }
 
-        transition.SetTrigger("start");
+        //transition.SetTrigger("start");
     }
 
     public void openInfoPAGE()
@@ -377,8 +378,6 @@ public class MenuManagerS2 : MonoBehaviour
             SettingsPAGE.transform.gameObject.SetActive(false);
             SettingsPageactive = false;
         }
-
-        transition.SetTrigger("start");
         currentImageIndex = 0;
         image.sprite = images[currentImageIndex];
 
@@ -427,15 +426,33 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openStampCollection()
     {
-        if (audioManager != null)
-        {
-            audioManager.PlaySFX(7);
-        }
         if (StampActive == false)
         {
             StampCollection.transform.gameObject.SetActive(true);
             StampActive = true;
         }
+        //BookOpen.SetTrigger("BookOpen");
+    }
+
+    public IEnumerator bookAnimation()
+    {
+        yield return new WaitForSeconds(0.25f);
+        openStampCollection();
+    }
+
+    public void OpenStampAndBook()
+    {
+        if (ImageBookActive== false)
+        {
+            ImageBook.transform.gameObject.SetActive(true);
+            ImageBookActive = true;
+        }
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(7);
+        }
+        BookOpen.SetTrigger("BookOpen");
+        StartCoroutine(bookAnimation());
     }
 
     public void CloseStampCollection()
@@ -455,5 +472,11 @@ public class MenuManagerS2 : MonoBehaviour
             StampCollection.transform.gameObject.SetActive(false);
             StampActive = false;
         }
+        if (ImageBookActive == true)
+        {
+            ImageBook.transform.gameObject.SetActive(false);
+            ImageBookActive = false;
+        }
     }
+
 }
