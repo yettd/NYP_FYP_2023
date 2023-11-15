@@ -3647,6 +3647,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b3cc8d0cd9578d74098a5376d2157ede, type: 3}
   - {fileID: 8300000, guid: 202a59830874db2479c0870e62e0ee09, type: 3}
   - {fileID: 8300000, guid: c88ad68040fbc0b4e9af666bc8af2298, type: 3}
+  - {fileID: 8300000, guid: ba308da4dc5292149b28ebde223dab87, type: 3}
+  - {fileID: 8300000, guid: 5947f186588a03748956d31ab0cb4579, type: 3}
+  - {fileID: 8300000, guid: 96f8cd8d19a6adc43bf7388739131352, type: 3}
 --- !u!4 &523547329
 Transform:
   m_ObjectHideFlags: 0
@@ -4612,6 +4615,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580169180}
   m_CullTransparentMesh: 1
+--- !u!1 &600098127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600098129}
+  - component: {fileID: 600098128}
+  m_Layer: 0
+  m_Name: PlacementAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &600098128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600098127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9693abd663834a14695a199b54ac8c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &600098129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600098127}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.49215508, y: 1.3876028, z: 1.4096622}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606097807
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,7 +4674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &606097808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4735,6 +4782,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 600098128}
+        m_TargetAssemblyTypeName: QuickAudio, Assembly-CSharp
+        m_MethodName: playClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 357690070}
         m_TargetAssemblyTypeName: TransitionLoader, Assembly-CSharp
         m_MethodName: LoadMiniGameTutorialFilling
@@ -7560,6 +7619,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 600098128}
+        m_TargetAssemblyTypeName: QuickAudio, Assembly-CSharp
+        m_MethodName: playClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 357690070}
         m_TargetAssemblyTypeName: TransitionLoader, Assembly-CSharp
         m_MethodName: Loadcollections
@@ -8644,6 +8715,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 600098128}
+        m_TargetAssemblyTypeName: QuickAudio, Assembly-CSharp
+        m_MethodName: playClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 357690070}
         m_TargetAssemblyTypeName: TransitionLoader, Assembly-CSharp
         m_MethodName: LoadMiniGameTutorialScaling
@@ -16178,6 +16261,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 600098128}
+        m_TargetAssemblyTypeName: QuickAudio, Assembly-CSharp
+        m_MethodName: playClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 357690070}
         m_TargetAssemblyTypeName: TransitionLoader, Assembly-CSharp
         m_MethodName: LoadMiniGameTutorialExctraction
@@ -17856,3 +17951,4 @@ SceneRoots:
   - {fileID: 1707070730}
   - {fileID: 6518793123890950810}
   - {fileID: 1806707848}
+  - {fileID: 600098129}
