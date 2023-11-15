@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TBD:
   - s: 0
-    i: {fileID: 21300000, guid: 525f8fafb9bea27428f1a13b09309df3, type: 3}
+    i: {fileID: 21300000, guid: a47aa06820765f8429993c5f707e6516, type: 3}
     Des: scale the tooth with the correct gracey
   - s: 11
     i: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}

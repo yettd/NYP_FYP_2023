@@ -509,6 +509,7 @@ public class minigameTaskListController : MonoBehaviour
 
         saveGameComplation(procedure);
         WIN.Invoke();
+        audioManager.PlaySFX(13);
     }
 
     public void CheckGameComplete()

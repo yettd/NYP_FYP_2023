@@ -197,7 +197,7 @@ public class QuizManagerS2 : MonoBehaviour
     public void Wrong()
     {
         totalQuestionsAsked++;
-        audioManager.PlaySFX(4);
+        audioManager.PlaySFX(12);
         StartCoroutine(ShowImage(wrongImage));
         StartCoroutine(ShowImage(NoTouchPanel));
         if (totalQuestionsAsked < 10)

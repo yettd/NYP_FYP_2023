@@ -284,6 +284,7 @@ public class toothFilling : MonoBehaviour
     }
     void CURE()
     {
+
         if(FR.material.color.r>=1)
         {
             nextTools(true);
@@ -293,6 +294,7 @@ public class toothFilling : MonoBehaviour
     }
     void POLISH()
     {
+
         if(FC.transform.localPosition.y > -0.5)
         {
 
@@ -323,6 +325,16 @@ public class toothFilling : MonoBehaviour
         if(TS==null)
         {
             TS=FindObjectOfType<tripleSyringe>();
+        }
+
+        if(TS.WaterBlow)
+        {
+            AudioManager.Instance.PlaySFX(11);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX(10);
+
         }
 
         water = decayRender.material.color;
@@ -368,6 +380,7 @@ public class toothFilling : MonoBehaviour
     void Drill()
     {
         drillTimer -= Time.deltaTime;
+        AudioManager.Instance.PlaySFX(9);
         if(drillTimer<0)
         {
             dam.transform.parent = null;
