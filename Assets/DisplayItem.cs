@@ -47,7 +47,12 @@ public class DisplayItem : MonoBehaviour
     {
         //Load the data from scriptableObject and assign them
 
-        string everything = dentistTool.Name + "\n" + dentistTool.Usage + "\n" + dentistTool.InstrumentGrasp + "\n" + dentistTool.Instrumentation;
+        string i = (dentistTool.Usage != "") ? $"\n {dentistTool.Usage}" : "";
+
+        string b = (dentistTool.InstrumentGrasp != "") ? $"\n {dentistTool.InstrumentGrasp}" : "";
+        string c = (dentistTool.Instrumentation != "") ? $"\n {dentistTool.Instrumentation}" : "";
+        string everything = dentistTool.Name + i + (b==""? null:b) + (c == "" ? null : c);
+        Debug.Log(everything);
         Spread(everything);
         //toolNameText.text = dentistTool.Name;
         toolDescText.text = Text[0];

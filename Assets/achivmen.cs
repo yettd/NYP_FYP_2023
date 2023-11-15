@@ -25,6 +25,7 @@ public class achivmen : MonoBehaviour
     }
     public void sets()
     {
+        achivementList.Clear();
         allAchivments = Resources.LoadAll<AllAchivment>("achivment");
         achivementImg = FindObjectsByType<Image>(FindObjectsSortMode.InstanceID);
 
@@ -67,7 +68,6 @@ public class achivmen : MonoBehaviour
             {
 
                 achivementList[AA.id].color = new Vector4(1,1,1,1);
-             
                 achivementList[AA.id].sprite = AA.AchivmentImage;
                 achivementList[AA.id].gameObject.AddComponent<Button>().onClick.AddListener(() =>
                     {
