@@ -24,7 +24,7 @@ MonoBehaviour:
 '
   InstrumentGrasp: 
   Instrumentation: 
-  dentalItem: {fileID: 919132149155446097, guid: 6c91c9eeaecdedc4195ea9cc3bc6787c, type: 3}
+  dentalItem: {fileID: 8654063226549773126, guid: f7b26e9e4d1771f408f15399aa5db93b, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 1579cc0788ff0094bb066f9a378f6f6b, type: 3}
   rusty: 1

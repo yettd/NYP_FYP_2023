@@ -27,7 +27,7 @@ MonoBehaviour:
     facial/\r\nlingual and mesial surfaces.\r\n2. Ensure the lower shank is parallel
     to the tooth\r\n3. Constantly maintain toe third of the cutting edge to tooth
     surface\r\n4. Apply small, oblique/vertical overlapping \r\nstrokes."
-  dentalItem: {fileID: 3501075885271148873, guid: 41742258c7f218f47b00ae4bc2009fe1, type: 3}
+  dentalItem: {fileID: 8449748112133524390, guid: fcbbda585039ffa4d8643313c749d657, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 7f025c8a99b3c464b8cc81b359b14795, type: 3}
   rusty: 1

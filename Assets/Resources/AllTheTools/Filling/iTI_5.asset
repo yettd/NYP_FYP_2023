@@ -25,7 +25,7 @@ MonoBehaviour:
     mix materials on a glass slab'
   InstrumentGrasp: 
   Instrumentation: 
-  dentalItem: {fileID: 919132149155446097, guid: 1410168dabac1804eaf9380c8dd6bd3c, type: 3}
+  dentalItem: {fileID: 7780193969926312158, guid: c613c2811bbee4449a97ff407a425865, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: f8bdc530816409949b50c048010a8197, type: 3}
   rusty: 1

@@ -26,7 +26,7 @@ MonoBehaviour:
     tooth and containing the filling material, '
   InstrumentGrasp: 
   Instrumentation: 
-  dentalItem: {fileID: 4575897608365353353, guid: 72b768dbba72f1b46a6d29b922563e42, type: 3}
+  dentalItem: {fileID: 7713707697229939023, guid: a3f9963bf02813146a617b606e835163, type: 3}
   videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: 3a78877bea6f95a4e8fd670f1fc1c061, type: 3}
   rusty: 1
