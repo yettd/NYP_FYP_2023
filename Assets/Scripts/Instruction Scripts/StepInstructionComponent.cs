@@ -33,6 +33,11 @@ public class StepInstructionComponent : MonoBehaviour
     {
         GameObject.Find("Interface").GetComponent<InstructionToolGrant>().GetRequiredTool(obj);
     }
+
+    public void SetStepAsRead()
+    {
+        icon.color = new Color(1, 1, 1, 0.3f);
+    }
     #endregion
 
     #region MODIFY COMPONENT
