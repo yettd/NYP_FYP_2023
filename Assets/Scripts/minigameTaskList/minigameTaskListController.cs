@@ -6,11 +6,12 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class minigameTaskListController : MonoBehaviour
 {
     private AudioManager audioManager;
-
+    public GameObject setting;
     [SerializeField] private GameObject SettingsPanel;
     bool SettingsPanelactive;
     public void openSettingsPanel()
@@ -91,6 +92,15 @@ public class minigameTaskListController : MonoBehaviour
     GameObject Almagotrrr;
    //text
    [SerializeField]TextMeshProUGUI AmtProblem;
+
+    Vector4 ogTimerAnchor;
+
+    Vector4 ogTeethAmtAnchor;
+
+
+    //clock and teethUI
+
+
     private void Awake()
     {
         audioManager = AudioManager.Instance;
@@ -238,6 +248,19 @@ public class minigameTaskListController : MonoBehaviour
 
             NextSteps = st.TBD[NS].s;
         }
+        setting.SetActive(false);
+
+
+        RectTransform rectTransform = AmtProblem.transform.parent.GetComponent<RectTransform>();
+        ogTeethAmtAnchor = new Vector4(rectTransform.anchorMin.x, rectTransform.anchorMin.y, rectTransform.anchorMax.x, rectTransform.anchorMax.y);
+        rectTransform.DOAnchorMin(new Vector2(0.7588887f, 0.783f), 0.001f);
+        rectTransform.DOAnchorMax(new Vector2(0.8584447f, 0.9841976f), 0.001f);
+        rectTransform.DOAnchorPos(new Vector2(0, 0f), 0.001f);
+
+        rectTransform = timerText.transform.parent.GetComponent<RectTransform>();
+        ogTimerAnchor = new Vector4(rectTransform.anchorMin.x, rectTransform.anchorMin.y, rectTransform.anchorMax.x, rectTransform.anchorMax.y);
+        rectTransform.DOAnchorMin(new Vector2(0.5f, 1), 0.001f);
+        rectTransform.DOAnchorMax(new Vector2(0.5f, 1), 0.001f);
 
         SetUpTaskList();
         showCorrectStep();
@@ -343,6 +366,25 @@ public class minigameTaskListController : MonoBehaviour
                     GetComponent<ScoreDisplay>().DisplayScore(GC.scalingRating);
                     GC.scalingTime = saveTimeAndRating();
                 }
+                else
+                {
+                    if (timerForMin < 5)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(3);
+                    }
+                    else if (timerForMin < 10)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(2);
+                    }
+                    else if (timerForMin < 15)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(1);
+                    }
+                    else
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(0);
+                    }
+                }
                 break;
 
             case Procedure.Filling:
@@ -367,6 +409,25 @@ public class minigameTaskListController : MonoBehaviour
                     GetComponent<ScoreDisplay>().DisplayScore(GC.FillingRating);
                     GC.FillingTime = saveTimeAndRating();
                 }
+                else
+                {
+                    if (timerForMin < 5)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(3);
+                    }
+                    else if (timerForMin < 10)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(2);
+                    }
+                    else if (timerForMin < 15)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(1);
+                    }
+                    else
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(0);
+                    }
+                }
                 break;
             case Procedure.Extration:
                 if (returnTimeInSec(GC.ExtrationInSecond))
@@ -388,7 +449,26 @@ public class minigameTaskListController : MonoBehaviour
                         GC.ExtrationRating = 0;
                     }
                     GetComponent<ScoreDisplay>().DisplayScore(GC.ExtrationRating);
-                    GC.FillingTime = saveTimeAndRating();
+                    GC.ExtrationTime = saveTimeAndRating();
+                }
+                else
+                {
+                    if (timerForMin < 5)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(3);
+                    }
+                    else if (timerForMin < 10)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(2);
+                    }
+                    else if (timerForMin < 15)
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(1);
+                    }
+                    else
+                    {
+                        GetComponent<ScoreDisplay>().DisplayScore(0);
+                    }
                 }
                 break;
         }
@@ -442,16 +522,24 @@ public class minigameTaskListController : MonoBehaviour
         if(toolSelected ==true)
         {
             RR();
-
+     
             teethMan.tm.backText( true);
         }
         else if(cameraChanger.Instance.GetZoom()==true)
         {
-            TL.gameObject.SetActive(false);
-            toolSelection.SetActive(false);
+            TL.GetComponent<RectTransform>().DOAnchorPosX(-174f, 1f);
+            toolSelection.GetComponent<RectTransform>().DOAnchorPosX(192, 1f);
             teethMan.tm.Back();
             cameraChanger.Instance.ZoomOutCam();
+            timerText.transform.parent.transform.GetComponent<RectTransform>().DOAnchorMin(new Vector2(ogTimerAnchor.x, ogTimerAnchor.y), 0.01f);
+            timerText.transform.parent.transform.GetComponent<RectTransform>().DOAnchorMax(new Vector2(ogTimerAnchor.z, ogTimerAnchor.w), 0.01f);
+            timerText.transform.parent.transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 0.01f);
 
+            AmtProblem.transform.parent.transform.GetComponent<RectTransform>().DOAnchorMin(new Vector2(ogTeethAmtAnchor.x, ogTeethAmtAnchor.y), 0.01f);
+            AmtProblem.transform.parent.transform.GetComponent<RectTransform>().DOAnchorMax(new Vector2(ogTeethAmtAnchor.z, ogTeethAmtAnchor.w), 0.01f);
+            AmtProblem.transform.parent.transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 0.01f);
+
+            setting.SetActive(true);
             teethMan.tm.CT("Swipe to rotate \n Click on teeth to zoom in further", false);
         }
         else
@@ -541,8 +629,9 @@ public class minigameTaskListController : MonoBehaviour
     private void SetUpTaskList()
     {
 
-        TL.gameObject.SetActive(true);
-        toolSelection.SetActive(true);
+        TL.GetComponent<RectTransform>().DOAnchorPosX(129.56f,1f);
+        toolSelection.GetComponent<RectTransform>().DOAnchorPosX(-150, 1f);
+       
         foreach (Transform child in TL.GetChild(0).transform.GetChild(0))
         {
             // Destroy the child object
@@ -561,16 +650,16 @@ public class minigameTaskListController : MonoBehaviour
             }
             slot.AddComponent<Button>().onClick.AddListener(() =>
             {
-                if (instrution.transform.parent==slot.gameObject.transform)
-                {
-                    instrution.transform.parent = null;
-                    instrution.SetActive(false);
-                    return;
-                }
-                instrution.SetActive(true);
-                instrution.transform.parent=slot.transform;
-                instrution.transform.localPosition = new Vector3(300, 0, 0);
-                instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
+                //if (instrution.transform.parent==slot.gameObject.transform)
+                //{
+                //    instrution.transform.parent = null;
+                //    instrution.SetActive(false);
+                //    return;
+                //}
+                //instrution.SetActive(true);
+                //instrution.transform.parent=slot.transform;
+                //instrution.transform.localPosition = new Vector3(300, 0, 0);
+                //instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
             });
             
         }
@@ -599,6 +688,18 @@ public class minigameTaskListController : MonoBehaviour
         }
 
 
+    }
+
+    public string returnCurrentstep()
+    {
+        foreach (TaskBreakDown TBD in st.TBD)
+        {
+            if (TBD.s == currentStep)
+            {
+                return TBD.Des;
+            }
+        }
+        return null;
     }
 
     public int  getCSValue()

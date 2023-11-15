@@ -8,11 +8,14 @@ public class Instruction_Text : MonoBehaviour
     public TextMeshProUGUI tmpro;
     // Start is called before the first frame update
     Vector3 ogpos;
+    string ogtext;
+    RectTransform rt;
     private void Start()
     {
+        rt= GetComponent<RectTransform>();
         teethMan.tm.CT+=textChange;
         teethMan.tm.dis = becomeGone;
-        ogpos=transform.localPosition;
+        ogpos = rt.anchoredPosition;
     }
 
     public void becomeGone()
@@ -25,11 +28,13 @@ public class Instruction_Text : MonoBehaviour
         tmpro.text = t;
         if(a )
         {
-            transform.localPosition= new Vector3(0,transform.localPosition.y,0);
+            rt.anchoredPosition= new Vector3(0, 150, 0);
         }
         else
         {
-            transform.localPosition = ogpos;
+            rt.anchoredPosition = ogpos;
         }
     }
+   
+   
 }

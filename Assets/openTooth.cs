@@ -81,12 +81,10 @@ public class openTooth : MonoBehaviour
             {
                 if(!GIC)
                 {
-
                     gameObject.AddComponent<toothFilling>();
                 }
                 else
                 {
-
                     gameObject.AddComponent<toothFillingGIC>();
                 }
 

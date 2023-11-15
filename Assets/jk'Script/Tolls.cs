@@ -63,6 +63,10 @@ public class Tolls : MonoBehaviour
         {
             raycastToSelcetTooth();
         }
+        else
+        {
+            AudioManager.Instance.stopPlaying();
+        }
     }
 
     private void raycastToSelcetTooth()
