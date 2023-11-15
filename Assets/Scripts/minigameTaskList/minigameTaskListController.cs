@@ -259,8 +259,8 @@ public class minigameTaskListController : MonoBehaviour
 
         rectTransform = timerText.transform.parent.GetComponent<RectTransform>();
         ogTimerAnchor = new Vector4(rectTransform.anchorMin.x, rectTransform.anchorMin.y, rectTransform.anchorMax.x, rectTransform.anchorMax.y);
-        rectTransform.DOAnchorMin(new Vector2(0.5f, 1), 0.001f);
-        rectTransform.DOAnchorMax(new Vector2(0.5f, 1), 0.001f);
+        rectTransform.DOAnchorMin(new Vector2(0.4088889f, 0.809f), 0.001f);
+        rectTransform.DOAnchorMax(new Vector2(0.5888889f, 1), 0.001f);
 
         SetUpTaskList();
         showCorrectStep();
