@@ -12,7 +12,6 @@ public class changePasueToBack : MonoBehaviour
 
     public void ChangeButtonSprite()
     {
-        Debug.Log(minigameTaskListController.Instance.minigameOpen);
         if (minigameTaskListController.Instance.minigameOpen==false)
         {
             i.texture = s[0];

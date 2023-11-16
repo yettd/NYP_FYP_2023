@@ -89,67 +89,81 @@ public class ButtonReferenceManager : MonoBehaviour
         string a = Saving.save.LoadFromJson("collection");
         if (a != null)
         {
-            CB = JsonUtility.FromJson<CollectionBase>(Saving.save.LoadFromJson("collection"));
+            //CB = JsonUtility.FromJson<CollectionBase>(Saving.save.LoadFromJson("collection"));
 
-            for (int i = 0; i < CB.toolsName.Count; i++)
-            {
-                foreach(DentistTool dt in S)
-                {
-                    if(dt.Name == CB.toolsName[i])
-                    {
-                        Debug.Log($"{CB.toolsName[i]} && {CB.rusty[i]}" );
-                        dt.rusty = CB.rusty[i];
-                        dt.view = CB.view[i];
-                    }
-                }
-            }
+           
 
-            for (int i = 0; i < CB.toolsName.Count; i++)
-            {
-                foreach (DentistTool dt in F)
-                {
-                    if (dt.Name == CB.toolsName[i])
-                    {
-                        dt.rusty = CB.rusty[i];
-                        dt.view = CB.view[i];
-                    }
-                }
-            }
 
-            for (int i = 0; i < CB.toolsName.Count; i++)
-            {
-                foreach (DentistTool dt in E)
-                {
-                    if (dt.Name == CB.toolsName[i])
-                    {
-                        dt.rusty = CB.rusty[i];
-                        dt.view = CB.view[i];
-                    }
-                }
-            }
+            //for (int i = 0; i < CB.toolsName.Count; i++)
+            //{
+            //    foreach(DentistTool dt in S)
+            //    {
+            //        if(dt.Name == CB.toolsName[i])
+            //        {
+            //            Debug.Log($"{CB.toolsName[i]} && {CB.rusty[i]}" );
+            //            dt.rusty = CB.rusty[i];
+            //            dt.view = CB.view[i];
+            //        }
+            //    }
+            //}
+
+            //for (int i = 0; i < CB.toolsName.Count; i++)
+            //{
+            //    foreach (DentistTool dt in F)
+            //    {
+            //        if (dt.Name == CB.toolsName[i])
+            //        {
+            //            dt.rusty = CB.rusty[i];
+            //            dt.view = CB.view[i];
+            //        }
+            //    }
+            //}
+
+            //for (int i = 0; i < CB.toolsName.Count; i++)
+            //{
+            //    foreach (DentistTool dt in E)
+            //    {
+            //        if (dt.Name == CB.toolsName[i])
+            //        {
+            //            dt.rusty = CB.rusty[i];
+            //            dt.view = CB.view[i];
+            //        }
+            //    }
+            //}
         }
         else
         {
             CB = new CollectionBase();
-            foreach(DentistTool s in S)
+            foreach (DentistTool dt in S)
             {
-                CB.toolsName.Add(s.Name);
-                CB.view.Add(false);
-                CB.rusty.Add(true);
+                dt.view = false; dt.rusty = true;
             }
-            foreach (DentistTool s in E)
+            foreach (DentistTool dt in E)
             {
-                CB.toolsName.Add(s.Name);
-                CB.view.Add(false);
-                CB.rusty.Add(true);
+                dt.view = false; dt.rusty = true;
             }
-            foreach (DentistTool s in F)
+            foreach (DentistTool dt in F)
             {
-                CB.toolsName.Add(s.Name);
-                CB.view.Add(false);
-                CB.rusty.Add(true);
+                dt.view = false; dt.rusty = true;
             }
-            ResetTools();
+            //foreach (DentistTool s in S)
+            //{
+            //    CB.toolsName.Add(s.Name);
+            //    CB.view.Add(false);
+            //    CB.rusty.Add(true);
+            //}
+            //foreach (DentistTool s in E)
+            //{
+            //    CB.toolsName.Add(s.Name);
+            //    CB.view.Add(false);
+            //    CB.rusty.Add(true);
+            //}
+            //foreach (DentistTool s in F)
+            //{
+            //    CB.toolsName.Add(s.Name);
+            //    CB.view.Add(false);
+            //    CB.rusty.Add(true);
+            //}
             Saving.save.saveToJson(CB,"collection");
         }
     }

@@ -82,7 +82,7 @@ public class DW_ViewSwitcher : MonoBehaviour
         {
             // Find the closest active camera that been changes and update it to DW_Camera
             transform.position = GetCurrentViewport().gameObject.transform.position;
-
+            GetComponent<Camera>().orthographicSize = GetCurrentViewport().gameObject.GetComponent<Camera>().orthographicSize;
             // Set the assign value of the camera to next time use again
             currentCam = assignCam;
         }

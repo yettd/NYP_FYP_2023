@@ -32,6 +32,7 @@ public class StorageItemScript : MonoBehaviour
         // Select item for uses
         component.GetItemSelection(item);
 
+        teethMan.tm.Changetoolcolor(item.itemName);
         // Target selected area on item currently used
         if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1) toolsNagivator.GetToolsOnUse(item.itemName);
     }

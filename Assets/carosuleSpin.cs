@@ -20,9 +20,7 @@ public class carosuleSpin : MonoBehaviour
     }
     private void OnEnable()
     {
-        closeseGameObject= miniGames[0];
-        StartCoroutine("doEffect");
-        NotChosen();
+        StartCoroutine("Enabling");
     }
 
     // Update is called once per frame
@@ -59,17 +57,25 @@ public class carosuleSpin : MonoBehaviour
 
     IEnumerator doEffect()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log(closeseGameObject);
         closeseGameObject.GetComponent<GameSelected>().OpenUp();
         closeseGameObject.DOScale(new Vector3(1f, 1f, 1f), 1);
-        SnapToCenter();
+        SnapToCenter(false);
+    }
+    IEnumerator Enabling()
+    {
+        yield return new WaitForEndOfFrame();
+        closeseGameObject.GetComponent<GameSelected>().OpenUp();
+        closeseGameObject.DOScale(new Vector3(1f, 1f, 1f), 1);
+        SnapToCenter(true);
     }
 
-    public void SnapToCenter()
+    public void SnapToCenter(bool t)
     {
+        Debug.Log(t);
         float diff = closeseGameObject.transform.position.x- c.transform.position.x ;
-        Debug.Log(mainShelf.transform.position.x + diff);
-       moving=  mainShelf.transform.DOMoveX(mainShelf.transform.position.x+diff*-1, 1  );
+        moving = mainShelf.transform.DOMoveX(mainShelf.transform.position.x + diff * -1, t ? 0.01f:1 ) ;
     }
         
     public void NotChosen()
@@ -79,6 +85,7 @@ public class carosuleSpin : MonoBehaviour
         {
             if (a != closeseGameObject)
             {
+           
                 a.GetComponent<GameSelected>().close();
                 a.DOScale(new Vector3(.5f, .5f, .5f), 1);   
             }

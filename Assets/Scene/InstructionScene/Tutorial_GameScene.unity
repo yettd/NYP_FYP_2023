@@ -3869,6 +3869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695bd93f74e43d947bb1b0f12a97bc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rj: {fileID: 210914701}
 --- !u!1 &456309766 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5863020522068358881, guid: 972d0e4187190274fa0d69311fe3b3b4, type: 3}
@@ -4540,6 +4541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695bd93f74e43d947bb1b0f12a97bc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rj: {fileID: 210914701}
 --- !u!1 &575966172
 GameObject:
   m_ObjectHideFlags: 0
@@ -6359,6 +6361,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1228256688557309826, guid: dd7eeea207240f4449ced205e27c5e80, type: 3}
+      propertyPath: orthographic size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1740365864234980363, guid: dd7eeea207240f4449ced205e27c5e80, type: 3}
       propertyPath: scaleData.Array.data[0].cameraRef
       value: 
@@ -6418,6 +6424,10 @@ PrefabInstance:
     - target: {fileID: 3130349028592579049, guid: dd7eeea207240f4449ced205e27c5e80, type: 3}
       propertyPath: m_Name
       value: DW_Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130349028592579049, guid: dd7eeea207240f4449ced205e27c5e80, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

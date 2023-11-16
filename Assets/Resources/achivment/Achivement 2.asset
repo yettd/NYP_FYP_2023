@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: fb999cf6f39e2e44cb88aec2c88ad6af, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: a2036c06405d73249b1462ae7a6cc09c, type: 3}
   Des: did extration in a min
-  have: 1
+  have: 0
   id: 2

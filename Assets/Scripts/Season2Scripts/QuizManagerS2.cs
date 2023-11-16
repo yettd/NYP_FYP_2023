@@ -292,65 +292,84 @@ public class QuizManagerS2 : MonoBehaviour
 
     private  void cleanPolish()
     {
-        
-        CollectionBase CB;
-        string b = Saving.save.LoadFromJson("collection");
-        if (b != null)
+
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
         {
-            CB = JsonUtility.FromJson<CollectionBase>(Saving.save.LoadFromJson("collection"));
-
-            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+            foreach (DentistTool a in ButtonReferenceManager.Instance.E)
             {
-                foreach (DentistTool a in ButtonReferenceManager.Instance.S)
-                {
-                    for (int i = 0; i < CB.toolsName.Count; i++)
-                    {
-                        Debug.Log($"{a.Name} || {CB.toolsName[i]}");
-                        if(a.Name == CB.toolsName[i])
-                        {
-
-                            Debug.Log($"asdjoiajfdoiajfoiwejgwhesuigh");
-                            CB.rusty[i] = false;
-                            a.rusty = false;
-                            break;
-                        }
-                    }
-                }
+                a.rusty = false;
             }
-            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
-            {
-                foreach (DentistTool a in ButtonReferenceManager.Instance.E)
-                {
-                    for (int i = 0; i < CB.toolsName.Count; i++)
-                    {
-                        if (a.Name == CB.toolsName[i])
-                        {
-
-                            CB.rusty[i] = false;
-                            a.rusty = false;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
-            {
-                foreach (DentistTool a in ButtonReferenceManager.Instance.F)
-                {
-                    for (int i = 0; i < CB.toolsName.Count; i++)
-                    {
-                        if (a.Name == CB.toolsName[i])
-                        {
-
-                            CB.rusty[i] = false;
-                            a.rusty = false;
-                            break;
-                        }
-                    }
-                }
-            }
-            Saving.save.saveToJson(CB, "collection");
         }
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+        {
+            foreach (DentistTool a in ButtonReferenceManager.Instance.S)
+            {
+                a.rusty = false;
+            }
+        }
+        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        {
+            foreach (DentistTool a in ButtonReferenceManager.Instance.F)
+            {
+                a.rusty = false;
+            }
+        }
+
+        //CollectionBase CB;
+        //string b = Saving.save.LoadFromJson("collection");
+        //if (b != null)
+        //{
+        //    CB = JsonUtility.FromJson<CollectionBase>(Saving.save.LoadFromJson("collection"));
+
+        //    if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+        //    {
+        //        foreach (DentistTool a in ButtonReferenceManager.Instance.S)
+        //        {
+        //            for (int i = 0; i < CB.toolsName.Count; i++)
+        //            {
+        //                if(a.Name == CB.toolsName[i])
+        //                {
+        //                    CB.rusty[i] = false;
+        //                    a.rusty = false;
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+        //    {
+        //        foreach (DentistTool a in ButtonReferenceManager.Instance.E)
+        //        {
+        //            for (int i = 0; i < CB.toolsName.Count; i++)
+        //            {
+        //                if (a.Name == CB.toolsName[i])
+        //                {
+
+        //                    CB.rusty[i] = false;
+        //                    a.rusty = false;
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+        //    {
+        //        foreach (DentistTool a in ButtonReferenceManager.Instance.F)
+        //        {
+        //            for (int i = 0; i < CB.toolsName.Count; i++)
+        //            {
+        //                if (a.Name == CB.toolsName[i])
+        //                {
+
+        //                    CB.rusty[i] = false;
+        //                    a.rusty = false;
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    Saving.save.saveToJson(CB, "collection");
+        //}
 
 
 

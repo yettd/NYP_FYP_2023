@@ -91,6 +91,8 @@ public class InstructionMenu : MonoBehaviour
         }
 
         // Process Button
+
+     
         ProcessBtn.interactable = (currentStep >= totalStep);
     }
 
@@ -112,7 +114,6 @@ public class InstructionMenu : MonoBehaviour
     {
         // Load progress
         InstructionManual loadedData = data.LoadInfoThroughJson2<InstructionManual>();
-
         for (int step = 0; step < manual.step.Length; step++)
             manual.step[step].completed = loadedData.step[step].completed;
 

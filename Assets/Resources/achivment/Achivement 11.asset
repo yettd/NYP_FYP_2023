@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: 0c0bb29f92c899d42beb25e07f5d7ee7, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 8a0cc84177a110a4085a6fb7ae39a04f, type: 3}
   Des: click on gracey
-  have: 1
+  have: 0
   id: 11

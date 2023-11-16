@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: 248a3a7d35e8a544fb1f0b21a1837ab7, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 0386615baca185b4997958c31f22cbda, type: 3}
   Des: 
-  have: 1
+  have: 0
   id: 12

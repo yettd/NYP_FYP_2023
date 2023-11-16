@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: f4afe104653857641a80b703e92a40c2, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 716472a7d0eb81e47a3b1cda8575e70b, type: 3}
   Des: unlock all filling tool
-  have: 1
+  have: 0
   id: 5

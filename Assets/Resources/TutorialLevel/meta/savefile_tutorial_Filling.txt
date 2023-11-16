@@ -1,147 +1,257 @@
 {
-    "Title": "Filling",
+    "Title": "#36 is decayed and needs to be restored with GIC.  #46 is decayed and needs to needs to be restored with Composite.",
     "Icon": {
-        "instanceID": 40804
+        "instanceID": 35442
     },
-    "description": "???",
+    "description": "Remove Plaque and fill in the hole that was made",
     "step": [
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35444
             },
-            "title": "???",
-            "instruction": "Apply rubber dam with rubber forceps ",
-            "requiredTool": " rubber dam",
+            "title": "Filling",
+            "instruction": "Apply rubber dam clamp with rubber dam forceps ",
+            "requiredTool": "rubberDamForceb",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35446
             },
-            "title": "???",
-            "instruction": "Select a slow speed handpiece with round bur ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Use the slow speed handpiece with round bur to remove all the carious structures",
+            "requiredTool": "slowSpeed",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35448
             },
-            "title": "???",
-            "instruction": "Remove maximum decay with the bur ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Use the spoon excavator to remove the remnant carious structures",
+            "requiredTool": "Spoonexcavator",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35450
             },
-            "title": "???",
-            "instruction": "Select spoon excavator ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Wash and dry the cavity",
+            "requiredTool": "tripleSyringe",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35452
             },
-            "title": "???",
-            "instruction": "Remove remnants of the decay ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Apply dentin conditioner",
+            "requiredTool": "dentin conditioner",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35454
             },
-            "title": "???",
-            "instruction": "Wash and blow dry ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Check Occlusion After Removing The Rudder Dam And Polish Again As Required",
+            "requiredTool": "ballBurnisher",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35456
             },
-            "title": "???",
-            "instruction": "Etch the dentine and enamel using etchant (37% Phosphoric Acid).  ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Wash",
+            "instruction": "Wash away the dentin conditioner and dry the cavity",
+            "requiredTool": "tripleSyringe",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35458
             },
-            "title": "???",
-            "instruction": "Etch the dentine and enamel using etchant (37% Phosphoric Acid).  ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Select the GIC and compress the end of the capsule",
+            "requiredTool": "GIC",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35460
             },
-            "title": "???",
-            "instruction": "Wash thoroughly and dry the cavity but do not over dry (desiccate) it.  ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Place the GIC capsule into the amalgamator for mixing",
+            "requiredTool": "GIC",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35462
             },
-            "title": "???",
-            "instruction": "Apply primer to the whole cavity with a microbrush, blow gently, the cavity should appear shiny.  ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Placed the mixed capsule into the GIC applicator",
+            "requiredTool": "Applicator",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35464
             },
-            "title": "???",
-            "instruction": "Apply adhesive to the whole cavity with another microbrush, blow gently to avoid pooling. Light cure. ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Use the GIC applicator to dispense the material and contour the cavity with a plastic instrument",
+            "requiredTool": "Applicator",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35466
             },
-            "title": "???",
-            "instruction": "Place CR into the cavity incrementally with a plastic instrument, contour the CR before light cure. ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Filling",
+            "instruction": "Apply a layer of vaseline with a cotton bud and you're done!",
+            "requiredTool": "cotton",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35444
             },
-            "title": "???",
-            "instruction": "Remove excessive CR by polishing with white stone/ smooth diamond polishing burs  ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Composite Restoration on 46",
+            "instruction": "Apply rubber dam clamp with rubber dam forceps ",
+            "requiredTool": "rubberDamForceb",
             "completed": true,
             "taskDone": false
         },
         {
             "Icon": {
-                "instanceID": 40806
+                "instanceID": 35446
             },
-            "title": "???",
-            "instruction": "Check occlusion after removing the rubber dam and polish again as required. ",
-            "requiredTool": "slow speed handpiece ",
+            "title": "Composite Restoration on 46",
+            "instruction": "Use the slow speed handpiece with round bur to remove all the carious structures",
+            "requiredTool": "slowSpeed",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35448
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Use the spoon excavator to remove the remnant carious structures",
+            "requiredTool": "Spoonexcavator",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35450
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Wash and dry the cavity",
+            "requiredTool": "tripleSyringe",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35452
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Etch the cavity with Phosphoric Acid",
+            "requiredTool": "etchant",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35468
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Apply primer to the cavity",
+            "requiredTool": "Microbrush",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35450
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Blow dry the primer to achieve an even layer",
+            "requiredTool": "tripleSyringe",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35468
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Apply bonding agent to the cavity",
+            "requiredTool": "Microbrush",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35450
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Blow dry the bonding agent to achieve an even layer",
+            "requiredTool": "tripleSyringe",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35470
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Light cure the bonding agent",
+            "requiredTool": "lightCure",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35464
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Apply composite material",
+            "requiredTool": "plasticinstrument",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35466
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Contour the material using a plastic instrument",
+            "requiredTool": "plasticinstrument",
+            "completed": true,
+            "taskDone": false
+        },
+        {
+            "Icon": {
+                "instanceID": 35470
+            },
+            "title": "Composite Restoration on 46",
+            "instruction": "Light cure the material ",
+            "requiredTool": "lightCure",
             "completed": true,
             "taskDone": false
         }
@@ -150,91 +260,109 @@
         {
             "itemName": "slowSpeed",
             "icon": {
-                "instanceID": 40808
+                "instanceID": 35472
             },
             "model": {
-                "instanceID": 40810
+                "instanceID": 35474
             }
         },
         {
             "itemName": "Spoonexcavator",
             "icon": {
-                "instanceID": 40812
+                "instanceID": 35476
             },
             "model": {
-                "instanceID": 40814
+                "instanceID": 35478
             }
         },
         {
             "itemName": "Microbrush",
             "icon": {
-                "instanceID": 40816
+                "instanceID": 35480
             },
             "model": {
-                "instanceID": 40818
+                "instanceID": 35482
             }
         },
         {
             "itemName": "plasticinstrument",
             "icon": {
-                "instanceID": 40820
+                "instanceID": 35484
             },
             "model": {
-                "instanceID": 40822
+                "instanceID": 35486
             }
         },
         {
             "itemName": "etchant",
             "icon": {
-                "instanceID": 40820
+                "instanceID": 35488
             },
             "model": {
-                "instanceID": 40824
+                "instanceID": 35490
             }
         },
         {
             "itemName": "rubberDamForceb",
             "icon": {
-                "instanceID": 40826
+                "instanceID": 35492
             },
             "model": {
-                "instanceID": 40828
+                "instanceID": 35494
             }
         },
         {
             "itemName": "tripleSyringe",
             "icon": {
-                "instanceID": 40830
+                "instanceID": 35496
             },
             "model": {
-                "instanceID": 40832
+                "instanceID": 35498
             }
         },
         {
             "itemName": "lightCure",
             "icon": {
-                "instanceID": 40826
+                "instanceID": 35500
             },
             "model": {
-                "instanceID": 40810
+                "instanceID": 35502
             }
         },
         {
             "itemName": "Applicator",
             "icon": {
-                "instanceID": 40834
+                "instanceID": 35504
             },
             "model": {
-                "instanceID": 37382
+                "instanceID": 35506
             }
         },
         {
             "itemName": "ballBurnisher",
             "icon": {
-                "instanceID": 40834
+                "instanceID": 35508
             },
             "model": {
-                "instanceID": 123976
+                "instanceID": 35510
+            }
+        },
+        {
+            "itemName": "cotton",
+            "icon": {
+                "instanceID": 35512
+            },
+            "model": {
+                "instanceID": 35514
+            }
+        },
+        {
+            "itemName": "GIC",
+            "icon": {
+                "instanceID": 35516
+            },
+            "model": {
+                "instanceID": 35518
             }
         }
     ],

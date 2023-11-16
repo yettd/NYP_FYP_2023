@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System;
 
 public class achivmen : MonoBehaviour
 {
@@ -18,11 +19,23 @@ public class achivmen : MonoBehaviour
 
    [SerializeField] GameObject Left;
     [SerializeField] GameObject Right;
+
+    achivements am;
     bool seted;
     // Start is called before the first frame update
     void Start()
     {
         allAchivments = Resources.LoadAll<AllAchivment>("achivment");
+        string a = Saving.save.LoadFromJson("achiv");
+        if (a == null)
+        {
+            foreach (AllAchivment item in allAchivments)
+            {
+                item.have=false;
+            }
+            am=new achivements();
+            Saving.save.saveToJson(a, "achiv");
+        }
         achimentListPanel = Resources.Load<GameObject>("achivment/achivment");
         ALP = Instantiate(achimentListPanel) as GameObject;
         ALP.SetActive(false);
@@ -131,5 +144,9 @@ public class achivmen : MonoBehaviour
         return false;
     }
 
+
+}
+public class achivements
+{
 
 }

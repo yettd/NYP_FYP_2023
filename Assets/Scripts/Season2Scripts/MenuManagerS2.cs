@@ -85,7 +85,7 @@ public class MenuManagerS2 : MonoBehaviour
             audioManager.PlayBackgroundMusic(1);
         }
 
-        if (MainMenuactive == false)
+        if (MainMenuactive == false && SceneManager.GetActiveScene()==SceneManager.GetSceneByBuildIndex(0))
         {
             MainMenuPanel.transform.gameObject.SetActive(true);
             MainMenuactive = true;

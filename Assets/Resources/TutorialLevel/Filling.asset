@@ -169,7 +169,7 @@ MonoBehaviour:
     title: Composite Restoration on 46
     instruction: 'Light cure the material '
     requiredTool: lightCure
-    completed: 0
+    completed: 1
     taskDone: 0
   tools:
   - itemName: slowSpeed

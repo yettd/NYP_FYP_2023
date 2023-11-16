@@ -317,6 +317,8 @@ public class TutorialGame_Script : MonoBehaviour
 
     private int FindCamViewIndex()
     {
+     
+        
         // Get data from other script
         ToolScale_Data[] data = GameObject.FindGameObjectWithTag(gameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name).GetComponent<DW_AutoToolScaler>().get_scaleData;
 

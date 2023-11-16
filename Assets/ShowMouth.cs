@@ -32,7 +32,6 @@ public class ShowMouth : MonoBehaviour
        // model = minigameTaskListController.Instance.getTeetch();
         ogPos = model.transform.position;
         ogrotation = model.transform.rotation;
-        Debug.Log(ogrotation);
         ogParent = model.transform.parent.gameObject;
         model.transform.parent = transform.GetChild(0).transform;
         foreach (Transform child in model.transform)
@@ -52,6 +51,7 @@ public class ShowMouth : MonoBehaviour
             child.gameObject.layer = 0;
         }
         transform.GetChild(0).transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, 0);
+        
         model.transform.parent = ogParent.gameObject.transform;
         model.transform.position = ogPos;
         model.transform.rotation=ogrotation;

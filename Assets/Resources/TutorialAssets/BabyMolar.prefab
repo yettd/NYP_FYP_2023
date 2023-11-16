@@ -124,7 +124,7 @@ MonoBehaviour:
   st: {fileID: 11400000, guid: 39707b9bbea1590489be0812c94c632e, type: 2}
   GIC: 0
   problem: 0
-  pro: 00000000
+  pro: 02000000
 --- !u!64 &-2038410896683554625
 MeshCollider:
   m_ObjectHideFlags: 0

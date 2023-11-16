@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: ef9ae374ac8cbda4ba0be93481f969f3, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 6864111ba8b4ae64e84328521b5fa13a, type: 3}
   Des: used ar for all tool
-  have: 1
+  have: 0
   id: 8

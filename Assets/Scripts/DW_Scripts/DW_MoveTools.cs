@@ -44,6 +44,8 @@ public class DW_MoveTools
     private GameObject GetCameraTarget()
     {
         // Find targeted object with the selected tag
+        Debug.Log(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name);
+ 
         return GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name);
     }
     #endregion

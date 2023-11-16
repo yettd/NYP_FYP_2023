@@ -12,8 +12,17 @@ public class DW_LockTool : MonoBehaviour
     {
         isLocked = GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name) ||
                 TutorialGame_Script.thisScript.get_onGoingFeedback == InterfaceFeedBack.PerformingUsedTool;
-
+      
         GetComponent<rotateJaws>().enabled = !isLocked;
         //LockedGUI.SetActive(isLocked);
+    }
+    private void OnDisable()
+    {
+        teethMan.tm.changeToolColor("");
+        isLocked = false;
+        if (GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name) != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name));
+        }
     }
 }

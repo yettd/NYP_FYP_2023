@@ -656,19 +656,19 @@ public class minigameTaskListController : MonoBehaviour
                 slot.sprite = TBD.i;
                 first = false;
             }
-            slot.AddComponent<Button>().onClick.AddListener(() =>
-            {
-                //if (instrution.transform.parent==slot.gameObject.transform)
-                //{
-                //    instrution.transform.parent = null;
-                //    instrution.SetActive(false);
-                //    return;
-                //}
-                //instrution.SetActive(true);
-                //instrution.transform.parent=slot.transform;
-                //instrution.transform.localPosition = new Vector3(300, 0, 0);
-                //instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
-            });
+            //slot.AddComponent<Button>().onClick.AddListener(() =>
+            //{
+            //    //if (instrution.transform.parent==slot.gameObject.transform)
+            //    //{
+            //    //    instrution.transform.parent = null;
+            //    //    instrution.SetActive(false);
+            //    //    return;
+            //    //}
+            //    //instrution.SetActive(true);
+            //    //instrution.transform.parent=slot.transform;
+            //    //instrution.transform.localPosition = new Vector3(300, 0, 0);
+            //    //instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
+            //});
             
         }
         int i = 0;

@@ -45,7 +45,10 @@ public class DW_ToolsNagivator
         currentTool = title;
 
         // Create instance and process using it
-        if (currentTool != previousTool)
+
+        Debug.Log(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool]);
+
+        if (currentTool != previousTool || GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name)== null)
         {
             GetInstanceOfToolUsage();
             previousTool = currentTool;
