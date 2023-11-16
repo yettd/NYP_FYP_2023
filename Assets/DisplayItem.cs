@@ -60,6 +60,25 @@ public class DisplayItem : MonoBehaviour
         toolImage.sprite = dentistTool.Icon;
         dentistTool.view = true;
         ButtonReferenceManager.Instance.unlockAchivement();
+
+        CollectionBase CB;
+        string a = Saving.save.LoadFromJson("collection");
+        if (a != null)
+        {
+            CB = JsonUtility.FromJson<CollectionBase>(Saving.save.LoadFromJson("collection"));
+
+            for (int j = 0; j < CB.toolsName.Count; j++)
+            {
+                if(CB.toolsName[j]==dentistTool.Name)
+                {
+                    CB.view[j] = true;
+                }
+            }
+            Saving.save.saveToJson(CB, "collection");
+
+        }
+
+
     }
 
     public void Spread(string a)

@@ -44,7 +44,7 @@ MonoBehaviour:
     direction\r\n9. Maintain a neutral wrist position while utilizing wrist activation\r\n10.
     Use appropriate sequence in the quadrant \r\n"
   dentalItem: {fileID: 3707258350551588762, guid: 092d727c88900244789bb9d1e39048d2, type: 3}
-  videoClip: {fileID: 32900000, guid: 05a926cba1b045d4d87c26c625438948, type: 3}
+  videoClip: {fileID: 0}
   RustyIcon: {fileID: 21300000, guid: e489240911c7d6e4da608e27b68febe5, type: 3}
   rusty: 1
   view: 0

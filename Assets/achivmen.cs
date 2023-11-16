@@ -15,41 +15,31 @@ public class achivmen : MonoBehaviour
 
     GameObject achimentListPanel;
     GameObject ALP;
+
+   [SerializeField] GameObject Left;
+    [SerializeField] GameObject Right;
     bool seted;
     // Start is called before the first frame update
     void Start()
     {
+        allAchivments = Resources.LoadAll<AllAchivment>("achivment");
         achimentListPanel = Resources.Load<GameObject>("achivment/achivment");
         ALP = Instantiate(achimentListPanel) as GameObject;
         ALP.SetActive(false);
-        if(seted)
-        {
         sets();
-            seted = true;
-        }
     }
     public void sets()
     {
-        achivementList.Clear();
-        allAchivments = Resources.LoadAll<AllAchivment>("achivment");
-        achivementImg = FindObjectsByType<Image>(FindObjectsSortMode.InstanceID);
-
-        int i = 0;
-        foreach (Image image in achivementImg)
+        for (int i = 0; i < Left.transform.childCount; i++)
         {
-       
-            if (image.transform.parent == null || (!image.transform.parent.name.Contains("left") && !image.transform.parent.name.Contains("right")))
-            {
-                Debug.Log(image.transform.parent);
-                achivementImg[i] = null;
-            }
-            if (achivementImg[i] != null)
-            {
-              
-                achivementList.Add(achivementImg[i]);
-            }
-            i++;
+            achivementList.Add(Left.transform.GetChild(i).GetComponent<Image>());
         }
+
+        for (int i = 0; i < Right.transform.childCount; i++)
+        {
+            achivementList.Add(Left.transform.GetChild(i).GetComponent<Image>());
+        }
+
         display();
     }
 

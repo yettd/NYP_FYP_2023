@@ -25,7 +25,7 @@ MonoBehaviour:
     facial/lingual \r\nand mesial surfaces.\r\n2. Apply small, oblique/vertical overlapping
     \r\nstrokes."
   dentalItem: {fileID: 7040168579721507438, guid: 70a23709a7f62ea4986f0985f8a0078b, type: 3}
-  videoClip: {fileID: 32900000, guid: 482265d8f28d4454b91cd4a7e85dde07, type: 3}
+  videoClip: {fileID: 32900000, guid: 192998b81e5ff004391ad1720db81dfb, type: 3}
   RustyIcon: {fileID: 21300000, guid: d6258a9be109a094cb77715e50e2d378, type: 3}
   rusty: 1
   view: 0

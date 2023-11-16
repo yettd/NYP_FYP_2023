@@ -16,5 +16,5 @@ MonoBehaviour:
   AchivmentImage: {fileID: 21300000, guid: faf70d1f78c9ef247aadb76238262207, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 0b358fceadc0d204e81718845f05aa90, type: 3}
   Des: Unlock all dental hygine tool
-  have: 1
+  have: 0
   id: 4

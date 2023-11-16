@@ -47,7 +47,7 @@ MonoBehaviour:
     when debriding\r\nroot surface\r\n8. Apply appropriate lateral pressure in a
     coronal\r\ndirection\r\n9. Maintain neutral wrist position while utilizing wrist\r\nactivation"
   dentalItem: {fileID: 1582590233040595758, guid: 7a0cf26e4d4d44c4ebc513acf6333990, type: 3}
-  videoClip: {fileID: 0}
+  videoClip: {fileID: 32900000, guid: 96e3eaac3f81553479a9b8626d30ad15, type: 3}
   RustyIcon: {fileID: 21300000, guid: ea1b351d12904e748b9c6c24794ee1b2, type: 3}
   rusty: 1
   view: 0

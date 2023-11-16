@@ -65,7 +65,7 @@ MonoBehaviour:
     5. Access at least halfway across the mesial surface from facial
     aspect.'
   dentalItem: {fileID: 2885106097164581364, guid: 9d031fc867ed08f43bbaf20f1466c7ae, type: 3}
-  videoClip: {fileID: 0}
+  videoClip: {fileID: 32900000, guid: ac1dccf863c523c4a9ae19645dfb8130, type: 3}
   RustyIcon: {fileID: 21300000, guid: b114b52fb3654574ab59c09c24feb1c6, type: 3}
   rusty: 1
   view: 0

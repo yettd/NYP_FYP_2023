@@ -54,6 +54,11 @@ public class QuizManagerS2 : MonoBehaviour
     }
     private void Update()
     {
+        if(Input.GetKey(KeyCode.B))
+        {
+
+            PlayerPrefs.DeleteKey("SHighScore");
+        }
         if (QuizPanel.activeSelf && timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
@@ -196,6 +201,7 @@ public class QuizManagerS2 : MonoBehaviour
 
     public void Wrong()
     {
+        score++;
         totalQuestionsAsked++;
         audioManager.PlaySFX(12);
         StartCoroutine(ShowImage(wrongImage));
@@ -238,27 +244,6 @@ public class QuizManagerS2 : MonoBehaviour
         FinalScoreText.text = "Final Score: " + score + "/10";
         QuizPanel.SetActive(false);
         ResultsPanel.SetActive(true);
-
-        if (score >= totalQuestionsAsked / 100 * 70)
-        {
-            //polishExtractionTools = true;
-            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
-            {
-                achivmen.instance.UnlockAchivement(9,"asdasd");
-            }
-            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
-            {
-                achivmen.instance.UnlockAchivement(11, "asdasd");
-            }
-            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
-            {
-
-                achivmen.instance.UnlockAchivement(10, "asdasd");
-            }
-
-
-            cleanPolish();
-        }
         if (score > highScore)
         {
             highScore = score;
@@ -277,7 +262,7 @@ public class QuizManagerS2 : MonoBehaviour
                 PlayerPrefs.SetInt("FHighScore", highScore);
             }
 
-     
+
             PlayerPrefs.Save();
             FinalScoreText.text += "\nNew High Score!";
         }
@@ -285,31 +270,96 @@ public class QuizManagerS2 : MonoBehaviour
         {
             FinalScoreText.text += "\nHigh Score: " + highScore + "/10";
         }
+        if (score >= totalQuestionsAsked / 100 * 70)
+        {
+            cleanPolish();
+            //polishExtractionTools = true;
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
+            {
+                achivmen.instance.UnlockAchivement(9,"asdasd");
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
+            {
+                achivmen.instance.UnlockAchivement(11, "asdasd");
+            }
+            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            {
+
+                achivmen.instance.UnlockAchivement(10, "asdasd");
+            }
+
+            Debug.Log($"{score}: {highScore}");
+       
+        }
+       
     }
+    
+
 
     private  void cleanPolish()
     {
-        if(ButtonReferenceManager.Instance.storeCollectionID== CollectionEnum.S)
+        
+        CollectionBase CB;
+        string b = Saving.save.LoadFromJson("collection");
+        if (b != null)
         {
-            foreach(DentistTool a in ButtonReferenceManager.Instance.S)
+            CB = JsonUtility.FromJson<CollectionBase>(Saving.save.LoadFromJson("collection"));
+
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
             {
-                a.rusty = false;
+                foreach (DentistTool a in ButtonReferenceManager.Instance.S)
+                {
+                    for (int i = 0; i < CB.toolsName.Count; i++)
+                    {
+                        Debug.Log($"{a.Name} || {CB.toolsName[i]}");
+                        if(a.Name == CB.toolsName[i])
+                        {
+
+                            Debug.Log($"asdjoiajfdoiajfoiwejgwhesuigh");
+                            CB.rusty[i] = false;
+                            a.rusty = false;
+                            break;
+                        }
+                    }
+                }
             }
-        }
-        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
-        {
-            foreach (DentistTool a in ButtonReferenceManager.Instance.E)
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
             {
-                a.rusty = false;
+                foreach (DentistTool a in ButtonReferenceManager.Instance.E)
+                {
+                    for (int i = 0; i < CB.toolsName.Count; i++)
+                    {
+                        if (a.Name == CB.toolsName[i])
+                        {
+
+                            CB.rusty[i] = false;
+                            a.rusty = false;
+                            break;
+                        }
+                    }
+                }
             }
-        }
-        if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
-        {
-            foreach (DentistTool a in ButtonReferenceManager.Instance.F)
+            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
             {
-                a.rusty = false;
+                foreach (DentistTool a in ButtonReferenceManager.Instance.F)
+                {
+                    for (int i = 0; i < CB.toolsName.Count; i++)
+                    {
+                        if (a.Name == CB.toolsName[i])
+                        {
+
+                            CB.rusty[i] = false;
+                            a.rusty = false;
+                            break;
+                        }
+                    }
+                }
             }
+            Saving.save.saveToJson(CB, "collection");
         }
+
+
+
     }
 
     private void UpdateTimerDisplay()

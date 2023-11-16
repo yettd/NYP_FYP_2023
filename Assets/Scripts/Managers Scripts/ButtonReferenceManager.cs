@@ -49,6 +49,9 @@ public class ButtonReferenceManager : MonoBehaviour
     public DentistTool[] E;
     public DentistTool[] F;
 
+    CollectionBase CB;
+    
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -63,6 +66,8 @@ public class ButtonReferenceManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         LoadToolsDatabases();
         storedDTHButtonID = DTHEnum.DH;
+        string a = Saving.save.LoadFromJson("collection");
+     
     }
 
     public void LoadToolsDatabases()
@@ -72,7 +77,6 @@ public class ButtonReferenceManager : MonoBehaviour
         ARTorP = false;
         storedDTHButtonID = DTHEnum.DH;
         storeCollectionID = CollectionEnum.S;
-        string a = Saving.save.LoadFromJson("game");
 
 
         S = Resources.LoadAll<DentistTool>("AllTheTools/Scaling");
@@ -82,13 +86,71 @@ public class ButtonReferenceManager : MonoBehaviour
         E = Resources.LoadAll<DentistTool>("AllTheTools/Extraction");
         GetDh();
         GetDt();
-        if (a!=null)
+        string a = Saving.save.LoadFromJson("collection");
+        if (a != null)
         {
-            GameCompletion GC = JsonUtility.FromJson<GameCompletion>(a);
+            CB = JsonUtility.FromJson<CollectionBase>(Saving.save.LoadFromJson("collection"));
 
+            for (int i = 0; i < CB.toolsName.Count; i++)
+            {
+                foreach(DentistTool dt in S)
+                {
+                    if(dt.Name == CB.toolsName[i])
+                    {
+                        Debug.Log($"{CB.toolsName[i]} && {CB.rusty[i]}" );
+                        dt.rusty = CB.rusty[i];
+                        dt.view = CB.view[i];
+                    }
+                }
+            }
 
-            
-        
+            for (int i = 0; i < CB.toolsName.Count; i++)
+            {
+                foreach (DentistTool dt in F)
+                {
+                    if (dt.Name == CB.toolsName[i])
+                    {
+                        dt.rusty = CB.rusty[i];
+                        dt.view = CB.view[i];
+                    }
+                }
+            }
+
+            for (int i = 0; i < CB.toolsName.Count; i++)
+            {
+                foreach (DentistTool dt in E)
+                {
+                    if (dt.Name == CB.toolsName[i])
+                    {
+                        dt.rusty = CB.rusty[i];
+                        dt.view = CB.view[i];
+                    }
+                }
+            }
+        }
+        else
+        {
+            CB = new CollectionBase();
+            foreach(DentistTool s in S)
+            {
+                CB.toolsName.Add(s.Name);
+                CB.view.Add(false);
+                CB.rusty.Add(true);
+            }
+            foreach (DentistTool s in E)
+            {
+                CB.toolsName.Add(s.Name);
+                CB.view.Add(false);
+                CB.rusty.Add(true);
+            }
+            foreach (DentistTool s in F)
+            {
+                CB.toolsName.Add(s.Name);
+                CB.view.Add(false);
+                CB.rusty.Add(true);
+            }
+            ResetTools();
+            Saving.save.saveToJson(CB,"collection");
         }
     }
 
@@ -190,5 +252,29 @@ public class ButtonReferenceManager : MonoBehaviour
             }
         }
     }
+    public void ResetTools()
+    {
+        foreach (DentistTool a in S)
+        {
+            a.view = false;
+            a.rusty = true;
+        }
+        foreach (DentistTool a in E)
+        {
+            a.view = false;
+            a.rusty = true;
+        }
+        foreach (DentistTool a in F)
+        {
+            a.view = false;
+            a.rusty = true;
+        }
+    }
+}
 
+public class CollectionBase
+{
+   public List<string> toolsName = new List<string>();
+   public List<bool> rusty = new List<bool>();
+   public List<bool> view = new List<bool>();
 }
