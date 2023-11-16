@@ -24,6 +24,7 @@ public class InstructionManual : ScriptableObject
     [Header("Manual Information Output")]
     public string Title;
     public Texture Icon;
+    [TextArea]
     public string description;
 
     [Header("Tutorial Step info include mini game scene")]
