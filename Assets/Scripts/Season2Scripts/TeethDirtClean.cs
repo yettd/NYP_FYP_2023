@@ -156,7 +156,7 @@ public class TeethDirtClean : MonoBehaviour
         }
         else
         {
-            minigameTaskListController.Instance.wrongTool();
+       
         }
 
     }
@@ -235,6 +235,10 @@ public class TeethDirtClean : MonoBehaviour
                     correct = true;
                 }
                 break;
+        }
+        if(!correct)
+        {
+            minigameTaskListController.Instance.wrongTool();
         }
 
         return correct;
