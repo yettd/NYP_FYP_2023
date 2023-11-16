@@ -7,7 +7,7 @@ public class clock : MonoBehaviour
 {
 
     float totatlTime;
-    public float maximum = 180;
+    public float maximum = 100;
     public Image img;
     // Start is called before the first frame update
     void Start()
