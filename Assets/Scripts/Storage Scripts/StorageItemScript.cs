@@ -51,6 +51,10 @@ public class StorageItemScript : MonoBehaviour
     }
     public void changeShade(string a)
     {
+        if(gameObject==null)
+        {
+            return;
+        }
 
         GetComponent<RawImage>().color = new Vector4(1, 1, 1, 1f);
         if (item.itemName == a)

@@ -288,6 +288,7 @@ public class TutorialGame_Script : MonoBehaviour
     #region MISC
     private string GetCamViewInUsedTool()
     {
+        Debug.Log("GOT HERE PLS");
         // Find the view cam to display text accordingly
         switch (FindCamViewIndex())
         {

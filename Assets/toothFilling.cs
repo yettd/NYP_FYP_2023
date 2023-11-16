@@ -46,6 +46,9 @@ public class toothFilling : MonoBehaviour
         {
             flip = true;
         }
+
+        GameObject b=Instantiate(Resources.Load<GameObject>("mat/filling/FYP_GunkNEW"), gameObject.transform);
+        b.transform.localPosition = new Vector3(0, 0.344f, 0);
         OriginalMesh = GetComponent<MeshFilter>().mesh;
         GameObject cap = Resources.Load<GameObject>("Mat/filling/cap");
         GameObject getStart = Resources.Load<GameObject>("Mat/filling/d");
@@ -384,6 +387,8 @@ public class toothFilling : MonoBehaviour
         AudioManager.Instance.PlaySFX(9);
         if(drillTimer<0)
         {
+            Destroy(transform.GetChild(0).gameObject);
+
             dam.transform.parent = null;
             if (minigameTaskListController.Instance.TBgums)
             {

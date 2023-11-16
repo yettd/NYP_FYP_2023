@@ -504,7 +504,7 @@ public class minigameTaskListController : MonoBehaviour
 
 
 
-        if(achivmen.instance.GetIfUnlock(0) && achivmen.instance.GetIfUnlock(1) )
+        if(achivmen.instance.GetIfUnlock(0) && achivmen.instance.GetIfUnlock(1) && achivmen.instance.GetIfUnlock(2))
         {
             achivmen.instance.UnlockAchivement(3);
         }

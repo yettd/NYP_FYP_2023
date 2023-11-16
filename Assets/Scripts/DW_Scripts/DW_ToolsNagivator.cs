@@ -68,7 +68,7 @@ public class DW_ToolsNagivator
             // Take out on the tool been selected
             GameObject cloneTool = GameObject.Instantiate(Resources.Load<GameObject>("TutorialAssets/Tools/Marker/" + GetItemToUse(currentTool).model.name));
             cloneTool.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name;
-
+            Debug.Log(cloneTool.name);
             // Clear marker as there are any dulipate tool convention
             CleanUpUsedMarker(GetItemToUse(currentTool).model.name);
             cloneTool.name = GetItemToUse(currentTool).model.name;
