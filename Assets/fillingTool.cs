@@ -17,12 +17,12 @@ public class fillingTool : Tolls
     protected override void usetool(RaycastHit hit)
     {
 
-        Debug.Log("ddd");
         toothFilling TDC;
         toothFillingGIC TDCGIC;
         hit.collider.TryGetComponent<toothFilling>(out TDC);
         if (TDC)
         {
+            Debug.Log("raycasthitt");
             TDC.GoToStep(hit);
         }
         hit.collider.TryGetComponent<toothFillingGIC>(out TDCGIC);

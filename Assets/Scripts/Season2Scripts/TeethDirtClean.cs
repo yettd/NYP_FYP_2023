@@ -211,6 +211,7 @@ public class TeethDirtClean : MonoBehaviour
     }
     bool  checkTools(char a)
     {
+
         bool correct = false;
         switch(a)
         {
@@ -219,42 +220,50 @@ public class TeethDirtClean : MonoBehaviour
                 {
                     if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
                     {
+                        Debug.Log("asdasdasd");
                         correct = true;
+                        break;
                     }
-                    break;
                 }
-             
                 break;
+
             case 'l':
                 foreach (toolsToClean tc in ttcl)
                 {
                     if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
                     {
                         correct = true;
+
+                        Debug.Log("asdasdasd");
+                        break;
                     }
-                    break;
                 }
                 break;
+
             case 'b':
                 foreach (toolsToClean tc in ttcb)
                 {
                     if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
                     {
                         correct = true;
+
+                        Debug.Log("asdasdasd");
+                        break;
                     }
-                    break;
                 }
                 break;
+
             case 'r':
                 foreach (toolsToClean tc in ttcr)
                 {
                     if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
                     {
                         correct = true;
+                        break;
                     }
-                    break;
                 }
                 break;
+
         }
         if(!correct)
         {

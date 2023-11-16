@@ -37,7 +37,7 @@ public class achivmen : MonoBehaviour
 
         for (int i = 0; i < Right.transform.childCount; i++)
         {
-            achivementList.Add(Left.transform.GetChild(i).GetComponent<Image>());
+            achivementList.Add(Right.transform.GetChild(i).GetComponent<Image>());
         }
 
         display();
@@ -61,7 +61,7 @@ public class achivmen : MonoBehaviour
         {
             if(AA.have)
             {
-
+                Debug.Log(AA.id);
                 achivementList[AA.id].color = new Vector4(1,1,1,1);
                 achivementList[AA.id].sprite = AA.AchivmentImage;
                 achivementList[AA.id].gameObject.AddComponent<Button>().onClick.AddListener(() =>
@@ -80,6 +80,7 @@ public class achivmen : MonoBehaviour
                 {
                     btn.enabled= false;
                 }
+                Debug.Log(achivementList[AA.id].transform.parent);
                 achivementList[AA.id].color = new Vector4(0, 0, 0, 0.5f);
                 achivementList[AA.id].sprite = AA.AchivmentImage;
             }

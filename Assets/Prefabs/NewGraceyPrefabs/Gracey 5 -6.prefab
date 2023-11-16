@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 915834357200369018}
   - component: {fileID: 2498647359703829166}
   - component: {fileID: 2853644240609407677}
-  - component: {fileID: 6921535380952172737}
+  - component: {fileID: 6750287047522421362}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -330,7 +330,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6921535380952172737
+--- !u!114 &6750287047522421362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,4 +347,4 @@ MonoBehaviour:
   letgoToUse: 0
   ThresholdForMax: 0
   canvas: {fileID: 0}
-  _brush: {fileID: 2800000, guid: 400b9fab7655c584295f61cb4eee3bfe, type: 3}
+  _brush: {fileID: 2800000, guid: 6086f0625101e0f4ca1dbfb76bbd8197, type: 3}
