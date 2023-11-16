@@ -48,7 +48,7 @@ public class TransitionLoader : MonoBehaviour
     {
         if(TutorialNagivatorScript.getScript.get_manual.Title== "Extraction")
         {
-            StartCoroutine(LoadLevelTutorial(12));
+            StartCoroutine(LoadLevelTutorial(6));
             return;
         }
         StartCoroutine(LoadLevelTutorial(6));

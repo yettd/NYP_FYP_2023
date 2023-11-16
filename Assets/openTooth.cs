@@ -100,6 +100,7 @@ public class openTooth : MonoBehaviour
     }
     private void Start()
     {
+        
         teethMan.tm.CO += HideTeeth;
         teethMan.tm.Back += Show;
 

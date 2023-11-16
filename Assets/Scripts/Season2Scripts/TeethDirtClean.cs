@@ -49,7 +49,7 @@ public class TeethDirtClean : MonoBehaviour
         TooThDone = Resources.Load<Material>("Mat/clean");
         Dirttooth = Resources.Load<Material>("Mat/teethMasks");
 
-        
+
         GetComponent<Renderer>().material = Dirttooth;
         _material = GetComponent<Renderer>().material;
         CreateTexture();

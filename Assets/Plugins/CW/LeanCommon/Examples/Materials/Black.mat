@@ -22,15 +22,15 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Black
   m_Shader: {fileID: -6465566751694194690, guid: 4badfd70c2231d74db13b3a1501e87f8, type: 3}
-  m_Parent: {fileID: 2100000, guid: ee38f3fe02f4c554095c723d3470043f, type: 2}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _ALPHATEST_ON
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap:
     RenderType: TransparentCutout
   disabledShaderPasses: []
@@ -47,7 +47,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _AlphaToMask: 1
+    - _DstBlend: 0
+    - _QueueControl: 1
+    - _Surface: 0
+    - _ZWrite: 1
+    - _op: 1
     m_Colors:
     - _Color: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
   m_BuildTextureStacks: []
