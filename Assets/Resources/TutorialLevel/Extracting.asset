@@ -14,45 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Extraction
   Icon: {fileID: 2800000, guid: d63ce0c4ee4e61e4c810242ba826c49d, type: 3}
-  description: User will learn about the extraction of tooth with the step to follow.
+  description: "#55 needs to be extracted as it is over-retained. \nGo through the
+    instructions to begin.\n"
   step:
   - Icon: {fileID: 2800000, guid: 39d0d38f98dfd0c4fb9e1c1d9b4c5aef, type: 3}
     title: Extraction
-    instruction: 'Locate the Issue of the problem '
+    instruction: Locate #55 to be extracted
     requiredTool: Syringe
     completed: 1
-    taskDone: 0
+    taskDone: 1
   - Icon: {fileID: 2800000, guid: cc3b5eb67aac85d499bc070351f15031, type: 3}
     title: Extraction
-    instruction: Apply anesthetic through the gum area to help ease of pain before
-      the extracting the tooth.
+    instruction: Apply anesthesia to #55 before extracting the tooth.
     requiredTool: Syringe
     completed: 1
-    taskDone: 0
+    taskDone: 1
   - Icon: {fileID: 2800000, guid: 4cab2711ea230c041aae5ff86384c303, type: 3}
     title: Extraction
-    instruction: Prepare the Foresceps for removal
+    instruction: Prepare the forceps for extraction
     requiredTool: Forceps
     completed: 1
     taskDone: 1
   - Icon: {fileID: 2800000, guid: d65fe7afa063e3943950a1a9e7bc1165, type: 3}
     title: Extraction
-    instruction: Apply some cotton gauze to help clear over the unwanted particle.
+    instruction: Position the forceps over #55
     requiredTool: Forceps
-    completed: 1
-    taskDone: 0
-  - Icon: {fileID: 2800000, guid: d2fa814a86618b742a75ba620fb75ac2, type: 3}
-    title: Extraction
-    instruction: Use the forcesp tool and toogle it over to remove the damaged tooth.
-    requiredTool: Forceps
-    completed: 1
-    taskDone: 0
-  - Icon: {fileID: 2800000, guid: 4564ccceaed8732409c0981b2e3e2066, type: 3}
-    title: Extraction
-    instruction: Apply some cotton gauze to help clear over the unwanted particle.
-    requiredTool: CottonGauze
     completed: 1
     taskDone: 1
+  - Icon: {fileID: 2800000, guid: d2fa814a86618b742a75ba620fb75ac2, type: 3}
+    title: Extraction
+    instruction: Use the forceps to extract #55.
+    requiredTool: Forceps
+    completed: 1
+    taskDone: 1
+  - Icon: {fileID: 2800000, guid: 4564ccceaed8732409c0981b2e3e2066, type: 3}
+    title: Extraction
+    instruction: Place a gauze over the extraction socket.
+    requiredTool: Gauze
+    completed: 1
+    taskDone: 0
   tools:
   - itemName: Forceps
     icon: {fileID: 2800000, guid: 1176890b185342340a5e599360c8bebe, type: 3}
@@ -60,9 +60,9 @@ MonoBehaviour:
   - itemName: Syringe
     icon: {fileID: 2800000, guid: f6e12d6edf724444c9ca047a0f27fed7, type: 3}
     model: {fileID: 6503727786904292808, guid: 52019f31d7b5ec44aa616fe047008077, type: 3}
-  - itemName: CottonGauze
+  - itemName: Gauze
     icon: {fileID: 2800000, guid: dc7330a4a23e3a2478a6ce3b17fb3f93, type: 3}
     model: {fileID: 3520120627521356768, guid: 6b7fdd2f7082fbe4fbcad4e2af562afb, type: 3}
   cleared:
-    completed: 0
+    completed: 1
   toolAccessId: 1
