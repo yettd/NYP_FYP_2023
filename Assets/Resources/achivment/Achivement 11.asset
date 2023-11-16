@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d982afba0d2eb24f8f86262faead9c7, type: 3}
   m_Name: Achivement 11
   m_EditorClassIdentifier: 
-  AchivmentName: pass extration
-  AchivmentImage: {fileID: 21300000, guid: 2de335010864e85488dd4820cf4a2205, type: 3}
+  AchivmentName: click on gracey
+  AchivmentImage: {fileID: 21300000, guid: 0c0bb29f92c899d42beb25e07f5d7ee7, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: 8a0cc84177a110a4085a6fb7ae39a04f, type: 3}
-  Des: 
-  have: 0
+  Des: click on gracey
+  have: 1
   id: 11

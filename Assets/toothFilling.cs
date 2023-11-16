@@ -194,7 +194,7 @@ public class toothFilling : MonoBehaviour
             {
                 TS = FindObjectOfType<tripleSyringe>();
             }
-            if(TS.WaterBlow)
+            if(!TS.WaterBlow)
             {
                 if(decayRender.material.color.a>=0.98)
                 {
@@ -230,7 +230,7 @@ public class toothFilling : MonoBehaviour
         }
 
 
-        if (lightFakePrimer.intensity>0.01 && tfs[currecntTool]==toolsForFilling.Microbrush)
+        if (lightFakePrimer.intensity>0.005 && tfs[currecntTool]==toolsForFilling.Microbrush)
         {
             nextTools(true);
             return;
@@ -243,7 +243,7 @@ public class toothFilling : MonoBehaviour
             }
             if (!TS.WaterBlow)
             {
-                if (lightFakePrimer.intensity > 0.02)
+                if (lightFakePrimer.intensity > 0.01)
                 {
                     nextTools(true);
                     return;

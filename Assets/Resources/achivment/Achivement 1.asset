@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Achivement 1
   m_EditorClassIdentifier: 
   AchivmentName: filling
-  AchivmentImage: {fileID: 21300000, guid: ad5591382e2b2b244a649b76d1d3e330, type: 3}
+  AchivmentImage: {fileID: 21300000, guid: fa7e4b2c68cdcf046bf3472b69591323, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: e9d2ea0e6013d124987c480b26f5d362, type: 3}
   Des: did filling in a minute
-  have: 0
+  have: 1
   id: 1

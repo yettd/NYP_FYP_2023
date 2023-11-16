@@ -40,8 +40,12 @@ public class StorageItemScript : MonoBehaviour
     {
         if (TutorialNagivatorScript.Instance().get_manual.toolAccessId != 1)
         {
-            minigameTaskListController.Instance.ToolsSelected(item.itemName, item.model);
-            teethMan.tm.Changetoolcolor(item.itemName);
+            if (minigameTaskListController.Instance.procedure != Procedure.Extration)
+            {
+
+                minigameTaskListController.Instance.ToolsSelected(item.itemName, item.model);
+                teethMan.tm.Changetoolcolor(item.itemName);
+            }
         }
     }
     public void changeShade(string a)

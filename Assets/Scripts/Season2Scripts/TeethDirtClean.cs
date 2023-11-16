@@ -267,7 +267,7 @@ public class TeethDirtClean : MonoBehaviour
         }
         if(!correct)
         {
-            minigameTaskListController.Instance.wrongTool();
+          // minigameTaskListController.Instance.wrongTool();
         }
 
         return correct;
@@ -313,7 +313,7 @@ public class TeethDirtClean : MonoBehaviour
         clean = true;
         // BCs.enabled = false;
         minigameTaskListController.Instance.gonext();
-        Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
+        //Instantiate(minigameTaskListController.Instance.goodJob, cameraChanger.Instance.GetCurrentCam().transform.position + cameraChanger.Instance.GetCurrentCam().transform.forward, Quaternion.Euler(-86.65f, 0, 0));
 
     }
 

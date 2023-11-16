@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Achivement 6
   m_EditorClassIdentifier: 
   AchivmentName: read all extration tool
-  AchivmentImage: {fileID: 21300000, guid: cdf9d734b5b96f14db7560482ea6b605, type: 3}
+  AchivmentImage: {fileID: 21300000, guid: 37b33577c9818b24b87afc8b2f12b61d, type: 3}
   AchivmentImageLock: {fileID: 21300000, guid: f728773551bb02244ba092715e6ded25, type: 3}
   Des: unlock all DH tool
-  have: 0
+  have: 1
   id: 6

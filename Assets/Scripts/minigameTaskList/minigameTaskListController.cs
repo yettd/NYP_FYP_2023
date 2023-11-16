@@ -495,6 +495,9 @@ public class minigameTaskListController : MonoBehaviour
                 case Procedure.Filling:
                     achivmen.instance.UnlockAchivement(1, "scalingInMin");
                     break;
+                case Procedure.Extration:
+                    achivmen.instance.UnlockAchivement(2, "scalingInMin");
+                    break;
             }
         }
         ScoreSystem();

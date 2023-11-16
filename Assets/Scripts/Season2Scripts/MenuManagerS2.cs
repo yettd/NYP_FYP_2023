@@ -347,6 +347,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openInfoPAGE()
     {
+        achivmen.instance.UnlockAchivement(11,"");
         audioManager.PlaySFX(1);
         if (Infoactive == false)
         {
@@ -486,6 +487,8 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openCredit()
     {
+
+        achivmen.instance.UnlockAchivement(9);
         audioManager.PlayBackgroundMusic(4);
         Scroll.SetTrigger("Scroll");
         if (CreditActive == false)

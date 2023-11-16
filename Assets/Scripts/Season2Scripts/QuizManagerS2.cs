@@ -273,19 +273,13 @@ public class QuizManagerS2 : MonoBehaviour
         if (score >= totalQuestionsAsked / 100 * 70)
         {
             cleanPolish();
-            //polishExtractionTools = true;
-            if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.S)
-            {
-                achivmen.instance.UnlockAchivement(9,"asdasd");
-            }
-            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.E)
-            {
-                achivmen.instance.UnlockAchivement(11, "asdasd");
-            }
-            else if (ButtonReferenceManager.Instance.storeCollectionID == CollectionEnum.F)
+            
+            achivmen.instance.UnlockAchivement(10);
+
+            if (PlayerPrefs.GetInt("FHighScore")>=7&& PlayerPrefs.GetInt("SHighScore") >= 7&& PlayerPrefs.GetInt("EHighScore") >= 7)
             {
 
-                achivmen.instance.UnlockAchivement(10, "asdasd");
+                achivmen.instance.UnlockAchivement(12);
             }
 
             Debug.Log($"{score}: {highScore}");

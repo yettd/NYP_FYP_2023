@@ -64,13 +64,19 @@ public class achivmen : MonoBehaviour
                 Debug.Log(AA.id);
                 achivementList[AA.id].color = new Vector4(1,1,1,1);
                 achivementList[AA.id].sprite = AA.AchivmentImage;
-                achivementList[AA.id].gameObject.AddComponent<Button>().onClick.AddListener(() =>
-                    {
-                        ALP.SetActive(true);
-                        ALP.transform.parent = achivementList[AA.id].transform;
-                        ALP.transform.localPosition = new Vector3(0, 110, 0);
-                        ALP.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = $"<b><size=200>{AA.AchivmentName}</size></b>\n <size=150>{AA.Des}</size>";
-                    });
+                Button btn;
+                achivementList[(int)AA.id].TryGetComponent<Button>(out btn);
+                if (btn == null)
+                {
+
+                    achivementList[AA.id].gameObject.AddComponent<Button>().onClick.AddListener(() =>
+                        {
+                            ALP.SetActive(true);
+                            ALP.transform.parent = achivementList[AA.id].transform;
+                            ALP.transform.localPosition = new Vector3(0, 110, 0);
+                            ALP.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = $"<b><size=200>{AA.AchivmentName}</size></b>\n <size=150>{AA.Des}</size>";
+                        });
+                }
             }
             else
             {
@@ -89,16 +95,21 @@ public class achivmen : MonoBehaviour
 
     public void UnlockAchivement(int id = -1 , string NameOfAchivement="")
     {
-        bool unlock=false;
+        bool unlock=true;
         foreach (AllAchivment AA in allAchivments)
         {
-            Debug.Log(AA.id);
             if(id == AA.id || NameOfAchivement == AA.AchivmentName)
             {
                 AA.have = true;
             }
-            if((!AA.have && AA.id != 13) && (AA.have && AA.id == 13))
+            if((AA.id!=13 && !AA.have))
             {
+                Debug.Log("other achive : " + AA.AchivmentName);
+                unlock = false;
+            }
+            if(AA.id==13 && AA.have)
+            {
+                Debug.Log("itself achive : " + AA.AchivmentName);
                 unlock = false;
             }
         }

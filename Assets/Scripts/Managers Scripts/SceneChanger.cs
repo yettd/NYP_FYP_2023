@@ -26,6 +26,7 @@ public class SceneChanger : MonoBehaviour
     }
     public void ChangeToSpawnScene()
     {
+        achivmen.instance.UnlockAchivement(8);
         SceneManager.LoadScene("AR Spawn Scene");
     }
     public void ChangeToVideoScene()
