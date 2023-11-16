@@ -9,7 +9,7 @@ public class MenuManagerS2 : MonoBehaviour
 {
     private AudioManager audioManager;
     public Animator BookOpen;
-    public Animator Wipetransition;
+    public Animator Scroll;
 
     [Header("Main Menu")]
     [SerializeField] private GameObject MainMenuPanel;
@@ -80,10 +80,10 @@ public class MenuManagerS2 : MonoBehaviour
             Debug.LogError("AudioManager not found.");
         }
 
-        //if (audioManager != null)
-        //{
-        //    audioManager.PlayBackgroundMusic(1);
-        //}
+        if (audioManager != null)
+        {
+            audioManager.PlayBackgroundMusic(1);
+        }
 
         if (MainMenuactive == false)
         {
@@ -486,6 +486,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openCredit()
     {
+        Scroll.SetTrigger("Scroll");
         if (CreditActive == false)
         {
             CreditPanel.transform.gameObject.SetActive(true);
