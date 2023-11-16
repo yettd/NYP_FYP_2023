@@ -26,6 +26,9 @@ public class DW_TaskAddons : MonoBehaviour
     {
         // Check whichever step are available
         manual.step[step].taskDone = condition;
+
+        // Get audio playing over completion
+        TutorialGame_Script.thisScript.get_audiolibrary.PlayAudioWithTaskCompletion(condition);
     }
 
     private void RefreshTaskPanel()
@@ -61,6 +64,22 @@ public class DW_TaskAddons : MonoBehaviour
 
         // Refresh browser of the step content
         RefreshTaskPanel();
+    }
+
+    public string GetStepDetail()
+    {
+        foreach (InstructionTemplate step in manual.step)
+            if (!step.taskDone) return step.instruction;
+
+        return "No task to be done";
+    }
+
+    public string GetToolOftheCurrentStep()
+    {
+        foreach (InstructionTemplate step in manual.step)
+            if (!step.taskDone) return step.requiredTool;
+
+        return "???";
     }
     #endregion
 

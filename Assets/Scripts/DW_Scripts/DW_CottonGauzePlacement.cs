@@ -52,7 +52,7 @@ public class DW_CottonGauzePlacement : MonoBehaviour
         // Set properties to clear unwanter particle
         if (!isSetToClean)
         {
-            percentageOfClearing = Random.Range(100, 200);
+            percentageOfClearing = Random.Range(50, 100);
             clearingRateSpeed = Random.Range(1, 20);
             isSetToClean = true;
         }
