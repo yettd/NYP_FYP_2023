@@ -424,8 +424,15 @@ public class toothFilling : MonoBehaviour
     {
         if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool].ToString())
         {
+
+            Debug.Log("asdasdasd :" + minigameTaskListController.Instance.GetSelectedtool());
             return true;
         }
+        if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool - 1].ToString())
+        {
+            return false;
+        }
+        minigameTaskListController.Instance.wrongTool();
 
         minigameTaskListController.Instance.wrongTool();
         return false;
