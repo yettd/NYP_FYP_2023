@@ -1754,7 +1754,7 @@ MonoBehaviour:
   QuestionTxt: {fileID: 1346160998}
   timerText: {fileID: 743832591}
   title: {fileID: 676089719}
-  quizDuration: 30
+  quizDuration: 60
   score: 0
   FinalScoreText: {fileID: 1762234267}
   MainPanel: {fileID: 1583161626}
@@ -4195,7 +4195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a872c1afaff424ca49564c4e9772f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximum: 100
+  maximum: 60
   img: {fileID: 1642018345}
 --- !u!114 &1642018345
 MonoBehaviour:

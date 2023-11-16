@@ -17,7 +17,7 @@ public class QuizManagerS2 : MonoBehaviour
 
     public TMP_Text timerText;
     public TMP_Text title;
-    public float quizDuration = 100f; 
+    public float quizDuration = 60f; 
     private float timeRemaining;
 
     public int score = 0;
