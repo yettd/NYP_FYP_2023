@@ -5,6 +5,8 @@ using UnityEngine;
 public class DW_NewToothInstance : MonoBehaviour
 {
     [SerializeField] private Vector3 offset;
+    [SerializeField] private Vector3 rotation;
+    [SerializeField] private float scale;
     [SerializeField] private int tierIndex = 0;
 
     void Start()
@@ -46,6 +48,18 @@ public class DW_NewToothInstance : MonoBehaviour
     {
         // Adjust the position of the new instance tooth
         return offset;
+    }
+
+    public Vector3 GetScale()
+    {
+        // Adjust the scale of the new instance tooth
+        return new Vector3(scale, scale, scale);
+    }
+
+    public Vector3 GetRotation()
+    {
+        // Adjust the rotation of the new instance tooth
+        return rotation;
     }
 
     public int GetTeethIndex()

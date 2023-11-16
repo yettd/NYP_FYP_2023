@@ -45,6 +45,7 @@ public class TutorialGame_Script : MonoBehaviour
     private const string fileDirectory = "savefile_tutorial_";
     private const string fileDirectoryPath = "Assets/Resources/TutorialLevel/meta/";
 
+    [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
     [SerializeField] private GameObject statusRemark;
     [SerializeField] private GameObject actionStatus;
@@ -53,6 +54,9 @@ public class TutorialGame_Script : MonoBehaviour
     public InterfaceFeedBack get_onGoingFeedback { get { return onGoingFeedback; } }
 
     public DW_TaskAddons getTasking { get { return tasking; } }
+
+    private DW_AudioLibrary audiolibrary;
+    public DW_AudioLibrary get_audiolibrary { get { return audiolibrary; } }
 
     void Start()
     {
@@ -85,6 +89,9 @@ public class TutorialGame_Script : MonoBehaviour
 
         // Display the lose screen of it
         loseScreen.SetActive(!cleared);
+
+        // Play audio
+        audiolibrary.PlayAudioWhenLose(!cleared);
     }
 
     private void UpdateInstructionActionStatus(string title, bool center)
@@ -141,6 +148,9 @@ public class TutorialGame_Script : MonoBehaviour
 
                 // Task Logical Script (Addons)
                 tasking.Setup(Resources.Load<showTask>("minigameTasklist/Extraction"));
+
+                // Audio Script
+                audiolibrary = new DW_AudioLibrary();
                 break;
 
             default: // Any instruction level
@@ -194,8 +204,10 @@ public class TutorialGame_Script : MonoBehaviour
             if (!actionStatus.activeInHierarchy) actionStatus.SetActive(true);
 
             // Update the content of the current progress
-            if (progressValue >= 0) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + title + "\n" + progressValue.ToString("0.0") + " %", false);
-            else UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.Idle), false);
+            bool centerAlignment = FindCamViewIndex() == 0;
+
+            if (progressValue >= 0) UpdateInstructionActionStatus(GetActionListDescription(onGoingFeedback) + title + "\n" + progressValue.ToString("0.0") + " %", centerAlignment);
+            else UpdateInstructionActionStatus(GetActionListDescription(InterfaceFeedBack.Idle), centerAlignment);
         }
     }
 
@@ -261,6 +273,9 @@ public class TutorialGame_Script : MonoBehaviour
 
                     // Display the remark status
                     statusRemark.transform.GetComponent<TMP_Text>().text = extraction.GetExtractionProgressStatus();
+
+                    // Get guide intruction (MISC)
+                    GetGuideInstruction();
                 }
                 break;
 
@@ -277,11 +292,26 @@ public class TutorialGame_Script : MonoBehaviour
         switch (FindCamViewIndex())
         {
             case 1:
-                return "Drag the tool around to move it.\nClick on the tooth to view closely.";
+                return "Drag around the screen to move the tool around.\nClick on the tooth to view closely.";
             case 2:
-                return "Zoom in for better view.\nClick on the teeth to view closely.";
+                return "Click on to the teeth for better view.";
             default:
-                return "Zoom out for better view.\nDeselect tool when its done.";
+                return "Tap the back button to use the instrument.";
+        }
+    }
+
+    private string GetCamViewInIdleMode()
+    {
+        // Find the view cam to display text accordingly
+        switch (FindCamViewIndex())
+        {
+            case 1:
+                return "Locate #55 .\n Tap on #55 to start extraction process.";
+            case 2:
+                return "Locate #55.";
+            default:
+                return "Use the " + tasking.GetToolOftheCurrentStep() + " to begin the next step.";
+                //return "Use the syringe to inject the anesthetic.";
         }
     }
 
@@ -296,6 +326,15 @@ public class TutorialGame_Script : MonoBehaviour
 
         // Find nothing and give a negative value
         return -1;
+    }
+
+    private void GetGuideInstruction()
+    {
+        if (onGoingFeedback == InterfaceFeedBack.Idle && !winScreen.activeInHierarchy && !loseScreen.activeInHierarchy)
+        {
+            if (!actionStatus.activeInHierarchy) actionStatus.SetActive(true);
+            teethMan.tm.CT(GetCamViewInIdleMode(), FindCamViewIndex() != GameObject.FindGameObjectWithTag(gameInfo[(int)GameTagPlacement.DW_Camera].props_tag_name).GetComponent<DW_AutoToolScaler>().get_scaleData.Length - 1); 
+        }
     }
     #endregion
 }

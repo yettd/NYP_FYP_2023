@@ -7,12 +7,12 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
     [SerializeField] private GameObject babyTooth;
 
     private List<GameObject> toothPlacement;
-    private List<Vector3> offset;
+    private List<DW_NewToothInstance> newSetup;
 
     void Start()
     {
         toothPlacement = new List<GameObject>();
-        offset = new List<Vector3>();
+        newSetup = new List<DW_NewToothInstance>();
     }
 
     #region SETUP
@@ -25,7 +25,7 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
             toothPlacement.Add(placement);
 
             // Store the offset of the orginal object
-            offset.Add(placement.GetComponent<DW_NewToothInstance>().GetOffset());
+            newSetup.Add(placement.GetComponent<DW_NewToothInstance>());
         }
     }
 
@@ -38,7 +38,11 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
         // Identify the selected teeth and tag with damaged tooth
         toothInstance.transform.SetParent(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.TeethSection].props[toothPlacement[index].GetComponent<DW_NewToothInstance>().GetTeethIndex()].transform);
         toothInstance.tag = TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name;
-        toothInstance.transform.position = toothPlacement[index].transform.position + offset[index];
+
+        // Finalize the setup of the instance damaged tooth
+        toothInstance.transform.localRotation = Quaternion.Euler(newSetup[index].GetRotation().x, newSetup[index].GetRotation().y, newSetup[index].GetRotation().z);
+        toothInstance.transform.position = toothPlacement[index].transform.position + newSetup[index].GetOffset();
+        toothInstance.transform.localScale = newSetup[index].GetScale();
 
         // Update tooth settings
         //toothInstance.GetComponent<DW_ToothSettings>().toothIndex = index;
