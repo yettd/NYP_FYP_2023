@@ -147,7 +147,7 @@ MonoBehaviour:
     requiredTool: tripleSyringe
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: 0c9849652d04a074fb2784783374c9ec, type: 3}
+  - Icon: {fileID: 2800000, guid: 974980deb18c21646a60a503a8c8e25f, type: 3}
     title: Composite Restoration on 46
     instruction: Light cure the bonding agent
     requiredTool: lightCure
@@ -165,7 +165,7 @@ MonoBehaviour:
     requiredTool: plasticinstrument
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: 0c9849652d04a074fb2784783374c9ec, type: 3}
+  - Icon: {fileID: 2800000, guid: 974980deb18c21646a60a503a8c8e25f, type: 3}
     title: Composite Restoration on 46
     instruction: 'Light cure the material '
     requiredTool: lightCure

@@ -3642,6 +3642,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9be88e4235d88054391e6bfe8e026922, type: 3}
   - {fileID: 8300000, guid: 71abc5d3cf5793544a4c9520cddc6279, type: 3}
   - {fileID: 8300000, guid: 0a549444712e1da428fd3f9bb4e51a39, type: 3}
+  - {fileID: 8300000, guid: 149d906ee255ffc438136f27c126623c, type: 3}
   sfxClips:
   - {fileID: 8300000, guid: 7c9ff44c6cc505a4bafa910ea23a3372, type: 3}
   - {fileID: 8300000, guid: 202a59830874db2479c0870e62e0ee09, type: 3}
@@ -5349,8 +5350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 194, y: -117.5}
-  m_SizeDelta: {x: 252.10596, y: 113.20422}
+  m_AnchoredPosition: {x: 141.43, y: -112.1886}
+  m_SizeDelta: {x: 147, y: 123.826904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761610119
 MonoBehaviour:
@@ -15866,8 +15867,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achivementImg: []
   achivementList: []
-  Left: {fileID: 0}
-  Right: {fileID: 0}
+  Left: {fileID: 1818635145}
+  Right: {fileID: 480410520}
 --- !u!4 &1806707848
 Transform:
   m_ObjectHideFlags: 0
