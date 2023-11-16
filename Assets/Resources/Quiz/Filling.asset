@@ -51,16 +51,16 @@ MonoBehaviour:
     correctAnswer: 4
   - question: What is the most suitable instrument to mix Vitrebond?
     answers:
-    - metal spatula
+    - Metal spatula
     - Plastic spatula
-    - straight probe
-    - microbrush
+    - Straight probe
+    - Microbrush
     correctAnswer: 2
   - question: What is the most suitable instrument to mix Vitrebond?
     answers:
-    - microbrush
-    - straight probe
-    - metal spatula
+    - Microbrush
+    - Straight probe
+    - Metal spatula
     - Plastic spatula
     correctAnswer: 4
   - question: How long should you wash the tooth after acid etching?
@@ -106,25 +106,20 @@ MonoBehaviour:
   - question: Why do we etch the tooth?
     answers:
     - It promotes the bonding between enamel and resin composite restorative material.
-    - " V2: SHSS x SDM IEPP 2023 FINAL SEM V2: SHSS x SDM IEPP 2023 FINAL SEM 100%
-      10 G60  By decreasing the tooth's surface area and making it smoother, etching
-      gel improves the bonding agent's ability to adhere to the tooth.      \t By
-      decreasing the tooth's surface area and making it smoother, etching gel improves
-      the bonding agent's ability to adhere to the tooth. Turn on screen reader support  
-      To enable screen reader support, press Ctrl+Alt+Z To learn about keyboard shortcuts,
-      press Ctrl+slashAnonymous Manatee has left the document."
+    - By decreasing the tooth's surface area and making it smoother, etching gel
+      improves the bonding agent's ability to adhere to the tooth.
     - By increasing the tooth's surface area and making it rougher, etching gel improves
       the bonding agent's ability to adhere to the tooth.
     - It helps to remove the dentinal smear layer.
     correctAnswer: 3
-  - question: How many % of phospheric acid does the etchant in our clinic contain?
+  - question: How many % of phosphoric acid does the etchant in our clinic contain?
     answers:
     - 32%
     - 31%
     - 37%
     - 35%
     correctAnswer: 1
-  - question: What are some of the contraindications of Fissure sealant?
+  - question: What are some of the contraindications of fissure sealant?
     answers:
     - Avoid using fissure sealant in patients seen with asthma
     - Avoid using any cleaning medium that may contain oils as it interferes with

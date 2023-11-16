@@ -12,97 +12,164 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac01bdf36c997eb48832f2e4a2a65483, type: 3}
   m_Name: Filling
   m_EditorClassIdentifier: 
-  Title: Filling
+  Title: '#36 is decayed and needs to be restored with GIC.  #46 is decayed and needs
+    to needs to be restored with Composite.'
   Icon: {fileID: 2800000, guid: 98e88f6fd8b64804f9532228f7412555, type: 3}
   description: Remove Plaque and fill in the hole that was made
   step:
   - Icon: {fileID: 2800000, guid: 3e231ad603f43214fbc222b00d670a1e, type: 3}
     title: Filling
-    instruction: 'Apply rubber dam with rubber forceps '
+    instruction: 'Apply rubber dam clamp with rubber dam forceps '
     requiredTool: rubberDamForceb
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 8cd826ed839dd9848bf92a1301e3b46a, type: 3}
     title: Filling
-    instruction: 'Select a slow speed handpiece with round bur and Remove maximum
-      decay with the bur  '
+    instruction: Use the slow speed handpiece with round bur to remove all the carious
+      structures
     requiredTool: slowSpeed
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: ad4e3a02313437645988abda79f8db95, type: 3}
     title: Filling
-    instruction: 'Select spoon excavator '
+    instruction: Use the spoon excavator to remove the remnant carious structures
     requiredTool: Spoonexcavator
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 9257cecebab5bd540b343dc8b5e93d22, type: 3}
     title: Filling
-    instruction: Wash And Blow dry
+    instruction: Wash and dry the cavity
     requiredTool: tripleSyringe
-    completed: 1
-    taskDone: 0
-  - Icon: {fileID: 2800000, guid: 5ce1c19e7b5dd614fb1143c563c9a530, type: 3}
-    title: Filling
-    instruction: 'Remove remnants of the decay '
-    requiredTool: Microbrush
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: fbca0aba9a025994ea3dcb51fe87f15d, type: 3}
     title: Filling
-    instruction: 'Etch the dentine and enamel using etchant (37% Phosphoric Acid).  '
-    requiredTool: etchant
+    instruction: Apply dentin conditioner
+    requiredTool: dentin conditioner
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: da73db227ca24794ebf6d7491f7ef738, type: 3}
+    title: Filling
+    instruction: Check Occlusion After Removing The Rudder Dam And Polish Again As
+      Required
+    requiredTool: ballBurnisher
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 3f9cc17957c76d9469aa5a04feb25db8, type: 3}
-    title: Filling
-    instruction: Select Gic Capsule, Tap The Capsule Gently To Loosen The Powder
-    requiredTool: GIC
+    title: Wash
+    instruction: Wash away the dentin conditioner and dry the cavity
+    requiredTool: tripleSyringe
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 601a3606f87cc1049bd63c7543f7674d, type: 3}
     title: Filling
-    instruction: Compress The End Of The Capsule
+    instruction: Select the GIC and compress the end of the capsule
     requiredTool: GIC
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 76cd7285c3143064f821d0c3f3df726e, type: 3}
     title: Filling
-    instruction: Place The CapsuleInto The Amalgamator For Mixing
+    instruction: Place the GIC capsule into the amalgamator for mixing
     requiredTool: GIC
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 48d85289013809d46b56cf3267fdfe40, type: 3}
     title: Filling
-    instruction: After Mixing, Fit The Capsule On The Gic Applicator (Dispenser Gun)
+    instruction: Placed the mixed capsule into the GIC applicator
     requiredTool: Applicator
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 28b931b7f02ee1a4284b984b908dd458, type: 3}
     title: Filling
-    instruction: Dispense The Material Into The Cavity To Fill It With The Applicator
-      And Contour The Filling Before It Dries
+    instruction: Use the GIC applicator to dispense the material and contour the
+      cavity with a plastic instrument
     requiredTool: Applicator
     completed: 1
     taskDone: 0
   - Icon: {fileID: 2800000, guid: 6612d5864b8feee49b5ee6296dc27093, type: 3}
     title: Filling
-    instruction: Spread A Thin Layer Of Vaseline To Protect From Moisture Contamination
+    instruction: Apply a layer of vaseline with a cotton bud and you're done!
     requiredTool: cotton
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: da73db227ca24794ebf6d7491f7ef738, type: 3}
-    title: Filling
-    instruction: 'Check occlusion after removing the rubber dam and polish again
-      as required. '
-    requiredTool: ballBurnisher
+  - Icon: {fileID: 2800000, guid: 3e231ad603f43214fbc222b00d670a1e, type: 3}
+    title: Composite Restoration on 46
+    instruction: 'Apply rubber dam clamp with rubber dam forceps '
+    requiredTool: rubberDamForceb
     completed: 1
     taskDone: 0
-  - Icon: {fileID: 2800000, guid: da73db227ca24794ebf6d7491f7ef738, type: 3}
-    title: Filling
-    instruction: Check Occulsion After Removing The Rudder Dam And Polish Again As
-      Required
-    requiredTool: ballBurnisher
+  - Icon: {fileID: 2800000, guid: 8cd826ed839dd9848bf92a1301e3b46a, type: 3}
+    title: Composite Restoration on 46
+    instruction: Use the slow speed handpiece with round bur to remove all the carious
+      structures
+    requiredTool: slowSpeed
     completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: ad4e3a02313437645988abda79f8db95, type: 3}
+    title: Composite Restoration on 46
+    instruction: Use the spoon excavator to remove the remnant carious structures
+    requiredTool: Spoonexcavator
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 9257cecebab5bd540b343dc8b5e93d22, type: 3}
+    title: Composite Restoration on 46
+    instruction: Wash and dry the cavity
+    requiredTool: tripleSyringe
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: fbca0aba9a025994ea3dcb51fe87f15d, type: 3}
+    title: Composite Restoration on 46
+    instruction: Etch the cavity with Phosphoric Acid
+    requiredTool: etchant
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 5ce1c19e7b5dd614fb1143c563c9a530, type: 3}
+    title: Composite Restoration on 46
+    instruction: Apply primer to the cavity
+    requiredTool: Microbrush
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 9257cecebab5bd540b343dc8b5e93d22, type: 3}
+    title: Composite Restoration on 46
+    instruction: Blow dry the primer to achieve an even layer
+    requiredTool: tripleSyringe
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 5ce1c19e7b5dd614fb1143c563c9a530, type: 3}
+    title: Composite Restoration on 46
+    instruction: Apply bonding agent to the cavity
+    requiredTool: Microbrush
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 9257cecebab5bd540b343dc8b5e93d22, type: 3}
+    title: Composite Restoration on 46
+    instruction: Blow dry the bonding agent to achieve an even layer
+    requiredTool: tripleSyringe
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 0c9849652d04a074fb2784783374c9ec, type: 3}
+    title: Composite Restoration on 46
+    instruction: Light cure the bonding agent
+    requiredTool: lightCure
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 28b931b7f02ee1a4284b984b908dd458, type: 3}
+    title: Composite Restoration on 46
+    instruction: Apply composite material
+    requiredTool: plasticinstrument
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 6612d5864b8feee49b5ee6296dc27093, type: 3}
+    title: Composite Restoration on 46
+    instruction: Contour the material using a plastic instrument
+    requiredTool: plasticinstrument
+    completed: 1
+    taskDone: 0
+  - Icon: {fileID: 2800000, guid: 0c9849652d04a074fb2784783374c9ec, type: 3}
+    title: Composite Restoration on 46
+    instruction: 'Light cure the material '
+    requiredTool: lightCure
+    completed: 0
     taskDone: 0
   tools:
   - itemName: slowSpeed

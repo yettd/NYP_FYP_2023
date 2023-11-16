@@ -38,6 +38,7 @@ public class toothFillingGIC : MonoBehaviour
 
     GameObject FC;
     Renderer FR;
+    bool prevCorrect = false;
     // Start is called before the first frame update
     public void setUpProblem()
     {
@@ -114,7 +115,6 @@ public class toothFillingGIC : MonoBehaviour
         }
         if (correctTool())
         {
-
             switch (minigameTaskListController.Instance.getCurrentStep())
             {
                 case Steps.DAM:
@@ -371,13 +371,19 @@ public class toothFillingGIC : MonoBehaviour
             Debug.Log("asdasdasd :" + minigameTaskListController.Instance.GetSelectedtool());
             return true;
         }
+        if(minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool-1].ToString())
+        {
+            return false;
+        }
         minigameTaskListController.Instance.wrongTool();
         return false;
     }
     void nextTools(bool taskDone)
     {
         currecntTool++;
-        if(taskDone )
+
+        prevCorrect = true;
+        if (taskDone )
         {
         minigameTaskListController.Instance.gonext();
 

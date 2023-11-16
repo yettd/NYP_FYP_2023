@@ -45,7 +45,7 @@ MonoBehaviour:
     - Gracey 11/12
     - Gracey 13/14
     correctAnswer: 4
-  - question: Which instrument is used for debridment of buccal surface of posterior
+  - question: Which instrument is used for debridement of buccal surface of posterior
       teeth
     answers:
     - Gracey 1/2
@@ -53,7 +53,7 @@ MonoBehaviour:
     - Gracey 11/12
     - Gracey 13/14
     correctAnswer: 2
-  - question: Which instrument is used for debridment of lingual surface of posterior
+  - question: Which instrument is used for debridement of lingual surface of posterior
       teeth
     answers:
     - 'Gracey7/8 '
@@ -101,24 +101,24 @@ MonoBehaviour:
     correctAnswer: 2
   - question: What type of strokes should you apply when using a curette?
     answers:
-    - walking
-    - oblique
-    - vertical
-    - lateral
+    - Walking
+    - Oblique
+    - Vertical
+    - Lateral
     correctAnswer: 2
   - question: What kind of pressure is used for calculus detection?
     answers:
-    - light pressure
-    - heavy pressure
-    - moderate pressure
-    - no pressure
+    - Light pressure
+    - Heavy pressure
+    - Moderate pressure
+    - No pressure
     correctAnswer: 1
   - question: What kind of pressure is used for debridement?
     answers:
-    - heavy pressure
-    - lateral pressure
-    - moderate pressure
-    - light pressure
+    - Heavy pressure
+    - Lateral pressure
+    - Moderate pressure
+    - Light pressure
     correctAnswer: 2
   - question: Which finger is used for finger rest?
     answers:
@@ -155,10 +155,10 @@ MonoBehaviour:
     - Less pressure is required to remove calculus
     - All of the above
     correctAnswer: 4
-  - question: Repeated sharpening and improper sharpening techniques will result
-      in the dimensions of your curettes and scalers being very thin. Ensuring the
-      need for sharpening as well as proper technique will extend the life of your
-      instruments.
+  - question: 'Statement 1: Repeated sharpening and improper sharpening techniques
+      will result in the dimensions of your curettes and scalers being very thin.
+      </n>Statement 2: Ensuring the need for sharpening as well as proper technique
+      will extend the life of your instruments.'
     answers:
     - Both statement are false
     - The first statement is false, the second statement is true

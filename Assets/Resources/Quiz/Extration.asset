@@ -13,61 +13,61 @@ MonoBehaviour:
   m_Name: Extration
   m_EditorClassIdentifier: 
   QnA:
-  - question: What type of movement is needed to extract #54
+  - question: What type of movement is needed to extract #54?
     answers:
-    - 'palatal only '
-    - buccopalatal with rotational movement
-    - buccolingual
-    - buccally
+    - 'Palatal only '
+    - Buccopalatal with rotational movement
+    - Buccolingual
+    - Buccally
     correctAnswer: 2
-  - question: What type of movement is needed to extract #64
+  - question: What type of movement is needed to extract #64?
     answers:
-    - buccopalatal with rotational movement
-    - buccolingual
-    - buccally
-    - 'palatal only '
+    - Buccopalatal with rotational movement
+    - Buccolingual
+    - Buccally
+    - 'Palatal only '
     correctAnswer: 1
-  - question: What type of movement is needed to extract #74
+  - question: What type of movement is needed to extract #74?
     answers:
-    - buccolingual with rotational movement
-    - buccopalatal
-    - buccally
-    - 'palatal only '
+    - Buccolingual with rotational movement
+    - Buccopalatal
+    - Buccally
+    - 'Palatal only '
     correctAnswer: 1
-  - question: What type of movement is needed to extract #84
+  - question: What type of movement is needed to extract #84?
     answers:
-    - buccolingual with rotational movement
-    - buccopalatal
-    - buccally
-    - 'palatal only '
+    - Buccolingual with rotational movement
+    - Buccopalatal
+    - Buccally
+    - 'Palatal only '
     correctAnswer: 1
   - question: Where should the left-handed operator stand to extract #53?
     answers:
     - 'Standing on the left-hand side of the dental chair, facing patient '
-    - ' Standing behind the dental chair on the left hand side '
-    - ' Standing behind the dental chair on the right hand side '
-    - '  Standing on the right-hand side of the dental chair, behind paient'
+    - 'Standing behind the dental chair on the left hand side '
+    - 'Standing behind the dental chair on the right hand side '
+    - Standing on the right-hand side of the dental chair, behind paient
     correctAnswer: 1
   - question: Where should the right-handed operator stand to extract #63?
     answers:
     - Standing on the right handside of the dental chair, facing patient
-    - ' Standing on the left-hand side of the dental chair, facing patient '
-    - ' Standing on the right-hand side of the dental chair, behind patient '
-    - ' Standing on the left-hand side of the dental chair, behind patient '
+    - 'Standing on the left-hand side of the dental chair, facing patient '
+    - 'Standing on the right-hand side of the dental chair, behind patient '
+    - 'Standing on the left-hand side of the dental chair, behind patient '
     correctAnswer: 1
   - question: Where should the left-handed operator stand to extract #73?
     answers:
     - 'Standing on the left-hand side of the dental chair, facing patient '
-    - ' Standing on the left-hand side of the dental chair, behind patient '
-    - ' Standing behind the dental chair on the right hand side, facing patient'
-    - ' Standing behind the dental chair on the left hand side '
+    - 'Standing on the left-hand side of the dental chair, behind patient '
+    - Standing behind the dental chair on the right hand side, facing patient
+    - 'Standing behind the dental chair on the left hand side '
     correctAnswer: 1
   - question: Where should the right-handed operator stand to extract #83?
     answers:
     - Standing on the right hand side of the dental chair, behind patient
-    - ' Standing behind the dental chair on the left hand side, behind patient'
-    - ' Standing on the right-hand side of the dental chair, facing patient '
-    - ' Standing on the left-hand side of the dental chair, facing patient '
+    - Standing behind the dental chair on the left hand side, behind patient
+    - 'Standing on the right-hand side of the dental chair, facing patient '
+    - 'Standing on the left-hand side of the dental chair, facing patient '
     correctAnswer: 1
   - question: Select the ideal contact for the extraction forceps
     answers:
@@ -117,28 +117,28 @@ MonoBehaviour:
     correctAnswer: 2
   - question: Select the appropriate instrument used for extracting the lower molars.
     answers:
-    - Mandibular posterior forcep
+    - Mandibular posterior forceps
     - Maxillary anterior forceps
     - Maxillary posterior forceps
     - Mandibular anterior forceps
     correctAnswer: 1
   - question: Select the appropriate instrument used for extracting the upper molars.
     answers:
-    - Mandibular posterior forcep
+    - Mandibular posterior forceps
     - Maxillary anterior forceps
     - Maxillary posterior forceps
     - Mandibular anterior forceps
     correctAnswer: 3
   - question: Select the appropriate instrument used for extracting the lower anteriors.
     answers:
-    - Mandibular posterior forcep
+    - Mandibular posterior forceps
     - Maxillary anterior forceps
     - Maxillary posterior forceps
     - Mandibular anterior forceps
     correctAnswer: 4
   - question: Select the appropriate instrument used for extracting the upper anteriors.
     answers:
-    - Mandibular posterior forcep
+    - Mandibular posterior forceps
     - Maxillary anterior forceps
     - Maxillary posterior forceps
     - Mandibular anterior forceps

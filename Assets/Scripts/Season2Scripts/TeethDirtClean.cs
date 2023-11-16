@@ -15,7 +15,10 @@ public class TeethDirtClean : MonoBehaviour
     float toatlDirtOnTeeth = 0;
     float remaindingDirt;
     [Header("FRONT < LEFT< BACK < RIGHT")]
-    public List<toolsToClean> ttc= new List<toolsToClean>();
+    public List<toolsToClean> ttcf= new List<toolsToClean>();
+    public List<toolsToClean> ttcb = new List<toolsToClean>();
+    public List<toolsToClean> ttcr = new List<toolsToClean>();
+    public List<toolsToClean> ttcl = new List<toolsToClean>();
 
 
 
@@ -212,27 +215,44 @@ public class TeethDirtClean : MonoBehaviour
         switch(a)
         {
             case 'f':
-                if(minigameTaskListController.Instance.GetSelectedtool()==ttc[0].ToString())
+                foreach(toolsToClean tc in ttcf)
                 {
-                    correct = true;
+                    if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
+                    {
+                        correct = true;
+                    }
+                    break;
                 }
+             
                 break;
             case 'l':
-                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[3].ToString())
+                foreach (toolsToClean tc in ttcl)
                 {
-                    correct = true;
+                    if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
+                    {
+                        correct = true;
+                    }
+                    break;
                 }
                 break;
             case 'b':
-                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[2].ToString())
+                foreach (toolsToClean tc in ttcb)
                 {
-                    correct = true;
+                    if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
+                    {
+                        correct = true;
+                    }
+                    break;
                 }
                 break;
             case 'r':
-                if (minigameTaskListController.Instance.GetSelectedtool() == ttc[1].ToString())
+                foreach (toolsToClean tc in ttcr)
                 {
-                    correct = true;
+                    if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
+                    {
+                        correct = true;
+                    }
+                    break;
                 }
                 break;
         }
@@ -305,8 +325,10 @@ public class TeethDirtClean : MonoBehaviour
     public enum toolsToClean
     {
         Gracey1_2,
+        Gracey3_4,
         Gracey5_6, 
         Gracey7_8,
+        Gracey9_10,
         Gracey11_12,
         Gracey13_14
     }

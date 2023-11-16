@@ -18,6 +18,12 @@ public class carosuleSpin : MonoBehaviour
         closeseGameObject.GetComponent<GameSelected>().OpenUp();
        // NotChosen();
     }
+    private void OnEnable()
+    {
+        closeseGameObject= miniGames[0];
+        StartCoroutine("doEffect");
+        NotChosen();
+    }
 
     // Update is called once per frame
     void Update()
