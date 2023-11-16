@@ -159,7 +159,7 @@ MonoBehaviour:
   letgoToUse: 0
   ThresholdForMax: 0
   canvas: {fileID: 0}
-  _brush: {fileID: 2800000, guid: 400b9fab7655c584295f61cb4eee3bfe, type: 3}
+  _brush: {fileID: 2800000, guid: 6086f0625101e0f4ca1dbfb76bbd8197, type: 3}
 --- !u!1 &2258083687947940008
 GameObject:
   m_ObjectHideFlags: 0

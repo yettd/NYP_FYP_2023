@@ -334,12 +334,12 @@ public class toothFilling : MonoBehaviour
         else
         {
             AudioManager.Instance.PlaySFX(10);
-
         }
 
         water = decayRender.material.color;
         if (water.a <= 0)
         {
+            AudioManager.Instance.PlaySFX(10);
             water.a = 0.3f;
             decayRender.material.color = water;
             decay.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
@@ -356,7 +356,8 @@ public class toothFilling : MonoBehaviour
         {
             if (!TS.WaterBlow)
             {
-                if(acid && acid.transform.localScale.x>0.1)
+                AudioManager.Instance.PlaySFX(11);
+                if (acid && acid.transform.localScale.x>0.1)
                 {
                     acid.transform.localScale -= Vector3.one * Time.deltaTime*0.01f;
                 }
@@ -410,7 +411,7 @@ public class toothFilling : MonoBehaviour
 
     void Clean()
     {
-        AudioManager.Instance.PlaySFX(6);
+        //AudioManager.Instance.PlaySFX(6);
         decay.transform.localScale -= Vector3.one * Time.deltaTime*0.1f;
         if(decay.transform.localScale.x <0.2)
         {
@@ -423,8 +424,15 @@ public class toothFilling : MonoBehaviour
     {
         if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool].ToString())
         {
+
+            Debug.Log("asdasdasd :" + minigameTaskListController.Instance.GetSelectedtool());
             return true;
         }
+        if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool - 1].ToString())
+        {
+            return false;
+        }
+        minigameTaskListController.Instance.wrongTool();
 
         minigameTaskListController.Instance.wrongTool();
         return false;

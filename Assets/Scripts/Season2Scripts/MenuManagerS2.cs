@@ -486,7 +486,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void openCredit()
     {
-        audioManager.PlayBackgroundMusic(5);
+        audioManager.PlayBackgroundMusic(4);
         Scroll.SetTrigger("Scroll");
         if (CreditActive == false)
         {
@@ -497,7 +497,7 @@ public class MenuManagerS2 : MonoBehaviour
 
     public void closeCredit()
     {
-        audioManager.PlayBackgroundMusic(5);
+        audioManager.PlayBackgroundMusic(1);
         if (CreditActive == true)
         {
             CreditPanel.transform.gameObject.SetActive(false);

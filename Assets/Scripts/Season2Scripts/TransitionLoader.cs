@@ -108,7 +108,7 @@ public class TransitionLoader : MonoBehaviour
         BasicTransition.SetTrigger("start");
 
         yield return new WaitForSeconds(TransitionTime);
-
+        audioManager.PlayBackgroundMusic(1);
         SceneManager.LoadSceneAsync(levelIndex);
     }
     public void GotoTutortialScene(string index)
