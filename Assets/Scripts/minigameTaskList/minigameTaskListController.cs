@@ -545,7 +545,7 @@ public class minigameTaskListController : MonoBehaviour
             AmtProblem.transform.parent.transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 0.01f);
 
             setting.SetActive(true);
-            teethMan.tm.CT("Swipe to rotate \n Click on teeth to zoom in further", false);
+            teethMan.tm.CT("Swipe to rotate \n Click on a teeth to zoom in further", false);
         }
         else
         {
@@ -554,7 +554,7 @@ public class minigameTaskListController : MonoBehaviour
                 closeGame.Invoke();
                 minigameOpen = false;
 
-                teethMan.tm.CT("Click on which gum to zoom in", false);
+                teethMan.tm.CT("Click on either gum to zoom in", false);
             }
             else
             {
@@ -602,7 +602,7 @@ public class minigameTaskListController : MonoBehaviour
         {
             if(!gic && toolsname== "Applicator")
             {
-                teethMan.tm.ct("tap the GIC capsule 3 time", true);
+                teethMan.tm.ct("tap the GIC capsule 3 times", true);
                 GIC.Invoke();
                 return;
             }
@@ -618,7 +618,7 @@ public class minigameTaskListController : MonoBehaviour
             this.model.transform.rotation = cameraChanger.Instance.GetCurrentCam().gameObject.transform.rotation;
             this.model.transform.parent = canvase.gameObject.transform.GetChild(0).transform;
             this.model.transform.localScale = new Vector3(5, 5, 5);
-            teethMan.tm.ct($"{toolsname}\n Click and drag the handle to use it \n Click back deselet and to rotate camera again", true);
+            teethMan.tm.ct($"{toolsname}\n Click the handle and drag to use it \n Click on the back button to deselect and rotate camera again", true);
           
         }
 

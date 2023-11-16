@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class openTooth : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class openTooth : MonoBehaviour
             {
                 //zoom in gum
                 minigameTaskListController.Instance.setGame(topBottom);
-                teethMan.tm.CT("Swipe to rotate \n Click on teeth to zoom in further",false);
+                teethMan.tm.CT("Swipe to rotate \n Click on a teeth to zoom in further",false);
             }
             else
             {
@@ -46,6 +47,12 @@ public class openTooth : MonoBehaviour
                     toothFillingGIC tfGIC;
 
                     TryGetComponent<toothFilling>(out tf);
+                    if(minigameTaskListController.Instance.procedure==Procedure.Extration)
+                    {
+                        teethMan.tm.CT("Click on the correct tool to use for Extraction ", true);
+                        teethMan.tm.s = "Click on the correct tool to use for Extraction ";
+                        return;
+                    }
                     teethMan.tm.CT("Click on the correct tool to use for Scaling ", true);
                     teethMan.tm.s = "Click on the correct tool to use for Scaling ";
                     if (tf)
@@ -57,7 +64,6 @@ public class openTooth : MonoBehaviour
                     TryGetComponent<toothFillingGIC>(out tfGIC);
                     if (tfGIC)
                     {
-
                         teethMan.tm.CT("Click on the correct tool to use for \n GIC Restoration", true);
                         teethMan.tm.s = "Click on the correct tool to use for \n GIC Restoration ";
                     }
