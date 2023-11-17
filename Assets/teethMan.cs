@@ -10,12 +10,14 @@ public class teethMan : MonoBehaviour
     public delegate void BackToOriginal();
     public delegate void ChangeText(string text, bool a);
     public delegate void Disappear();
+    public delegate void disablehoverover(bool a);
 
     public ClickOn CO;
     public BackToOriginal Back;
     public ChangeText CT;
     public Disappear dis;
     public ClickOn changeToolColor;
+    public disablehoverover DOO;
 
     public string s;
     public bool ZoomIn=false;
@@ -61,5 +63,9 @@ public class teethMan : MonoBehaviour
     public void gone(bool a)
     {
         dis();
+    }
+    public void callDOO(bool a)
+    {
+        //DOO(a);
     }
 }

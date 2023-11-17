@@ -220,7 +220,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.NYPTeamUnderdog.GracesARdent
+    Android: com.NYPTeamUnderdog.ARdent
   buildNumber:
     Standalone: 0
     VisionOS: 0

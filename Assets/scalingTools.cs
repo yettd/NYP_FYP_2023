@@ -8,14 +8,14 @@ public class scalingTools : Tolls
     [SerializeField] RectTransform canvas;
     [SerializeField] Texture2D _brush;
     // Start is called before the first frame update
-    private void Awake()
-    {
-        if (audioManager == null)
-        {
-            Debug.LogError("AudioManager not found.");
-        }
+    //private void Awake()
+    //{
+    //    if (audioManager == null)
+    //    {
+    //        Debug.LogError("AudioManager not found.");
+    //    }
 
-    }
+    //}
     protected override void Start()
     {
         base.Start();

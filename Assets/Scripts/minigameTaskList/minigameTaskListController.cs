@@ -143,9 +143,11 @@ public class minigameTaskListController : MonoBehaviour
         {
             teethMan.tm.dis();
         }
+        //start timer
         timerText= GameObject.Find("timer").GetComponent<TextMeshProUGUI>();
         timerText.text = "0 : 00";
         StartCoroutine("increaseTimer");
+        //setAlmagotrrr
         Almagotrrr = GameObject.Find("Almagotrrr");
         Almagotrrr.SetActive(false);
         //load steps
@@ -198,7 +200,9 @@ public class minigameTaskListController : MonoBehaviour
 
     public bool gonext()
     {
-        audioManager.PlaySFX(5);
+
+        //set the current step to the next step if there more;
+        AudioManager.Instance.PlaySFX(5);
         CS = NS;
         currentStep = st.TBD[CS].s;
         showCorrectStep();
@@ -243,7 +247,7 @@ public class minigameTaskListController : MonoBehaviour
 
     public void startminigame(showTask st, int DidAStep)
     {
-
+        //set up st(ShowTask) to what it recevie and CS(currentStep) to the int DidAStep
         this.st = st;
         CS = DidAStep;
         currentStep = st.TBD[CS].s;
@@ -255,7 +259,7 @@ public class minigameTaskListController : MonoBehaviour
         }
         setting.SetActive(false);
 
-
+        //shift the ui around
         RectTransform rectTransform = AmtProblem.transform.parent.GetComponent<RectTransform>();
         ogTeethAmtAnchor = new Vector4(rectTransform.anchorMin.x, rectTransform.anchorMin.y, rectTransform.anchorMax.x, rectTransform.anchorMax.y);
         rectTransform.DOAnchorMin(new Vector2(0.7361111f, 0.78f), 0.001f);
@@ -284,7 +288,7 @@ public class minigameTaskListController : MonoBehaviour
     }
 
 
-    public void setGame(bool a)
+    public void setGame(bool a) // open minigame panel
     {
         TBgums = a;
         minigameOpen = true;
@@ -345,7 +349,7 @@ public class minigameTaskListController : MonoBehaviour
         return false;
     }
 
-    public void ScoreSystem()
+    public void ScoreSystem()//save highshocre
     {
         switch (procedure)
         {
@@ -479,7 +483,7 @@ public class minigameTaskListController : MonoBehaviour
         }
     }
 
-    public void OnGameComplete()
+    public void OnGameComplete() // show rating
     {
         //playAnimation for completion;
         StopAllCoroutines();
@@ -512,10 +516,10 @@ public class minigameTaskListController : MonoBehaviour
 
         saveGameComplation(procedure);
         WIN.Invoke();
-        audioManager.PlaySFX(13);
+        audioManager.PlayCelebrateSFX();
     }
 
-    public void CheckGameComplete()
+    public void CheckGameComplete() // call once a tooth is done
     {
         solvedTeetg++;
         AmtProblem.text = $"{solvedTeetg }/{problemTeeth}";
@@ -525,19 +529,20 @@ public class minigameTaskListController : MonoBehaviour
         }
     }
 
-    public void CloseGameOrBack()
+    public void CloseGameOrBack() //put on to the back button
     {
-        if(toolSelected ==true)
+        if(toolSelected ==true) // if there a tool selected
         {
-            RR();
+            RR();//resume rotation and also make tool dissapear
             teethMan.tm.changeToolColor("");
             teethMan.tm.backText( true);
         }
-        else if(cameraChanger.Instance.GetZoom()==true)
+        else if(cameraChanger.Instance.GetZoom()==true) // if the camera is zoom in
         {
             TL.GetComponent<RectTransform>().DOAnchorPosX(-174f, 1f);
             toolSelection.GetComponent<RectTransform>().DOAnchorPosX(192, 1f);
-            teethMan.tm.Back();
+            teethMan.tm.Back();//make all the tooth reappear
+            teethMan.tm.callDOO(false);
             cameraChanger.Instance.ZoomOutCam();
             timerText.transform.parent.transform.GetComponent<RectTransform>().DOAnchorMin(new Vector2(ogTimerAnchor.x, ogTimerAnchor.y), 0.01f);
             timerText.transform.parent.transform.GetComponent<RectTransform>().DOAnchorMax(new Vector2(ogTimerAnchor.z, ogTimerAnchor.w), 0.01f);
@@ -552,7 +557,7 @@ public class minigameTaskListController : MonoBehaviour
         }
         else
         {
-            if(minigameOpen)
+            if(minigameOpen) // if the minigame panel is still active
             {
                 closeGame.Invoke();
                 minigameOpen = false;
@@ -562,7 +567,7 @@ public class minigameTaskListController : MonoBehaviour
             else
             {
 
-                cameraChanger.Instance.closeCamera();
+                cameraChanger.Instance.closeCamera(); 
                 close.Invoke();
                 IsPause = true;
                 return;
@@ -593,6 +598,7 @@ public class minigameTaskListController : MonoBehaviour
 
     public void ToolsSelected(string toolsname, GameObject model)
     {
+        //This code will spawn the tool
     
         if (this.model != null)
         {
@@ -603,6 +609,7 @@ public class minigameTaskListController : MonoBehaviour
         stopRotation(); 
         if (cameraChanger.Instance.GetZoom() )
         {
+            //if the gic is not done it will instead open up the GIC panel
             if(!gic && toolsname== "Applicator")
             {
                 teethMan.tm.ct("tap the GIC capsule 3 times", true);
@@ -639,7 +646,8 @@ public class minigameTaskListController : MonoBehaviour
 
         TL.GetComponent<RectTransform>().DOAnchorPosX(129.56f,1f);
         toolSelection.GetComponent<RectTransform>().DOAnchorPosX(-150, 1f);
-       
+        //shit StepUI(TL) and ToolSelection UI to appear
+        teethMan.tm.callDOO(true);
         foreach (Transform child in TL.GetChild(0).transform.GetChild(0))
         {
             // Destroy the child object
@@ -647,6 +655,7 @@ public class minigameTaskListController : MonoBehaviour
         }
         ImageOfTask.Clear();
         bool first = true;
+        //set up the StepInsturtion with the image;
         foreach(TaskBreakDown TBD in st.TBD)
         {
             Image slot = Instantiate(Resources.Load<Image>("minigameTasklist/Image"),TL.GetChild(0).transform.GetChild(0));
@@ -656,20 +665,6 @@ public class minigameTaskListController : MonoBehaviour
                 slot.sprite = TBD.i;
                 first = false;
             }
-            //slot.AddComponent<Button>().onClick.AddListener(() =>
-            //{
-            //    //if (instrution.transform.parent==slot.gameObject.transform)
-            //    //{
-            //    //    instrution.transform.parent = null;
-            //    //    instrution.SetActive(false);
-            //    //    return;
-            //    //}
-            //    //instrution.SetActive(true);
-            //    //instrution.transform.parent=slot.transform;
-            //    //instrution.transform.localPosition = new Vector3(300, 0, 0);
-            //    //instrution.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = TBD.Des;
-            //});
-            
         }
         int i = 0;
         foreach (TaskBreakDown TBD in st.TBD)
@@ -681,6 +676,7 @@ public class minigameTaskListController : MonoBehaviour
     private void showCorrectStep()
     {
 
+        //Make it so the current image will lightUp 
         int i = 0;
         foreach (TaskBreakDown TBD in st.TBD)
         {
@@ -698,7 +694,7 @@ public class minigameTaskListController : MonoBehaviour
 
     }
 
-    public string returnCurrentstep()
+    public string returnCurrentstep() //reture back to the tooth opentooth.cs code
     {
         foreach (TaskBreakDown TBD in st.TBD)
         {

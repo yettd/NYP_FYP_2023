@@ -46,10 +46,10 @@ public class DW_ToolsNagivator
 
         // Create instance and process using it
 
-        Debug.Log(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool]);
 
         if (currentTool != previousTool || GameObject.FindGameObjectWithTag(TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DW_Tool].props_tag_name)== null)
         {
+            Debug.Log("creatingTool");
             GetInstanceOfToolUsage();
             previousTool = currentTool;
         }
@@ -74,8 +74,13 @@ public class DW_ToolsNagivator
             cloneTool.name = GetItemToUse(currentTool).model.name;
 
             // Give access to capability level
+
+
             if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1)
+            {
+
                 extractionAccess.GrantToolCapability(cloneTool, GetItemToUse(currentTool).itemName);
+            }
         }
     }
 

@@ -71,6 +71,15 @@ public class AudioManager : MonoBehaviour
             sfxSource.PlayOneShot(sfxClips[sfxIndex]);
         }
     }
+    public void PlayCelebrateSFX()
+    {
+        if(!sfxSource.isPlaying)
+        {
+         sfxSource.PlayOneShot(sfxClips[13]);
+
+        }
+
+    }
 
     //public void PlayPingSound()
     //{

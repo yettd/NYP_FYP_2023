@@ -15,7 +15,7 @@ public class Saving : MonoBehaviour
     //loadsave(which json file) 
 
     public static Saving save;
-    public void saveToJson(object p, string a)
+    public void saveToJson(object p, string a) // save the obj in to a json file
     {
         string playerData = JsonUtility.ToJson(p);
 
@@ -34,7 +34,7 @@ public class Saving : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        //if save file dont exist create one
         string filePath = Application.persistentDataPath + "/save";
         if (!System.IO.Directory.Exists(filePath)) // if /save folder dont exist creast one
         {
@@ -49,7 +49,7 @@ public class Saving : MonoBehaviour
   
     public string LoadFromJson(string a) //load json folder to get stuff like if minigame was completed
     {
-
+        //return a json file as string  if exist
         string filePath = Application.persistentDataPath + $"/save/{a}.json";
         if (!System.IO.File.Exists(filePath))
         {

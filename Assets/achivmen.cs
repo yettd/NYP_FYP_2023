@@ -26,9 +26,11 @@ public class achivmen : MonoBehaviour
     void Start()
     {
         allAchivments = Resources.LoadAll<AllAchivment>("achivment");
+        //get achivement savefile
         string a = Saving.save.LoadFromJson("achiv");
         if (a == null)
         {
+            //if dont exist create one and see allAchivments to not have
             foreach (AllAchivment item in allAchivments)
             {
                 item.have=false;
@@ -43,6 +45,7 @@ public class achivmen : MonoBehaviour
     }
     public void sets()
     {
+        //set the imagelist to
         for (int i = 0; i < Left.transform.childCount; i++)
         {
             achivementList.Add(Left.transform.GetChild(i).GetComponent<Image>());
@@ -70,6 +73,7 @@ public class achivmen : MonoBehaviour
     
     public void display()
     {
+        //display all the achivement in the book
         foreach(AllAchivment AA in allAchivments)
         {
             if(AA.have)
@@ -108,6 +112,7 @@ public class achivmen : MonoBehaviour
 
     public void UnlockAchivement(int id = -1 , string NameOfAchivement="")
     {
+        //unlock the achivment
         bool unlock=true;
         foreach (AllAchivment AA in allAchivments)
         {
@@ -126,7 +131,7 @@ public class achivmen : MonoBehaviour
                 unlock = false;
             }
         }
-        if(unlock)
+        if(unlock)//if all but the last is unlock. Unlock the last one
         {
             UnlockAchivement(13, "all");
         }
@@ -134,6 +139,7 @@ public class achivmen : MonoBehaviour
     }
     public bool GetIfUnlock(int id = -1, string NameOfAchivement = "")
     {
+        //return if unlock
         foreach (AllAchivment AA in allAchivments)
         {
             if (id == AA.id || NameOfAchivement == AA.AchivmentName)

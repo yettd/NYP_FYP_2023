@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class DW_ExtractionCapability
 {
@@ -29,17 +30,27 @@ public class DW_ExtractionCapability
     private void SetCapabilityProperties()
     {
         // Load information about the tool are needed for this level
-        foreach (InstructionTemplate instruction in TutorialNagivatorScript.Instance().get_manual.step)
-            capabilityCoder.Add(instruction.requiredTool);
+        if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1)
+        {
+            foreach (InstructionTemplate instruction in TutorialNagivatorScript.Instance().get_manual.step)
+                capabilityCoder.Add(instruction.requiredTool);
+
+
+            Debug.Log($"{capabilityCoder.Count} :: asdasdasd");
+        }
     }
     #endregion
 
     #region MAIN
     public void GrantToolCapability(GameObject target, string grantId)
     {
+        Debug.Log($"grant ID :{grantId}");
         // Currently selected tool need to be granted tool access
         accessor = target;
-
+        if(capabilityCoder.Count==0)
+        {
+            SetCapabilityProperties();
+        }
         // Given the item name and identify the tool access
         AcceptToolAndGrant(EncodeCapabilityOfGrantId(grantId));
     }
@@ -58,6 +69,7 @@ public class DW_ExtractionCapability
 
     private void AcceptToolAndGrant(int index)
     {
+        Debug.Log(index);
         // Extraction Tool: Currently used
         switch (index)
         {

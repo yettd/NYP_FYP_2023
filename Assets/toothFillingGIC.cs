@@ -303,6 +303,7 @@ public class toothFillingGIC : MonoBehaviour
         {
             if (!TS.WaterBlow)
             {
+                AudioManager.Instance.PlaySFX(11);
                 if (acid && acid.transform.localScale.x > 0.1)
                 {
                     acid.transform.localScale -= Vector3.one * Time.deltaTime * 0.01f;
@@ -319,6 +320,7 @@ public class toothFillingGIC : MonoBehaviour
             {
                 //acidRender.material.color =new Color(acidRender.material.color.r, acidRender.material.color.g, acidRender.material.color.b, acidRender.material.color.a - Time.deltaTime);
             }
+            AudioManager.Instance.PlaySFX(11);
             decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
         }
 

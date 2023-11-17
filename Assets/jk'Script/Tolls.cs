@@ -29,6 +29,8 @@ public class Tolls : MonoBehaviour
     // Start is called before the first frame update
     private void OnMouseDrag()
     {
+
+        //drag it around the screen
         float dis = Vector3.Distance(transform.position, oldPos);
         if (dis / Time.deltaTime != 0)
         {
@@ -50,7 +52,7 @@ public class Tolls : MonoBehaviour
 
         //}
         Ray ray = cameraChanger.Instance.GetCurrentCam().ScreenPointToRay(cameraChanger.Instance.GetCurrentCam().WorldToScreenPoint(pos));
-        if (letgoToUse == false)
+        if (letgoToUse == false) //some tool will only be use if letgo example rubber dam
         {
             raycastToSelcetTooth();
         }
@@ -59,7 +61,7 @@ public class Tolls : MonoBehaviour
 
     protected virtual void OnMouseUp()
     {
-        if(letgoToUse)
+        if(letgoToUse)//some tool will only be use if letgo example rubber dam
         {
             raycastToSelcetTooth();
         }
@@ -71,6 +73,8 @@ public class Tolls : MonoBehaviour
 
     private void raycastToSelcetTooth()
     {
+        //check if ray cast from the usepoint hit anything
+
         ray = new Ray(usePoint.transform.position,transform.forward);
         //RaycastHit[] hit = Physics.RaycastAll(ray, Mathf.Infinity);
         
@@ -98,6 +102,7 @@ public class Tolls : MonoBehaviour
     }
     protected virtual void usetool( RaycastHit hit)
     {
-        
+        //the child off this script will overwrite this funtion to use it for the own stuff
+        //For not both filling and scaling tool use it to hit their indicated script
     }
 }

@@ -9,6 +9,8 @@ using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class toothFilling : MonoBehaviour
 {
+
+    //if want to add more tool for the procedure just add to the array it will go in order 
     toolsForFilling[] tfs = { toolsForFilling.rubberDamForceb, toolsForFilling.slowSpeed,toolsForFilling.Spoonexcavator, 
         toolsForFilling.tripleSyringe, toolsForFilling.etchant,
         toolsForFilling.tripleSyringe, toolsForFilling.Microbrush,toolsForFilling.tripleSyringe,toolsForFilling.Microbrush,
@@ -46,7 +48,7 @@ public class toothFilling : MonoBehaviour
         {
             flip = true;
         }
-
+        //set up problem for filling 
         GameObject b=Instantiate(Resources.Load<GameObject>("mat/filling/FYP_GunkNEW"), gameObject.transform);
         b.transform.localPosition = new Vector3(0, 0.344f, 0);
         OriginalMesh = GetComponent<MeshFilter>().mesh;
@@ -67,29 +69,31 @@ public class toothFilling : MonoBehaviour
 
     bool CorrectSide(RaycastHit hit)
     {
+        //use to detect which side is correct
         Vector3 hitPointLocal = transform.InverseTransformPoint(hit.point);
 
         float yAbs = Mathf.Abs(hitPointLocal.y);
 
-        char positionRelativeToEnemy='d';
+        char positionRelativeToTeeth='d';
         if (yAbs > threshold)
         {
             if (hitPointLocal.y > 0)
             {
-                positionRelativeToEnemy = 't'; // Hit on top
+                positionRelativeToTeeth = 't'; // Hit on top
                 if(flip)
                 {
+                    //if the colider is flip the positionRelativeToTeeth will also be change upsidedown
                     return true;
                 }
             }
             else
             {
 
-                positionRelativeToEnemy = 'b'; // Hit on bottom
+                positionRelativeToTeeth = 'b'; // Hit on bottom
                 return true;
             }
         }
-        Debug.Log(positionRelativeToEnemy);
+        Debug.Log(positionRelativeToTeeth);
         return false;
 
 
@@ -119,7 +123,8 @@ public class toothFilling : MonoBehaviour
         }
         if (correctTool())
         {
-         
+            
+            //Once the side is correct and tool are correct it will go to the corrosponding method and run it
             switch (minigameTaskListController.Instance.getCurrentStep())
             {
                 case Steps.DAM:
@@ -330,14 +335,14 @@ public class toothFilling : MonoBehaviour
             TS=FindObjectOfType<tripleSyringe>();
         }
 
-        if(TS.WaterBlow)
-        {
-            AudioManager.Instance.PlaySFX(11);
-        }
-        else
-        {
-            AudioManager.Instance.PlaySFX(10);
-        }
+        //if(TS.WaterBlow)
+        //{
+        //    AudioManager.Instance.PlaySFX(11);
+        //}
+        //else
+        //{
+        //    AudioManager.Instance.PlaySFX(10);
+        //}
 
         water = decayRender.material.color;
         if (water.a <= 0)
@@ -376,6 +381,7 @@ public class toothFilling : MonoBehaviour
             {
                 //acidRender.material.color =new Color(acidRender.material.color.r, acidRender.material.color.g, acidRender.material.color.b, acidRender.material.color.a - Time.deltaTime);
             }
+            AudioManager.Instance.PlaySFX(11);
             decay.transform.localScale += Vector3.one * Time.deltaTime * 0.1f;
         }
     
@@ -427,6 +433,7 @@ public class toothFilling : MonoBehaviour
     
     bool correctTool()
     {
+        //check if the selected tool is arccording to what is needed currently
         if (minigameTaskListController.Instance.GetSelectedtool() == tfs[currecntTool].ToString())
         {
 

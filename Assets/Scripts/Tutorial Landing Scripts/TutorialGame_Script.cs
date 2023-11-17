@@ -168,6 +168,7 @@ public class TutorialGame_Script : MonoBehaviour
 
     private string GetActionListDescription(InterfaceFeedBack feedBack)
     {
+        Debug.Log("Smthing");
         // Identify the feedback needed for use
         switch (feedBack)
         {

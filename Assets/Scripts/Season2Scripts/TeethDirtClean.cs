@@ -220,7 +220,6 @@ public class TeethDirtClean : MonoBehaviour
                 {
                     if (minigameTaskListController.Instance.GetSelectedtool() == tc.ToString())
                     {
-                        Debug.Log("asdasdasd");
                         correct = true;
                         break;
                     }

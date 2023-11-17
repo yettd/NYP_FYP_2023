@@ -19,7 +19,7 @@ public class hitPoint : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        fc.GetHit(transform);
+        fc.GetHit(transform);//return to filling cure if drawn over 
     }
 
     public void hit()

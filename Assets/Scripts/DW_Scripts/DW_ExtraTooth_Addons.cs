@@ -70,7 +70,7 @@ public class DW_ExtraTooth_Addons : MonoBehaviour
                 setup = teeth.transform.GetChild(tooth).tag != TutorialGame_Script.thisScript.get_GameInfo[(int)GameTagPlacement.DamagedTooth].props_tag_name;
 
                 // Texture: Setup condition doesn't find any problem then perform this task
-                if (setup) teeth.transform.GetChild(tooth).GetComponent<Renderer>().material = Resources.Load<Material>("TutorialAssets/Selected_CleanTooth");
+                if (setup) teeth.transform.GetChild(tooth).GetComponent<Renderer>().material = Resources.Load<Material>("Mat/clean");
 
                 // Problem: Setup condition assigned accordingly
                 teeth.transform.GetChild(tooth).GetComponent<openTooth>().problem = !setup;

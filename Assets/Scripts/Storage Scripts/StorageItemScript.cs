@@ -29,12 +29,15 @@ public class StorageItemScript : MonoBehaviour
     #region MAIN
     public void SelectItem()
     {
-        // Select item for uses
-        component.GetItemSelection(item);
-
-        teethMan.tm.Changetoolcolor(item.itemName);
-        // Target selected area on item currently used
-        if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1) toolsNagivator.GetToolsOnUse(item.itemName);
+        if (minigameTaskListController.Instance.procedure == Procedure.Extration)
+        {
+            // Select item for uses
+            component.GetItemSelection(item);
+            teethMan.tm.Changetoolcolor(item.itemName);
+            Debug.Log("Selected");
+            // Target selected area on item currently used
+            if (TutorialNagivatorScript.Instance().get_manual.toolAccessId == 1) toolsNagivator.GetToolsOnUse(item.itemName);
+        }
     }
 
     public void SelectTool()

@@ -580,6 +580,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpro: {fileID: 926981488}
+--- !u!1 &74528033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6520987601189993335, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+  m_PrefabInstance: {fileID: 571859382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &74528039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74528033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 571859385}
+          m_TargetAssemblyTypeName: Hoverover, Assembly-CSharp
+          m_MethodName: test
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 571859385}
+          m_TargetAssemblyTypeName: Hoverover, Assembly-CSharp
+          m_MethodName: test
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &97326751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4508,6 +4558,66 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 193
       objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_Inertia
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_MovementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 571859385}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 571859384}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WhenScrollDontRotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Hoverover, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Hoverover, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840364709187295323, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4518,6 +4628,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2620223549740204625, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 571859385}
+    - targetCorrespondingSourceObject: {fileID: 6520987601189993335, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 74528039}
   m_SourcePrefab: {fileID: 100100000, guid: 888c13bf39f9f2f458b7a6b4bf2b75ac, type: 3}
 --- !u!224 &571859383 stripped
 RectTransform:
@@ -7209,7 +7322,7 @@ MonoBehaviour:
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
-  m_Inertia: 1
+  m_Inertia: 0
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 1206267898}
@@ -7221,7 +7334,19 @@ MonoBehaviour:
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 454713538}
+        m_TargetAssemblyTypeName: Hoverover, Assembly-CSharp
+        m_MethodName: WhenScrollDontRotate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1206267903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12925,7 +13050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2afbe011491ea40489aa602ed41423d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2b516cf7c1c2604aa8a62811d77b845, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

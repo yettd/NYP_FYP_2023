@@ -22,6 +22,10 @@ public class rotateJaws : MonoBehaviour
  
     private void Update()
     {
+        if((Input.GetMouseButtonUp(0) || Input.touchCount == 0) && overUI==true)
+        {
+            overUI = false;
+        }
        
         if ((Input.GetMouseButton(0) || Input.touchCount > 0)&& overUI==false)
         {

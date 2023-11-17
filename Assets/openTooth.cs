@@ -28,15 +28,17 @@ public class openTooth : MonoBehaviour
             return;
         }
 
+        //if camera is not zoom
         if (!cameraChanger.Instance.GetZoom())
         {
+            //if(the minigame panel is not open open it;
             if (!minigameTaskListController.Instance.minigameOpen)
             {
                 //zoom in gum
                 minigameTaskListController.Instance.setGame(topBottom);
                 teethMan.tm.CT("Swipe to rotate \n Click on a teeth to zoom in further",false);
             }
-            else
+            else //else it will zoom in on to the tooth and the other tooth will become transparent
             {
                 if (problem)
                 {
@@ -104,7 +106,7 @@ public class openTooth : MonoBehaviour
         teethMan.tm.Back += Show;
 
         st = Resources.Load<showTask>("minigameTasklist/notask");
-        if (pro.Contains(minigameTaskListController.Instance.procedure))
+        if (pro.Contains(minigameTaskListController.Instance.procedure)) // if the minigame correlate with the teeth run their setup or add their respective code
         {
             switch (minigameTaskListController.Instance.procedure)
             {
@@ -142,7 +144,8 @@ public class openTooth : MonoBehaviour
     }
 
     private void HideTeeth(string TeethName)
-    {
+    { 
+        // if gameobject is not TeethName will become transparent
         mat = GetComponent<Renderer>().material;
         if (TeethName != gameObject.name)
         {
@@ -154,13 +157,14 @@ public class openTooth : MonoBehaviour
         else
         {
             focus = true;
-            minigameTaskListController.Instance.startminigame(st,WhichStepIsOn);
+            minigameTaskListController.Instance.startminigame(st,WhichStepIsOn);//give the stem to minigame and which step it was last left off
             cameraChanger.Instance.ZoomInCam(gameObject);
         }
     }
     private void Show()
     {
 
+        // change back the opacity of the teeth
         mat = GetComponent<Renderer>().material;
         // bc.enabled = true;
         mc.enabled = true;
@@ -169,8 +173,8 @@ public class openTooth : MonoBehaviour
         if(focus)
         {
             focus = false;
-            WhichStepIsOn = minigameTaskListController.Instance.getCSValue();
-     
+            WhichStepIsOn = minigameTaskListController.Instance.getCSValue();//if it was the tooth that was focus on set whichstepison to the last step id
+
         }
 
     }

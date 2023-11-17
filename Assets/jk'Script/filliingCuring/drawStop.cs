@@ -16,7 +16,8 @@ public class drawStop : MonoBehaviour
     {
         
     }
-
+    //if the mouse go over the gameObject will reset the progress for contour
+    //Can be ajusted for easier on the gameObject by changing the size
     private void OnMouseDrag()
     {
         d.STOP();

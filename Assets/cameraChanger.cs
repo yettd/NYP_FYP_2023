@@ -79,7 +79,6 @@ public class cameraChanger : MonoBehaviour
 
         ZoomIn.transform.position=g.transform.position-dis;
         //ZoomIn.transform.position =new Vector3(g.transform.position.x, -267.1f, -35);
-        Debug.Log(Vector3.Distance(ZoomIn.transform.position, g.transform.position));
         Quaternion _lookRotation =Quaternion.LookRotation((g.transform.position - ZoomIn.transform.position).normalized);
         ZoomIn.transform.rotation = _lookRotation;
 
